@@ -6,7 +6,7 @@
   --color-primary: #e6cc3d;
   --color-secondary: #fcf6d9;
   --color-accent: #1B275E;
-  --color-neutral-100: #F5F5F5;
+  --color-neutral-light: #F5F5F5;
 
   --font-manrope: "manrope", sans-serif;
 }
@@ -22,7 +22,7 @@
   }
 
   .redir-link {
-    @apply hover:text-primary-txt transition-colors;
+    @apply hover:bg-accent hover:text-neutral-light transition-colors p-1 px-2.5 rounded-2xl;
   }
 
   /* SECTION: purchase-flow */

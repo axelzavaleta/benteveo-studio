@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="src/assets/logo-benteveo-studio.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benteveo Studio</title>
+  <link rel="stylesheet" href="/src/styles/input.css">
+</head>
+
+<body class="text-primary-txt font-manrope">
+  <header class="z-100 bg-white sticky top-0 max-w-screen w-full border-b border-black/10 text-sm text-primary-txt/85">
+    <div class="flex justify-between items-center m-auto px-8  py-2 max-w-8xl">
+      <div class="flex items-center gap-2">
+        <a href="#home" class="cursor-pointer">
+          <img src="/src/assets/logo-benteveo-studio.png" alt="bs-logo" class="max-w-10">
+        </a>
+
+        <h1 class="text-xl font-semibold">Benteveo Studio</h1>
+      </div>
+
+      <nav class="text-primary-txt/85">
+        <ul class="flex gap-6">
+          <li><a class="redir-link" href="/src/pages/home/index.html">Inicio</a></li>
+          <li><a class="redir-link current-page" href="#catalog">Catalogo</a></li>
+          <li><a class="redir-link" href="#">Servicios</a></li>
+          <li><a class="redir-link" href="#">Nosotros</a></li>
+          <li><a class="redir-link" href="#">Asistencia</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-14">
+        <div class="flex gap-6">
+          <div class="flex gap-4">
+            <button class="login-btn">Iniciar sesión</button>
+            <button class="sigin-btn">Registrarse</button>
+          </div>
+
+          <button class="cursor-pointer hidden">
+            <img src="/src/assets/cart.svg" alt="carrito-logo">
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="h-svh max-h-[1255px] grid grid-cols-3">
+      <div class="bg-red-500 col-span-2 w-full h-full">
+        <!-- <img src="/src/assets/mockupIncognita_Game.png" alt="" class=""> -->
+      </div>
+
+      <div class="bg-black h-full text-neutral-light grid place-items-center px-12">
+        <div class="h-fit">
+          <span class="text-sm bg-accent/85 text-white font-bold py-0.5 px-6 rounded-full w-fit">
+            En producción
+          </span>
+
+          <h1 class="text-5xl font-semibold mt-2 mb-6">Nombre del videojuego</h1>
+
+          <p class="mb-8">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui minima rem enim? Dolores architecto, facilis
+            labore ex quas corrupti numquam totam maiores, nobis, recusandae esse nesciunt.
+          </p>
+
+          <button class="text-black bg-amber-300 py-2 px-8 rounded-full font-medium cursor-pointer w-fit">Más
+            información</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="browse" class="grid place-items-center h-max bg-neutral-light">
+      <div class="max-w-7xl w-full flex justify-between gap-8 py-32">
+        <span class="bg-neutral-light py-8 px-4 min-w-2xs">
+          <h2 class="font-semibold text-3xl mb-4">Filtros</h2>
+
+          <ul class="grid gap-2">
+            <li class="bg-neutral-200">
+              <button class="flex justify-between items-center w-full px-4 py-2">
+                <span class="font-medium">Género</span>
+
+                <span>
+                  <img src="/src/assets/chevron.svg" alt="chevron-icon">
+                </span>
+              </button>
+
+              <div class="hidden bg-white px-4 py-2">
+                <ul>
+                  <li class="grid place-items-start text-sm">
+                    <div class="flex items-center justify-center gap-2">
+                      <input type="checkbox" name="educativo" id="educativo">
+                      <label for="educativo">Educativo</label>
+                    </div>
+                  </li>
+                  
+                  <li class="grid place-items-start text-sm">
+                    <div class="flex items-center justify-center gap-2">
+                      <input type="checkbox" name="aventura" id="aventura">
+                      <label for="aventura">Aventura</label>
+                    </div>
+                  </li>
+                  
+                  <li class="grid place-items-start text-sm">
+                    <div class="flex items-center justify-center gap-2">
+                      <input type="checkbox" name="disparos" id="disparos">
+                      <label for="disparos">Disparos</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="bg-neutral-200">
+              <button class="flex justify-between items-center w-full px-4 py-2">
+                <span class="font-medium">Clasificación por edad</span>
+
+                <span>
+                  <img src="/src/assets/chevron.svg" alt="chevron-icon">
+                </span>
+              </button>
+
+              <div class="hidden bg-white px-4 py-2">
+                <ul>
+                  <li class="grid place-items-start text-sm">
+                    <div class="flex items-center justify-center gap-2">
+                      <input type="checkbox" name="educativo" id="educativo">
+                      <label for="educativo">Niños +8</label>
+                    </div>
+                  </li>
+                  
+                  <li class="grid place-items-start text-sm">
+                    <div class="flex items-center justify-center gap-2">
+                      <input type="checkbox" name="aventura" id="aventura">
+                      <label for="aventura">Adolescentes +12</label>
+                    </div>
+                  </li>
+                  
+                  <li class="grid place-items-start text-sm">
+                    <div class="flex items-center justify-center gap-2">
+                      <input type="checkbox" name="disparos" id="disparos">
+                      <label for="disparos">Adultos +18</label>
+                    </div>
+                  </li>
+
+                  <li class="grid place-items-start text-sm">
+                    <div class="flex items-center justify-center gap-2">
+                      <input type="checkbox" name="disparos" id="disparos">
+                      <label for="disparos">Todo público</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </span>
+
+        <div class="w-full">
+          <ul class="grid grid-cols-3 gap-8">
+            <li class="bg-neutral-light border border-black/25 overflow-hidden">
+              <div>
+                <div class="bg-red-500 w-full aspect-square">
+                  <img src="" alt="">
+                </div>
+  
+                <div class="p-4">
+                  <p class="font-medium">Nombre del juego</p>
+                  <span class="font-semibold">$10.000</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="bg-neutral-light border border-black/25 overflow-hidden">
+              <div>
+                <div class="bg-red-500 w-full aspect-square">
+                  <img src="" alt="">
+                </div>
+  
+                <div class="p-4">
+                  <p class="font-medium">Nombre del juego</p>
+                  <span class="font-semibold">$10.000</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="bg-neutral-light border border-black/25 overflow-hidden">
+              <div>
+                <div class="bg-red-500 w-full aspect-square">
+                  <img src="" alt="">
+                </div>
+  
+                <div class="p-4">
+                  <p class="font-medium">Nombre del juego</p>
+                  <span class="font-semibold">$10.000</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid place-content-center py-32 gap-32">
+      <div class="max-w-7xl w-full grid gap-32">
+        <section id="featured_games" class="grid place-items-center gap-8">
+          <h1 class="text-4xl font-semibold">
+            Juegos destacados
+          </h1>
+  
+          <div class="flex justify-between w-full">
+            <div class="min-w-[400px] aspect-square bg-red-500"></div>
+            <div class="min-w-[400px] aspect-square bg-red-500"></div>
+            <div class="min-w-[400px] aspect-square bg-red-500"></div>
+          </div>
+        </section>
+  
+        <section id="newswire" class="grid place-items-center">
+          <h1 class="text-4xl font-semibold">
+            Noticias
+          </h1>
+  
+          <p class="mt-4 mb-16">
+            Te invitamos a conocer las ultimas noticias que han sonado en torno a nosotros
+          </p>
+  
+          <div class="news-bento w-7xl grid grid-cols-3 gap-4 text-left">
+            <article class="bg-red-500 w-full">
+              <div class="bg-accent h-[125px] w-full">
+                <img src="/src/assets/logo-benteveo-studio.png" alt="">
+              </div>
+  
+              <div class="p-4">
+                <span class="text-xs">20 de enero, 2007</span>
+  
+                <h2 class="text-2xl font-semibold mb-2">Benteveo Studio ha llegado</h2>
+  
+                <p class="text-base">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt exercitationem ab inventore aliquam
+                  quas esse.
+                </p>
+              </div>
+            </article>
+  
+            <article class="bg-red-500 w-full">
+              <div class="bg-accent h-[125px] w-full">
+                <img src="/src/assets/logo-benteveo-studio.png" alt="">
+              </div>
+  
+              <div class="p-4">
+                <span class="text-xs">20 de enero, 2007</span>
+  
+                <h2 class="text-2xl font-semibold mb-2">Benteveo Studio ha llegado</h2>
+  
+                <p class="text-base">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt exercitationem ab inventore aliquam
+                  quas esse.
+                </p>
+              </div>
+            </article>
+  
+            <article class="bg-red-500 w-full">
+              <div class="bg-accent h-[125px] w-full">
+                <img src="/src/assets/logo-benteveo-studio.png" alt="">
+              </div>
+  
+              <div class="p-4">
+                <span class="text-xs">20 de enero, 2007</span>
+  
+                <h2 class="text-2xl font-semibold mb-2">Benteveo Studio ha llegado</h2>
+  
+                <p class="text-base">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt exercitationem ab inventore aliquam
+                  quas esse.
+                </p>
+              </div>
+            </article>
+  
+            <article class="bg-red-500 w-full">
+              <div class="bg-accent h-[125px] w-full">
+                <img src="/src/assets/logo-benteveo-studio.png" alt="">
+              </div>
+  
+              <div class="p-4">
+                <span class="text-xs">20 de enero, 2007</span>
+  
+                <h2 class="text-2xl font-semibold mb-2">Benteveo Studio ha llegado</h2>
+  
+                <p class="text-base">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt exercitationem ab inventore aliquam
+                  quas esse.
+                </p>
+              </div>
+            </article>
+  
+            <article class="bg-red-500 w-full">
+              <div class="bg-accent h-[125px] w-full">
+                <img src="/src/assets/logo-benteveo-studio.png" alt="">
+              </div>
+  
+              <div class="p-4">
+                <span class="text-xs">20 de enero, 2007</span>
+  
+                <h2 class="text-2xl font-semibold mb-2">Benteveo Studio ha llegado</h2>
+  
+                <p class="text-base">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt exercitationem ab inventore aliquam
+                  quas esse.
+                </p>
+              </div>
+            </article>
+  
+            <article class="bg-red-500 w-full">
+              <div class="bg-accent h-[125px] w-full">
+                <img src="/src/assets/logo-benteveo-studio.png" alt="">
+              </div>
+  
+              <div class="p-4">
+                <span class="text-xs">20 de enero, 2007</span>
+  
+                <h2 class="text-2xl font-semibold mb-2">Benteveo Studio ha llegado</h2>
+  
+                <p class="text-base">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt exercitationem ab inventore aliquam
+                  quas esse.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section id="faqs" class="h-svh max-h-[755px] grid place-items-center bg-neutral-light">
+      <div class="max-w-4xl w-full">
+        <h1 class="text-5xl text-center mb-16">Preguntas frecuentes</h1>
+
+        <div class="grid grid-cols-3 gap-4">
+          <ul class="col-span-2">
+            <li>
+              <div class="bg-red-500 flex justify-between p-4 text-xl">
+                <span>¿En qué plataformas están disponibles los juegos?</span>
+                <img src="/src/assets/plus.svg" alt="plus-icon">
+              </div>
+
+              <div class="hidden bg-accent p-4 text-sm">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et sit nobis a magni minima velit!
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="bg-red-500 flex justify-between p-4 text-xl">
+                <span>¿En qué plataformas están disponibles los juegos?</span>
+                <img src="/src/assets/plus.svg" alt="plus-icon">
+              </div>
+
+              <div class="hidden bg-accent p-4 text-sm">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et sit nobis a magni minima velit!
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="bg-red-500 flex justify-between p-4 text-xl">
+                <span>¿En qué plataformas están disponibles los juegos?</span>
+                <img src="/src/assets/plus.svg" alt="plus-icon">
+              </div>
+
+              <div class="hidden bg-accent p-4 text-sm">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et sit nobis a magni minima velit!
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="bg-red-500 flex justify-between p-4 text-xl">
+                <span>¿En qué plataformas están disponibles los juegos?</span>
+                <img src="/src/assets/plus.svg" alt="plus-icon">
+              </div>
+
+              <div class="hidden bg-accent p-4 text-sm">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et sit nobis a magni minima velit!
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="bg-red-500 flex justify-between p-4 text-xl">
+                <span>¿En qué plataformas están disponibles los juegos?</span>
+                <img src="/src/assets/plus.svg" alt="plus-icon">
+              </div>
+
+              <div class="hidden bg-accent p-4 text-sm">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et sit nobis a magni minima velit!
+                </p>
+              </div>
+            </li>
+          </ul>
+
+          <span class="bg-accent p-4 h-fit">
+            <h2 class="font-semibold">¿Necesitas más ayuda?</h2>
+
+            <p class="text-sm mb-4">
+              Si tenes mas problemas, podes ir al apartado de asistencia.
+            </p>
+
+            <a href="">
+              <button class="bg-neutral-light text-sm px-4 py-1.5 rounded-2xl">Asistencia</button>
+            </a>
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 max-w-full w-full text-white px-16 py-6 snap-start">
+    <div class="max-w-7xl w-full m-auto grid gap-3">
+      <h1 class="text-2xl font-bold">
+        Benteveo Air
+      </h1>
+
+      <nav class="nav-footer">
+        <ul class="text-sm flex items-center gap-8 uppercase tracking-widest">
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </nav>
+
+      <div class="text-xs flex items-center justify-between mt-4">
+        <span>
+          ©2025 Benteveo Air. Todos los derechos reservados.
+        </span>
+
+        <nav class="social-media">
+          <ul class="flex items-center gap-8 tracking-widest">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

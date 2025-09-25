@@ -33,8 +33,8 @@
       <div class="flex items-center gap-14">
         <div class="flex gap-6">
           <div class="flex gap-4">
-            <button class="login-btn">Iniciar sesión</button>
-            <button class="sigin-btn">Registrarse</button>
+            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
           </div>
 
           <button class="cursor-pointer hidden">
@@ -418,6 +418,107 @@
     </section>
   </main>
 
+  <dialog id="login-modal" class="modal-wrapper">
+    <form class="sexo relative text-center text-soft-black p-8 grid gap-4">
+      <div class="close-modal-btn" id="close-login">
+        <img src="/src/assets/x.svg" alt="x-icon">
+      </div>
+
+      <h1 class="text-3xl font-semibold mb-4">Inicia sesión</h1>
+
+      <div>
+        <input 
+        type="email" 
+        name="email" 
+        id="email-login" 
+        placeholder="Ingresa tu email" 
+        autocomplete="email" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="password-login" 
+        placeholder="Ingresa tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <input type="submit" value="Iniciar sesión" class="continue-btn">
+
+      <span id="back-to-signup" data-target-modal="signup-modal" class="back-to">
+        ¿No tienes una cuenta?
+      </span>
+    </form>
+  </dialog>
+
+  <dialog id="signup-modal" class="modal-wrapper">
+    <form class="text-center text-soft-black p-8 grid gap-4">
+      <div class="close-modal-btn" id="close-signup">
+        <img src="/src/assets/x.svg" alt="x-icon">
+      </div>
+
+      <h1 class="text-3xl font-semibold mb-4">Crea tu cuenta</h1>
+
+      <div>
+        <input 
+        type="text" 
+        name="username" 
+        id="username" 
+        placeholder="Ingresa tu nombre" 
+        autocomplete="name" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="email" 
+        name="email" 
+        id="email-signup" 
+        placeholder="Ingresa tu email" 
+        autocomplete="email" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="date" 
+        name="birthdate" 
+        id="birthdate" 
+        autocomplete="bday" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="password-signup" 
+        placeholder="Ingresa tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="confirm-password-signup" 
+        placeholder="Ingresa otra vez tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <input type="submit" value="Crear cuenta" class="continue-btn">
+
+      <span id="back-to-login" data-target-modal="login-modal" class="back-to">
+        ¿Ya tienes una cuenta?
+      </span>
+    </form>
+  </dialog>
+
   <footer class="bg-primary-txt w-full text-white p-8 grid place-content-center">
     <div class="max-w-8xl w-full grid gap-8">
       <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
@@ -479,6 +580,8 @@
       </div>
     </div>
   </footer>
+
+  <script src="/src/pages/scripts/auth.js"></script>
 </body>
 
 </html>

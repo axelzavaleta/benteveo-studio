@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/src/styles/input.css">
 </head>
 
-<body class="bg-neutral-light text-primary-txt font-manrope">
+<body class="bg-neutral-light font-manrope">
   <header class="z-100 bg-white fixed max-w-screen w-full border-b border-black/10 text-sm text-primary-txt/85">
     <div class="flex justify-between items-center m-auto px-8 py-2 max-w-8xl ">
       <div class="flex items-center gap-2">
@@ -127,7 +127,7 @@
     </section>
 
     <section id="user-journey" class="section-base">
-      <div class="max-w-8xl w-full px-8">
+      <div class="max-w-6xl w-full px-8">
         <h1 class="text-5xl font-bold">Comienza tu aventura en 4 pasos</h1>
         
         <p class="mt-4 mb-16">
@@ -135,61 +135,61 @@
         </p>
 
         <div class="grid">
-          <article class="flex items-center">
+          <article class="flex gap-8 items-center">
             <div class="relative bg-accent min-w-40 aspect-square grid place-content-center border">
-              <span class="text-6xl font-bold">1</span>
+              <span class="text-6xl font-bold text-neutral-light">1</span>
               <img src="/src/assets/user.svg" alt="user-icon" class="w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full">
             </div>
 
             <div class="p-4">
-              <h2 class="text-2xl font-semibold mb-4">Crea una cuenta</h2>
+              <h2 class="text-3xl font-semibold mb-2">Crea una cuenta</h2>
               
-              <p class="text-sm">
+              <p class="text-gray-600">
                 Para empezar a explorar, crea una cuenta o inicia sesion. Asi podras guardar tus juegos favoritos y tener un proceso de compra seguro y rápido.
               </p>
             </div>
           </article>
 
-          <article class="flex items-center">
+          <article class="flex gap-8 items-center">
             <div class="relative bg-accent min-w-40 aspect-square grid place-content-center border">
-              <span class="text-6xl font-bold">2</span>
+              <span class="text-6xl font-bold text-neutral-light">2</span>
               <img src="/src/assets/explore.svg" alt="explore-icon" class="w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full">
             </div>
 
             <div class="p-4">
-              <h2 class="text-2xl font-semibold mb-4">Explorá el catálogo</h2>
+              <h2 class="text-3xl font-semibold mb-2">Explorá el catálogo</h2>
               
-              <p class="text-sm">
+              <p class="text-gray-600">
                 Explora nuestro catálogo y descubre el juego perfecto para ti. Entre los distintos titulos, seguro encuentras tu próxima aventura.
               </p>
             </div>
           </article>
 
-          <article class="flex items-center">
+          <article class="flex gap-8 items-center">
             <div class="relative bg-accent min-w-40 aspect-square grid place-content-center border">
-              <span class="text-6xl font-bold">3</span>
+              <span class="text-6xl font-bold text-neutral-light">3</span>
               <img src="/src/assets/cart.svg" alt="cart-icon" class="w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full">
             </div>
 
             <div class="p-4">
-              <h2 class="text-2xl font-semibold mb-4">Añade al carrito</h2>
+              <h2 class="text-3xl font-semibold mb-2">Añade al carrito</h2>
               
-              <p class="text-sm">
+              <p class="text-gray-600">
                 Añade al carrito los juegos que más te gusten. Puedes revisar, editar o eliminar productos antes de finalizar la compra.
               </p>
             </div>
           </article>
 
-          <article class="flex items-center">
+          <article class="flex gap-8 items-center">
             <div class="relative bg-accent min-w-40 aspect-square grid place-content-center border">
-              <span class="text-6xl font-bold">4</span>
+              <span class="text-6xl font-bold text-neutral-light">4</span>
               <img src="/src/assets/check.svg" alt="check-icon" class="w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full">
             </div>
 
             <div class="p-4">
-              <h2 class="text-2xl font-semibold mb-4">Completa tu compra</h2>
+              <h2 class="text-3xl font-semibold mb-2">Completa tu compra</h2>
               
-              <p class="text-sm">
+              <p class="text-gray-600">
                 Completa tu compra de forma segura. Recibirás una confirmación por correo electrónico. ¡Y listo! Nosotros nos encargamos de que lo disfrutes al máximo.
               </p>
             </div>
@@ -228,21 +228,55 @@
     </section>
   </main>
 
-  <footer class="bg-gray-900 max-w-full w-full text-white px-16 py-6 snap-start">
-    <div class="max-w-7xl w-full m-auto grid gap-3">
-      <h1 class="text-2xl font-bold">Benteveo Air</h1>
+  <footer class="bg-primary-txt w-full text-white p-8 grid place-content-center">
+    <div class="max-w-8xl w-full grid gap-8">
+      <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
+        <div>
+          <h1 class="text-xl font-bold mb-2">Benteveo Studio  </h1>
+          <p>
+            Te invitamos a embarcarte en una aventura inolvidable donde la educación y la diversión se encuentran.
+          </p>
+        </div>
 
-      <nav class="nav-footer">
-        <ul class="text-sm flex items-center gap-8 uppercase tracking-widest">
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Servicios</a></li>
-          <li><a href="#">Política de privacidad</a></li>
-        </ul>
-      </nav>
+        <div>
+          <h1 class="text-xl font-bold mb-3">Explorar</h1>
+
+          <ul class="grid gap-2">
+            <li><a href="#" class="hover:text-primary transition-colors">Catalogo</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Servicios</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Asistencia</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Legal</h1>
+
+          <ul class="grid gap-2">
+            <li><a href="#" class="hover:text-primary transition-colors">Política y privacidad</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Términos y condiciones</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Soporte técnico</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Contacto</h1>
+
+          <ul class="grid gap-2">
+            <li class="flex items-center gap-2">
+              <img src="/src/assets/phone.svg" alt="phone-icon">
+              <a href="#">+54 351-999-999</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <img src="/src/assets/mail.svg" alt="mail-icon">
+              <a href="#">benteveostudio@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <div class="text-xs flex items-center justify-between mt-4">
         <span>
-          ©2025 Benteveo Air. Todos los derechos reservados.
+          ©2025 Benteveo Studio. Todos los derechos reservados.
         </span>
 
         <nav class="social-media">

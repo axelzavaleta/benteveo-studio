@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-primary-txt: #040118;
+  --color-soft-black: #212121;
   --color-primary: #e6cc3d;
   --color-primary-bold: #e8bb1a;
   --color-secondary: #fcf6d9;
@@ -10,6 +11,12 @@
   --color-neutral-light: #F5F5F5;
 
   --font-manrope: "manrope", sans-serif;
+  --font-public-sans: "public sans", sans-serif;
+  --font-open-sans: "open sans", sans-serif;
+  --font-poppins: "poppins", sans-serif;
+  --font-outfit: "outfit", sans-serif;
+  --font-quicksand: "quicksand", sans-serif;
+  --font-montserrat: "montserrat", sans-serif;
   --container-8xl: 1440px;
 }
 
@@ -20,7 +27,7 @@
   }
 
   .button-base {
-    @apply border py-2 px-10 rounded-md cursor-pointer transition-colors;
+    @apply font-bold border py-2 px-10 rounded-md cursor-pointer transition-colors;
   }
 
   /* HEADER */
@@ -32,7 +39,7 @@
     @apply bg-white text-primary-bold border border-black/15 font-bold py-2 px-6 rounded-sm cursor-pointer hover:border-primary-bold transition-colors;
   }
 
-  .sigin-btn {
+  .signup-btn {
     @apply bg-primary-bold text-white font-bold py-2 px-6 rounded-sm cursor-pointer;
   }
 
@@ -61,5 +68,26 @@
 
   .game-box {
     @apply bg-accent p-6 rounded-xl w-2xs;
+  }
+
+  /* MODALS */
+  .modal-wrapper {
+    @apply max-w-[400px] w-full bg-white m-auto border border-gray-300 rounded-2xl;
+  }
+
+  .field-modal {
+    @apply text-primary-txt outline-none text-sm px-4 py-3 w-full rounded-sm bg-neutral-light border border-black/5;
+  }
+
+  .close-modal-btn {
+    @apply absolute right-5 top-5 bg-neutral-light border border-gray-200 w-fit p-1 rounded-full hover:bg-gray-200 transition-colors;
+  }
+
+  .continue-btn {
+    @apply font-bold border py-2 px-10 rounded-md mt-4 bg-primary border-primary-bold text-white hover:bg-primary-bold cursor-pointer transition-colors;
+  }
+
+  .back-to {
+    @apply text-sm text-gray-500 cursor-pointer hover:text-primary-txt transition-colors;
   }
 }

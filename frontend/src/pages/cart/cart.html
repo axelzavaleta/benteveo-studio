@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="src/assets/logo-benteveo-studio.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benteveo Studio</title>
+  <link rel="stylesheet" href="/src/styles/input.css">
+</head>
+
+<body class="bg-neutral-light font-manrope flex flex-col min-h-svh">
+  <header class="z-100 bg-white fixed max-w-screen w-full border-b border-black/10 text-sm text-primary-txt/85">
+    <div class="flex justify-between items-center m-auto px-8 py-2 max-w-8xl ">
+      <div class="flex items-center gap-2">
+        <a href="#home" class="cursor-pointer">
+          <img src="/src/assets/logo-benteveo-studio.png" alt="bs-logo" class="max-w-10">
+        </a>
+
+        <h1 class="text-xl font-semibold">Benteveo Studio</h1>
+      </div>
+
+      <nav>
+        <ul class="flex gap-6">
+          <li><a class="redir-link" href="/index.html">Inicio</a></li>
+          <li><a class="redir-link" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
+          <li><a class="redir-link" href="#">Servicios</a></li>
+          <li><a class="redir-link" href="#">Nosotros</a></li>
+          <li><a class="redir-link" href="#">Asistencia</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-14">
+        <div class="flex items-center gap-6">
+          <a href="" class="cursor-pointer">
+            <img src="/src/assets/cart.svg" alt="carrito-logo">
+          </a>
+          
+          <div class="flex gap-4">
+            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 grid place-items-center">
+    <div class="max-w-7xl w-full bg-accent">
+      <div class="cart-products">
+        <article class="product-card">
+          <div>
+            <img src="/src/assets/game.avif" alt="">
+          </div>
+
+          <div>
+            <h2 class="name-game">Nombre del juego</h2>
+
+            <div class="tags">
+              <span class="tag"></span>
+              <span class="tag"></span>
+              <span class="tag"></span>
+            </div>
+
+            <p>ARS $<span class="product-price">10.000</span></p>
+
+            <button class="remove-product">
+              <img src="/src/assets/trash.svg" alt="trash-icon">
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <section class="cart-summary">
+        <h1>Resumen de la compra</h1>
+
+        <div>
+          <p>Articulos (<span id="products-quantity">n</span>):</p>
+          <span id="subtotal-price">$20.000</span>
+        </div>
+
+        <div>
+          <p>Impuesto:</p>
+          <span id="tax-value">$5000</span>
+        </div>
+
+        <div>
+          <p>Total:</p>
+          <span id="total-price">$25.000</span>
+        </div>
+        
+        <footer class="cart-actions">
+          <button>Procesar pago</button>
+          <button>Vaciar carrito</button>
+        </footer>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-primary-txt w-full text-white p-8 grid place-content-center">
+    <div class="max-w-8xl w-full grid gap-8">
+      <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
+        <div>
+          <h1 class="text-xl font-bold mb-2">Benteveo Studio  </h1>
+          <p>
+            Te invitamos a embarcarte en una aventura inolvidable donde la educación y la diversión se encuentran.
+          </p>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Explorar</h1>
+
+          <ul class="grid gap-2">
+            <li><a href="#" class="hover:text-primary transition-colors">Catalogo</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Servicios</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Asistencia</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Legal</h1>
+
+          <ul class="grid gap-2">
+            <li><a href="#" class="hover:text-primary transition-colors">Política y privacidad</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Términos y condiciones</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Soporte técnico</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Contacto</h1>
+
+          <ul class="grid gap-2">
+            <li class="flex items-center gap-2">
+              <img src="/src/assets/phone.svg" alt="phone-icon">
+              <a href="#">+54 351-999-999</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <img src="/src/assets/mail.svg" alt="mail-icon">
+              <a href="#">benteveostudio@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-xs flex items-center justify-between mt-4">
+        <span>
+          ©2025 Benteveo Studio. Todos los derechos reservados.
+        </span>
+
+        <nav class="social-media">
+          <ul class="flex items-center gap-8 tracking-widest">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  
+  <dialog id="login-modal" class="modal-wrapper">
+    <form class="sexo relative text-center text-soft-black p-8 grid gap-4">
+      <div class="close-modal-btn" id="close-login">
+        <img src="/src/assets/x.svg" alt="x-icon">
+      </div>
+
+      <h1 class="text-3xl font-semibold mb-4">Inicia sesión</h1>
+
+      <div>
+        <input 
+        type="email" 
+        name="email" 
+        id="email-login" 
+        placeholder="Ingresa tu email" 
+        autocomplete="email" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="password-login" 
+        placeholder="Ingresa tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <input type="submit" value="Iniciar sesión" class="continue-btn">
+
+      <span id="back-to-signup" data-target-modal="signup-modal" class="back-to">
+        ¿No tienes una cuenta?
+      </span>
+    </form>
+  </dialog>
+
+  <dialog id="signup-modal" class="modal-wrapper">
+    <form class="text-center text-soft-black p-8 grid gap-4">
+      <div class="close-modal-btn" id="close-signup">
+        <img src="/src/assets/x.svg" alt="x-icon">
+      </div>
+
+      <h1 class="text-3xl font-semibold mb-4">Crea tu cuenta</h1>
+
+      <div>
+        <input 
+        type="text" 
+        name="username" 
+        id="username" 
+        placeholder="Ingresa tu nombre" 
+        autocomplete="name" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="email" 
+        name="email" 
+        id="email-signup" 
+        placeholder="Ingresa tu email" 
+        autocomplete="email" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="date" 
+        name="birthdate" 
+        id="birthdate" 
+        autocomplete="bday" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="password-signup" 
+        placeholder="Ingresa tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="confirm-password-signup" 
+        placeholder="Ingresa otra vez tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <input type="submit" value="Crear cuenta" class="continue-btn">
+
+      <span id="back-to-login" data-target-modal="login-modal" class="back-to">
+        ¿Ya tienes una cuenta?
+      </span>
+    </form>
+  </dialog>
+
+  <script src="/src/pages/scripts/auth.js"></script>
+</body>
+
+</html>

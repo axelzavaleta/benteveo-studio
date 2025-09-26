@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/src/styles/input.css">
 </head>
 
-<body class="bg-neutral-light font-manrope">
+<body class="bg-neutral-light font-manrope flex flex-col min-h-svh">
   <header class="z-100 bg-white fixed max-w-screen w-full border-b border-black/10 text-sm text-primary-txt/85">
     <div class="flex justify-between items-center m-auto px-8 py-2 max-w-8xl ">
       <div class="flex items-center gap-2">
@@ -31,21 +31,21 @@
       </nav>
 
       <div class="flex items-center gap-14">
-        <div class="flex gap-6">
+        <div class="flex items-center gap-6">
+          <a href="/src/pages/cart/cart.html" class="cursor-pointer">
+            <img src="/src/assets/cart.svg" alt="carrito-logo">
+          </a>
+          
           <div class="flex gap-4">
             <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
             <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
           </div>
-
-          <button class="cursor-pointer hidden">
-            <img src="/src/assets/cart.svg" alt="carrito-logo">
-          </button>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="text-soft-black">
+  <main class="text-soft-black flex-1">
     <section id="hero" class="grid place-items-center h-svh max-h-[855px]">
       <div class="max-w-8xl w-full px-8 flex items-center justify-between text-primary-txt">
         <div class="grid place-items-start">

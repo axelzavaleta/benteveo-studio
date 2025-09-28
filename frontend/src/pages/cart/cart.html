@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="/src/styles/input.css">
 </head>
 
-<body class="bg-neutral-light font-manrope flex flex-col min-h-svh">
-  <header class="z-100 bg-white fixed max-w-screen w-full border-b border-black/10 text-sm text-primary-txt/85">
-    <div class="flex justify-between items-center m-auto px-8 py-2 max-w-8xl ">
+<body class="font-manrope">
+  <header class="z-100 bg-white max-w-screen w-full border-b border-black/10 text-sm text-primary-txt/85">
+    <div class="flex justify-between items-center m-auto px-8 py-2 max-w-8xl "> 
       <div class="flex items-center gap-2">
         <a href="#home" class="cursor-pointer">
           <img src="/src/assets/logo-benteveo-studio.png" alt="bs-logo" class="max-w-10">
@@ -45,53 +45,64 @@
     </div>
   </header>
 
-  <main class="flex-1 grid place-items-center">
-    <div class="max-w-7xl w-full bg-accent">
-      <div class="cart-products">
-        <article class="product-card">
-          <div>
-            <img src="/src/assets/game.avif" alt="">
+  <main class="min-h-svh flex justify-center">
+    <div class="max-w-8xl w-full flex justify-between gap-8 px-8 py-16">
+      <div class="cart-products w-full">
+        <article class="product-card w-full flex gap-4 bg-neutral-light">
+          <div class="basis-50">
+            <img src="/src/assets/game.avif" alt="" class="h-full">
           </div>
 
-          <div>
-            <h2 class="name-game">Nombre del juego</h2>
+          <div class="relative w-full p-4 grid gap-2">
+            <h2 class="name-game text-2xl font-semibold">Incognita</h2>
 
-            <div class="tags">
-              <span class="tag"></span>
-              <span class="tag"></span>
-              <span class="tag"></span>
+            <div class="tags flex gap-2 mb-4">
+              <span class="tag-cart">Educativo</span>
+              <span class="tag-cart">Educativo</span>
+              <span class="tag-cart">Educativo</span>
             </div>
 
-            <p>ARS $<span class="product-price">10.000</span></p>
+            <p class="font-medium">ARS $<span class="product-price">10.000</span></p>
 
-            <button class="remove-product">
-              <img src="/src/assets/trash.svg" alt="trash-icon">
+            <button class="remove-product absolute right-2 bottom-2">
+              <img src="/src/assets/trash.svg" alt="trash-icon" class="w-5">
             </button>
           </div>
         </article>
       </div>
 
-      <section class="cart-summary">
-        <h1>Resumen de la compra</h1>
-
-        <div>
+      <section class="cart-summary min-w-[375px] h-fit p-6 bg-neutral-light grid gap-2">
+        <h1 class="text-xl font-bold">Resumen de la compra</h1>
+        
+        <hr class="text-black/25 my-2">
+        
+        <div class="flex justify-between">
           <p>Articulos (<span id="products-quantity">n</span>):</p>
-          <span id="subtotal-price">$20.000</span>
+          <p>ARS
+            <span id="subtotal-price">$20.000</span>
+          </p>
         </div>
 
-        <div>
+        <div class="flex justify-between">
           <p>Impuesto:</p>
-          <span id="tax-value">$5000</span>
+          
+          <p>ARS
+            <span id="tax-value">$5000</span>
+          </p>
         </div>
 
-        <div>
+        <hr class="my-2 text-black/25">
+
+        <div class="flex justify-between font-semibold">
           <p>Total:</p>
-          <span id="total-price">$25.000</span>
+          <p>ARS
+            <span id="total-price">$25.000</span>
+          </p>
         </div>
         
-        <footer class="cart-actions">
-          <button>Procesar pago</button>
-          <button>Vaciar carrito</button>
+        <footer class="cart-actions grid gap-2 mt-8">
+          <button class="button-base text-sm">Procesar pago</button>
+          <button class="button-base text-sm">Vaciar carrito</button>
         </footer>
       </section>
     </div>

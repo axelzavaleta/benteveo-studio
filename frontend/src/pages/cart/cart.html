@@ -9,75 +9,85 @@
   <link rel="stylesheet" href="/src/styles/input.css">
 </head>
 
-<body class="font-manrope">
-  <header class="z-100 bg-white max-w-screen w-full border-b border-black/10 text-sm text-primary-txt/85">
+<body class="font-manrope text-neutral-light">
+  <header class="z-100 bg-dark-black max-w-screen w-full  text-sm">
     <div class="flex justify-between items-center m-auto px-8 py-2 max-w-8xl "> 
       <div class="flex items-center gap-2">
-        <a href="#home" class="cursor-pointer">
-          <img src="/src/assets/logo-benteveo-studio.png" alt="bs-logo" class="max-w-10">
+        <a href="/index.html" class="cursor-pointer">
+          <img src="/src/assets/benteveo-logo-dark.png" alt="bs-logo" class="max-w-8">
         </a>
 
-        <h1 class="text-xl font-semibold">Benteveo Studio</h1>
+        <a href="/index.html" class="text-xl font-semibold">Benteveo Studio</a>
       </div>
 
       <nav>
         <ul class="flex gap-6">
-          <li><a class="redir-link" href="/index.html">Inicio</a></li>
-          <li><a class="redir-link" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
-          <li><a class="redir-link" href="#">Servicios</a></li>
-          <li><a class="redir-link" href="#">Nosotros</a></li>
-          <li><a class="redir-link" href="#">Asistencia</a></li>
+          <li><a class="redir-link-dark current-page-dark" href="/index.html">Inicio</a></li>
+          <li><a class="redir-link-dark" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
+          <li><a class="redir-link-dark" href="#">Servicios</a></li>
+          <li><a class="redir-link-dark" href="#">Nosotros</a></li>
+          <li><a class="redir-link-dark" href="#">Asistencia</a></li>
         </ul>
       </nav>
 
       <div class="flex items-center gap-14">
-        <div class="flex items-center gap-6">
-          <a href="" class="cursor-pointer">
-            <img src="/src/assets/cart.svg" alt="carrito-logo">
-          </a>
-          
-          <div class="flex gap-4">
-            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
-            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
+        <div class="flex items-center gap-8">
+          <div class="language-switcher relative">
+            <button class="language-switcher__btn">
+              <img src="/src/assets/translate.svg" alt="translate-logo">
+              <span class="font-medium">Español</span>
+            </button>
+
+            <div class="language-switcher__list hidden">
+              <p class="language-switcher__option">Español</p>
+              <p class="language-switcher__option">Ingles</p>
+            </div>
+          </div>
+
+          <div class="user">
+            <button class="user__btn relative bg-primary-bold p-2 rounded-full cursor-pointer">
+              <img src="/src/assets/user.svg" alt="user-logo">
+            </button>
+
+            <div class="hidden user_menu absolute max-w-[100px] w-full bg-accent right-0 p-2">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="min-h-svh flex justify-center">
-    <div class="max-w-8xl w-full flex justify-between gap-8 px-8 py-16">
-      <div class="cart-products w-full">
-        <article class="product-card w-full flex gap-4 bg-neutral-light">
+  <main class="min-h-svh bg-soft-black flex justify-center">
+    <div class="max-w-8xl w-full px-8 py-16 flex justify-between gap-8">
+      <div class="cart-products h-fit w-full grid gap-8">
+        <article class="product-card w-full flex gap-4 bg-dark-black">
           <div class="basis-50">
-            <img src="/src/assets/game.avif" alt="" class="h-full">
+            <img src="/src/assets/game.avif" alt="game-img" class="aspect-square">
           </div>
 
-          <div class="relative w-full p-4 grid gap-2">
-            <h2 class="name-game text-2xl font-semibold">Incognita</h2>
+          <div class="relative w-full p-4">
+            <h2 class="name-game text-xl font-bold mb-4">Incognita</h2>
 
-            <div class="tags flex gap-2 mb-4">
+            <div class="tags">
               <span class="tag-cart">Educativo</span>
               <span class="tag-cart">Educativo</span>
               <span class="tag-cart">Educativo</span>
             </div>
 
-            <p class="font-medium">ARS $<span class="product-price">10.000</span></p>
+            <p class="font-semibold text-lg">ARS $<span class="product-price">20.000</span></p>
 
-            <button class="remove-product absolute right-2 bottom-2">
+            <button class="remove-product">
               <img src="/src/assets/trash.svg" alt="trash-icon" class="w-5">
             </button>
           </div>
         </article>
       </div>
 
-      <section class="cart-summary min-w-[375px] h-fit p-6 bg-neutral-light grid gap-2">
-        <h1 class="text-xl font-bold">Resumen de la compra</h1>
-        
-        <hr class="text-black/25 my-2">
+      <section class="cart-summary min-w-[375px] h-fit p-6 text-neutral-light bg-dark-black">
+        <h1 class="text-xl font-bold mb-6">Resumen de la compra</h1>
         
         <div class="flex justify-between">
-          <p>Articulos (<span id="products-quantity">n</span>):</p>
+          <p>Subtotal:</p>
           <p>ARS
             <span id="subtotal-price">$20.000</span>
           </p>
@@ -91,18 +101,18 @@
           </p>
         </div>
 
-        <hr class="my-2 text-black/25">
+        <hr class="my-4 text-soft-black">
 
-        <div class="flex justify-between font-semibold">
-          <p>Total:</p>
-          <p>ARS
+        <div class="flex justify-between text-lg font-semibold">
+          <p>Total (<span id="products-quantity">1</span>):</p>
+          <p class="text-primary-bold">ARS
             <span id="total-price">$25.000</span>
           </p>
         </div>
         
         <footer class="cart-actions grid gap-2 mt-8">
-          <button class="button-base text-sm">Procesar pago</button>
-          <button class="button-base text-sm">Vaciar carrito</button>
+          <button class="button-base border-primary bg-primary text-black hover:bg-primary-bold">Procesar pago</button>
+          <button class="button-base bg-soft-black hover:bg-black">Vaciar carrito</button>
         </footer>
       </section>
     </div>

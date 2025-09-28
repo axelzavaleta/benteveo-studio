@@ -3,7 +3,8 @@
 
 @theme {
   --color-primary-txt: #040118;
-  --color-soft-black: #212121;
+  --color-soft-black: #121212;
+  --color-dark-black: #0a0a0a;
   --color-primary: #e6cc3d;
   --color-primary-bold: #e8bb1a;
   --color-secondary: #fcf6d9;
@@ -35,18 +36,45 @@
     @apply bg-accent text-neutral-light;
   }
 
+  .current-page-dark {
+    @apply bg-black text-neutral-light;
+  }
+
   .login-btn {
     @apply bg-white text-primary-bold border border-black/15 font-bold py-2 px-6 rounded-sm cursor-pointer hover:border-primary-bold transition-colors;
+  }
+
+  .login-btn-dark {
+    @apply text-primary border border-neutral-light/15 font-bold py-2 px-6 cursor-pointer hover:border-primary transition-colors;
   }
 
   .signup-btn {
     @apply bg-primary-bold text-white font-bold py-2 px-6 rounded-sm cursor-pointer;
   }
 
+  .signup-btn-dark {
+    @apply bg-primary-bold text-black font-bold py-2 px-6 cursor-pointer;
+  }
+
   .redir-link {
     @apply hover:bg-accent hover:text-neutral-light transition-colors p-0.75 px-2.5 rounded-2xl;
   }
 
+  .redir-link-dark {
+    @apply hover:bg-black transition-colors p-0.75 px-3 rounded-2xl;
+  }
+  
+  .language-switcher__btn {
+    @apply flex items-center gap-1 py-1 px-2 border border-white/10 hover:bg-soft-black cursor-pointer;
+  }
+
+  .language-switcher__list {
+    @apply absolute p-2 bg-soft-black -bottom-20 right-0 min-w-[125px] border border-white/10;
+  }
+
+  .language-switcher__option {
+    @apply font-medium w-full px-2 py-1 text-left hover:bg-[#212121] cursor-pointer;
+  }
   /* SECTION: purchase-flow */
   .step-card {
     @apply bg-primary p-6 gap-6 h-fit;
@@ -94,5 +122,13 @@
   /* Cart */
   .tag-cart {
     @apply bg-accent py-0.5 px-2.5 rounded-2xl text-sm text-neutral-light;
+  }
+
+  .tags {
+    @apply flex items-center gap-2 mb-8;
+  }
+
+  .remove-product {
+    @apply bg-red-500 absolute right-2 bottom-2 p-2 rounded-full cursor-pointer hover:bg-red-600 transition-colors;
   }
 }

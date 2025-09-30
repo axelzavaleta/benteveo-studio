@@ -32,8 +32,11 @@
   }
 
   /* HEADER */
-  .current-page {
-    @apply bg-accent text-neutral-light;
+  .header {
+    @apply z-100 min-h-12 bg-dark-black w-full text-sm grid place-items-center;
+  }
+  .header__navigation {
+    @apply flex justify-between items-center m-auto px-8 max-w-8xl w-full;
   }
 
   .current-page-dark {
@@ -43,17 +46,17 @@
   .login-btn {
     @apply bg-white text-primary-bold border border-black/15 font-bold py-2 px-6 rounded-sm cursor-pointer hover:border-primary-bold transition-colors;
   }
+  
+  .signup-btn {
+    @apply bg-primary-bold text-white font-bold py-2 px-6 rounded-sm cursor-pointer;
+  }
 
   .login-btn-dark {
     @apply text-primary border border-neutral-light/15 font-bold py-2 px-6 cursor-pointer hover:border-primary transition-colors;
   }
 
-  .signup-btn {
-    @apply bg-primary-bold text-white font-bold py-2 px-6 rounded-sm cursor-pointer;
-  }
-
   .signup-btn-dark {
-    @apply bg-primary-bold text-black font-bold py-2 px-6 cursor-pointer;
+    @apply bg-primary text-black font-bold py-2 px-6 hover:bg-primary-bold cursor-pointer;
   }
 
   .redir-link {
@@ -96,6 +99,15 @@
 
   .game-box {
     @apply bg-accent p-6 rounded-xl w-2xs;
+  }
+
+  /* SECTION: contact */
+  .field-contact {
+    @apply bg-accent border border-black/20 px-3 py-2;
+  }
+
+  .submit-contact {
+    @apply bg-primary text-dark-black font-bold border border-primary mt-4 w-fit px-6 py-1.5 rounded-full cursor-pointer hover:bg-primary-bold;
   }
 
   /* MODALS */

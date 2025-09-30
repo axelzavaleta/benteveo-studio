@@ -9,12 +9,12 @@
   <link rel="stylesheet" href="/src/styles/input.css">
 </head>
 
-<body class="bg-neutral-light font-manrope flex flex-col min-h-svh">
-  <header class="z-100 bg-white fixed max-w-screen w-full border-b border-black/10 text-sm text-primary-txt/85">
-    <div class="flex justify-between items-center m-auto px-8 py-2 max-w-8xl ">
+<body class="text-neutral-light font-manrope flex flex-col min-h-svh">
+  <header class="header fixed">
+    <div class="header__navigation">
       <div class="flex items-center gap-2">
         <a href="#home" class="cursor-pointer">
-          <img src="/src/assets/logo-benteveo-studio.png" alt="bs-logo" class="max-w-10">
+          <img src="/src/assets/benteveo-logo-dark.png" alt="bs-logo" class="max-w-8">
         </a>
 
         <h1 class="text-xl font-semibold">Benteveo Studio</h1>
@@ -22,48 +22,48 @@
 
       <nav>
         <ul class="flex gap-6">
-          <li><a class="redir-link current-page" href="#home">Inicio</a></li>
-          <li><a class="redir-link" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
-          <li><a class="redir-link" href="#">Servicios</a></li>
-          <li><a class="redir-link" href="#">Nosotros</a></li>
-          <li><a class="redir-link" href="#">Asistencia</a></li>
+          <li><a class="redir-link-dark current-page-dark" href="#home">Inicio</a></li>
+          <li><a class="redir-link-dark" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
+          <li><a class="redir-link-dark" href="#">Servicios</a></li>
+          <li><a class="redir-link-dark" href="#">Nosotros</a></li>
+          <li><a class="redir-link-dark" href="#">Asistencia</a></li>
         </ul>
       </nav>
 
       <div class="flex items-center gap-14">
         <div class="flex items-center gap-6">
-          <a href="/src/pages/cart/cart.html" class="cursor-pointer">
-            <img src="/src/assets/cart.svg" alt="carrito-logo">
+          <a href="/src/pages/cart/cart.html" class="bg-primary p-1.5 rounded-full cursor-pointer">
+            <img src="/src/assets/cart.svg" alt="carrito-logo" class="max-w-5">
           </a>
           
           <div class="flex gap-4">
-            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
-            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
+            <button class="login-btn-dark auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+            <button class="signup-btn-dark auth-btn" data-target-modal="signup-modal">Registrarse</button>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="text-soft-black flex-1">
+  <main class="bg-soft-black text-neutral-light flex-1">
     <section id="hero" class="grid place-items-center h-svh max-h-[855px]">
-      <div class="max-w-8xl w-full px-8 flex items-center justify-between text-primary-txt">
+      <div class="max-w-8xl w-full px-8 flex items-center justify-between">
         <div class="grid place-items-start">
-          <span class="text-sm border border-accent text-accent shadow-md shadow-accent/50 font-medium py-0.5 px-6 rounded-full">
+          <span class="text-sm border bg-dark-black border-primary text-primary shadow-md shadow-primary-bold/50 font-medium py-0.5 px-6 rounded-full">
             Desarrolladora de videojuegos
           </span>
 
           <h1 class="text-8xl uppercase font-bold mt-1 mb-4">
-            Benteveo <span class="text-accent block">Studio</span>
+            Benteveo <span class="text-primary block">Studio</span>
           </h1>
 
-          <p class="mb-8 max-w-2xl text-lg text-primary-txt/85">
+          <p class="mb-8 max-w-2xl text-lg">
             Creamos videojuegos educativos que combinan entretenimiento con conocimiento.
             Cada partida es una oportunidad para explorar, descubrir y crecer.
           </p>
 
           <button class="font-bold">
-            <a href="#" class="button-base border-primary-txt bg-accent text-white hover:bg-primary-txt">
+            <a href="#" class="button-base bg-primary border-primary text-dark-black hover:bg-primary-bold">
               Catalogo
             </a>
           </button>
@@ -75,7 +75,7 @@
       </div>
     </section>
 
-    <section id="main-navegation" class="section-base bg-white">
+    <section id="main-navegation" class="section-base bg-dark-black">
       <div class="max-w-6xl w-full px-8 ">
         <h1 class="text-5xl font-bold text-center mb-16">¡Explora a traves de nuestro sitio!</h1>
 
@@ -198,27 +198,27 @@
       </div>
     </section>
 
-    <section id="contact" class="section-base bg-accent">
+    <section id="contact" class="section-base bg-accent/25">
       <div class="max-w-6xl w-full grid grid-cols-3 px-8">
-        <form class="bg-white col-span-2 p-10 text-sm">
-          <h1 class="text-5xl mb-6">Contacto</h1>
+        <form class="grid gap-4 bg-primary-txt col-span-2 p-10 text-sm">
+          <h1 class="text-5xl mb-4">Contacto</h1>
 
-          <div class="grid mb-4">
+          <div class="grid gap-1">
             <label for="fullname">Nombre completo</label>
-            <input type="text" name="fullname" id="fullname" class="border border-black/20 px-3 py-2">
+            <input type="text" name="fullname" id="fullname" class="field-contact">
           </div>
 
-          <div class="grid mb-4">
+          <div class="grid gap-1">
             <label for="email">Correo electronico</label>
-            <input type="email" name="email" id="email" class="border border-black/20 px-3 py-2">
+            <input type="email" name="email" id="email" class="field-contact">
           </div>
 
-          <div class="grid mb-4">
+          <div class="grid gap-1">
             <label for="message">Dinos tu mensaje</label>
-            <textarea name="message" id="message" rows="4" class="max-h-24 min-h-24 border border-black/20 px-3 py-2"></textarea>
+            <textarea name="message" id="message" rows="4" class="field-contact min-h-24 max-h-24"></textarea>
           </div>
 
-          <input type="submit" value="Enviar" class="bg-primary px-6 py-1.5 font-semibold rounded-full cursor-pointer">
+          <input type="submit" value="Enviar" class="submit-contact">
         </form>
 
         <div class="bg-primary">

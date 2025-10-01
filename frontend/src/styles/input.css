@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
 @import "tailwindcss";
 
-@theme {
+@theme { /* Cambiando el soft/dark-black */
   --color-primary-txt: #040118;
-  --color-soft-black: #121212;
-  --color-dark-black: #0a0a0a;
+  --color-soft-black: #121212; /* background-color del fondo principal */
+  --color-dark-black: #0a0a0a; /* background-color del header */
   --color-primary: #e6cc3d;
   --color-primary-bold: #e8bb1a;
-  --color-secondary: #fcf6d9;
   --color-accent: #1B275E;
   --color-neutral-light: #F5F5F5;
 
@@ -43,24 +42,12 @@
     @apply bg-black text-neutral-light;
   }
 
-  .login-btn {
-    @apply bg-white text-primary-bold border border-black/15 font-bold py-2 px-6 rounded-sm cursor-pointer hover:border-primary-bold transition-colors;
-  }
-  
-  .signup-btn {
-    @apply bg-primary-bold text-white font-bold py-2 px-6 rounded-sm cursor-pointer;
-  }
-
   .login-btn-dark {
     @apply text-primary border border-neutral-light/15 font-bold py-2 px-6 cursor-pointer hover:border-primary transition-colors;
   }
 
   .signup-btn-dark {
     @apply bg-primary text-black font-bold py-2 px-6 hover:bg-primary-bold cursor-pointer;
-  }
-
-  .redir-link {
-    @apply hover:bg-accent hover:text-neutral-light transition-colors p-0.75 px-2.5 rounded-2xl;
   }
 
   .redir-link-dark {
@@ -78,6 +65,7 @@
   .language-switcher__option {
     @apply font-medium w-full px-2 py-1 text-left hover:bg-[#212121] cursor-pointer;
   }
+  
   /* SECTION: purchase-flow */
   .step-card {
     @apply bg-primary p-6 gap-6 h-fit;
@@ -87,9 +75,30 @@
     @apply bg-accent relative w-[100px] h-[100px] aspect-square grid place-content-center;
   }
 
-  /* SECTION: fast-links */
-  .link-box {
-    @apply h-full py-20 p-10 ;
+  /* SECTION: main-navegation */
+  .cards {
+    @apply grid grid-cols-2 gap-8;
+  }
+
+  .card {
+    @apply bg-white/25 text-dark-black rounded-2xl p-8 border border-neutral-light/50 grid gap-4 hover:-translate-y-2.5 hover:bg-white/50 hover:shadow-white/50 hover:border-white hover:shadow-md transition-all;
+  }
+
+  .card-about {
+    @apply col-span-2 flex items-center gap-6;
+  }
+  .card-about-img {
+    @apply bg-white/60 rounded-2xl h-full basis-full overflow-hidden;
+  }
+  .card-about-info {
+    @apply grid gap-4 py-8;
+  }
+
+  .card-title {
+    @apply text-3xl font-semibold;
+  }
+  .card-link {
+    @apply text-primary-bold font-semibold underline;
   }
 
   /* SECTION: catalog */

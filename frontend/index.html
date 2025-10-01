@@ -79,48 +79,41 @@
       <div class="max-w-6xl w-full px-8 ">
         <h1 class="text-5xl font-bold text-center mb-16">¡Explora a traves de nuestro sitio!</h1>
 
-        <div class="grid grid-cols-2 grid-rows-4 gap-4 min-h-[550px]">
-          <a href="" class="border border-gray-700 col-span-2 row-span-2 bg-[url(/src/assets/team.png)] bg-cover">
-            <article class="h-full flex flex-col justify-between p-4 bg-black/50 text-white hover:bg-black/75 transition-colors">
-              <h1 class="text-2xl font-semibold">Acerca de nosotros</h1>
-
-              <p>
-                Descubre mas acerca de nuestro trabajo, nuestra visión y el talentoso equipo que lo hace posible, te invitamos a explorar nuestra historia.
-              </p>
-            </article>
-          </a>
-
-          <article class="row-span-2 bg-gradient-to-br from-accent to-[#3A2E70] rounded-xl overflow-hidden text-neutral-light">
-            <header class="h-10 w-full bg-accent"></header>
+        <div class="cards">
+          <article class="card card-about">
+            <div class="card-about-img">
+              <img src="/src/assets/team.png" alt="about-img">
+            </div>
             
-            <div class="px-8 py-4 flex flex-col justify-between">
-              <h1 class="text-2xl font-semibold mb-2">Servicios</h1>
-
-              <p class="mb-4">
-                Ponemos nuestra experiencia en el desarrollo de videojuegos a tu servicio. Creamos soluciones interactivas y educativas a la medida para tu proyecto o marca.
-              </p>
-
-              <a href="" class="flex">
-                Ver servicios <img src="/src/assets/arrow-right.svg" alt="">
-              </a>
+            <div class="card-about-info">
+                <h2 class="card-title">Acerca de nosotros</h2>
+                
+                <p>
+                  Descubre más acerca de nuestro trabajo, nuestra visión y el talentoso equipo que lo hace posible, te invitamos a explorar nuestra historia.
+                </p>
+                
+                <a href="#" class="card-link">Conocenos</a>
             </div>
           </article>
 
+          <article class="card card-services">
+            <h2 class="card-title">Servicios</h2>
 
-          <article class="row-span-2 bg-gradient-to-br from-primary to-primary-bold rounded-xl overflow-hidden text-primary-txt">
-            <header class="h-10 w-full bg-primary-bold"></header>
+            <p>
+              Ponemos nuestra experiencia en el desarrollo de videojuegos a tu servicio. Creamos soluciones interactivas y educativas a la medida para tu proyecto o marca.
+            </p>
             
-            <div class="px-8 py-4 flex flex-col justify-between">
-              <h1 class="text-2xl font-bold mb-2">Tu Carrito</h1>
+            <a href="#" class="card-link">Ver servicios</a>
+          </article>
 
-              <p class="mb-4">
-                Aquí encontrarás los juegos y productos que has seleccionado. Revisa tu lista y, cuando estés listo, avanza para finalizar tu compra. 
-              </p>
+          <article class="card card-cart">
+            <h2 class="card-title">Carrito</h2>
 
-              <a href="" class="flex">
-                Carrito <img src="/src/assets/arrow-right.svg" alt="">
-              </a>
-            </div>
+            <p>
+              Aquí encontrarás los juegos y productos que has seleccionado. Revisa tu lista y, cuando estés listo, avanza para finalizar tu compra.
+            </p>
+            
+            <a href="#" class="card-link">Ver carrito</a>
           </article>
         </div>
       </div>
@@ -198,7 +191,7 @@
       </div>
     </section>
 
-    <section id="contact" class="section-base bg-accent/25">
+    <section id="contact" class="section-base bg-accent">
       <div class="max-w-6xl w-full grid grid-cols-3 px-8">
         <form class="grid gap-4 bg-primary-txt col-span-2 p-10 text-sm">
           <h1 class="text-5xl mb-4">Contacto</h1>

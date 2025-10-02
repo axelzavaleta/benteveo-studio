@@ -35,11 +35,11 @@
     @apply z-100 min-h-12 bg-dark-black w-full text-sm grid place-items-center;
   }
   .header__navigation {
-    @apply flex justify-between items-center m-auto px-8 max-w-8xl w-full;
+    @apply flex justify-between items-center m-auto px-8 max-w-7xl w-full;
   }
 
   .current-page-dark {
-    @apply bg-black text-neutral-light;
+    @apply bg-primary text-dark-black;
   }
 
   .login-btn-dark {
@@ -51,7 +51,7 @@
   }
 
   .redir-link-dark {
-    @apply hover:bg-black transition-colors p-0.75 px-3 rounded-2xl;
+    @apply p-0.75 px-3 rounded-2xl hover:bg-primary hover:text-dark-black transition-colors ;
   }
   
   .language-switcher__btn {
@@ -101,13 +101,17 @@
     @apply text-primary-bold font-semibold underline;
   }
 
-  /* SECTION: catalog */
+  /* PAGE: catalog */
   .tag {
     @apply bg-accent py-0.5 px-4 rounded-2xl;
   }
 
   .game-box {
     @apply bg-accent p-6 rounded-xl w-2xs;
+  }
+
+  .game-card {
+    @apply flex flex-col min-h-[485px] bg-accent border-2 border-[#252525] hover:scale-101 hover:border-[#505050]  transition-all;
   }
 
   /* SECTION: contact */

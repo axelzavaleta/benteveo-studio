@@ -45,13 +45,12 @@
     </div>
   </header>
 
-  <main>
-    <section id="hero" class="h-svh max-h-[1255px] grid grid-cols-3">
-      <div class="bg-red-500 col-span-2 w-full h-full">
-        <!-- <img src="/src/assets/mockupIncognita_Game.png" alt="" class=""> -->
+  <main class="bg-soft-black">
+    <section id="hero" class="w-full h-svh max-h-[1255px] flex justify-between overflow-hidden">
+      <div class="bg-accent w-full bg-no-repeat bg-cover">
       </div>
 
-      <div class="bg-black h-full text-neutral-light grid place-items-center px-12">
+      <div class="basis-1/2 bg-dark-black h-full text-neutral-light grid place-items-center px-12">
         <div class="h-fit">
           <span class="text-sm bg-accent/85 text-white font-bold py-0.5 px-6 rounded-full w-fit">
             En producción
@@ -70,160 +69,71 @@
       </div>
     </section>
 
-    <section id="browse" class="grid place-items-center h-max bg-neutral-light">
-      <div class="max-w-7xl w-full flex justify-between gap-8 py-32">
-        <span class="bg-neutral-light py-8 px-4 min-w-2xs">
-          <h2 class="font-semibold text-3xl mb-4">Filtros</h2>
+    <section id="games" class="section-base">
+      <div class="max-w-7xl w-full gap-16 px-8">
+        <h1 class="text-center text-6xl font-semibold mb-16">Nuestros videojuegos</h1>
 
-          <ul class="grid gap-2">
-            <li class="bg-neutral-200">
-              <button class="flex justify-between items-center w-full px-4 py-2">
-                <span class="font-medium">Género</span>
+        <div class="games-container grid grid-cols-3 gap-16">
+          <a href="#" class="game-card">
+            <div class="game-img bg-black basis-[75%] bg-[url(/src/assets/game.avif)] bg-cover bg-center">
+            </div>
 
-                <span>
-                  <img src="/src/assets/chevron.svg" alt="chevron-icon">
-                </span>
-              </button>
+            <div class="game-info bg-dark-black p-8 basis-[25%]">
+              <h2 class="game-info-title text-2xl font-medium mb-4">Nombre del videojuego</h2>
 
-              <div class="hidden bg-white px-4 py-2">
-                <ul>
-                  <li class="grid place-items-start text-sm">
-                    <div class="flex items-center justify-center gap-2">
-                      <input type="checkbox" name="educativo" id="educativo">
-                      <label for="educativo">Educativo</label>
-                    </div>
-                  </li>
-                  
-                  <li class="grid place-items-start text-sm">
-                    <div class="flex items-center justify-center gap-2">
-                      <input type="checkbox" name="aventura" id="aventura">
-                      <label for="aventura">Aventura</label>
-                    </div>
-                  </li>
-                  
-                  <li class="grid place-items-start text-sm">
-                    <div class="flex items-center justify-center gap-2">
-                      <input type="checkbox" name="disparos" id="disparos">
-                      <label for="disparos">Disparos</label>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
+              <p class="text-2xl text-primary font-medium">ARS $<span class="game-info-price">10.000</span></p>
+            </div>
+          </a>
 
-            <li class="bg-neutral-200">
-              <button class="flex justify-between items-center w-full px-4 py-2">
-                <span class="font-medium">Clasificación por edad</span>
+          <a href="#" class="game-card">
+            <div class="game-img bg-black basis-[75%] bg-[url(/src/assets/game.avif)] bg-cover bg-center">
+            </div>
 
-                <span>
-                  <img src="/src/assets/chevron.svg" alt="chevron-icon">
-                </span>
-              </button>
+            <div class="game-info bg-dark-black p-8 basis-[25%]">
+              <h2 class="game-info-title text-2xl font-medium mb-4">Nombre del videojuego</h2>
 
-              <div class="hidden bg-white px-4 py-2">
-                <ul>
-                  <li class="grid place-items-start text-sm">
-                    <div class="flex items-center justify-center gap-2">
-                      <input type="checkbox" name="educativo" id="educativo">
-                      <label for="educativo">Niños +8</label>
-                    </div>
-                  </li>
-                  
-                  <li class="grid place-items-start text-sm">
-                    <div class="flex items-center justify-center gap-2">
-                      <input type="checkbox" name="aventura" id="aventura">
-                      <label for="aventura">Adolescentes +12</label>
-                    </div>
-                  </li>
-                  
-                  <li class="grid place-items-start text-sm">
-                    <div class="flex items-center justify-center gap-2">
-                      <input type="checkbox" name="disparos" id="disparos">
-                      <label for="disparos">Adultos +18</label>
-                    </div>
-                  </li>
+              <p class="text-2xl text-primary font-medium">ARS $<span class="game-info-price">10.000</span></p>
+            </div>
+          </a>
 
-                  <li class="grid place-items-start text-sm">
-                    <div class="flex items-center justify-center gap-2">
-                      <input type="checkbox" name="disparos" id="disparos">
-                      <label for="disparos">Todo público</label>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </span>
+          <a href="#" class="game-card">
+            <div class="game-img bg-black basis-[75%] bg-[url(/src/assets/game.avif)] bg-cover bg-center">
+            </div>
 
-        <div class="w-full">
-          <ul class="grid grid-cols-3 gap-8">
-            <li class="bg-neutral-light border border-black/25 overflow-hidden">
-              <div>
-                <div class="bg-red-500 w-full aspect-square">
-                  <img src="" alt="">
-                </div>
-  
-                <div class="p-4">
-                  <p class="font-medium">Nombre del juego</p>
-                  <span class="font-semibold">$10.000</span>
-                </div>
-              </div>
-            </li>
+            <div class="game-info bg-dark-black p-8 basis-[25%]">
+              <h2 class="game-info-title text-2xl font-medium mb-4">Nombre del videojuego</h2>
 
-            <li class="bg-neutral-light border border-black/25 overflow-hidden">
-              <div>
-                <div class="bg-red-500 w-full aspect-square">
-                  <img src="" alt="">
-                </div>
-  
-                <div class="p-4">
-                  <p class="font-medium">Nombre del juego</p>
-                  <span class="font-semibold">$10.000</span>
-                </div>
-              </div>
-            </li>
-
-            <li class="bg-neutral-light border border-black/25 overflow-hidden">
-              <div>
-                <div class="bg-red-500 w-full aspect-square">
-                  <img src="" alt="">
-                </div>
-  
-                <div class="p-4">
-                  <p class="font-medium">Nombre del juego</p>
-                  <span class="font-semibold">$10.000</span>
-                </div>
-              </div>
-            </li>
-          </ul>
+              <p class="text-2xl text-primary font-medium">ARS $<span class="game-info-price">10.000</span></p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <div class="grid place-content-center py-32 gap-32">
-      <div class="max-w-7xl w-full grid gap-32">
-        <section id="featured_games" class="grid place-items-center gap-8">
-          <h1 class="text-4xl font-semibold">
+    <div class="section-base">
+      <div class="max-w-7xl w-full grid gap-32 px-8">
+        <section id="featured_games">
+          <h1 class="text-6xl font-semibold text-center mb-16">
             Juegos destacados
           </h1>
   
-          <div class="flex justify-between w-full">
-            <div class="min-w-[400px] aspect-square bg-red-500"></div>
-            <div class="min-w-[400px] aspect-square bg-red-500"></div>
-            <div class="min-w-[400px] aspect-square bg-red-500"></div>
+          <div class="w-full flex justify-between gap-4">
+            <div class="w-full aspect-square bg-red-500"></div>
+            <div class="w-full aspect-square bg-red-500"></div>
+            <div class="w-full aspect-square bg-red-500"></div>
           </div>
         </section>
   
-        <section id="newswire" class="grid place-items-center">
-          <h1 class="text-4xl font-semibold">
+        <section id="newswire">
+          <h1 class="text-6xl text-center font-semibold">
             Noticias
           </h1>
   
-          <p class="mt-4 mb-16">
+          <p class="text-center mt-4 mb-16">
             Te invitamos a conocer las ultimas noticias que han sonado en torno a nosotros
           </p>
   
-          <div class="news-bento w-7xl grid grid-cols-3 gap-4 text-left">
+          <div class="news-bento grid grid-cols-3 gap-4 ">
             <article class="bg-red-500 w-full">
               <div class="bg-accent h-[125px] w-full">
                 <img src="/src/assets/logo-benteveo-studio.png" alt="">
@@ -330,7 +240,7 @@
       </div>
     </div>
 
-    <section id="faqs" class="h-svh max-h-[755px] grid place-items-center bg-neutral-light">
+    <section id="faqs" class="section-base">
       <div class="max-w-4xl w-full">
         <h1 class="text-5xl text-center mb-16">Preguntas frecuentes</h1>
 
@@ -419,7 +329,7 @@
   </main>
 
   <footer class="bg-primary-txt w-full text-white p-8 grid place-content-center">
-    <div class="max-w-8xl w-full grid gap-8">
+    <div class="max-w-7xl w-full grid gap-8">
       <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
         <div>
           <h1 class="text-xl font-bold mb-2">Benteveo Studio  </h1>

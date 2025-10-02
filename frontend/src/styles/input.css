@@ -111,7 +111,11 @@
   }
 
   .game-card {
-    @apply flex flex-col min-h-[485px] bg-accent border-2 border-[#252525] hover:scale-101 hover:border-[#505050]  transition-all;
+    @apply flex flex-col min-h-[485px] bg-accent border border-[#252525] hover:scale-101 hover:border-[#505050]  transition-all;
+  }
+
+  .review-card {
+    @apply bg-soft-black border border-[#505050];
   }
 
   /* SECTION: contact */

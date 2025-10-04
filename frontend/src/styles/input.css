@@ -32,7 +32,7 @@
 
   /* HEADER */
   .header {
-    @apply z-200 min-h-12 bg-dark-black w-full text-sm grid place-items-center;
+    @apply z-200 min-h-14 grid place-items-center bg-dark-black w-full text-sm border-b border-[#252525];
   }
   .header__navigation {
     @apply flex justify-between items-center m-auto px-8 max-w-7xl w-full;
@@ -66,39 +66,50 @@
     @apply font-medium w-full px-2 py-1 text-left hover:bg-[#212121] cursor-pointer;
   }
   
-  /* SECTION: purchase-flow */
+  /* SECTION: user-journey */
+
   .step-card {
-    @apply bg-primary p-6 gap-6 h-fit;
+    @apply flex gap-8 items-center;
+  }
+  .step-box {
+    @apply relative bg-primary min-w-40 aspect-square grid place-content-center text-6xl font-bold text-dark-black border border-soft-black;
+  }
+  .step-box-icon {
+    @apply w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full;
   }
 
-  .step-box {
-    @apply bg-accent relative w-[100px] h-[100px] aspect-square grid place-content-center;
+  .step-info {
+    @apply grid gap-4 px-4 text-gray-400;
+  }
+  .step-info-title {
+    @apply text-3xl font-semibold text-neutral-light;
   }
 
   /* SECTION: main-navegation */
   .cards {
-    @apply grid grid-cols-2 gap-8;
+    @apply grid grid-cols-2 grid-rows-2 gap-8;
   }
 
   .card {
-    @apply bg-white/25 text-dark-black rounded-2xl p-8 border border-neutral-light/50 grid gap-4 hover:-translate-y-2.5 hover:bg-white/50 hover:shadow-white/50 hover:border-white hover:shadow-md transition-all;
+    @apply grid place-content-center bg-soft-black border border-[#505050] p-10 hover:bg-dark-black hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent transition-all;
   }
 
   .card-about {
-    @apply col-span-2 flex items-center gap-6;
+    @apply col-span-2 flex items-center gap-8;
   }
   .card-about-img {
     @apply bg-white/60 rounded-2xl h-full basis-full overflow-hidden;
   }
-  .card-about-info {
-    @apply grid gap-4 py-8;
+  .card-container {
+    @apply grid gap-4;
   }
+
 
   .card-title {
     @apply text-3xl font-semibold;
   }
   .card-link {
-    @apply text-primary-bold font-semibold underline;
+    @apply text-primary-bold font-semibold underline mt-4 w-fit hover:text-accent transition-colors;
   }
 
   /* PAGE: catalog */
@@ -128,7 +139,7 @@
 
   /* SECTION: contact */
   .field-contact {
-    @apply bg-accent border border-black/20 px-3 py-2;
+    @apply border border-black/20 px-3 py-2;
   }
 
   .submit-contact {

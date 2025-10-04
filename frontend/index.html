@@ -49,24 +49,22 @@
     <section id="hero" class="grid place-items-center h-svh max-h-[855px]">
       <div class="max-w-7xl w-full px-8 flex items-center justify-between">
         <div class="grid place-items-start">
-          <span class="text-sm border bg-dark-black border-primary text-primary shadow-md shadow-primary-bold/50 font-medium py-0.5 px-6 rounded-full">
+          <span class="text-sm border bg-dark-black border-primary text-primary shadow-md shadow-primary-bold/50 font-medium py-0.5 px-6 mb-2 rounded-full">
             Desarrolladora de videojuegos
           </span>
 
-          <h1 class="text-8xl uppercase font-bold mt-1 mb-4">
+          <h1 class="text-8xl uppercase font-bold">
             Benteveo <span class="text-primary block">Studio</span>
           </h1>
 
-          <p class="mb-8 max-w-2xl text-lg">
+          <p class="max-w-2xl text-lg mt-4 mb-8">
             Creamos videojuegos educativos que combinan entretenimiento con conocimiento.
             Cada partida es una oportunidad para explorar, descubrir y crecer.
           </p>
 
-          <button class="font-bold">
-            <a href="#" class="button-base bg-primary border-primary text-dark-black hover:bg-primary-bold">
-              Catalogo
-            </a>
-          </button>
+          <a href="#" class="button-base bg-primary border-primary text-dark-black hover:bg-primary-bold">
+            Catalogo
+          </a>
         </div>
 
         <div class="max-w-2xs">
@@ -85,35 +83,39 @@
               <img src="/src/assets/team.png" alt="about-img">
             </div>
             
-            <div class="card-about-info">
+            <div class="card-about-info card-container">
                 <h2 class="card-title">Acerca de nosotros</h2>
                 
                 <p>
                   Descubre más acerca de nuestro trabajo, nuestra visión y el talentoso equipo que lo hace posible, te invitamos a explorar nuestra historia.
                 </p>
                 
-                <a href="#" class="card-link">Conocenos</a>
+                <a href="#nosotros" class="card-link">Conocenos</a>
             </div>
           </article>
 
           <article class="card card-services">
-            <h2 class="card-title">Servicios</h2>
-
-            <p>
-              Ponemos nuestra experiencia en el desarrollo de videojuegos a tu servicio. Creamos soluciones interactivas y educativas a la medida para tu proyecto o marca.
-            </p>
-            
-            <a href="#" class="card-link">Ver servicios</a>
+            <div class="card-container">
+              <h2 class="card-title">Servicios</h2>
+  
+              <p>
+                Ponemos nuestra experiencia en el desarrollo de videojuegos a tu servicio. Creamos soluciones interactivas y educativas a la medida para tu proyecto o marca.
+              </p>
+              
+              <a href="#servicios" class="card-link">Ver servicios</a>
+            </div>
           </article>
 
           <article class="card card-cart">
-            <h2 class="card-title">Carrito</h2>
-
-            <p>
-              Aquí encontrarás los juegos y productos que has seleccionado. Revisa tu lista y, cuando estés listo, avanza para finalizar tu compra.
-            </p>
-            
-            <a href="#" class="card-link">Ver carrito</a>
+            <div class="card-container">
+              <h2 class="card-title">Carrito</h2>
+  
+              <p>
+                Aquí encontrarás los juegos y productos que has seleccionado. Revisa tu lista y, cuando estés listo, avanza para finalizar tu compra.
+              </p>
+              
+              <a href="/src/pages/cart/cart.html" class="card-link">Ver carrito</a>
+            </div>
           </article>
         </div>
       </div>
@@ -127,62 +129,62 @@
           Sigue estos sencillos pasos para empezar a explorar, encontrar y disfrutar tu próximo juego.
         </p>
 
-        <div class="grid">
-          <article class="flex gap-8 items-center">
-            <div class="relative bg-accent min-w-40 aspect-square grid place-content-center border">
-              <span class="text-6xl font-bold text-neutral-light">1</span>
-              <img src="/src/assets/user.svg" alt="user-icon" class="w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full">
+        <div class="steps-container">
+          <article class="step-card">
+            <div class="step-box">
+              <span>1</span>
+              <img src="/src/assets/user.svg" alt="user-icon" class="step-box-icon">
             </div>
 
-            <div class="p-4">
-              <h2 class="text-3xl font-semibold mb-2">Crea una cuenta</h2>
+            <div class="step-info">
+              <h2 class="step-info-title">Crea una cuenta</h2>
               
-              <p class="text-gray-600">
+              <p>
                 Para empezar a explorar, crea una cuenta o inicia sesion. Asi podras guardar tus juegos favoritos y tener un proceso de compra seguro y rápido.
               </p>
             </div>
           </article>
 
-          <article class="flex gap-8 items-center">
-            <div class="relative bg-accent min-w-40 aspect-square grid place-content-center border">
-              <span class="text-6xl font-bold text-neutral-light">2</span>
-              <img src="/src/assets/explore.svg" alt="explore-icon" class="w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full">
+          <article class="step-card">
+            <div class="step-box">
+              <span>2</span>
+              <img src="/src/assets/explore.svg" alt="explore-icon" class="step-box-icon">
             </div>
 
-            <div class="p-4">
-              <h2 class="text-3xl font-semibold mb-2">Explorá el catálogo</h2>
+            <div class="step-info">
+              <h2 class="step-info-title">Explorá el catálogo</h2>
               
-              <p class="text-gray-600">
+              <p>
                 Explora nuestro catálogo y descubre el juego perfecto para ti. Entre los distintos titulos, seguro encuentras tu próxima aventura.
               </p>
             </div>
           </article>
 
-          <article class="flex gap-8 items-center">
-            <div class="relative bg-accent min-w-40 aspect-square grid place-content-center border">
-              <span class="text-6xl font-bold text-neutral-light">3</span>
-              <img src="/src/assets/cart.svg" alt="cart-icon" class="w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full">
+          <article class="step-card">
+            <div class="step-box">
+              <span>3</span>
+              <img src="/src/assets/cart.svg" alt="cart-icon" class="step-box-icon">
             </div>
 
-            <div class="p-4">
-              <h2 class="text-3xl font-semibold mb-2">Añade al carrito</h2>
+            <div class="step-info">
+              <h2 class="step-info-title">Añade al carrito</h2>
               
-              <p class="text-gray-600">
+              <p>
                 Añade al carrito los juegos que más te gusten. Puedes revisar, editar o eliminar productos antes de finalizar la compra.
               </p>
             </div>
           </article>
 
-          <article class="flex gap-8 items-center">
-            <div class="relative bg-accent min-w-40 aspect-square grid place-content-center border">
-              <span class="text-6xl font-bold text-neutral-light">4</span>
-              <img src="/src/assets/check.svg" alt="check-icon" class="w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full">
+          <article class="step-card">
+            <div class="step-box">
+              <span>4</span>
+              <img src="/src/assets/check.svg" alt="check-icon" class="step-box-icon">
             </div>
 
-            <div class="p-4">
-              <h2 class="text-3xl font-semibold mb-2">Completa tu compra</h2>
+            <div class="step-info">
+              <h2 class="step-info-title">Completa tu compra</h2>
               
-              <p class="text-gray-600">
+              <p>
                 Completa tu compra de forma segura. Recibirás una confirmación por correo electrónico. ¡Y listo! Nosotros nos encargamos de que lo disfrutes al máximo.
               </p>
             </div>
@@ -191,10 +193,10 @@
       </div>
     </section>
 
-    <section id="contact" class="section-base bg-accent">
+    <section id="contact" class="section-base bg-dark-black">
       <div class="max-w-6xl w-full grid grid-cols-3 px-8">
-        <form class="grid gap-4 bg-primary-txt col-span-2 p-10 text-sm">
-          <h1 class="text-5xl mb-4">Contacto</h1>
+        <form class="grid gap-4 bg-neutral-light text-dark-black col-span-2 p-10 text-sm">
+          <h1 class="text-5xl font-medium mb-4">Contacto</h1>
 
           <div class="grid gap-1">
             <label for="fullname">Nombre completo</label>
@@ -222,7 +224,7 @@
   </main>
 
   <footer class="bg-dark-black w-full text-white p-8 grid place-content-center">
-    <div class="max-w-7xl w-full grid gap-8">
+    <div class="max-w-7xl w-full grid gap-8 px-8">
       <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
         <div>
           <h1 class="text-xl font-bold mb-2">Benteveo Studio  </h1>

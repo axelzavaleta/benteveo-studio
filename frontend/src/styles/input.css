@@ -32,7 +32,7 @@
 
   /* HEADER */
   .header {
-    @apply z-100 min-h-12 bg-dark-black w-full text-sm grid place-items-center;
+    @apply z-200 min-h-12 bg-dark-black w-full text-sm grid place-items-center;
   }
   .header__navigation {
     @apply flex justify-between items-center m-auto px-8 max-w-7xl w-full;
@@ -116,6 +116,14 @@
 
   .review-card {
     @apply bg-soft-black border border-[#505050];
+  }
+
+  .social-network-card {
+    @apply max-w-[100px] border border-[#505050] aspect-square;
+  }
+
+  .social-network-icon {
+    @apply bg-dark-black w-full h-full object-cover p-4;
   }
 
   /* SECTION: contact */

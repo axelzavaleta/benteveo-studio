@@ -3,8 +3,8 @@
 
 @theme { /* Cambiando el soft/dark-black */
   --color-primary-txt: #040118;
-  --color-soft-black: #121212; /* background-color del fondo principal */
-  --color-dark-black: #0a0a0a; /* background-color del header */
+  --color-soft-black: #0E1636; /* background-color del fondo principal */
+  --color-dark-black: #040116; /* background-color del header */
   --color-primary: #e6cc3d;
   --color-primary-bold: #e8bb1a;
   --color-accent: #1B275E;

@@ -148,23 +148,27 @@
 
   /* MODALS */
   .modal-wrapper {
-    @apply max-w-[400px] w-full bg-white m-auto border border-gray-300 rounded-2xl;
+    @apply max-w-[400px] w-full bg-[#020A28] m-auto border-none rounded-2xl shadow-[0_0_20px] shadow-amber-50/30;
   }
 
   .field-modal {
-    @apply text-primary-txt outline-none text-sm px-4 py-3 w-full rounded-sm bg-neutral-light border border-black/5;
+    @apply text-white outline-none text-sm px-4 py-3 w-full rounded-lg bg-transparent border border-[#0022A1];
   }
 
   .close-modal-btn {
-    @apply absolute right-5 top-5 bg-neutral-light border border-gray-200 w-fit p-1 rounded-full hover:bg-gray-200 transition-colors;
+    @apply absolute right-5 top-5 bg-blue-600 border w-fit p-1 rounded-full hover:bg-gray-200 transition-colors;
   }
 
   .continue-btn {
-    @apply font-bold border py-2 px-10 rounded-md mt-4 bg-primary border-primary-bold text-white hover:bg-primary-bold cursor-pointer transition-colors;
+    @apply font-bold border py-2 px-10 rounded-md mt-4 bg-[#0032EF] uppercase border-none text-white hover:bg-[#0022A1] cursor-pointer transition-colors;
   }
 
   .back-to {
-    @apply text-sm text-gray-500 cursor-pointer hover:text-primary-txt transition-colors;
+    @apply text-sm text-gray-500 cursor-pointer hover:text-white transition-colors;
+  }
+
+  .modal-wrapper::backdrop {
+    background: rgba(0,0,0,0.6);
   }
 
   /* Cart */

@@ -183,4 +183,65 @@
   .remove-product {
     @apply bg-red-500 absolute right-2 bottom-2 p-2 rounded-full cursor-pointer hover:bg-red-600 transition-colors;
   }
+
+  /* About */
+  .card-us {
+    @apply bg-black/60 shadow-[0_0_10px_rgba(99,102,241,0.3)] shadow-blue-700 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:-translate-y-1.5 transition-all;
+  }
+
+  .card-values {
+    @apply bg-black shadow-[0_0_10px_rgba(99,102,241,0.3)] shadow-blue-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:-translate-y-1.5 transition-all;
+  }
+
+  .white-title {
+    color: #ffffff;
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.4);
+  }
+
+  .yellow-title {
+    color: #facc15;
+    text-shadow:
+      0 0 10px rgba(250, 204, 21, 0.9),
+      0 0 20px rgba(250, 204, 21, 0.6),
+      0 0 30px rgba(250, 204, 21, 0.4);
+  }
+
+  .card-skills {
+    @apply bg-black/60 border border-gray-800 rounded-xl p-6 text-center shadow-[0_0_10px] shadow-cyan-100/40 hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:-translate-y-1.5 transition-all;
+  }
+
+  .card-team {
+    @apply bg-[#0F0F2A] p-6 rounded-2xl shadow-lg hover:-translate-y-1 transition-transform duration-300;
+  }
+
+  .percentage {
+    @apply bg-[#5D5DF5] h-2 rounded-full;
+  }
+
+  .btn-gradient {
+    @apply w-xl py-2 rounded-lg font-semibold text-black transition-all cursor-pointer;
+    background: linear-gradient(90deg, #facc15 0%, #f97316 100%);
+    box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
+  }
+
+  .btn-gradient:hover {
+    background: linear-gradient(90deg, #fde047 0%, #fb923c 100%);
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
+    transform: translateY(-2px);
+  }
+
+  .modal-apply {
+    @apply fixed inset-0 bg-black/60 items-center justify-center z-50 backdrop-blur-sm m-auto;
+  }
+
+  .modal-apply::backdrop {
+    background: rgba(0,0,0,0.6);
+  }
+
+  .steps {
+    @apply bg-yellow-400 text-black font-bold px-4 py-2 rounded-md flex items-center gap-4;
+  }
 }

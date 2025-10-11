@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../../assets/BenteveoStudio-logo.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benteveo Studio</title>
+  <link rel="stylesheet" href="/src/styles/input.css">
+</head>
+
+<body class="text-neutral-light font-manrope flex flex-col min-h-svh">
+  <header class="header fixed">
+    <div class="header__navigation">
+      <div class="flex items-center gap-2">
+        <a href="#home" class="cursor-pointer">
+          <img src="/src/assets/benteveo-logo-dark.png" alt="bs-logo" class="max-w-8">
+        </a>
+
+        <h1 class="text-xl font-semibold">Benteveo Studio</h1>
+      </div>
+
+      <nav>
+        <ul class="flex gap-6">
+          <li><a class="redir-link-dark" href="/index.html">Inicio</a></li>
+          <li><a class="redir-link-dark" href="../catalog/catalog.html">Catalogo</a></li>
+          <li><a class="redir-link-dark" href="#">Servicios</a></li>
+          <li><a class="redir-link-dark current-page-dark" href="#">Nosotros</a></li>
+          <li><a class="redir-link-dark" href="#">Asistencia</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-14">
+        <div class="flex gap-6">
+          <div class="flex gap-4">
+            <button class="login-btn-dark auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+            <button class="signup-btn-dark auth-btn" data-target-modal="signup-modal">Registrarse</button>
+          </div>
+
+          <button class="cursor-pointer hidden">
+            <img src="/src/assets/cart.svg" alt="carrito-logo">
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="bg-soft-black text-neutral-light flex-1">
+
+    <section id="hero" class="pt-60 pb-40 bg-dark-black relative overflow-hidden">
+      <div class="container mx-auto px-6 text-center relative z-10">
+
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">
+          <span class="white-title">ACERCA DE</span>
+          <span class="yellow-title"> NOSOTROS</span>
+        </h1>
+
+        <p class="text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed">
+          Donde la pasión por los videojuegos se encuentra con el arte de la educación. 
+          Creamos mundos interactivos que inspiran, enseñan y transforman.
+        </p>
+
+        <div class="grid grid-cols-2 gap-8 max-w-2xl mx-auto"> 
+          <div class="p-6 rounded-lg card-us"> 
+            <div class="text-gray-400 text-2xl">Desarrollando desde</div> 
+            <div class="text-4xl font-bold mt-2">2025</div> 
+          </div> 
+          <div class="p-6 rounded-lg card-us"> 
+            <div class="text-gray-400 text-2xl">Juegos desarrollados</div> 
+            <div class="text-4xl font-bold mb-2">2</div> 
+          </div> 
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="about-us" class="py-16 px-8">
+      <div class="max-w-6xl mx-auto grid grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="uppercase text-sm font-semibold mb-2 tracking-widest">Quienes somos</h3>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">El equipo detrás de la magia</h2>
+          <p class="mb-4">
+            Somos un colectivo de soñadores digitales, artistas del código y arquitectos de experiencias. 
+            En Benteveo Studio, no solo creamos videojuegos; diseñamos puentes entre el aprendizaje y la diversión.
+          </p>
+          <p class="leading-relaxed">
+            Nuestra misión es simple pero poderosa: transformar la educación a través de experiencias interactivas memorables. 
+            Cada línea de código, cada pixel, cada mecánica de juego está cuidadosamente diseñada para inspirar curiosidad 
+            y fomentar el crecimiento.
+          </p>
+        </div>
+
+        <div class="flex justify-center md:justify-end">
+          <div class="rounded-2xl overflow-hidden border border-black">
+            <img src="../../assets/desarrollo.jpg" alt="Equipo desarrollando videojuegos" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="values" class="bg-dark-black py-20 pb-32">
+      <div class="mx-auto px-4">
+        <div class="text-center">
+          <h3 class="uppercase text-sm font-semibold mb-2 tracking-widest">Nuestros valores</h3>
+          <h2 class="text-4xl font-bold mt-2 mb-6 glow-text">El código que nos define</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div class="p-8 rounded-lg card-values">
+            <div class="text-3xl mb-4">🎮</div>
+            <h3 class="text-xl font-bold mb-4">Innovación Constante</h3>
+            <p class="text-gray-400">
+              Exploramos las fronteras de la tecnología para crear experiencias que nadie más ha imaginado.
+              Nos mantenemos a la vanguardia de las tendencias en gaming y educación.
+            </p>
+          </div>
+          
+          <div class="p-8 rounded-lg card-values">
+            <div class="text-3xl mb-4">🌟</div>
+            <h3 class="text-xl font-bold mb-4">Impacto Educativo</h3>
+            <p class="text-gray-400">
+              Creemos en el poder transformador de los juegos para cambiar vidas a través del aprendizaje.
+              Cada juego que creamos tiene un propósito educativo claro.
+            </p>
+          </div>
+          
+          <div class="p-8 rounded-lg card-values">
+            <div class="text-3xl mb-4">🔭</div>
+            <h3 class="text-xl font-bold mb-4">Perspectiva Local</h3>
+            <p class="text-gray-400">
+              En un mundo en el que la cultura general es cada vez más cara, estamos comprometidos a mantener precios y experiencias accesibles para todos nuestros clientes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h3 class="uppercase text-sm tracking-widest text-white">Nuestras habilidades</h3>
+          <h2 class="text-4xl md:text-5xl font-bold text-white">Tecnologías y capacidades</h2>
+        </div>
+
+        <div class="grid grid-cols-2 gap-16 items-start">
+          <div>
+            <h3 class="text-2xl font-semibold text-white mb-6">Áreas de especialización</h3>
+
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-gray-300">Desarrollo de videojuegos</span>
+                  <span class="text-[#5D5DF5] font-semibold">95%</span>
+                </div>
+                <div class="w-full bg-gray-700 h-2 rounded-full overflow-hidden">
+                  <div class="percentage w-[95%]"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-gray-300">Diseño de experiencias educativas</span>
+                  <span class="text-[#5D5DF5] font-semibold">90%</span>
+                </div>
+                <div class="w-full bg-gray-700 h-2 rounded-full overflow-hidden">
+                  <div class="percentage w-[90%]"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="text-gray-300">Optimización de rendimiento</span>
+                  <span class="text-[#5D5DF5] font-semibold">88%</span>
+                </div>
+                <div class="w-full bg-gray-700 h-2 rounded-full overflow-hidden">
+                  <div class="percentage w-[88%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold text-white mb-6">Tecnologías que utilizamos</h3>
+            <div class="grid grid-cols-2 gap-6">
+              <div class="card-skills">
+                <img src="../../assets/Godot1.png" alt="Godot Engine" class="w-14 h-14 mx-auto mb-3" />
+                <p class="text-gray-200 font-medium">Godot Engine</p>
+              </div>
+              <div class="card-skills">
+                <img src="../../assets/GDScript.png" alt="GDScript" class="w-14 h-14 mx-auto mb-3" />
+                <p class="text-gray-200 font-medium">GDScript</p>
+              </div>
+              <div class="card-skills">
+                <img src="../../assets/CSharp.png" alt="C#" class="w-13 h-14 mx-auto mb-3" />
+                <p class="text-gray-200 font-medium">C#</p>
+              </div>
+              <div class="card-skills">
+                <img src="../../assets/Libresprite.webp" alt="LibreSprite" class="w-14 h-14 mx-auto mb-3" />
+                <p class="text-gray-200 font-medium">LibreSprite</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="py-20 px-6 bg-dark-black">
+      <div class="mx-auto px-4">
+
+        <div class="text-center">
+          <h3 class="uppercase text-sm font-semibold mb-2 tracking-widest">EL EQUIPO</h3>
+          <h2 class="text-4xl font-bold mt-2 mb-6 glow-text">Los jugadores clave</h2>
+          <p class="text-gray-400 mb-12">
+            Conocé a los talentosos desarrolladores que hacen posible la magia de BenteveoStudio
+          </p>
+        </div>
+  
+  
+        <div class="grid grid-cols-4 gap-8 max-w-7xl mx-auto px-4 text-center">
+  
+          <div class="card-team">
+            <div class="w-20 h-20 mx-auto bg-white border-4 border-accent rounded-full mb-4"></div>
+            <h3 class="text-2xl font-semibold">Axel Zavaleta</h3>
+            <p class="text-indigo-700 text-base mb-3">Jefe de Marketing</p>
+            <p class="text-gray-400 text-sm mb-6">
+              Encargado de diseñar las campañas y posicionar a BenteveoStudio en la industria.
+            </p>
+            <div class="mb-2 text-left text-sm">Creatividad <span class="float-right">95%</span></div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+              <div class="percentage" style="width:95%"></div>
+            </div>
+            <div class="mb-2 text-left text-sm">Estrategia de Marca <span class="float-right">90%</span></div>
+            <div class="w-full bg-gray-700 rounded-full h-2">
+              <div class="percentage" style="width:90%"></div>
+            </div>
+          </div>
+  
+          <div class="card-team">
+            <div class="w-20 h-20 mx-auto bg-white border-4 border-accent rounded-full mb-4"></div>
+            <h3 class="text-2xl font-semibold w-64">Valentina Bernasconi</h3>
+            <p class="text-indigo-700 text-base mb-3">Directora de Videojuegos</p>
+            <p class="text-gray-400 text-sm mb-6">
+              Supervisa cada etapa de los proyectos, organizando al equipo para alcanzar los plazos y la calidad.
+            </p>
+            <div class="mb-2 text-left text-sm">Organización <span class="float-right">95%</span></div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+              <div class="percentage" style="width:95%"></div>
+            </div>
+            <div class="mb-2 text-left text-sm">Gestión de Proyectos <span class="float-right">94%</span></div>
+            <div class="w-full bg-gray-700 rounded-full h-2">
+              <div class="percentage" style="width:94%"></div>
+            </div>
+          </div>
+  
+          <div class="card-team">
+            <div class="w-20 h-20 mx-auto bg-white border-4 border-accent rounded-full mb-4"></div>
+            <h3 class="text-2xl font-semibold">Pablo Santellan</h3>
+            <p class="text-indigo-700 text-base mb-3">Director del Estudio</p>
+            <p class="text-gray-400 text-sm mb-6">
+              Lidera la visión y la estrategia general del estudio, asegurando la coordinación entre todas las áreas.
+            </p>
+            <div class="mb-2 text-left text-sm">Liderazgo <span class="float-right">97%</span></div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+              <div class="percentage" style="width:97%"></div>
+            </div>
+            <div class="mb-2 text-left text-sm">Planificación <span class="float-right">94%</span></div>
+            <div class="w-full bg-gray-700 rounded-full h-2">
+              <div class="percentage" style="width:94%"></div>
+            </div>
+          </div>
+  
+          <div class="card-team">
+            <div class="w-20 h-20 mx-auto bg-white border-4 border-accent rounded-full mb-4"></div>
+            <h3 class="text-2xl font-semibold">Esteban Terrazas</h3>
+            <p class="text-indigo-700 text-base mb-3">Jefe de Equipo</p>
+            <p class="text-gray-400 text-sm mb-6">
+              Promueve un ambiente de trabajo creativo y se encarga del bienestar del equipo.
+            </p>
+            <div class="mb-2 text-left text-sm">Comunicación <span class="float-right">95%</span></div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+              <div class="percentage" style="width:95%"></div>
+            </div>
+            <div class="mb-2 text-left text-sm">Gestión de Equipo <span class="float-right">90%</span></div>
+            <div class="w-full bg-gray-700 rounded-full h-2">
+              <div class="percentage" style="width:90%"></div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </section>
+
+    <section id="postulation" class="py-20 px-6 text-white">
+      <div class="mx-auto px-4 max-w-6xl">
+        <div class="text-center mb-16">
+          <h3 class="uppercase text-sm font-semibold mb-2 tracking-widest text-gray-400">
+            Postulación
+          </h3>
+          <h2 class="text-4xl font-bold mb-4">¿Quieres unirte al equipo?</h2>
+          <p class="text-gray-400 text-lg">
+            Te ofrecemos la oportunidad de ayudarnos a desarrollar videojuegos educativos innovadores
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div class="card-skills">
+            <div class="flex justify-center mb-4">
+              <span class="text-5xl">🎨</span>
+            </div>
+            <h3 class="text-3xl font-semibold mb-2">Diseño</h3>
+            <p class="text-gray-300 mb-6 text-xl">Crea experiencias visuales cautivadoras</p>
+            <ul class="text-lg text-gray-400 mb-8 space-y-1 text-left ml-5">
+                <li>• Diseñador de niveles.</li>
+                <li>• Diseñador de UI.</li>
+                <li>• Concept artist.</li>
+            </ul>
+          </div>
+
+          <div class="card-skills">
+            <div class="flex justify-center mb-4">
+              <span class="text-5xl">⚙️</span>
+            </div>
+            <h3 class="text-3xl font-semibold mb-2">Desarrollo</h3>
+            <p class="text-gray-300 mb-6 text-2xl">Da vida a los juegos con código</p>
+            <ul class="text-lg text-gray-400 mb-8 space-y-1 text-left ml-5">
+                <li>• Programador Godot.</li>
+                <li>• Programador Gameplay.</li>
+                <li>• Tester.</li>
+            </ul>
+          </div>
+
+          <div class="card-skills">
+            <div class="flex justify-center mb-4">
+              <span class="text-5xl">🎵</span>
+            </div>
+            <h3 class="text-3xl font-semibold mb-2">Audio</h3>
+            <p class="text-gray-300 mb-6 text-xl">Crea la banda sonora de la experiencia</p>
+            <ul class="text-lg text-gray-400 mb-8 space-y-1 text-left ml-5">
+                <li>• Compositor.</li>
+                <li>• Diseñador de sonido.</li>
+                <li>• Efectos.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex justify-center mt-10">
+          <button class="btn-gradient px-10 py-2 font-semibold text-black rounded-lg" id="open-modal" data-target-modal="apply-modal">
+            Postularse
+          </button>
+        </div>
+      </div>
+    </section>
+
+    
+  </main>
+  
+  <footer class="bg-dark-black w-full text-white p-8 grid place-content-center">
+    <div class="max-w-7xl w-full grid gap-8 px-8">
+      <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
+        <div>
+          <h1 class="text-xl font-bold mb-2">Benteveo Studio  </h1>
+          <p>
+            Te invitamos a embarcarte en una aventura inolvidable donde la educación y la diversión se encuentran.
+          </p>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Explorar</h1>
+
+          <ul class="grid gap-2">
+            <li><a href="#" class="hover:text-primary transition-colors">Catalogo</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Servicios</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Asistencia</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Legal</h1>
+
+          <ul class="grid gap-2">
+            <li><a href="#" class="hover:text-primary transition-colors">Política y privacidad</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Términos y condiciones</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Soporte técnico</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Contacto</h1>
+
+          <ul class="grid gap-2">
+            <li class="flex items-center gap-2">
+              <img src="/src/assets/phone.svg" alt="phone-icon">
+              <a href="#">+54 351-999-999</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <img src="/src/assets/mail.svg" alt="mail-icon">
+              <a href="#">benteveostudio@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-xs flex items-center justify-between mt-4">
+        <span>
+          ©2025 Benteveo Studio. Todos los derechos reservados.
+        </span>
+
+        <nav class="social-media">
+          <ul class="flex items-center gap-8 tracking-widest">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  
+  <dialog id="login-modal" class="modal-wrapper">
+    <form class="sexo relative text-center p-8 grid gap-4">
+      <div class="close-modal-btn" id="close-login">
+        <img src="/src/assets/x.svg" alt="x-icon">
+      </div>
+
+      <h1 class="text-3xl font-semibold mb-4">Inicia sesión</h1>
+
+      <div>
+        <input 
+        type="email" 
+        name="email" 
+        id="email-login" 
+        placeholder="Ingresa tu email" 
+        autocomplete="email" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="password-login" 
+        placeholder="Ingresa tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <input type="submit" value="Iniciar sesión" class="continue-btn">
+
+      <span id="back-to-signup" data-target-modal="signup-modal" class="back-to">
+        ¿No tienes una cuenta?
+      </span>
+    </form>
+  </dialog>
+
+  <dialog id="signup-modal" class="modal-wrapper">
+    <form class="text-center text-soft-black p-8 grid gap-4">
+      <div class="close-modal-btn" id="close-signup">
+        <img src="/src/assets/x.svg" alt="x-icon">
+      </div>
+
+      <h1 class="text-3xl font-semibold mb-4">Crea tu cuenta</h1>
+
+      <div>
+        <input 
+        type="text" 
+        name="username" 
+        id="username" 
+        placeholder="Ingresa tu nombre" 
+        autocomplete="name" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="email" 
+        name="email" 
+        id="email-signup" 
+        placeholder="Ingresa tu email" 
+        autocomplete="email" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="date" 
+        name="birthdate" 
+        id="birthdate" 
+        autocomplete="bday" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="password-signup" 
+        placeholder="Ingresa tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="confirm-password-signup" 
+        placeholder="Ingresa otra vez tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <input type="submit" value="Crear cuenta" class="continue-btn">
+
+      <span id="back-to-login" data-target-modal="login-modal" class="back-to">
+        ¿Ya tienes una cuenta?
+      </span>
+    </form>
+  </dialog>
+
+  <dialog id="apply-modal" class="modal-apply">
+    <form method="dialog" class="bg-white text-black rounded-2xl overflow-hidden grid md:grid-cols-2 w-full max-w-4xl">
+
+      <div class="p-8 flex flex-col gap-5">
+        <div class="flex justify-between items-start">
+          <h1 class="text-3xl font-semibold mb-4">Postulación</h1>
+          <button type="button" id="close-apply-modal" class="text-gray-500 hover:text-black text-2xl">&times;</button>
+        </div>
+
+        <div>
+          <label for="name" class="block text-sm font-medium mb-1">Nombre *</label>
+          <input type="text" id="name" name="name" placeholder="Ingresa tu nombre"
+            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" required>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium mb-1">Email *</label>
+          <input type="email" id="email" name="email" placeholder="Ingresa tu email"
+            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" required>
+        </div>
+
+        <div>
+          <label for="discovery" class="block text-sm font-medium mb-1">¿Cómo descubriste esta oportunidad?</label>
+          <textarea id="discovery" name="discovery" rows="3" placeholder="Cuéntanos brevemente..."
+            class="w-full border border-gray-300 rounded-md px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Tu portfolio y currículum (.pdf .doc o .docx) *</label>
+          <label for="file"
+            class="border border-dashed border-gray-400 rounded-md py-8 flex flex-col items-center justify-center text-gray-500 cursor-pointer">
+            <span>Sube tus archivos o arrástralos aquí</span>
+            <input type="file" id="file" name="file" accept=".pdf,.doc,.docx" class="hidden" required>
+          </label>
+        </div>
+
+        <button type="submit"
+          class="mt-4 w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold py-2 rounded-md hover:from-yellow-300 hover:to-orange-400 transition">
+          Postularse
+        </button>
+      </div>
+
+      <div class="bg-[#0b1133] text-white flex flex-col justify-center p-8">
+        <div class="flex flex-col gap-4">
+          <div class="steps"><span class="text-2xl">1</span> Revisa los puestos disponibles</div>
+          <div class="steps"><span class="text-2xl">2</span> Manda tu postulación</div>
+          <div class="steps"><span class="text-2xl">3</span> Espera a que te contactemos</div>
+          <div class="steps"><span class="text-2xl">4</span> Entrevista</div>
+          <div class="steps"><span class="text-2xl">5</span> Prueba</div>
+          <div class="steps"><span class="text-2xl">6</span> Decisión</div>
+        </div>
+
+        <div class="mt-6 text-sm text-center text-gray-300 bg-[#0d1445] py-3 rounded-md">
+          Ten en cuenta que cada proceso es único.<br>¡Estamos ansiosos por ver tu propuesta!
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/src/pages/scripts/auth.js"></script>
+  <script src="../scripts/about.js"></script>
+</body>
+
+</html>

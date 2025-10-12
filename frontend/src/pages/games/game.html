@@ -49,24 +49,24 @@
     <section class="game-container max-w-7xl p-8 grid gap-16">
       <div class="game-presentation bg-dark-black p-16 border border-[#252f59] flex gap-8">
         <div>
-          <img src="/src/assets/mockupIncognita_Game.png" alt="">
+          <img id="game-img" src="/src/assets/mockupIncognita_Game.png" alt="game-img">
         </div>
 
         <div class="flex flex-col justify-between">
           <div>
-            <h2 class="text-4xl font-semibold mb-4">Nombre del videojuego</h2>
+            <h2 id="game-title" class="text-4xl font-semibold mb-4">Nombre del videojuego</h2>
             
             <div class="tags">
-              <span class="tag-cart">Educativo</span>
-              <span class="tag-cart">Educativo</span>
-              <span class="tag-cart">Educativo</span>
+              <span class="tag-cart game-tag">Educativo</span>
+              <span class="tag-cart game-tag">Puzzle</span>
+              <span class="tag-cart game-tag">Terror</span>
             </div>
           </div>
 
           <div>
-            <p class="text-3xl font-semibold mb-4">ARS $<span>20.000</span></p>
+            <p class="text-3xl font-semibold mb-4">ARS $<span id="game-price">20000</span></p>
   
-            <button class="button-base bg-primary text-lg text-black hover:bg-primary-bold">Agregar al carrito</button>
+            <button id="add-to-cart" class="button-base bg-primary text-lg text-black hover:bg-primary-bold">Agregar al carrito</button>
           </div>
         </div>
       </div>
@@ -374,6 +374,7 @@
   </dialog>
 
   <script src="/src/pages/scripts/auth.js"></script>
+  <script src="/src/pages/games/game.js"></script>
 </body>
 
 </html>

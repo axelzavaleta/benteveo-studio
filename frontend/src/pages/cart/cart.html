@@ -11,7 +11,7 @@
 
 <body class="font-manrope text-neutral-light">
   <header class="header">
-    <div class="flex justify-between items-center m-auto px-8 py-2 max-w-8xl w-full"> 
+    <div class="header__navigation"> 
       <div class="flex items-center gap-2">
         <a href="/index.html" class="cursor-pointer">
           <img src="/src/assets/benteveo-logo-dark.png" alt="bs-logo" class="max-w-8">
@@ -22,7 +22,7 @@
 
       <nav>
         <ul class="flex gap-6">
-          <li><a class="redir-link-dark current-page-dark" href="/index.html">Inicio</a></li>
+          <li><a class="redir-link-dark" href="/index.html">Inicio</a></li>
           <li><a class="redir-link-dark" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
           <li><a class="redir-link-dark" href="#">Servicios</a></li>
           <li><a class="redir-link-dark" href="/src/pages/about/about.html">Nosotros</a></li>
@@ -58,11 +58,11 @@
   </header>
 
   <main class="min-h-svh bg-soft-black flex justify-center">
-    <div class="max-w-8xl w-full px-8 py-16 flex justify-between gap-8">
+    <div class="max-w-7xl w-full px-8 py-16 flex justify-between gap-8">
       <div class="cart-products h-fit w-full grid gap-8">
         <article class="product-card w-full flex gap-4 bg-dark-black">
           <div class="basis-50">
-            <img src="/src/assets/game.avif" alt="game-img" class="aspect-square">
+            <img src="/src/assets/game.avif" alt="game-img" class="h-full object-cover">
           </div>
 
           <div class="relative w-full p-4">
@@ -119,7 +119,7 @@
   </main>
 
   <footer class="bg-primary-txt w-full text-white p-8 grid place-content-center">
-    <div class="max-w-8xl w-full grid gap-8">
+    <div class="max-w-7xl w-full grid gap-8 px-8">
       <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
         <div>
           <h1 class="text-xl font-bold mb-2">Benteveo Studio  </h1>

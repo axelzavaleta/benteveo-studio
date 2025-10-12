@@ -22,19 +22,19 @@
 
       <nav>
         <ul class="flex gap-6">
-          <li><a class="redir-link-dark" href="/index.html">Inicio</a></li>
-          <li><a class="redir-link-dark" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
-          <li><a class="redir-link-dark" href="#">Servicios</a></li>
-          <li><a class="redir-link-dark" href="/src/pages/about/about.html">Nosotros</a></li>
-          <li><a class="redir-link-dark" href="#">Asistencia</a></li>
+          <li><a class="redir-link" href="/index.html">Inicio</a></li>
+          <li><a class="redir-link" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
+          <li><a class="redir-link" href="#">Servicios</a></li>
+          <li><a class="redir-link" href="/src/pages/about-us/about-us.html">Nosotros</a></li>
+          <li><a class="redir-link" href="#">Asistencia</a></li>
         </ul>
       </nav>
 
       <div class="flex items-center gap-14">
         <div class="flex gap-6">
           <div class="flex gap-4">
-            <button class="login-btn-dark auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
-            <button class="signup-btn-dark auth-btn" data-target-modal="signup-modal">Registrarse</button>
+            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
           </div>
 
           <button class="cursor-pointer hidden">
@@ -47,7 +47,7 @@
 
   <main class="flex-1 bg-soft-black grid place-content-center">
     <section class="game-container max-w-7xl p-8 grid gap-16">
-      <div class="game-presentation bg-dark-black p-16 border border-[#252f59] flex gap-8">
+      <div class="game-presentation bg-dark-black p-16 border border-border-base flex gap-8">
         <div>
           <img id="game-img" src="/src/assets/mockupIncognita_Game.png" alt="game-img">
         </div>
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="game-details bg-dark-black text-gray-400 p-16 border border-[#252f59] flex gap-16">
+      <div class="game-details bg-dark-black text-gray-400 p-16 border border-border-base flex gap-16">
         <div class="description basis-1/2">
           <h2 class="text-3xl font-semibold mb-6 text-primary">Descripción</h2>
 
@@ -138,10 +138,10 @@
         </div>
       </div>
       
-      <div class="game-reviews bg-dark-black p-16 border border-[#252f59]">
+      <div class="game-reviews bg-dark-black p-16 border border-border-base">
         <div class="max-w-7xl gap-8 flex">
           <article class="review-card">
-            <header class="bg-dark-black p-4 border-b border-[#252525]">
+            <header class="bg-dark-black p-4 border-b border-border-base">
               <div class="flex">
                 <img src="/src/assets/star.svg" alt="star-icon">
                 <img src="/src/assets/star.svg" alt="star-icon">
@@ -154,7 +154,7 @@
             </header>
             
             <div class="px-4 py-8">
-              <span class="text-sm text-[#a6a6a6]">Fecha de publicacion</span>
+              <span class="text-sm text-gray-400">Fecha de publicacion</span>
   
               <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
   
@@ -163,7 +163,7 @@
           </article>
   
           <article class="review-card">
-            <header class="bg-dark-black p-4 border-b border-[#252525]">
+            <header class="bg-dark-black p-4 border-b border-border-base">
               <div class="flex">
                 <img src="/src/assets/star.svg" alt="star-icon">
                 <img src="/src/assets/star.svg" alt="star-icon">
@@ -176,7 +176,7 @@
             </header>
             
             <div class="px-4 py-8">
-              <span class="text-sm text-[#a6a6a6]">Fecha de publicacion</span>
+              <span class="text-sm text-gray-400">Fecha de publicacion</span>
   
               <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
   
@@ -185,7 +185,7 @@
           </article>
   
           <article class="review-card">
-            <header class="bg-dark-black p-4 border-b border-[#252525]">
+            <header class="bg-dark-black p-4 border-b border-border-base">
               <div class="flex">
                 <img src="/src/assets/star.svg" alt="star-icon">
                 <img src="/src/assets/star.svg" alt="star-icon">
@@ -198,7 +198,7 @@
             </header>
             
             <div class="px-4 py-8">
-              <span class="text-sm text-[#a6a6a6]">Fecha de publicacion</span>
+              <span class="text-sm text-gray-400">Fecha de publicacion</span>
   
               <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
   
@@ -273,12 +273,12 @@
   </footer>
 
   <dialog id="login-modal" class="modal-wrapper">
-    <form class="relative text-center text-soft-black p-8 grid gap-4">
+    <form class="relative text-center p-8 grid gap-4">
       <div class="close-modal-btn" id="close-login">
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
 
-      <h1 class="text-3xl font-semibold mb-4">Inicia sesión</h1>
+      <h1 class="text-3xl text-white font-semibold mb-4">Inicia sesión</h1>
 
       <div>
         <input 
@@ -309,12 +309,12 @@
   </dialog>
 
   <dialog id="signup-modal" class="modal-wrapper">
-    <form class="text-center text-soft-black p-8 grid gap-4">
+    <form class="text-center p-8 grid gap-4">
       <div class="close-modal-btn" id="close-signup">
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
 
-      <h1 class="text-3xl font-semibold mb-4">Crea tu cuenta</h1>
+      <h1 class="text-3xl text-white font-semibold mb-4">Crea tu cuenta</h1>
 
       <div>
         <input 

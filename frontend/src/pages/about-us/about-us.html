@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="shortcut icon" href="../../assets/BenteveoStudio-logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/src/assets/BenteveoStudio-logo.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Benteveo Studio</title>
   <link rel="stylesheet" href="/src/styles/input.css">
@@ -22,19 +22,19 @@
 
       <nav>
         <ul class="flex gap-6">
-          <li><a class="redir-link-dark" href="/index.html">Inicio</a></li>
-          <li><a class="redir-link-dark" href="../catalog/catalog.html">Catalogo</a></li>
-          <li><a class="redir-link-dark" href="#">Servicios</a></li>
-          <li><a class="redir-link-dark current-page-dark" href="#">Nosotros</a></li>
-          <li><a class="redir-link-dark" href="#">Asistencia</a></li>
+          <li><a class="redir-link" href="/index.html">Inicio</a></li>
+          <li><a class="redir-link" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
+          <li><a class="redir-link" href="#">Servicios</a></li>
+          <li><a class="redir-link current-page" href="#">Nosotros</a></li>
+          <li><a class="redir-link" href="#">Asistencia</a></li>
         </ul>
       </nav>
 
       <div class="flex items-center gap-14">
         <div class="flex gap-6">
           <div class="flex gap-4">
-            <button class="login-btn-dark auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
-            <button class="signup-btn-dark auth-btn" data-target-modal="signup-modal">Registrarse</button>
+            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
           </div>
 
           <button class="cursor-pointer hidden">
@@ -92,7 +92,7 @@
 
         <div class="flex justify-center md:justify-end">
           <div class="rounded-2xl overflow-hidden border border-black">
-            <img src="../../assets/desarrollo.jpg" alt="Equipo desarrollando videojuegos" class="w-full h-full object-cover" />
+            <img src="/src/assets/desarrollo.jpg" alt="Equipo desarrollando videojuegos" class="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -183,19 +183,19 @@
             <h3 class="text-2xl font-semibold text-white mb-6">Tecnologías que utilizamos</h3>
             <div class="grid grid-cols-2 gap-6">
               <div class="card-skills">
-                <img src="../../assets/Godot1.png" alt="Godot Engine" class="w-14 h-14 mx-auto mb-3" />
+                <img src="/src/assets/Godot1.png" alt="Godot Engine" class="w-14 h-14 mx-auto mb-3" />
                 <p class="text-gray-200 font-medium">Godot Engine</p>
               </div>
               <div class="card-skills">
-                <img src="../../assets/GDScript.png" alt="GDScript" class="w-14 h-14 mx-auto mb-3" />
+                <img src="/src/assets/GDScript.png" alt="GDScript" class="w-14 h-14 mx-auto mb-3" />
                 <p class="text-gray-200 font-medium">GDScript</p>
               </div>
               <div class="card-skills">
-                <img src="../../assets/CSharp.png" alt="C#" class="w-13 h-14 mx-auto mb-3" />
+                <img src="/src/assets/CSharp.png" alt="C#" class="w-13 h-14 mx-auto mb-3" />
                 <p class="text-gray-200 font-medium">C#</p>
               </div>
               <div class="card-skills">
-                <img src="../../assets/Libresprite.webp" alt="LibreSprite" class="w-14 h-14 mx-auto mb-3" />
+                <img src="/src/assets/Libresprite.webp" alt="LibreSprite" class="w-14 h-14 mx-auto mb-3" />
                 <p class="text-gray-200 font-medium">LibreSprite</p>
               </div>
             </div>
@@ -421,7 +421,7 @@
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
 
-      <h1 class="text-3xl font-semibold mb-4">Inicia sesión</h1>
+      <h1 class="text-3xl text-white font-semibold mb-4">Inicia sesión</h1>
 
       <div>
         <input 
@@ -452,12 +452,12 @@
   </dialog>
 
   <dialog id="signup-modal" class="modal-wrapper">
-    <form class="text-center text-soft-black p-8 grid gap-4">
+    <form class="text-center p-8 grid gap-4">
       <div class="close-modal-btn" id="close-signup">
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
 
-      <h1 class="text-3xl font-semibold mb-4">Crea tu cuenta</h1>
+      <h1 class="text-3xl text-white font-semibold mb-4">Crea tu cuenta</h1>
 
       <div>
         <input 
@@ -517,7 +517,7 @@
   </dialog>
 
   <dialog id="apply-modal" class="modal-apply">
-    <form method="dialog" class="bg-white text-black rounded-2xl overflow-hidden grid md:grid-cols-2 w-full max-w-4xl">
+    <form method="dialog" class="bg-white rounded-2xl overflow-hidden grid md:grid-cols-2 w-full max-w-4xl">
 
       <div class="p-8 flex flex-col gap-5">
         <div class="flex justify-between items-start">
@@ -575,8 +575,8 @@
     </form>
   </dialog>
 
+  <script src="./about-us.js"></script>
   <script src="/src/pages/scripts/auth.js"></script>
-  <script src="../scripts/about.js"></script>
 </body>
 
 </html>

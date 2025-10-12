@@ -9,6 +9,7 @@
   --color-primary-bold: #e8bb1a;
   --color-accent: #1B275E;
   --color-neutral-light: #F5F5F5;
+  --color-border-base: #283343;
 
   --font-manrope: "manrope", sans-serif;
   --font-public-sans: "public sans", sans-serif;
@@ -32,25 +33,25 @@
 
   /* HEADER */
   .header {
-    @apply z-200 min-h-14 grid place-items-center bg-dark-black w-full text-sm border-b border-[#252525];
+    @apply z-200 min-h-14 grid place-items-center bg-dark-black w-full text-sm border-b border-border-base;
   }
   .header__navigation {
     @apply flex justify-between items-center m-auto px-8 max-w-7xl w-full;
   }
 
-  .current-page-dark {
+  .current-page {
     @apply bg-primary text-dark-black;
   }
 
-  .login-btn-dark {
+  .login-btn {
     @apply text-primary border border-neutral-light/15 font-bold py-2 px-6 cursor-pointer hover:border-primary transition-colors;
   }
 
-  .signup-btn-dark {
+  .signup-btn {
     @apply bg-primary text-black font-bold py-2 px-6 hover:bg-primary-bold cursor-pointer;
   }
 
-  .redir-link-dark {
+  .redir-link {
     @apply p-0.75 px-3 rounded-2xl hover:bg-primary hover:text-dark-black transition-colors ;
   }
   
@@ -91,7 +92,7 @@
   }
 
   .card {
-    @apply grid place-content-center bg-soft-black border border-[#505050] p-10 hover:bg-dark-black hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent transition-all;
+    @apply grid place-content-center bg-soft-black border border-border-base p-10 hover:bg-dark-black hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent transition-all;
   }
 
   .card-about {
@@ -122,15 +123,15 @@
   }
 
   .game-card {
-    @apply flex flex-col min-h-[485px] bg-accent border border-[#252525] hover:scale-101 hover:border-[#505050]  transition-all;
+    @apply flex flex-col min-h-[485px] bg-accent border border-border-base hover:scale-101 hover:border-neutral-light  transition-all;
   }
 
   .review-card {
-    @apply bg-soft-black border border-[#505050];
+    @apply bg-soft-black border border-border-base;
   }
 
   .social-network-card {
-    @apply max-w-[100px] border border-[#505050] aspect-square;
+    @apply max-w-[100px] border border-border-base aspect-square;
   }
 
   .social-network-icon {

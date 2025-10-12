@@ -22,19 +22,19 @@
 
       <nav>
         <ul class="flex gap-6">
-          <li><a class="redir-link-dark" href="/index.html">Inicio</a></li>
-          <li><a class="redir-link-dark current-page-dark" href="#catalog">Catalogo</a></li>
-          <li><a class="redir-link-dark" href="#">Servicios</a></li>
-          <li><a class="redir-link-dark" href="/src/pages/about/about.html">Nosotros</a></li>
-          <li><a class="redir-link-dark" href="#">Asistencia</a></li>
+          <li><a class="redir-link" href="/index.html">Inicio</a></li>
+          <li><a class="redir-link current-page" href="#catalog">Catalogo</a></li>
+          <li><a class="redir-link" href="#">Servicios</a></li>
+          <li><a class="redir-link" href="/src/pages/about-us/about-us.html">Nosotros</a></li>
+          <li><a class="redir-link" href="#">Asistencia</a></li>
         </ul>
       </nav>
 
       <div class="flex items-center gap-14">
         <div class="flex gap-6">
           <div class="flex gap-4">
-            <button class="login-btn-dark auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
-            <button class="signup-btn-dark auth-btn" data-target-modal="signup-modal">Registrarse</button>
+            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
           </div>
 
           <button class="cursor-pointer hidden">
@@ -113,7 +113,7 @@
     <section id="reviews" class="section-base bg-dark-black">
       <div class="max-w-7xl gap-8 flex px-8">
         <article class="review-card">
-          <header class="bg-dark-black p-4 border-b border-[#252525]">
+          <header class="bg-dark-black p-4 border-b border-border-base">
             <div class="flex">
               <img src="/src/assets/star.svg" alt="star-icon">
               <img src="/src/assets/star.svg" alt="star-icon">
@@ -126,7 +126,7 @@
           </header>
           
           <div class="px-4 py-8">
-            <span class="text-sm text-[#a6a6a6]">Fecha de publicacion</span>
+            <span class="text-sm text-gray-400">Fecha de publicacion</span>
 
             <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
 
@@ -135,7 +135,7 @@
         </article>
 
         <article class="review-card">
-          <header class="bg-dark-black p-4 border-b border-[#252525]">
+          <header class="bg-dark-black p-4 border-b border-border-base">
             <div class="flex">
               <img src="/src/assets/star.svg" alt="star-icon">
               <img src="/src/assets/star.svg" alt="star-icon">
@@ -148,7 +148,7 @@
           </header>
           
           <div class="px-4 py-8">
-            <span class="text-sm text-[#a6a6a6]">Fecha de publicacion</span>
+            <span class="text-sm text-gray-400">Fecha de publicacion</span>
 
             <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
 
@@ -157,7 +157,7 @@
         </article>
 
         <article class="review-card">
-          <header class="bg-dark-black p-4 border-b border-[#252525]">
+          <header class="bg-dark-black p-4 border-b border-border-base">
             <div class="flex">
               <img src="/src/assets/star.svg" alt="star-icon">
               <img src="/src/assets/star.svg" alt="star-icon">
@@ -170,7 +170,7 @@
           </header>
           
           <div class="px-4 py-8">
-            <span class="text-sm text-[#a6a6a6]">Fecha de publicacion</span>
+            <span class="text-sm text-gray-400">Fecha de publicacion</span>
 
             <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
 
@@ -214,7 +214,7 @@
           </div>
         </div>
 
-        <div class="absolute h-[150%] w-[600px] bg-dark-black -right-[10%] top-1/2 -translate-y-1/2 border border-[#505050] rounded-2xl">
+        <div class="absolute h-[150%] w-[600px] bg-dark-black -right-[10%] top-1/2 -translate-y-1/2 border border-border-base rounded-2xl">
         </div>
       </div>
 
@@ -284,12 +284,12 @@
   </footer>
 
   <dialog id="login-modal" class="modal-wrapper">
-    <form class="sexo relative text-center text-soft-black p-8 grid gap-4">
+    <form class="relative text-center p-8 grid gap-4">
       <div class="close-modal-btn" id="close-login">
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
 
-      <h1 class="text-3xl font-semibold mb-4">Inicia sesión</h1>
+      <h1 class="text-3xl text-white font-semibold mb-4">Inicia sesión</h1>
 
       <div>
         <input 
@@ -325,7 +325,7 @@
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
 
-      <h1 class="text-3xl font-semibold mb-4">Crea tu cuenta</h1>
+      <h1 class="text-3xl text-white font-semibold mb-4">Crea tu cuenta</h1>
 
       <div>
         <input 

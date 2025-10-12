@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="/src/assets/logo-benteveo-studio.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benteveo Studio</title>
+  <link rel="stylesheet" href="/src/styles/input.css">
+</head>
+
+<body class="text-neutral-light font-manrope flex flex-col min-h-svh">
+  <header class="header">
+    <div class="header__navigation">
+      <div class="flex items-center gap-2">
+        <a href="/index.html" class="cursor-pointer">
+          <img src="/src/assets/benteveo-logo-dark.png" alt="bs-logo" class="max-w-8">
+        </a>
+
+        <a href="/index.html" class="text-xl font-semibold">Benteveo Studio</a>
+      </div>
+
+      <nav>
+        <ul class="flex gap-6">
+          <li><a class="redir-link-dark" href="/index.html">Inicio</a></li>
+          <li><a class="redir-link-dark" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
+          <li><a class="redir-link-dark" href="#">Servicios</a></li>
+          <li><a class="redir-link-dark" href="/src/pages/about/about.html">Nosotros</a></li>
+          <li><a class="redir-link-dark" href="#">Asistencia</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-14">
+        <div class="flex gap-6">
+          <div class="flex gap-4">
+            <button class="login-btn-dark auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+            <button class="signup-btn-dark auth-btn" data-target-modal="signup-modal">Registrarse</button>
+          </div>
+
+          <button class="cursor-pointer hidden">
+            <img src="/src/assets/cart.svg" alt="carrito-logo">
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 bg-soft-black grid place-content-center">
+    <section class="game-container max-w-7xl p-8 grid gap-16">
+      <div class="game-presentation bg-dark-black p-16 border border-[#252f59] flex gap-8">
+        <div>
+          <img src="/src/assets/mockupIncognita_Game.png" alt="">
+        </div>
+
+        <div class="flex flex-col justify-between">
+          <div>
+            <h2 class="text-4xl font-semibold mb-4">Nombre del videojuego</h2>
+            
+            <div class="tags">
+              <span class="tag-cart">Educativo</span>
+              <span class="tag-cart">Educativo</span>
+              <span class="tag-cart">Educativo</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-3xl font-semibold mb-4">ARS $<span>20.000</span></p>
+  
+            <button class="button-base bg-primary text-lg text-black hover:bg-primary-bold">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-details bg-dark-black text-gray-400 p-16 border border-[#252f59] flex gap-16">
+        <div class="description basis-1/2">
+          <h2 class="text-3xl font-semibold mb-6 text-primary">Descripción</h2>
+
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, repudiandae? Dicta autem consectetur repudiandae libero, laudantium doloremque voluptas itaque enim quasi omnis velit, blanditiis nesciunt soluta vitae aut sint dignissimos!
+          </p>
+        </div>
+
+        <div class="basis-1/2">
+          <h2 class="text-3xl font-semibold mb-6 text-primary">Detalles</h2>
+
+          <div class="details">
+            <div class="detail-item flex justify-between">
+              <span class="detail-item-title">Idioma</span>
+
+              <ul class="detail-item-list text-white font-medium flex gap-2">
+                <li>Español</li>
+                <li>Ingles</li>
+              </ul>
+            </div>
+
+            <hr class="my-3 text-accent">
+
+            <div class="detail-item flex justify-between">
+              <span class="detail-item-title">Desarrollador</span>
+
+              <ul class="detail-item-list text-white font-medium flex gap-2">
+                <li>Benteveo Studio</li>
+              </ul>
+            </div>
+
+            <hr class="my-3 text-accent">
+
+            <div class="detail-item flex justify-between">
+              <span class="detail-item-title">Almacenamiento</span>
+
+              <ul class="detail-item-list text-white font-medium flex gap-2">
+                <li>1GB</li>
+              </ul>
+            </div>
+
+            <hr class="my-3 text-accent">
+
+            <div class="detail-item flex justify-between">
+              <span class="detail-item-title">Fecha de lanzamiento</span>
+
+              <ul class="detail-item-list text-white font-medium flex gap-2">
+                <li>1 de enero de 2025</li>
+              </ul>
+            </div>
+
+            <hr class="my-3 text-accent">
+
+            <div class="detail-item flex justify-between">
+              <span class="detail-item-title">Se puede jugar en</span>
+
+              <ul class="detail-item-list text-white font-medium flex gap-2">
+                <li>PC</li>
+                <li>PS5</li>
+                <li>Nintendo Switch</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="game-reviews bg-dark-black p-16 border border-[#252f59]">
+        <div class="max-w-7xl gap-8 flex">
+          <article class="review-card">
+            <header class="bg-dark-black p-4 border-b border-[#252525]">
+              <div class="flex">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+              </div>
+              
+              <span>Nombre del videojuego</span>
+            </header>
+            
+            <div class="px-4 py-8">
+              <span class="text-sm text-[#a6a6a6]">Fecha de publicacion</span>
+  
+              <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
+  
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, fugiat.</p>
+            </div>
+          </article>
+  
+          <article class="review-card">
+            <header class="bg-dark-black p-4 border-b border-[#252525]">
+              <div class="flex">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+              </div>
+              
+              <span>Nombre del videojuego</span>
+            </header>
+            
+            <div class="px-4 py-8">
+              <span class="text-sm text-[#a6a6a6]">Fecha de publicacion</span>
+  
+              <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
+  
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, fugiat.</p>
+            </div>
+          </article>
+  
+          <article class="review-card">
+            <header class="bg-dark-black p-4 border-b border-[#252525]">
+              <div class="flex">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+                <img src="/src/assets/star.svg" alt="star-icon">
+              </div>
+              
+              <span>Nombre del videojuego</span>
+            </header>
+            
+            <div class="px-4 py-8">
+              <span class="text-sm text-[#a6a6a6]">Fecha de publicacion</span>
+  
+              <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
+  
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, fugiat.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-dark-black w-full text-white p-8 grid place-content-center">
+    <div class="max-w-7xl w-full grid gap-8 px-8">
+      <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
+        <div>
+          <h1 class="text-xl font-bold mb-2">Benteveo Studio  </h1>
+          <p>
+            Te invitamos a embarcarte en una aventura inolvidable donde la educación y la diversión se encuentran.
+          </p>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Explorar</h1>
+
+          <ul class="grid gap-2">
+            <li><a href="#" class="hover:text-primary transition-colors">Catalogo</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Servicios</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Asistencia</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Legal</h1>
+
+          <ul class="grid gap-2">
+            <li><a href="#" class="hover:text-primary transition-colors">Política y privacidad</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Términos y condiciones</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Soporte técnico</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold mb-3">Contacto</h1>
+
+          <ul class="grid gap-2">
+            <li class="flex items-center gap-2">
+              <img src="/src/assets/phone.svg" alt="phone-icon">
+              <a href="#">+54 351-999-999</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <img src="/src/assets/mail.svg" alt="mail-icon">
+              <a href="#">benteveostudio@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-xs flex items-center justify-between mt-4">
+        <span>
+          ©2025 Benteveo Studio. Todos los derechos reservados.
+        </span>
+
+        <nav class="social-media">
+          <ul class="flex items-center gap-8 tracking-widest">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="login-modal" class="modal-wrapper">
+    <form class="relative text-center text-soft-black p-8 grid gap-4">
+      <div class="close-modal-btn" id="close-login">
+        <img src="/src/assets/x.svg" alt="x-icon">
+      </div>
+
+      <h1 class="text-3xl font-semibold mb-4">Inicia sesión</h1>
+
+      <div>
+        <input 
+        type="email" 
+        name="email" 
+        id="email-login" 
+        placeholder="Ingresa tu email" 
+        autocomplete="email" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="password-login" 
+        placeholder="Ingresa tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <input type="submit" value="Iniciar sesión" class="continue-btn">
+
+      <span id="back-to-signup" data-target-modal="signup-modal" class="back-to">
+        ¿No tienes una cuenta?
+      </span>
+    </form>
+  </dialog>
+
+  <dialog id="signup-modal" class="modal-wrapper">
+    <form class="text-center text-soft-black p-8 grid gap-4">
+      <div class="close-modal-btn" id="close-signup">
+        <img src="/src/assets/x.svg" alt="x-icon">
+      </div>
+
+      <h1 class="text-3xl font-semibold mb-4">Crea tu cuenta</h1>
+
+      <div>
+        <input 
+        type="text" 
+        name="username" 
+        id="username" 
+        placeholder="Ingresa tu nombre" 
+        autocomplete="name" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="email" 
+        name="email" 
+        id="email-signup" 
+        placeholder="Ingresa tu email" 
+        autocomplete="email" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="date" 
+        name="birthdate" 
+        id="birthdate" 
+        autocomplete="bday" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="password-signup" 
+        placeholder="Ingresa tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <div>
+        <input 
+        type="password" 
+        name="password" 
+        id="confirm-password-signup" 
+        placeholder="Ingresa otra vez tu contraseña" 
+        autocomplete="current-password" 
+        class="field-modal">
+      </div>
+
+      <input type="submit" value="Crear cuenta" class="continue-btn">
+
+      <span id="back-to-login" data-target-modal="login-modal" class="back-to">
+        ¿Ya tienes una cuenta?
+      </span>
+    </form>
+  </dialog>
+
+  <script src="/src/pages/scripts/auth.js"></script>
+</body>
+
+</html>

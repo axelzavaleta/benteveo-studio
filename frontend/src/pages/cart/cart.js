@@ -4,14 +4,14 @@ const cartProducts = document.getElementById("cart-products");
 
 const getDataProducts = () => {
   const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
-  
+
   return cartData;
 }
 
 const createProductCard = (product) => {
   const productCard = document.createElement("article");
   productCard.classList.add("product-card");
-  
+
   const imgContainer = document.createElement("div");
   imgContainer.classList.add("product-img-container");
 
@@ -35,7 +35,7 @@ const createProductCard = (product) => {
     const tagElement = document.createElement("span");
     tagElement.classList.add("tag-cart");
     tagElement.textContent = tag;
-  
+
     tagsContainer.append(tagElement);
   });
 
@@ -58,14 +58,14 @@ const createProductCard = (product) => {
   removeBtnContainer.appendChild(removeImg);
 
   productCardInfo.append(
-    titleElement, 
-    tagsContainer, 
-    priceContainer, 
+    titleElement,
+    tagsContainer,
+    priceContainer,
     removeBtnContainer
   ); // bloque 2: info
 
   productCard.append(imgContainer, productCardInfo);
-  
+
   cartProducts.append(productCard) // insertando el nuevo producto a la lista
 }
 
@@ -73,8 +73,17 @@ const showProducts = () => {
   const cart = getDataProducts();
 
   if (!cart.length > 0) {
-    console.log("No existen productos en el carrito");
-    
+    const messageHeading = document.createElement("h1");
+    messageHeading.textContent = "No existen productos en el carrito";
+    messageHeading.classList.add("message-empty-card");
+
+    const linkElement = document.createElement("a");
+    linkElement.textContent = "Ir al catalogo";
+    linkElement.classList.add("link-empty-cart");
+    linkElement.href = "/src/pages/catalog/catalog.html";
+
+    cartProducts.append(messageHeading, linkElement);
+
     return;
   }
 
@@ -82,5 +91,6 @@ const showProducts = () => {
     createProductCard(game);
   });
 }
+
 
 showProducts()

@@ -173,12 +173,38 @@
   }
 
   /* Cart */
+  .product-card {
+    @apply w-full flex gap-4 bg-dark-black;
+  }
+  .product-card-info {
+    @apply relative w-full p-4 font-semibold text-lg;
+  }
+
+  .message-empty-card {
+    @apply font-bold text-4xl;
+  }
+
+  .link-empty-cart {
+    @apply w-fit underline cursor-pointer hover:text-primary;
+  }
+
+  .product-img-container {
+    @apply basis-50;
+  }
+  .product-img {
+    @apply h-full object-cover;
+  }
+
+  .title-game {
+    @apply text-xl font-bold mb-4; 
+  }
+
   .tag-cart {
     @apply bg-accent py-0.5 px-2.5 rounded-2xl text-sm text-neutral-light;
   }
 
   .tags {
-    @apply flex items-center gap-2 mb-8;
+    @apply flex font-medium items-center gap-2 mb-8;
   }
 
   .remove-product {

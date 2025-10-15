@@ -30,27 +30,19 @@
         </ul>
       </nav>
 
-      <div class="flex items-center gap-14">
-        <div class="flex items-center gap-8">
-          <div class="language-switcher relative">
-            <button class="language-switcher__btn">
-              <img src="/src/assets/translate.svg" alt="translate-logo">
-              <span class="font-medium">Español</span>
-            </button>
+      <div class="flex items-center gap-8">
+        <div class="language-selector">
+          <button class="lang-option active">ES</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-option">EN</button>
+        </div>
 
-            <div class="language-switcher__list hidden">
-              <p class="language-switcher__option">Español</p>
-              <p class="language-switcher__option">Ingles</p>
-            </div>
-          </div>
+        <div class="user">
+          <button class="user__btn relative bg-primary-bold p-2 rounded-full cursor-pointer">
+            <img src="/src/assets/user.svg" alt="user-logo">
+          </button>
 
-          <div class="user">
-            <button class="user__btn relative bg-primary-bold p-2 rounded-full cursor-pointer">
-              <img src="/src/assets/user.svg" alt="user-logo">
-            </button>
-
-            <div class="hidden user_menu absolute max-w-[100px] w-full bg-accent right-0 p-2">
-            </div>
+          <div class="hidden user_menu absolute max-w-[100px] w-full bg-accent right-0 p-2">
           </div>
         </div>
       </div>

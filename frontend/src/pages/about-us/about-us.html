@@ -30,16 +30,20 @@
         </ul>
       </nav>
 
-      <div class="flex items-center gap-14">
-        <div class="flex gap-6">
-          <div class="flex gap-4">
-            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
-            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
-          </div>
+      <div class="flex items-center gap-8">
+        <a href="/src/pages/cart/cart.html" class="hidden bg-primary p-1.5 rounded-full cursor-pointer">
+          <img src="/src/assets/cart.svg" alt="carrito-logo" class="max-w-5">
+        </a>
 
-          <button class="cursor-pointer hidden">
-            <img src="/src/assets/cart.svg" alt="carrito-logo">
-          </button>
+        <div class="flex gap-4">
+          <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+          <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
+        </div>
+
+        <div class="language-selector">
+          <button class="lang-option active">ES</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-option">EN</button>
         </div>
       </div>
     </div>

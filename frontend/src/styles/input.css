@@ -54,17 +54,18 @@
   .redir-link {
     @apply p-0.75 px-3 rounded-2xl hover:bg-primary hover:text-dark-black transition-colors ;
   }
-  
-  .language-switcher__btn {
-    @apply flex items-center gap-1 py-1 px-2 border border-white/10 hover:bg-soft-black cursor-pointer;
-  }
 
-  .language-switcher__list {
-    @apply absolute p-2 bg-soft-black -bottom-20 right-0 min-w-[125px] border border-white/10;
+  .language-selector {
+    @apply flex items-center gap-2;
   }
-
-  .language-switcher__option {
-    @apply font-medium w-full px-2 py-1 text-left hover:bg-dark-black cursor-pointer;
+  .lang-option {
+    @apply font-semibold text-base text-gray-500 cursor-pointer px-1.5 hover:text-primary transition-colors;
+  }
+  .lang-option.active {
+    @apply text-primary bg-primary/25 hover:bg-primary/50;
+  }
+  .lang-separator {
+    @apply text-base text-gray-700;
   }
   
   /* SECTION: user-journey */

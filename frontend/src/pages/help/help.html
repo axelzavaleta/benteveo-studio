@@ -13,11 +13,11 @@
   <header class="header fixed">
     <div class="header__navigation">
       <div class="flex items-center gap-2">
-        <a href="#home" class="cursor-pointer">
+        <a href="/index.html" class="cursor-pointer">
           <img src="/src/assets/benteveo-logo-dark.png" alt="bs-logo" class="max-w-8">
         </a>
 
-        <h1 class="text-xl font-semibold">Benteveo Studio</h1>
+        <a href="/index.html" class="text-xl font-semibold">Benteveo Studio</a>
       </div>
 
       <nav>
@@ -30,16 +30,20 @@
         </ul>
       </nav>
 
-      <div class="flex items-center gap-14">
-        <div class="flex gap-6">
-          <div class="flex gap-4">
-            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
-            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
-          </div>
+      <div class="flex items-center gap-8">
+        <a href="/src/pages/cart/cart.html" class="hidden bg-primary p-1.5 rounded-full cursor-pointer">
+          <img src="/src/assets/cart.svg" alt="carrito-logo" class="max-w-5">
+        </a>
 
-          <button class="cursor-pointer hidden">
-            <img src="/src/assets/cart.svg" alt="carrito-logo">
-          </button>
+        <div class="flex gap-4">
+          <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+          <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
+        </div>
+
+        <div class="language-selector">
+          <button class="lang-option active">ES</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-option">EN</button>
         </div>
       </div>
     </div>
@@ -47,10 +51,11 @@
 
   <main class="bg-soft-black text-neutral-light flex-1">
 
-    <section id="help" class="section-base ">
-      <div class="relative container max-w-4xl w-full max-h-[600px] h-svh bg-accent shadow-md px-12 py-20">
+    <section id="help" class="section-base h-svh min-h-[1000px] max-h-[1200px]">
+      <div class="relative w-5xl  bg-accent shadow-md py-32 px-12">
         <img src="/src/assets/help-icon.webp" alt="help-icon" draggable="false" class="absolute max-w-16 right-5 top-5">
-        <h1 class="text-5xl font-bold mb-3">
+
+        <h1 class="text-5xl font-bold mb-4">
           ¿Necesitás ayuda?
         </h1>
   
@@ -61,13 +66,28 @@
         </p>
   
         <div class="grid grid-cols-3 text-sm">
-          <form action="" class="col-span-2 grid place-items-start gap-2 px-4 py-2">
-            <label for="message" class="font-bold">Déjanos tu mensaje</label>
-            <textarea name="message" id="message" rows="5"
+          <form action="" class="col-span-2 grid place-items-start gap-2">
+            <label 
+              for="message" 
+              class="font-bold">
+              Déjanos tu mensaje
+            </label>
+
+            <textarea 
+              name="message" 
+              id="message" 
+              rows="5"
               class="min-h-[120px] max-h-[120px] border border-gray-500 w-[450px] px-4 py-2 rounded"></textarea>
-            <label for="message" class="text-xs text-gray-300 mb-4">Este mensaje irá directo al buzón de <b>Benteveo
-                Air</b> 😉</label>
-            <input type="submit" value="Enviar"
+            
+            <label 
+              for="message" 
+              class="text-xs text-gray-300 mb-4">
+              Este mensaje irá directo al buzón de <b>Benteveo Studio</b> 😉
+            </label>
+            
+            <input 
+              type="submit" 
+              value="Enviar"
               class="bg-blue-500 font-bold tracking-wider text-white rounded-md py-2 px-8 cursor-pointer hover:bg-blue-600 transition-colors">
           </form>
   
@@ -76,23 +96,23 @@
             <p class="mb-4">+54 351-744-9100</p>
   
             <span class="font-bold">Correo electrónico</span>
-            <p>benteveoair@gmail.com</p>
+            <p>benteveostudio@gmail.com</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="questions" class="section-base bg-dark-black text-neutral-light">
-      <div class="max-w-5xl w-full px-8">
-        <h2 class="text-4xl font-bold mb-10 text-center">Preguntas frecuentes</h2>
+      <div class="w-5xl px-12">
+        <h2 class="text-5xl font-bold mb-12 text-center">Preguntas frecuentes</h2>
 
         <div id="faq-list" class="space-y-3">
-          <div class="faq-item bg-[#0B0F29] rounded-lg overflow-hidden transition-all">
-            <button
-              class="faq-question flex justify-between items-center w-full px-6 py-4 text-left text-xl font-medium hover:bg-[#1B275E] transition-colors">
+          <div class="faq-item bg-soft-black rounded-lg overflow-hidden transition-all">
+            <button class="faq-question flex justify-between items-center w-full px-6 py-4 text-left text-xl font-medium hover:bg-[#1B275E] transition-colors">
               <span>¿Tienen soporte online o multijugador?</span>
               <span class="w-4 h-4 bg-gray-400 rounded-sm transition-transform duration-300"></span>
             </button>
+
             <div class="faq-answer max-h-0 overflow-hidden px-6 bg-white text-gray-900 text-base transition-all duration-500 ease-in-out">
               <p class="py-4">
                 Actualmente nuestros juegos no cuentan con soporte online ni multijugador, pero estamos trabajando
@@ -101,12 +121,12 @@
             </div>
           </div>
 
-          <div class="faq-item bg-[#0B0F29] rounded-lg overflow-hidden transition-all">
-            <button
-              class="faq-question flex justify-between items-center w-full px-6 py-4 text-left text-xl font-medium hover:bg-[#1B275E] transition-colors">
+          <div class="faq-item bg-soft-black rounded-lg overflow-hidden transition-all">
+            <button class="faq-question flex justify-between items-center w-full px-6 py-4 text-left text-xl font-medium hover:bg-[#1B275E] transition-colors">
               <span>¿En qué plataformas estarán disponibles los juegos?</span>
               <span class="w-4 h-4 bg-gray-400 rounded-sm transition-transform duration-300"></span>
             </button>
+
             <div class="faq-answer max-h-0 overflow-hidden px-6 bg-white text-gray-900 text-base transition-all duration-500 ease-in-out">
               <p class="py-4">
                 Nuestros juegos estarán disponibles en Windows, y próximamente planeamos llevarlos a Android y consolas.
@@ -114,25 +134,25 @@
             </div>
           </div>
 
-          <div class="faq-item bg-[#0B0F29] rounded-lg overflow-hidden transition-all">
-            <button
-              class="faq-question flex justify-between items-center w-full px-6 py-4 text-left text-xl font-medium hover:bg-[#1B275E] transition-colors">
+          <div class="faq-item bg-soft-black rounded-lg overflow-hidden transition-all">
+            <button class="faq-question flex justify-between items-center w-full px-6 py-4 text-left text-xl font-medium hover:bg-[#1B275E] transition-colors">
               <span>¿Cómo puedo comunicarme con el soporte técnico?</span>
               <span class="w-4 h-4 bg-gray-400 rounded-sm transition-transform duration-300"></span>
             </button>
+
             <div class="faq-answer max-h-0 overflow-hidden px-6 bg-white text-gray-900 text-base transition-all duration-500 ease-in-out">
               <p class="py-4">
-                Podés escribirnos a <b>benteveoair@gmail.com</b> o completar el formulario de contacto. Te responderemos lo antes posible.
+                Podés escribirnos a <b>benteveostudio@gmail.com</b> o completar el formulario de contacto. Te responderemos lo antes posible.
               </p>
             </div>
-          </div>
+          </div>  
         </div>
       </div>
     </section>
 
   </main>
   
-  <footer class="bg-dark-black w-full text-white p-8 grid place-content-center">
+  <footer class="bg-dark-black w-full text-white p-8 grid place-content-center border-t border-border-base">
     <div class="max-w-7xl w-full grid gap-8 px-8">
       <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
         <div>

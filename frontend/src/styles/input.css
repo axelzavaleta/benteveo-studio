@@ -67,7 +67,39 @@
   .lang-separator {
     @apply text-base text-gray-700;
   }
-  
+
+  /* FOOTER */
+
+  .footer {
+    @apply bg-dark-black w-full text-white p-8 grid place-content-center border-t border-border-base;
+  }
+  .footer-container {
+    @apply max-w-7xl w-full grid gap-8 px-8;
+  }
+
+  .footer-grid {
+    @apply grid grid-cols-4 gap-8 text-sm text-gray-300;
+  }
+  .footer-grid .title {
+    @apply text-xl font-bold mb-3;
+  }
+  .footer-grid .links {
+    @apply grid gap-2;
+  }
+  .footer-grid .link {
+    @apply hover:text-primary transition-colors;
+  }
+  .footer-grid .link-contact {
+    @apply flex items-center gap-2;
+  }
+
+  .footer-copyright {
+    @apply text-xs flex items-center justify-between mt-4;
+  }
+  .footer-social-media {
+    @apply flex items-center gap-8 tracking-widest;
+  }
+
   /* SECTION: user-journey */
 
   .step-card {

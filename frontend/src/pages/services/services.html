@@ -10,7 +10,7 @@
 </head>
 
 <body class="text-neutral-light font-manrope flex flex-col min-h-svh">
-  <header class="header">
+  <header class="header fixed">
     <div class="header__navigation">
       <div class="flex items-center gap-2">
         <a href="/index.html" class="cursor-pointer">
@@ -24,7 +24,7 @@
         <ul class="flex gap-6">
           <li><a class="redir-link" href="/index.html">Inicio</a></li>
           <li><a class="redir-link" href="/src/pages/catalog/catalog.html">Catalogo</a></li>
-          <li><a class="redir-link" href="/src/pages/services/services.html">Servicios</a></li>
+          <li><a class="redir-link current-page" href="#services">Servicios</a></li>
           <li><a class="redir-link" href="/src/pages/about-us/about-us.html">Nosotros</a></li>
           <li><a class="redir-link" href="/src/pages/help/help.html">Asistencia</a></li>
         </ul>
@@ -49,166 +49,99 @@
     </div>
   </header>
 
-  <main class="flex-1 bg-soft-black grid place-content-center">
-    <section class="game-container max-w-7xl p-8 grid gap-16">
-      <div class="game-presentation bg-dark-black p-16 border border-border-base flex gap-8">
-        <div>
-          <img id="game-img" src="/src/assets/mockupIncognita_Game.png" alt="game-img">
-        </div>
+  <main class="bg-soft-black flex-1">
+    <section id="hero" class="grid place-items-center h-svh max-h-[700px]">
+      <div class="max-w-6xl w-full px-8 text-center grid place-content-center gap-4">
+        <h1 class="text-7xl font-semibold uppercase">Servicios de desarrollo  de videojuegos</h1>
+        
+        <p class="max-w-3xl mx-auto mb-4">
+          En Benteveo Studio no solo nos enfocamos en nuestros videojuegos, si no tambien en ayudar a otros en el desarrollo de los suyos.
+        </p>
 
-        <div class="flex flex-col justify-between">
-          <div>
-            <h2 id="game-title" class="text-4xl font-semibold mb-4">Nombre del videojuego</h2>
-            
-            <div class="tags">
-              <span class="tag-cart game-tag">Educativo</span>
-              <span class="tag-cart game-tag">Puzzle</span>
-              <span class="tag-cart game-tag">Terror</span>
-            </div>
-          </div>
-
-          <div>
-            <p class="text-3xl font-semibold mb-4">ARS $<span id="game-price">20000</span></p>
-  
-            <button id="add-to-cart" class="button-base bg-primary text-lg text-black hover:bg-primary-bold">Agregar al carrito</button>
-          </div>
-        </div>
+        <a href="#services" class="button-base w-fit m-auto">Contactanos</a>
       </div>
+    </section>
 
-      <div class="game-details bg-dark-black text-gray-400 p-16 border border-border-base flex gap-16">
-        <div class="description basis-1/2">
-          <h2 class="text-3xl font-semibold mb-6 text-primary">Descripción</h2>
+    <section id="services" class="section-base bg-dark-black">
+      <div class="w-7xl px-8">
+        <div class="flex gap-16">
+          <div class="services-intro w-fit">
+            <h2 class="text-7xl font-semibold capitalize mb-8">Nuestros servicios</h2>
+  
+            <p>
+              Desarrollamos videojuegos de alta calidad para todas las plataformas. Sabemos que cada proyecto tiene desafios unicos, asi que nos adaptamos a tu visión y presupuesto. Ya sea que necesites un juego movil, PC, consola o un multiplayer competitivo, nuestro equipo esta listo para hacerlo posible.
+            </p>
+          </div>
+    
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-card-intro">
+                <img src="/src/assets/mobile.svg" alt="" class="service-card-icon">
 
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, repudiandae? Dicta autem consectetur repudiandae libero, laudantium doloremque voluptas itaque enim quasi omnis velit, blanditiis nesciunt soluta vitae aut sint dignissimos!
-          </p>
-        </div>
-
-        <div class="basis-1/2">
-          <h2 class="text-3xl font-semibold mb-6 text-primary">Detalles</h2>
-
-          <div class="details">
-            <div class="detail-item flex justify-between">
-              <span class="detail-item-title">Idioma</span>
-
-              <ul class="detail-item-list text-white font-medium flex gap-2">
-                <li>Español</li>
-                <li>Ingles</li>
-              </ul>
+                <h3 class="service-card-title">Móviles</h3>
+              </div>
+              
+              <p class="service-card-desc">Desarrollo completo para iOS y Android con optimización para plataformas móviles</p>
             </div>
+    
+            <div class="service-card">
+              <div class="service-card-intro">
+                <img src="/src/assets/desktop.svg" alt="" class="service-card-icon">
 
-            <hr class="my-3 text-accent">
-
-            <div class="detail-item flex justify-between">
-              <span class="detail-item-title">Desarrollador</span>
-
-              <ul class="detail-item-list text-white font-medium flex gap-2">
-                <li>Benteveo Studio</li>
-              </ul>
+                <h3 class="service-card-title">PC</h3>
+              </div>
+              
+              <p>Desarrollo de títulos para PC con soporte en Windows y MacOS</p>
             </div>
+            
+            <div class="service-card">
+              <div class="service-card-intro">
+                <img src="/src/assets/joystick.svg" alt="" class="service-card-icon">
 
-            <hr class="my-3 text-accent">
-
-            <div class="detail-item flex justify-between">
-              <span class="detail-item-title">Almacenamiento</span>
-
-              <ul class="detail-item-list text-white font-medium flex gap-2">
-                <li>1GB</li>
-              </ul>
+                <h3 class="service-card-title">Consola</h3>
+              </div>
+  
+              <p>Creamos experiencias para PlayStation, Xbox y Nintendo Switch</p>
             </div>
+            
+            <div class="service-card">
+              <div class="service-card-intro">
+                <img src="/src/assets/cross-platform.svg" alt="" class="service-card-icon">
 
-            <hr class="my-3 text-accent">
-
-            <div class="detail-item flex justify-between">
-              <span class="detail-item-title">Fecha de lanzamiento</span>
-
-              <ul class="detail-item-list text-white font-medium flex gap-2">
-                <li>1 de enero de 2025</li>
-              </ul>
-            </div>
-
-            <hr class="my-3 text-accent">
-
-            <div class="detail-item flex justify-between">
-              <span class="detail-item-title">Se puede jugar en</span>
-
-              <ul class="detail-item-list text-white font-medium flex gap-2">
-                <li>PC</li>
-                <li>PS5</li>
-                <li>Nintendo Switch</li>
-              </ul>
+                <h3 class="service-card-title">Multiplataforma</h3>
+              </div>
+              
+              <p>Desarrollo multiplataforma para alcanzar la máxima audiencia con una sola versión optimizada</p>
             </div>
           </div>
         </div>
       </div>
-      
-      <div class="game-reviews bg-dark-black p-16 border border-border-base">
-        <div class="max-w-7xl gap-8 flex">
-          <article class="review-card">
-            <header class="bg-dark-black p-4 border-b border-border-base">
-              <div class="flex">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-              </div>
-              
-              <span>Nombre del videojuego</span>
-            </header>
-            
-            <div class="px-4 py-8">
-              <span class="text-sm text-gray-400">Fecha de publicacion</span>
-  
-              <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
-  
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, fugiat.</p>
-            </div>
-          </article>
-  
-          <article class="review-card">
-            <header class="bg-dark-black p-4 border-b border-border-base">
-              <div class="flex">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-              </div>
-              
-              <span>Nombre del videojuego</span>
-            </header>
-            
-            <div class="px-4 py-8">
-              <span class="text-sm text-gray-400">Fecha de publicacion</span>
-  
-              <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
-  
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, fugiat.</p>
-            </div>
-          </article>
-  
-          <article class="review-card">
-            <header class="bg-dark-black p-4 border-b border-border-base">
-              <div class="flex">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-                <img src="/src/assets/star.svg" alt="star-icon">
-              </div>
-              
-              <span>Nombre del videojuego</span>
-            </header>
-            
-            <div class="px-4 py-8">
-              <span class="text-sm text-gray-400">Fecha de publicacion</span>
-  
-              <h2 class="text-xl font-bold mb-3">Nombre del usuario</h2>
-  
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, fugiat.</p>
-            </div>
-          </article>
+    </section>
+
+    <section class="platforms-worked grid place-content-center py-16 bg-dark-black text-center border-y border-border-base">
+      <div class="w-3xl px-8">
+        <h3 class="text-3xl font-semibold mb-8">Trabajamos con plataformas como:</h3>
+        
+        <div class="platform-icons flex justify-between">
+          <div class="platform-item">
+            <img src="/src/assets/playstation-icon.svg"></img>
+            <span>Playstation</span>
+          </div>
+    
+          <div class="platform-item">
+            <img src="/src/assets/xbox-icon.svg"></img>
+            <span>Xbox</span>
+          </div>
+          
+          <div class="platform-item">
+            <img src="/src/assets/nintendo-icon.svg"></img>
+            <span>Nintendo</span>
+          </div>
+          
+          <div class="platform-item">
+            <img src="/src/assets/steam-icon.svg"></img>
+            <span>Steam</span>
+          </div>
         </div>
       </div>
     </section>
@@ -378,7 +311,6 @@
   </dialog>
 
   <script src="/src/pages/scripts/auth.js"></script>
-  <script src="/src/pages/games/game.js"></script>
 </body>
 
 </html>

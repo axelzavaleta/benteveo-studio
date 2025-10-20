@@ -145,7 +145,7 @@
   }
 
   .submit-contact {
-    @apply bg-primary text-dark-black font-bold border border-primary mt-4 w-fit px-6 py-1.5 rounded-full cursor-pointer hover:bg-primary-bold;
+    @apply bg-primary text-dark-black font-bold border border-primary mt-4 w-fit px-6 py-2 rounded-full cursor-pointer hover:bg-primary-bold transition-colors;
   }
 
   /* MODALS */
@@ -287,10 +287,42 @@
     @apply w-16;
   }
 
+  .platforms-worked {
+    @apply grid place-content-center py-16 bg-dark-black text-center border-y border-border-base;
+  }
   .platform-item {
     @apply grid place-items-center gap-2;
   }
   .platform-item img {
     @apply w-10;
+  }
+
+  .pricing-grid {
+    @apply grid grid-cols-3 gap-8 place-items-center;
+  }
+  .price-card {
+    @apply h-full bg-dark-black p-8 border border-border-base grid gap-8 shadow-xl hover:border-primary-bold hover:scale-102 transition-all;
+  }
+  .price-card.recommended {
+    @apply relative h-[110%] border-x-border-base border-b-border-base border-primary hover:border-primary-bold;
+  }
+  .price-card .title {
+    @apply text-2xl text-primary font-semibold mb-2;
+  }
+  .price-card .price {
+    @apply text-5xl font-bold;
+  }
+  .price-card .features {
+    @apply grid gap-4 text-sm text-gray-300;
+  }
+  .price-card .features .feature {
+    @apply flex m-auto gap-2;
+  }
+  .price-feature-icon {
+    @apply w-4;
+  }
+
+  .price-card .tag {
+    @apply bg-primary text-dark-black font-bold px-8 tracking-wide absolute -top-4 left-1/2 -translate-x-1/2;
   }
 }

@@ -63,10 +63,10 @@
     </section>
 
     <section id="services" class="section-base bg-dark-black">
-      <div class="w-7xl px-8">
+      <div class="max-w-7xl w-full px-8">
         <div class="flex gap-16">
           <div class="services-intro w-fit">
-            <h2 class="text-7xl font-semibold capitalize mb-8">Nuestros servicios</h2>
+            <h2 class="text-7xl font-semibold capitalize mb-8 tracking-wide">Nuestros servicios</h2>
   
             <p>
               Desarrollamos videojuegos de alta calidad para todas las plataformas. Sabemos que cada proyecto tiene desafios unicos, asi que nos adaptamos a tu visión y presupuesto. Ya sea que necesites un juego movil, PC, consola o un multiplayer competitivo, nuestro equipo esta listo para hacerlo posible.
@@ -118,7 +118,7 @@
       </div>
     </section>
 
-    <section class="platforms-worked grid place-content-center py-16 bg-dark-black text-center border-y border-border-base">
+    <section id="platforms-worked" class="platforms-worked">
       <div class="w-3xl px-8">
         <h3 class="text-3xl font-semibold mb-8">Trabajamos con plataformas como:</h3>
         
@@ -142,6 +142,115 @@
             <img src="/src/assets/steam-icon.svg"></img>
             <span>Steam</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing-services" class="section-base">
+      <div class="max-w-7xl w-full text-center px-8">
+        <h1 class="text-7xl font-semibold mb-16">Precios</h1>
+
+        <div class="pricing-grid">
+          <div class="price-card">
+            <div>
+              <h3 class="title">Casual</h3>
+  
+              <p class="description">
+                Juegos simples y con mecánicas básicas.
+              </p>
+            </div>
+            
+            <div class="price">$5.000</div>
+            
+            <ul class="features">
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Plataforma Única:</li>
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Mecánicas Básicas:</li>
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Arte 2D Sencillo:</li>
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Soporte Post-Lanzamiento Básico</li>
+            </ul>
+          </div>
+  
+          <div class="price-card recommended">
+            <div class="tag">RECOMENDADO</div>
+
+            <div>
+              <h3 class="title">Estándar</h3>
+              
+              <p class="description">
+                Juegos con sistemas avanzados y multiplataforma.
+              </p>
+            </div>
+            
+            <div class="price">$15.000</div>
+            
+            <ul class="features">
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Multiplataforma Básico</li>
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Sistemas Avanzados</li>
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Arte 2D Detallado o 3D</li>
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Gestión de Proyecto Dedicada</li>
+            </ul>
+          </div>
+  
+          <div class="price-card">
+            <div>
+              <h3 class="title">AAA</h3>
+    
+              <p class="description">
+                Proyectos ambiciosos con gráficos y características avanzadas.
+              </p>
+            </div>
+            
+            <div class="price">$50.000+</div>
+            
+            <ul class="features">
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Multiplataforma Completa</li>
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Motor Gráfico Avanzado</li>
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Testing y QA Exhaustivo</li>
+              <li class="feature"><img src="/src/assets/check-icon.svg" class="price-feature-icon"></img>Soporte y Mantenimiento a Largo Plazo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-base bg-dark-black">
+      <div class="max-w-7xl w-full grid grid-cols-3 px-8">
+        <form class="grid gap-4 bg-neutral-light text-dark-black col-span-2 p-16 text-sm">
+          <h1 class="text-5xl font-medium capitalize mb-4">Tu proyecto</h1>
+
+          <div class="flex gap-4">
+            <div class="grid gap-1 w-full">
+              <label for="fullname">Nombre</label>
+              <input type="text" name="fullname" id="fullname" class="field-contact">
+            </div>
+            
+            <div class="grid gap-1 w-full">
+              <label for="email">Correo electronico</label>
+              <input type="email" name="email" id="email" class="field-contact">
+            </div>
+          </div>
+
+          <div class="grid gap-1 w-full">
+            <label for="services">¿Qué servicio necesitas?</label>
+
+            <select name="services-list" id="services" class="border border-black/20 p-2">
+              <option value="">---Seleccione un plan---</option>
+              <option value="casual">Casual</option>
+              <option value="standard">Estandar</option>
+              <option value="aaa">AAA</option>
+            </select>
+          </div>
+
+          <div class="grid gap-1">
+            <label for="message">Describe tu visión</label>
+            <textarea name="message" id="message" rows="4" class="field-contact min-h-24 max-h-24"></textarea>
+          </div>
+
+          <input type="submit" value="Enviar la solicitud" class="submit-contact">
+        </form>
+
+        <div class="bg-primary">
+          <img src="" alt="">
         </div>
       </div>
     </section>

@@ -89,45 +89,46 @@
     </div>
   </main>
 
-  <footer class="bg-primary-txt w-full text-white p-8 grid place-content-center">
-    <div class="max-w-7xl w-full grid gap-8 px-8">
-      <div class="grid grid-cols-4 gap-8 text-sm text-gray-300">
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
         <div>
-          <h1 class="text-xl font-bold mb-2">Benteveo Studio  </h1>
+          <h1 class="title">Benteveo Studio</h1>
           <p>
             Te invitamos a embarcarte en una aventura inolvidable donde la educación y la diversión se encuentran.
           </p>
         </div>
 
         <div>
-          <h1 class="text-xl font-bold mb-3">Explorar</h1>
+          <h1 class="title">Explorar</h1>
 
-          <ul class="grid gap-2">
-            <li><a href="#" class="hover:text-primary transition-colors">Catalogo</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">Servicios</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">Asistencia</a></li>
+          <ul class="links">
+            <li><a href="/src/pages/catalog/catalog.html" class="link">Catalogo</a></li>
+            <li><a href="/src/pages/services/services.html" class="link">Servicios</a></li>
+            <li><a href="/src/pages/help/help.html" class="link">Asistencia</a></li>
           </ul>
         </div>
 
         <div>
-          <h1 class="text-xl font-bold mb-3">Legal</h1>
+          <h1 class="title">Legal</h1>
 
-          <ul class="grid gap-2">
-            <li><a href="#" class="hover:text-primary transition-colors">Política y privacidad</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">Términos y condiciones</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">Soporte técnico</a></li>
+          <ul class="links">
+            <li><a href="#" class="link">Política y privacidad</a></li>
+            <li><a href="#" class="link">Términos y condiciones</a></li>
+            <li><a href="#" class="link">Soporte técnico</a></li>
           </ul>
         </div>
 
         <div>
-          <h1 class="text-xl font-bold mb-3">Contacto</h1>
+          <h1 class="title">Contacto</h1>
 
-          <ul class="grid gap-2">
-            <li class="flex items-center gap-2">
+          <ul class="links">
+            <li class="link-contact">
               <img src="/src/assets/phone.svg" alt="phone-icon">
               <a href="#">+54 351-999-999</a>
             </li>
-            <li class="flex items-center gap-2">
+
+            <li class="link-contact">
               <img src="/src/assets/mail.svg" alt="mail-icon">
               <a href="#">benteveostudio@gmail.com</a>
             </li>
@@ -135,16 +136,30 @@
         </div>
       </div>
 
-      <div class="text-xs flex items-center justify-between mt-4">
+      <div class="footer-copyright">
         <span>
           ©2025 Benteveo Studio. Todos los derechos reservados.
         </span>
 
-        <nav class="social-media">
-          <ul class="flex items-center gap-8 tracking-widest">
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
+        <nav class="">
+          <ul class="footer-social-media">
+            <li>
+              <a href="https://www.instagram.com/benteveostudio" target="_blank">
+                <img src="/src/assets/instagram-icon.svg" alt="" class="w-5">
+              </a>
+            </li>
+            
+            <li>
+              <a href="https://x.com/BenteveoStudio" target="_blank">
+                <img src="/src/assets/twitter-icon.svg" alt="" class="w-5">
+              </a>
+            </li>
+            
+            <li>
+              <a href="#">
+                <img src="/src/assets/facebook-icon.svg" alt="" class="w-5">
+              </a>
+            </li>
           </ul>
         </nav>
       </div>

@@ -54,21 +54,21 @@
       <div id="cart-products" class="h-fit w-full grid gap-8">
       </div>
 
-      <section class="cart-summary min-w-[375px] h-fit p-6 text-neutral-light bg-dark-black">
+      <section id="cart-summary" class="min-w-[375px] h-fit p-6 text-neutral-light bg-dark-black">
         <h1 class="text-xl font-bold mb-6">Resumen de la compra</h1>
         
         <div class="flex justify-between">
-          <p>Subtotal:</p>
+          <p class="text-gray-300">Subtotal:</p>
           <p>ARS
-            <span id="subtotal-price">$20.000</span>
+            $<span id="subtotal-price"></span>
           </p>
         </div>
 
         <div class="flex justify-between">
-          <p>Impuesto:</p>
+          <p class="text-gray-300">Impuesto:</p>
           
-          <p>ARS
-            <span id="tax-value">$5000</span>
+          <p id="tax-container">ARS
+            $<span id="tax-value">0</span>
           </p>
         </div>
 
@@ -76,14 +76,16 @@
 
         <div class="flex justify-between text-lg font-semibold">
           <p>Total (<span id="products-quantity">1</span>):</p>
+
           <p class="text-primary-bold">ARS
-            <span id="total-price">$25.000</span>
+            $<span id="total-price"></span>
           </p>
         </div>
         
         <footer class="cart-actions grid gap-2 mt-8">
           <button class="button-base border-primary bg-primary text-black hover:bg-primary-bold">Procesar pago</button>
-          <button class="button-base bg-soft-black hover:bg-black">Vaciar carrito</button>
+
+          <button id="empty-cart" onclick="emptyCart()" class="button-base bg-soft-black hover:bg-black">Vaciar carrito</button>
         </footer>
       </section>
     </div>

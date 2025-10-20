@@ -1,12 +1,39 @@
 const cartProducts = document.getElementById("cart-products");
-
-// localStorage.clear()
+const cartSummary = document.getElementById("cart-summary");
+const subtotalElement = document.getElementById("subtotal-price");
+const productsQuantityElement = document.getElementById("products-quantity");
+const taxValueElement = document.getElementById("tax-value");
+const totalElement = document.getElementById("total-price");
 
 const getDataProducts = () => {
   const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
 
   return cartData;
 }
+
+const updatePurchaseSummary = (data) => {
+  const { subtotal, taxValue, productsQuantity } = data;
+  subtotalElement.textContent = subtotal;
+  
+  if (taxValue) {
+    const totalPrice = subtotal + taxValue
+
+    totalElement.textContent = totalPrice;
+    return;
+  }
+  
+  productsQuantityElement.textContent = productsQuantity;
+  totalElement.textContent = subtotal;
+}
+
+const emptyCart = () => {
+  localStorage.removeItem("cart");
+  
+  location.reload();
+}
+
+let subtotal = 0;
+let productsQuantity = 0;
 
 const createProductCard = (product) => {
   const productCard = document.createElement("article");
@@ -66,7 +93,11 @@ const createProductCard = (product) => {
 
   productCard.append(imgContainer, productCardInfo);
 
-  cartProducts.append(productCard) // insertando el nuevo producto a la lista
+  cartProducts.append(productCard)
+
+  subtotal += product.gamePrice
+  productsQuantity++
+  updatePurchaseSummary({ subtotal, productsQuantity })
 }
 
 const showProducts = () => {
@@ -74,13 +105,15 @@ const showProducts = () => {
 
   if (!cart.length > 0) {
     const messageHeading = document.createElement("h1");
-    messageHeading.textContent = "No existen productos en el carrito";
+    messageHeading.textContent = "Tu carrito está vacío";
     messageHeading.classList.add("message-empty-card");
 
     const linkElement = document.createElement("a");
     linkElement.textContent = "Ir al catalogo";
-    linkElement.classList.add("link-empty-cart");
+    linkElement.classList.add("link-empty-cart"); 
     linkElement.href = "/src/pages/catalog/catalog.html";
+
+    cartSummary.classList.add("hidden");
 
     cartProducts.append(messageHeading, linkElement);
 
@@ -91,6 +124,5 @@ const showProducts = () => {
     createProductCard(game);
   });
 }
-
 
 showProducts()

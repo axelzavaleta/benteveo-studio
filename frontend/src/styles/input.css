@@ -218,7 +218,7 @@
   }
 
   .link-empty-cart {
-    @apply  w-fit m-auto underline cursor-pointer text-primary;
+    @apply  text-primary/85 w-fit m-auto underline cursor-pointer hover:text-primary-bold transition-all;
   }
 
   .product-img-container {

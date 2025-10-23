@@ -1,8 +1,6 @@
 const gameContainer = document.querySelector(".game-presentation");
 const addToCartBtn = document.getElementById("add-to-cart");
 
-// localStorage.clear()
-
 const getGameData = (container) => {
   const tags = container.querySelectorAll(".game-tag");
 

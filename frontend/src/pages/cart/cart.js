@@ -11,32 +11,73 @@ const getDataProducts = () => {
   return cartData;
 }
 
-const updatePurchaseSummary = (data) => {
-  const { subtotal, taxValue, productsQuantity } = data;
-  subtotalElement.textContent = subtotal;
-  
-  if (taxValue) {
-    const totalPrice = subtotal + taxValue
 
+const calculateSummary = (cart) => {
+  const subTotal = cart.reduce((accumulator, currentProduct) => accumulator += currentProduct.gamePrice, 0)
+  const productsQuantity = cart.length;
+  const taxValue = subTotal * (21 / 100); // Calculo del IVA. Solo para tener algo como impuesto xd
+  const totalPrice = subTotal + taxValue;
+
+  const summary = {
+    subTotal, 
+    taxValue,
+    productsQuantity, 
+    totalPrice, 
+  }
+  
+  return summary;
+}
+
+const updatePurchaseSummary = (summary) => {
+  const { subTotal, taxValue, productsQuantity, totalPrice } = summary;
+
+  subtotalElement.textContent = subTotal;
+  productsQuantityElement.textContent = productsQuantity;
+
+  if (taxValue) {
+    taxValueElement.textContent = taxValue;
     totalElement.textContent = totalPrice;
     return;
   }
-  
-  productsQuantityElement.textContent = productsQuantity;
-  totalElement.textContent = subtotal;
+
+  totalElement.textContent = totalPrice;
+  taxValueElement.parentElement.textContent = "-";
 }
 
-const emptyCart = () => {
+
+const clearCart = () => {
   localStorage.removeItem("cart");
-  
-  location.reload();
+  renderCart();
 }
 
-let subtotal = 0;
-let productsQuantity = 0;
+const showEmptyCart = () => {
+  cartProducts.innerHTML = "";
+  cartSummary.classList.add("hidden");
 
-const createProductCard = (product) => {
+  const messageHeading = document.createElement("h1");
+  messageHeading.textContent = "Tu carrito está vacío";
+  messageHeading.classList.add("message-empty-card");
+
+  const linkElement = document.createElement("a");
+  linkElement.textContent = "Ir al catalogo";
+  linkElement.classList.add("link-empty-cart"); 
+  linkElement.href = "/src/pages/catalog/catalog.html";
+
+  cartProducts.append(messageHeading, linkElement);
+}
+
+
+const removeProduct = (productId) => {
+  const cart = getDataProducts();
+  const updatedCart = cart.filter((product, index) => index !== productId);
+
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+  renderCart();
+}
+
+const createProductCard = (product, productId) => {
   const productCard = document.createElement("article");
+  productCard.setAttribute("data-product-id", productId);
   productCard.classList.add("product-card");
 
   const imgContainer = document.createElement("div");
@@ -44,7 +85,7 @@ const createProductCard = (product) => {
 
   const productImg = document.createElement("img");
   productImg.classList.add("product-img");
-  productImg.src = "/src/assets/game.avif"
+  productImg.src = product.gameImg || "/src/assets/game.avif";
 
   imgContainer.appendChild(productImg) // bloque 1: imagen
 
@@ -78,6 +119,10 @@ const createProductCard = (product) => {
   const removeBtnContainer = document.createElement("button");
   removeBtnContainer.classList.add("remove-product")
 
+  removeBtnContainer.addEventListener("click", () => {
+    removeProduct(productId);
+  });
+
   const removeImg = document.createElement("img");
   removeImg.src = "/src/assets/trash.svg";
   removeImg.classList.add("w-5");
@@ -93,36 +138,28 @@ const createProductCard = (product) => {
 
   productCard.append(imgContainer, productCardInfo);
 
-  cartProducts.append(productCard)
-
-  subtotal += product.gamePrice
-  productsQuantity++
-  updatePurchaseSummary({ subtotal, productsQuantity })
+  return productCard;
 }
 
-const showProducts = () => {
+const renderCart = () => {
   const cart = getDataProducts();
 
-  if (!cart.length > 0) {
-    const messageHeading = document.createElement("h1");
-    messageHeading.textContent = "Tu carrito está vacío";
-    messageHeading.classList.add("message-empty-card");
-
-    const linkElement = document.createElement("a");
-    linkElement.textContent = "Ir al catalogo";
-    linkElement.classList.add("link-empty-cart"); 
-    linkElement.href = "/src/pages/catalog/catalog.html";
-
-    cartSummary.classList.add("hidden");
-
-    cartProducts.append(messageHeading, linkElement);
-
+  if (cart.length === 0) {
+    showEmptyCart();
     return;
   }
 
-  cart.forEach(game => {
-    createProductCard(game);
+  cartProducts.innerHTML = "";
+  cartSummary.classList.remove("hidden");
+
+  cart.forEach((product, ind) => {
+    const productCard = createProductCard(product, ind);
+    cartProducts.append(productCard);
   });
+
+  const summary = calculateSummary(cart);
+  updatePurchaseSummary(summary);
 }
 
-showProducts()
+document.getElementById("clear-cart").addEventListener("click", clearCart);
+renderCart();

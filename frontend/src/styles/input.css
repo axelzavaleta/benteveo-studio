@@ -3,7 +3,7 @@
 
 @theme {
   --color-primary-txt: #040118;
-  --color-soft-black: #0E1636; /* background-color del fondo principal */
+  --color-soft-black: #080E28; /* background-color del fondo principal */
   --color-dark-black: #040116; /* background-color del header */
   --color-primary: #e6cc3d;
   --color-primary-bold: #e8bb1a;
@@ -323,7 +323,7 @@
     @apply grid place-content-center py-16 bg-dark-black text-center border-y border-border-base;
   }
   .platform-item {
-    @apply grid place-items-center gap-2;
+    @apply grid place-items-center gap-2 cursor-pointer hover:scale-105 transition-all;
   }
   .platform-item img {
     @apply w-10;

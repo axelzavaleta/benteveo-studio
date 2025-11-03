@@ -1,7 +1,8 @@
+import "reflect-metadata"
 import { DataSource } from "typeorm";
-import { UserRole } from "../entities/userRole.entity.ts";
-import { UserStatus } from "../entities/userStatus.entity.ts";
-import { User } from "../entities/user.entity.ts";
+import { User } from "../entities/user.entity";
+import { UserRole } from "../entities/userRole.entity";
+import { UserStatus } from "../entities/userStatus.entity";
 import "dotenv/config";
 
 export const AppDataSource = new DataSource({
@@ -12,6 +13,6 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_DATABASE || "benteveo_studio_db",
   password: process.env.DB_PASSWORD || "",
   logging: true,
-  synchronize: false,
+  synchronize: true,
   entities: [User, UserRole, UserStatus]
 })

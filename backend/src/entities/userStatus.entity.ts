@@ -5,6 +5,6 @@ export class UserStatus {
   @PrimaryGeneratedColumn({ name: "estado_usuario_id" })
   userStatusId!: number 
 
-  @Column({ name: "estado_usuario_nombre", unique: true, nullable: false })
+  @Column({ name: "estado_usuario_nombre", type: "varchar", length: 50, unique: true, nullable: false })
   userStatusName!: string 
 }

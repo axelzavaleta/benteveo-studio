@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn, ManyToOne, JoinColumn } from "typeorm";
-import { UserStatus } from "./userStatus.entity.ts";
-import { UserRole } from "./userRole.entity.ts";
+import { UserStatus } from "./userStatus.entity";
+import { UserRole } from "./userRole.entity";
+import "reflect-metadata"
 
 @Entity("usuario")
 export class User {
@@ -31,10 +32,10 @@ export class User {
   @UpdateDateColumn({ name: "usuario_actualizado_fecha", type: "timestamp with time zone" })
   userUpdatedAt!: Date
 
-  @Column({ name: "estado_usuario_id", nullable: false })
+  @Column({ name: "estado_usuario_id", type: "int", nullable: true, default: 1})
   userStatusId!: number
 
-  @Column({ name: "rol_usuario_id", nullable: false })
+  @Column({ name: "rol_usuario_id", type: "int", nullable: true, default: 1 })
   userRoleId!: number
 
   @ManyToOne(() => UserStatus)

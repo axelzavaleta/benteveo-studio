@@ -19,6 +19,9 @@
   --font-quicksand: "quicksand", sans-serif;
   --font-montserrat: "montserrat", sans-serif;
   --container-8xl: 1440px;
+
+  /* ADMIN */
+  --color-card-bg: #0f142e;
 }
 
 @layer {
@@ -373,5 +376,27 @@
 
   .price-card .tag {
     @apply bg-primary text-dark-black font-bold px-8 tracking-wide absolute -top-4 left-1/2 -translate-x-1/2;
+  }
+
+  /* PAGE: ADMIN */
+  .nav-item {
+    @apply flex items-center px-4 py-4 rounded-lg text-[#a0aec0] transition-colors no-underline mb-1 cursor-pointer hover:bg-[#E6CC3D1A] hover:text-[#e6cc3d];
+  }
+  .nav-item.active {
+    @apply bg-[#E6CC3D1A] text-[#e6cc3d];
+  }
+  .row {
+    @apply py-3 px-4;
+  }
+  .actions {
+    @apply rounded-full w-8 h-8 flex items-center justify-center cursor-pointer transition-colors;
+  }
+  .modal-field {
+    @apply w-full bg-[#1a2235] border border-[#2a344b] rounded-lg p-2.5 text-neutral-100 focus:ring-2 focus:ring-yellow-400 focus:outline-none;
+  }
+  dialog {
+    margin: auto;
+    border: none;
+    padding: 0;
   }
 }

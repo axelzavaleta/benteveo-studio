@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="/src/assets/logo-benteveo-studio.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benteveo Studio</title>
+  <link rel="stylesheet" href="/src/styles/input.css">
+</head>
+
+<body class="text-neutral-light font-manrope flex h-screen overflow-hidden">
+  <aside class="bg-dark-black w-64 flex-shrink-0 flex flex-col h-full border-r border-border-base">
+    <div class="p-6 flex flex-col gap-1 border-b border-border-base">
+
+      <div class="flex items-center gap-2">
+        <a href="/index.html" class="cursor-pointer">
+          <img src="/src/assets/benteveo-logo-dark.png" alt="bs-logo" class="max-w-8">
+        </a>
+
+        <a href="/index.html" class="text-xl font-semibold">Benteveo Studio</a>
+      </div>
+
+      <p class="text-xs text-gray-400">Panel de Administración</p>
+    </div>
+
+    <nav class="flex-1 p-4 overflow-y-auto">
+      <ul class="space-y-2">
+        <li>
+          <a href="#" class="nav-item active" data-tab="welcome">
+            <span>Inicio</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="nav-item" data-tab="games">
+            <span>Juegos</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="nav-item" data-tab="users">
+            <span>Usuarios</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="p-4 border-t border-border-base">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+          <span class="text-primary font-bold">A</span>
+        </div>
+
+        <div class="flex-1">
+          <p class="text-sm font-medium">Administrador</p>
+          <p class="text-xs text-gray-400">admin@benteveo.com</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 flex flex-col overflow-hidden bg-soft-black">
+    <header class="bg-dark-black border-b border-border-base p-4 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <img src="/src/assets/home.svg" alt="Inicio" class="w-6 invert">
+        <h2 class="text-xl font-semibold" id="pageTitle">Inicio</h2>
+      </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto p-6">
+
+      <!-- Inicio -->
+      <div id="welcome" class="tab-content active">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4">Bienvenido al Panel de Administración</h1>
+            <p class="text-xl text-gray-300">Gestiona los juegos y usuarios de forma sencilla</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 mb-12">
+            <div class="bg-card-bg rounded-xl p-6 border border-border-base hover:border-primary transition-colors cursor-pointer" onclick="switchToTab('games')">
+              <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                  <img src="/src/assets/command.svg" alt="mando" class="w-9">
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Gestionar Juegos</h3>
+                  <p class="text-gray-400">Agrega, edita o elimina juegos de tu catálogo</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-card-bg rounded-xl p-6 border border-border-base hover:border-primary transition-colors cursor-pointer" onclick="switchToTab('users')">
+              <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center">
+                  <img src="/src/assets/users.svg" alt="grupo de usuarios" class="w-9">
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Gestionar Usuarios</h3>
+                  <p class="text-gray-400">Administra los usuarios registrados en la plataforma</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-card-bg rounded-xl p-6 border border-border-base">
+            <h2 class="text-2xl font-bold mb-6">Resumen Rápido</h2>
+            <div class="grid grid-cols-3 gap-6">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <img src="/src/assets/command.svg" alt="mando" class="w-7">
+                </div>
+                <p class="text-3xl font-bold">-</p>
+                <p class="text-gray-400">Juegos Activos</p>
+              </div>
+
+              <div class="text-center">
+                <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <img src="/src/assets/users.svg" alt="grupo de usuarios" class="w-7">
+                </div>
+                <p class="text-3xl font-bold">-</p>
+                <p class="text-gray-400">Usuarios Registrados</p>
+              </div>
+
+              <div class="text-center">
+                <div class="w-16 h-16 bg-gray-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <img src="/src/assets/cart.svg" alt="mando" class="w-9">
+                </div>
+                <p class="text-3xl font-bold">-</p>
+                <p class="text-gray-400">Ventas Totales</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-card-bg rounded-xl p-6 border border-border-base">
+            <h2 class="text-2xl font-bold mb-4">¿Cómo empezar?</h2>
+            <div class="space-y-4">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span class="text-dark-black font-bold">1</span>
+                </div>
+                <div>
+                  <h3 class="font-semibold">Agregar un nuevo juego</h3>
+                  <p class="text-gray-400">Ve a la sección "Juegos" y haz click en "Nuevo Juego" para agregar un producto a tu catálogo.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span class="text-dark-black font-bold">2</span>
+                </div>
+                <div>
+                  <h3 class="font-semibold">Gestionar usuarios</h3>
+                  <p class="text-gray-400">En la sección "Usuarios" puedes ver todos los usuarios registrados y gestionar sus cuentas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juegos -->
+      <div id="games" class="tab-content hidden">
+        <div class="flex flex-row justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold mb-0">Gestión de Juegos</h2>
+          <div class="flex space-x-3">
+            <div class="relative">
+              <input type="text" placeholder="Buscar juegos..." class="bg-card-bg border border-border-base rounded-lg pl-10 pr-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              <img src="/src/assets/search.svg" alt="buscador" class="w-5 absolute left-3 top-3">
+            </div>
+            <button class="bg-primary text-dark-black font-semibold py-2 px-4 rounded-lg hover:bg-primary-bold transition-colors flex items-center" id="openProductModal">
+              <img src="/src/assets/plus.svg" alt="+" class="mr-2"> Nuevo Juego
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-card-bg rounded-xl border border-border-base overflow-hidden">
+          <div class="overflow-x-auto">
+            <table id="productosTabla" class="w-full text-sm">
+              <thead class="bg-dark-black">
+                <tr>
+                  <th class="row text-left">Imagen</th>
+                  <th class="row text-left">Nombre</th>
+                  <th class="row text-left">Tipo</th>
+                  <th class="row text-left">Precio</th>
+                  <th class="row text-left">Tamaño</th>
+                  <th class="row text-left">Estado</th>
+                  <th class="row text-left">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaBody" class="divide-y divide-border-base">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Usuarios -->
+      <div id="users" class="tab-content hidden">
+        <div class="flex flex-row justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold mb-0">Gestión de Usuarios</h2>
+          <div class="flex space-x-3">
+            <div class="relative">
+              <input type="text" placeholder="Buscar usuarios..." class="bg-card-bg border border-border-base rounded-lg pl-10 pr-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+              <img src="/src/assets/search.svg" alt="buscador" class="w-5 absolute left-3 top-3">
+            </div>
+
+            <button class="bg-primary text-dark-black font-semibold py-2 px-4 rounded-lg hover:bg-primary-bold transition-colors flex items-center" id="openUserModal">
+              <img src="/src/assets/plus.svg" alt="+" class="mr-2"> Nuevo Usuario
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-card-bg rounded-xl border border-border-base overflow-hidden">
+          <div class="overflow-x-auto">
+            <table id="usuariosTabla" class="w-full text-sm">
+              <thead class="bg-dark-black">
+                <tr>
+                  <th class="row text-left">Avatar</th>
+                  <th class="row text-left">Nombre</th>
+                  <th class="row text-left">Email</th>
+                  <th class="row text-left">Rol</th>
+                  <th class="row text-left">Teléfono</th>
+                  <th class="row text-left">Estado</th>
+                  <th class="row text-left">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaUsuariosBody" class="divide-y divide-border-base"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <dialog id="newProductModal" class="rounded-2xl p-0 backdrop:bg-black/70">
+    <form id="newProductForm"
+      class="relative bg-[#0e1525] text-neutral-200 w-full max-w-4xl p-10 rounded-2xl shadow-2xl border border-[#222c3d] overflow-y-auto max-h-[90vh]">
+
+      <button type="button" id="closeProductModal"
+        class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">
+        ✕
+      </button>
+
+      <h2 class="text-3xl font-semibold mb-8 text-yellow-400">Nuevo Producto</h2>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Nombre</label>
+          <input type="text" name="producto_nombre" required class="modal-field">
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Descripción</label>
+          <textarea name="producto_descripcion" rows="3" class="modal-field"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Tipo</label>
+          <select name="producto_tipo" class="modal-field">
+            <option value="digital">Digital</option>
+            <option value="fisico">Físico</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Formato</label>
+          <input type="text" name="producto_formato" class="modal-field" placeholder="Ej: ISO, EXE, ZIP">
+        </div>
+
+        <!-- Tamaño -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Tamaño (MB)</label>
+          <input type="number" name="producto_tamano_mb" step="0.1" class="modal-field">
+        </div>
+
+        <!-- URL descarga -->
+        <div>
+          <label class="block text-sm font-medium mb-1">URL de descarga</label>
+          <input type="url" name="producto_url_descarga" class="modal-field">
+        </div>
+
+        <!-- Licencia -->
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Licencia</label>
+          <textarea name="producto_licencia" rows="2" class="modal-field"></textarea>
+        </div>
+
+        <!-- Imagen -->
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Imagen del producto</label>
+          <label for="file"
+            class="border border-gray-400 rounded-md py-8 flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-800/30 transition">
+            <span>Sube la imagen o arrástrala aquí</span>
+            <input type="file" id="file" name="file" accept=".jpg,.png,.jpeg" class="hidden">
+          </label>
+          <div id="preview" class="mt-3 flex justify-center"></div>
+        </div>
+
+        <!-- Descuento -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Descuento (%)</label>
+          <input type="number" name="producto_descuento" min="0" max="100" value="0" class="modal-field">
+        </div>
+
+        <!-- Precio -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Precio</label>
+          <input type="number" name="producto_precio" min="0" step="1" class="modal-field" required>
+        </div>
+
+        <!-- Moneda -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Moneda</label>
+          <select name="producto_moneda" class="modal-field">
+            <option value="ARS">ARS</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </select>
+        </div>
+
+        <!-- Etiqueta -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Etiqueta (ID)</label>
+          <input type="number" name="producto_etiqueta_id" min="1" class="modal-field" placeholder="Ej: 3">
+        </div>
+
+        <!-- Fecha de creación -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Fecha de creación</label>
+          <input type="date" name="producto_fecha_creacion" class="modal-field">
+        </div>
+
+        <!-- Activo -->
+        <div class="flex items-center gap-2">
+          <input type="checkbox" name="producto_activo" checked class="accent-yellow-400">
+          <label>Activo</label>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="flex justify-end space-x-3 pt-8 mt-8 border-t border-[#222c3d]">
+        <button type="button" id="cancelProductModal"
+          class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-5 rounded-lg">
+          Cancelar
+        </button>
+        <button type="submit"
+          class="bg-yellow-400 text-black font-semibold py-2 px-5 rounded-lg hover:bg-yellow-300 transition">
+          Guardar Producto
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="newUserModal" class="rounded-2xl p-0 backdrop:bg-black/70">
+    <form id="newUserForm" class="relative bg-[#0e1525] text-neutral-200 w-full max-w-3xl p-10 rounded-2xl shadow-2xl border border-[#222c3d] overflow-y-auto max-h-[90vh]">
+      <button type="button" id="closeUserModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">✕</button>
+      <h2 class="text-3xl font-semibold mb-8 text-yellow-400">Nuevo Usuario</h2>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium mb-1">Nombre</label>
+          <input type="text" name="userName" required class="modal-field">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input type="email" name="userEmail" required class="modal-field">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Contraseña</label>
+          <input type="password" name="userPassword" required class="modal-field">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Teléfono</label>
+          <input type="text" name="userPhoneNumber" class="modal-field" placeholder="+54...">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Rol</label>
+          <select name="userRoleId" class="modal-field">
+            <option value="1">Usuario</option>
+            <option value="2">Administrador</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Estado</label>
+          <select name="userStatusId" class="modal-field">
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+            <option value="3">Suspendido</option>
+          </select>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Avatar</label>
+          <label for="avatarFile" class="border border-gray-400 rounded-md py-8 flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-800/30 transition">
+            <span>Sube el avatar o arrástralo aquí</span>
+            <input type="file" id="avatarFile" name="userAvatarUrl" accept=".jpg,.png,.jpeg" class="hidden">
+          </label>
+          <div id="avatarPreview" class="mt-3 flex justify-center"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-end space-x-3 pt-8 mt-8 border-t border-[#222c3d]">
+        <button type="button" id="cancelUserModal" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-5 rounded-lg">Cancelar</button>
+        <button type="submit" class="bg-yellow-400 text-black font-semibold py-2 px-5 rounded-lg hover:bg-yellow-300 transition">Guardar Usuario</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="confirmDelete_Modal">
+    <div class="rounded-xl p-6 shadow-xl w-96 m-auto bg-gradient-to-b from-white via-red-50 to-red-100 flex flex-col overflow-visible border border-red-200">
+      <span class="w-15 h-15 rounded-full bg-red-500 text-3xl text-black flex items-center justify-center m-auto mt-4">
+        !
+      </span>
+  
+      <button id="closeDeleteModal" class="text-gray-500 hover:text-gray-700 absolute right-5 top-5 text-xl cursor-pointer">
+        ✕
+      </button>
+  
+      <h2 class="text-center mt-8 text-2xl font-semibold">¿Estás seguro?</h2>
+      <p class="text-center text-sm mt-2 text-gray-600">Este elemento será eliminado permanentemente</p>
+  
+      <div class="flex gap-2 mt-4 text-center justify-center mb-4">
+        <button id="confirmDelete_Btn" class="px-4 py-2 rounded bg-red-500 text-white cursor-pointer hover:bg-red-600 transition-colors">
+          Eliminar
+        </button>
+        <button id="cancelDelete_Btn" class="px-4 py-2 rounded bg-gray-300 cursor-pointer hover:bg-amber-300 transition-colors">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="confirmDelete_ModalUser">
+
+    <div class="rounded-xl p-6 shadow-xl w-96 m-auto bg-gradient-to-b from-white via-red-50 to-red-100 flex flex-col overflow-visible border border-red-200">
+      <span class="w-15 h-15 rounded-full bg-red-500 text-3xl text-black flex items-center justify-center m-auto mt-4">
+        !
+      </span>
+
+      <button id="closeDeleteModalUser" class="text-gray-500 hover:text-gray-700 absolute right-5 top-5 text-xl cursor-pointer">
+        ✕
+      </button>
+
+      <h2 class="text-center mt-8 text-2xl font-semibold">¿Estás seguro?</h2>
+      <p class="text-center text-sm mt-2 text-gray-600">Este elemento será eliminado permanentemente</p>
+
+      <div class="flex gap-2 mt-4 text-center justify-center mb-4">
+        <button id="confirmDelete_BtnUser" class="px-4 py-2 rounded bg-red-500 text-white cursor-pointer hover:bg-red-600 transition-colors">
+          Eliminar
+        </button>
+        <button id="cancelDelete_BtnUser" class="px-4 py-2 rounded bg-gray-300 cursor-pointer hover:bg-amber-300 transition-colors">
+          Cancelar
+        </button>
+      </div>
+    </div>
+
+  </dialog>
+
+
+  <script src="./admin.js"></script>
+</body>
+
+</html>

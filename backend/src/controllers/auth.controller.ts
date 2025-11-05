@@ -51,9 +51,9 @@ export const registerUser = async (req: express.Request, res: express.Response) 
       { expiresIn: "1h" }
     );
 
-    const { userPassword: _, ...userPublicData } = user;
+    const { userPassword: _, ...publicUserData } = user;
 
-    res.status(201).json({ userPublicData, token });
+    res.status(201).json({ publicUserData, token });
   } catch (error) {
     res.status(500).json({ error: "ERROR CREATING USER" })
   }

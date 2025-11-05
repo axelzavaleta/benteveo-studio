@@ -70,6 +70,20 @@
   .lang-separator {
     @apply text-base text-gray-700;
   }
+  
+  .auth-buttons {
+    @apply  gap-4;
+  }
+
+  .user-btn {
+    @apply bg-primary-bold p-2 rounded-full cursor-pointer;
+  }
+  .user-menu {
+    @apply absolute mt-1.5 w-max border border-gray-600 bg-accent flex-col gap-2 right-0  px-4 py-2.5;
+  }
+  .logout-btn {
+    @apply w-fit cursor-pointer text-gray-300  hover:text-dark-black transition-colors;
+  }
 
   /* FOOTER */
 
@@ -202,6 +216,13 @@
 
   .back-to {
     @apply text-sm text-gray-500 cursor-pointer hover:text-white transition-colors;
+  }
+
+  .message-error {
+    @apply text-left text-red-500 text-sm font-medium; 
+  }
+  .message-error.register-successfully, .message-error.login-successfully {
+    @apply text-green-500;
   }
 
   .modal-wrapper::backdrop {

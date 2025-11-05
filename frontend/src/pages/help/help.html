@@ -30,14 +30,16 @@
         </ul>
       </nav>
 
-      <div class="flex items-center gap-8">
-        <a href="/src/pages/cart/cart.html" class="hidden bg-primary p-1.5 rounded-full cursor-pointer">
+      <div id="header-auth-container" class="flex items-center gap-8">
+        <a href="/src/pages/cart/cart.html" class="cart-container hidden bg-primary p-1.5 rounded-full cursor-pointer">
           <img src="/src/assets/cart.svg" alt="carrito-logo" class="max-w-5">
         </a>
 
-        <div class="flex gap-4">
-          <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
-          <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
+        <div class="auth-buttons hidden">
+          <div class="auth-btns-container flex gap-4">
+            <button class="login-btn auth-btn" data-target-modal="login-modal">Iniciar sesión</button>
+            <button class="signup-btn auth-btn" data-target-modal="signup-modal">Registrarse</button>
+          </div>
         </div>
 
         <div class="language-selector">
@@ -45,6 +47,17 @@
           <span class="lang-separator">|</span>
           <button class="lang-option">EN</button>
         </div>
+
+        <div class="user-account relative hidden">
+          <button id="user-btn" class="user-btn">
+            <img src="/src/assets/user.svg" alt="user-logo">
+          </button>
+
+          <div class="user-menu hidden">
+            <p class="font-semibold text-base mb-2">Pepito 123</p>
+            <button id="logout-btn" class="logout-btn">Cerrar sesion</button>
+          </div>
+        </div>  
       </div>
     </div>
   </header>
@@ -316,11 +329,13 @@
         <input 
         type="password" 
         name="password" 
-        id="confirm-password-signup" 
+        id="repeat-password-signup" 
         placeholder="Ingresa otra vez tu contraseña" 
         autocomplete="current-password" 
         class="field-modal">
       </div>
+
+      <span id="message-error" class="message-error"></span>
 
       <input type="submit" value="Crear cuenta" class="continue-btn">
 
@@ -332,6 +347,8 @@
 
   <script src="./help.js"></script>
   <script src="/src/pages/scripts/auth.js"></script>
+  <script src="/src/pages/scripts/auth-check.js"></script>
+  <script src="/src/pages/scripts/modalHandler.js"></script>
 </body>
 
 </html>

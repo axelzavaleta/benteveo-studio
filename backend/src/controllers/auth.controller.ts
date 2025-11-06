@@ -37,6 +37,8 @@ export const registerUser = async (req: express.Request, res: express.Response) 
       userPassword: hashedUserPsw,
       userPhoneNumber,
       userAvatarUrl,
+      userRoleId: 1,
+      userStatusId: 1
     });
   
     await userRepository.save(user);
@@ -45,13 +47,34 @@ export const registerUser = async (req: express.Request, res: express.Response) 
       return res.status(500).json({ error: "SECRET KEY NOT FOUND" })
     }
 
+    const userWithRelations = await userRepository.findOne({
+      where: { userId: user.userId },
+      relations: ['userRole', 'userStatus']
+    });
+
+    if (!userWithRelations) {
+      return res.status(500).json({ error: "ERROR LOADING USER" });
+    }
+
     const token = jwt.sign(
-      { userId: user.userId, userName: user.userName, userEmail: user.userEmail }, 
+      { 
+        userId: user.userId, 
+        userName: user.userName, 
+        userEmail: user.userEmail, 
+        userRole: userWithRelations.userRole?.userRoleName,
+        userStatus: userWithRelations.userStatus?.userStatusName
+      }, 
       secretKey, 
       { expiresIn: "1h" }
     );
 
-    const { userPassword: _, ...publicUserData } = user;
+    const { 
+      userPassword: _, 
+      userCreatedAt, 
+      userUpdatedAt, 
+      userLastLogin, 
+      ...publicUserData 
+    } = user;
 
     res.status(201).json({ publicUserData, token });
   } catch (error) {
@@ -81,17 +104,36 @@ export const userLogin = async (req: express.Request, res: express.Response) => 
       return res.status(400).json({ error: "INVALID PASSWORD" })
     }
 
-    const { userPassword: _, ...publicUserData } = registeredUser;
-
     if (!secretKey) {
       return res.status(500).json({ error: "SECRET KEY NOT FOUND" })
     }
 
+    const userWithRelations = await userRepository.findOne({
+      where: { userId: registeredUser.userId },
+      relations: ["userRole", "userStatus"]
+    });
+
+    if (!userWithRelations) {
+      return res.status(500).json({ error: "ERROR LOADING USER" })
+    }
+
+    if (userWithRelations.userStatus?.userStatusName !== "activo") {
+      return res.status(403).json({ error: "USER INACTIVE" });
+    }
+
     const token = jwt.sign(
-      { userId: registeredUser.userId, userName: registeredUser.userName, userEmail: registeredUser.userEmail }, 
+      { 
+        userId: registeredUser.userId, 
+        userName: registeredUser.userName, 
+        userEmail: registeredUser.userEmail, 
+        userRole: userWithRelations.userRole?.userRoleName,
+        userStatus: userWithRelations.userStatus?.userStatusName
+      }, 
       secretKey, 
       { expiresIn: "1h" }
     );
+
+    const { userPassword: _, ...publicUserData } = registeredUser;
 
     res.status(200).json({ publicUserData, token });
   } catch (error) {

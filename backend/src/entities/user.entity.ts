@@ -32,11 +32,11 @@ export class User {
   @UpdateDateColumn({ name: "usuario_actualizado_fecha", type: "timestamp with time zone" })
   userUpdatedAt!: Date
 
-  @Column({ name: "estado_usuario_id", type: "int", nullable: true, default: 1})
-  userStatusId!: number
+  @Column({ name: "estado_usuario_id", type: "int", nullable: true, default: null})
+  userStatusId?: number
 
-  @Column({ name: "rol_usuario_id", type: "int", nullable: true, default: 1 })
-  userRoleId!: number
+  @Column({ name: "rol_usuario_id", type: "int", nullable: true, default: null })
+  userRoleId?: number
 
   @ManyToOne(() => UserStatus)
   @JoinColumn({ name: "estado_usuario_id" })

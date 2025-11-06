@@ -66,11 +66,15 @@ export const createUser = async (req: express.Request, res: express.Response) =>
       userPassword: hashedUserPsw,
       userPhoneNumber,
       userAvatarUrl,
+      userRoleId: 1,
+      userStatusId: 1
     });
   
     await userRepository.save(user)
 
-    res.status(201).json(user);
+    const { userPassword: _, ...publicUserData } = user;
+
+    res.status(201).json(publicUserData);
   } catch (error) {
     res.status(500).json({ error: "ERROR CREATING USER" })
   }

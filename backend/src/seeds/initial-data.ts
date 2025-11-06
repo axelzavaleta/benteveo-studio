@@ -24,8 +24,8 @@ export const seedInitialData = async () => {
 
   if (roleCount === 0) {
     const roles = userRoleRepo.create([
-      { userRoleName: "admin" },
-      { userRoleName: "user" }
+      { userRoleName: "user" },
+      { userRoleName: "admin" }
     ])
 
     await userRoleRepo.save(roles);

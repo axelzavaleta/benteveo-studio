@@ -166,6 +166,16 @@ loginForm.addEventListener("submit", async (e) => {
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
 
+    if (user.userStatus.userStatusName !== "activo") {
+      displayError("Usuario suspendido!!")
+      return;
+    }
+
+    let route = "/index";
+    if (user.userRole.userRoleName === "admin") {
+      route = "/src/pages/admin/admin.html";
+    }
+
     emailInput.value = "";
     passwordInput.value = "";
     submitBtn.setAttribute("disabled", true);
@@ -174,7 +184,7 @@ loginForm.addEventListener("submit", async (e) => {
     msgError.textContent = "Inicio de sesion realizado con exito!!";
 
     setTimeout(() => {
-      location.href = "/index";
+      location.href = route;
     }, 2000);
   } catch (err) {
     console.error("Error de red:", err);

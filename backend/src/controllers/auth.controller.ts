@@ -72,9 +72,11 @@ export const registerUser = async (req: express.Request, res: express.Response) 
       userPassword: _, 
       userCreatedAt, 
       userUpdatedAt, 
-      userLastLogin, 
+      userLastLogin,
+      userRoleId,
+      userStatusId,
       ...publicUserData 
-    } = user;
+    } = userWithRelations;
 
     res.status(201).json({ publicUserData, token });
   } catch (error) {
@@ -133,7 +135,17 @@ export const userLogin = async (req: express.Request, res: express.Response) => 
       { expiresIn: "1h" }
     );
 
-    const { userPassword: _, ...publicUserData } = registeredUser;
+    const { 
+      userPassword: _,
+      userPhoneNumber,
+      userAvatarUrl,
+      userStatusId,
+      userRoleId,
+      userCreatedAt, 
+      userUpdatedAt, 
+      userLastLogin,
+      ...publicUserData 
+    } = userWithRelations;
 
     res.status(200).json({ publicUserData, token });
   } catch (error) {

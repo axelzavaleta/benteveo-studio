@@ -1,8 +1,5 @@
 const registerForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
-const userBtn = document.getElementById("user-btn");
-const logoutBtn = document.querySelector("#logout-btn");
-
 const pictureProfileInput = registerForm.querySelector("#profile-picture");
 const pictureProfileImg = registerForm.querySelector("#profile-picture-img");
 let dataImg = "";
@@ -200,6 +197,8 @@ pictureProfileInput.addEventListener("change", handleProfileImage)
 registerForm.addEventListener("submit", handleRegister);
 loginForm.addEventListener("submit", handleLogin);
 
+const userBtn = document.getElementById("user-btn");
+const logoutBtn = document.querySelector("#logout-btn");
 
 const toggleUserMenu = () => {
   const userMenu = document.querySelector(".user-menu");

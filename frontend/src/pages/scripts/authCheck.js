@@ -7,8 +7,10 @@ const userAccount = document.querySelector(".user-account");
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   
   if (token) {
-    authButtonsContainer.classList.add("hidden");
-    cartContainer.classList.remove("hidden");
+    if (authButtonsContainer) {
+      authButtonsContainer.classList.add("hidden");
+      cartContainer.classList.remove("hidden");
+    }
     userAccount.classList.remove("hidden");
     
     const userNameElement = document.getElementById("username-menu");

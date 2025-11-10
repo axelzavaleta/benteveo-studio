@@ -38,11 +38,13 @@
         </div>
 
         <div class="user-account">
-          <button class="user-btn relative bg-primary-bold p-2 rounded-full cursor-pointer">
+          <button id="user-btn" class="user-btn">
             <img src="/src/assets/user.svg" alt="user-logo">
           </button>
 
-          <div class="hidden user-menu absolute max-w-[100px] w-full bg-accent right-0 p-2">
+          <div class="user-menu hidden">
+            <p id="username-menu" class="font-semibold text-base mb-2"></p>
+            <button id="logout-btn" class="logout-btn">Cerrar sesion</button>
           </div>
         </div>  
       </div>

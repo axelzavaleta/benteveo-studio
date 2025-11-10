@@ -86,7 +86,6 @@
   }
 
   /* FOOTER */
-
   .footer {
     @apply bg-dark-black w-full text-white p-8 grid place-content-center border-t border-border-base;
   }
@@ -115,86 +114,6 @@
   }
   .footer-social-media {
     @apply flex items-center gap-8 tracking-widest;
-  }
-
-  /* SECTION: user-journey */
-
-  .step-card {
-    @apply flex gap-8 items-center;
-  }
-  .step-box {
-    @apply relative bg-primary min-w-40 aspect-square grid place-content-center text-6xl font-bold text-dark-black border border-soft-black;
-  }
-  .step-box-icon {
-    @apply w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full;
-  }
-
-  .step-info {
-    @apply grid gap-4 px-4 text-gray-400;
-  }
-  .step-info-title {
-    @apply text-3xl font-semibold text-neutral-light;
-  }
-
-  /* SECTION: main-navegation */
-  .cards {
-    @apply grid grid-cols-2 grid-rows-2 gap-8;
-  }
-
-  .card {
-    @apply grid place-content-center bg-soft-black border border-border-base p-10 hover:bg-dark-black hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent transition-all;
-  }
-
-  .card-about {
-    @apply col-span-2 flex items-center gap-8;
-  }
-  .card-about-img {
-    @apply bg-white/60 rounded-2xl h-full basis-full overflow-hidden;
-  }
-  .card-container {
-    @apply grid gap-4;
-  }
-
-
-  .card-title {
-    @apply text-3xl font-semibold;
-  }
-  .card-link {
-    @apply text-primary-bold font-semibold underline mt-4 w-fit hover:text-accent transition-colors;
-  }
-
-  /* PAGE: CATALOG */
-  .tag {
-    @apply bg-accent py-0.5 px-4 rounded-2xl;
-  }
-
-  .game-box {
-    @apply bg-accent p-6 rounded-xl w-2xs;
-  }
-
-  .game-card {
-    @apply flex flex-col min-h-[485px] bg-accent border border-border-base hover:scale-101 hover:border-neutral-light  transition-all;
-  }
-
-  .review-card {
-    @apply bg-soft-black border border-border-base;
-  }
-
-  .social-network-card {
-    @apply max-w-[100px] border border-border-base aspect-square;
-  }
-
-  .social-network-icon {
-    @apply bg-dark-black w-full h-full object-cover p-4;
-  }
-
-  /* SECTION: contact */
-  .field-contact {
-    @apply border border-black/20 px-3 py-2;
-  }
-
-  .submit-contact {
-    @apply bg-primary text-dark-black font-bold border border-primary mt-4 w-fit px-6 py-2 rounded-full cursor-pointer hover:bg-primary-bold transition-colors;
   }
 
   /* MODALS */
@@ -257,45 +176,145 @@
     @apply text-green-500;
   }
 
-
-
-  /* PAGE: CART */
-  .product-card {
-    @apply w-full flex gap-4 bg-dark-black;
+  /* PAGE: HOME - SECTION: user-journey */
+  .step-card {
+    @apply flex gap-8 items-center;
   }
-  .product-card-info {
-    @apply relative w-full p-4 font-semibold text-lg;
+  .step-box {
+    @apply relative bg-primary min-w-40 aspect-square grid place-content-center text-6xl font-bold text-dark-black border border-soft-black;
   }
-
-  .message-empty-card {
-    @apply text-5xl font-semibold text-center;
+  .step-box-icon {
+    @apply w-10 absolute -right-4 -top-4 bg-primary p-2 rounded-full;
   }
 
-  .link-empty-cart {
-    @apply  text-primary/85 w-fit m-auto underline cursor-pointer hover:text-primary-bold transition-all;
+  .step-info {
+    @apply grid gap-4 px-4 text-gray-400;
+  }
+  .step-info-title {
+    @apply text-3xl font-semibold text-neutral-light;
   }
 
-  .product-img-container {
-    @apply basis-50;
-  }
-  .product-img {
-    @apply h-full object-cover;
+  /* PAGE: HOME - SECTION: main-navegation */
+  .cards {
+    @apply grid grid-cols-2 grid-rows-2 gap-8;
   }
 
-  .title-game {
-    @apply text-xl font-bold mb-4; 
+  .card {
+    @apply grid place-content-center bg-soft-black border border-border-base p-10 hover:bg-dark-black hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent transition-all;
   }
 
-  .tag-cart {
-    @apply bg-accent py-0.5 px-2.5 rounded-2xl text-sm text-neutral-light;
+  .card-about {
+    @apply col-span-2 flex items-center gap-8;
+  }
+  .card-about-img {
+    @apply bg-white/60 rounded-2xl h-full basis-full overflow-hidden;
+  }
+  .card-container {
+    @apply grid gap-4;
   }
 
-  .tags {
-    @apply flex font-medium items-center gap-2 mb-8;
+  .card-title {
+    @apply text-3xl font-semibold;
+  }
+  .card-link {
+    @apply text-primary-bold font-semibold underline mt-4 w-fit hover:text-accent transition-colors;
   }
 
-  .remove-product {
-    @apply bg-red-500 absolute right-2 bottom-2 p-2 rounded-full cursor-pointer hover:bg-red-600 transition-colors;
+  /* PAGE: HOME - SECTION: contact */
+  .field-contact {
+    @apply border border-black/20 px-3 py-2;
+  }
+
+  .submit-contact {
+    @apply bg-primary text-dark-black font-bold border border-primary mt-4 w-fit px-6 py-2 rounded-full cursor-pointer hover:bg-primary-bold transition-colors;
+  }
+
+  /* PAGE: CATALOG */
+  .tag {
+    @apply bg-accent py-0.5 px-4 rounded-2xl;
+  }
+
+  .game-box {
+    @apply bg-accent p-6 rounded-xl w-2xs;
+  }
+
+  .game-card {
+    @apply flex flex-col min-h-[485px] bg-accent border border-border-base hover:scale-101 hover:border-neutral-light  transition-all;
+  }
+
+  .review-card {
+    @apply bg-soft-black border border-border-base;
+  }
+
+  .social-network-card {
+    @apply max-w-[100px] border border-border-base aspect-square;
+  }
+
+  .social-network-icon {
+    @apply bg-dark-black w-full h-full object-cover p-4;
+  }
+
+  .notification-container {
+    @apply z-100 fixed right-5 bottom-5 min-w-sm border shadow-2xl shadow-black font-medium p-4;
+  }
+  .notification-container.success {
+    @apply bg-green-200 text-green-900;
+  }
+  .notification-container.error {
+    @apply bg-red-200 text-red-900;
+  }
+
+  /* PAGE: SERVICES */
+  .services-grid {
+    @apply grid grid-cols-2 gap-2 basis-full;
+  }
+  .service-card {
+    @apply bg-soft-black aspect-square max-w-[300px] grid place-content-center border border-transparent text-center gap-4 p-8 hover:border-primary transition-colors;
+  }
+  .service-card-intro {
+    @apply grid place-items-center gap-2 text-2xl font-semibold;
+  }
+  .service-card-icon {
+    @apply w-16;
+  }
+
+  .platforms-worked {
+    @apply grid place-content-center py-16 bg-dark-black text-center border-y border-border-base;
+  }
+  .platform-item {
+    @apply grid place-items-center gap-2 cursor-pointer hover:scale-105 transition-all;
+  }
+  .platform-item img {
+    @apply w-10;
+  }
+
+  .pricing-grid {
+    @apply grid grid-cols-3 gap-8 place-items-center;
+  }
+  .price-card {
+    @apply h-full bg-dark-black p-8 border border-border-base grid gap-8 shadow-xl hover:border-primary-bold hover:scale-102 transition-all;
+  }
+  .price-card.recommended {
+    @apply relative h-[110%] border-x-border-base border-b-border-base border-primary hover:border-primary-bold;
+  }
+  .price-card .title {
+    @apply text-2xl text-primary font-semibold mb-2;
+  }
+  .price-card .price {
+    @apply text-5xl font-bold;
+  }
+  .price-card .features {
+    @apply grid gap-4 text-sm text-gray-300;
+  }
+  .price-card .features .feature {
+    @apply flex m-auto gap-2;
+  }
+  .price-feature-icon {
+    @apply w-4;
+  }
+
+  .price-card .tag {
+    @apply bg-primary text-dark-black font-bold px-8 tracking-wide absolute -top-4 left-1/2 -translate-x-1/2;
   }
 
   /* PAGE: ABOUT-US */
@@ -376,57 +395,43 @@
     @apply w-4 h-4 bg-gray-400 rounded-sm transition-transform duration-300;
   }
 
-  /* PAGE: SERVICES */
-  .services-grid {
-    @apply grid grid-cols-2 gap-2 basis-full;
+  /* PAGE: CART */
+  .product-card {
+    @apply w-full flex gap-4 bg-dark-black;
   }
-  .service-card {
-    @apply bg-soft-black aspect-square max-w-[300px] grid place-content-center border border-transparent text-center gap-4 p-8 hover:border-primary transition-colors;
-  }
-  .service-card-intro {
-    @apply grid place-items-center gap-2 text-2xl font-semibold;
-  }
-  .service-card-icon {
-    @apply w-16;
+  .product-card-info {
+    @apply relative w-full p-4 font-semibold text-lg;
   }
 
-  .platforms-worked {
-    @apply grid place-content-center py-16 bg-dark-black text-center border-y border-border-base;
-  }
-  .platform-item {
-    @apply grid place-items-center gap-2 cursor-pointer hover:scale-105 transition-all;
-  }
-  .platform-item img {
-    @apply w-10;
+  .message-empty-card {
+    @apply text-5xl font-semibold text-center;
   }
 
-  .pricing-grid {
-    @apply grid grid-cols-3 gap-8 place-items-center;
-  }
-  .price-card {
-    @apply h-full bg-dark-black p-8 border border-border-base grid gap-8 shadow-xl hover:border-primary-bold hover:scale-102 transition-all;
-  }
-  .price-card.recommended {
-    @apply relative h-[110%] border-x-border-base border-b-border-base border-primary hover:border-primary-bold;
-  }
-  .price-card .title {
-    @apply text-2xl text-primary font-semibold mb-2;
-  }
-  .price-card .price {
-    @apply text-5xl font-bold;
-  }
-  .price-card .features {
-    @apply grid gap-4 text-sm text-gray-300;
-  }
-  .price-card .features .feature {
-    @apply flex m-auto gap-2;
-  }
-  .price-feature-icon {
-    @apply w-4;
+  .link-empty-cart {
+    @apply  text-primary/85 w-fit m-auto underline cursor-pointer hover:text-primary-bold transition-all;
   }
 
-  .price-card .tag {
-    @apply bg-primary text-dark-black font-bold px-8 tracking-wide absolute -top-4 left-1/2 -translate-x-1/2;
+  .product-img-container {
+    @apply basis-50;
+  }
+  .product-img {
+    @apply h-full object-cover;
+  }
+
+  .title-game {
+    @apply text-xl font-bold mb-4; 
+  }
+
+  .tag-cart {
+    @apply bg-accent py-0.5 px-2.5 rounded-2xl text-sm text-neutral-light;
+  }
+
+  .tags {
+    @apply flex font-medium items-center gap-2 mb-8;
+  }
+
+  .remove-product {
+    @apply bg-red-500 absolute right-2 bottom-2 p-2 rounded-full cursor-pointer hover:bg-red-600 transition-colors;
   }
 
   /* PAGE: ADMIN */

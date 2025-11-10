@@ -315,15 +315,15 @@
     </div>
   </footer>
 
-  <dialog id="login-modal" class="modal-wrapper">
-    <form class="relative text-center p-8 grid gap-4">
+  <dialog id="login-modal" class="modal-wrapper max-w-md">
+    <form class="login-form">
       <div class="close-modal-btn" id="close-login">
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
 
-      <h1 class="text-3xl text-white font-semibold mb-4">Inicia sesión</h1>
+      <h1 class="auth-modal-title mb-2">Inicia sesión</h1>
 
-      <div>
+      <div class="w-full">
         <input 
         type="email" 
         name="email" 
@@ -333,7 +333,7 @@
         class="field-modal">
       </div>
 
-      <div>
+      <div class="w-full">
         <input 
         type="password" 
         name="password" 
@@ -345,78 +345,114 @@
 
       <span id="message-error" class="message-error"></span>
 
-      <input type="submit" value="Iniciar sesión" class="continue-btn">
-
-      <span id="back-to-signup" data-target-modal="signup-modal" class="back-to">
-        ¿No tienes una cuenta?
-      </span>
+      <div class="modal-buttons-group">
+        <input type="submit" value="Iniciar sesión" class="continue-btn">
+  
+        <p class="quickly-change-modal">
+          ¿No tienes una cuenta?
+          <span id="back-to-signup" data-target-modal="signup-modal" class="back-to">
+            Crear cuenta
+          </span>
+        </p>
+      </div>
     </form>
   </dialog>
-
-  <dialog id="signup-modal" class="modal-wrapper">
-    <form class="text-center p-8 grid gap-4">
+  
+  <dialog id="signup-modal" class="modal-wrapper max-w-3xl">
+    <form class="signup-form">
       <div class="close-modal-btn" id="close-signup">
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
 
-      <h1 class="text-3xl text-white font-semibold mb-4">Crea tu cuenta</h1>
+      <h1 class="auth-modal-title">Crea tu cuenta</h1>
 
-      <div>
-        <input 
-        type="text" 
-        name="username" 
-        id="username" 
-        placeholder="Ingresa tu nombre" 
-        autocomplete="name" 
-        class="field-modal">
+      <div class="w-full grid grid-cols-2 gap-4">
+        <div class="grid gap-4">
+          <div class="profile-picture-group">
+            <label 
+              for="profile-picture" 
+              class="profile-picture-label">
+              <img src="/src/assets/profile-default.webp" alt="" id="profile-picture-img" class="profile-picture-label">
+              <input type="file" id="profile-picture" name="profile-picture" class="hidden">
+              <img src="/src/assets/camera.svg" alt="camera-icon" class="camera-icon">
+            </label>
+            <span>Foto de perfil (opcional)</span>
+          </div>
+    
+          <div class="w-full">
+            <input 
+            type="text" 
+            name="username" 
+            id="username" 
+            placeholder="Nombre de usuario" 
+            autocomplete="name" 
+            class="field-modal">
+          </div>
+    
+          <div class="w-full">
+            <input 
+            type="email" 
+            name="email" 
+            id="email-signup" 
+            placeholder="Correo electronico" 
+            autocomplete="email" 
+            class="field-modal">
+          </div>
+    
+          <div class="w-full">
+            <input 
+            type="tel" 
+            name="telephone" 
+            id="telephone-signup" 
+            placeholder="Teléfono (opcional)"
+            class="field-modal">
+          </div>
+        </div>
+  
+        <div class="grid gap-4 h-fit">
+          <div class="w-full">
+            <input 
+            type="date" 
+            name="birthdate" 
+            id="birthdate" 
+            autocomplete="bday"
+            class="field-modal">
+          </div>
+    
+          <div class="w-full">
+            <input 
+            type="password" 
+            name="password" 
+            id="password-signup" 
+            placeholder="Contraseña" 
+            autocomplete="current-password" 
+            class="field-modal">
+          </div>
+    
+          <div class="w-full">
+            <input 
+            type="password" 
+            name="repeat-password" 
+            id="repeat-password-signup" 
+            placeholder="Confirmar contraseña" 
+            autocomplete="current-password" 
+            class="field-modal">
+          </div>
+  
+          <span id="message-error" class="message-error"></span>
+        </div>
       </div>
 
-      <div>
-        <input 
-        type="email" 
-        name="email" 
-        id="email-signup" 
-        placeholder="Ingresa tu email" 
-        autocomplete="email" 
-        class="field-modal">
+      <div class="modal-buttons-group ">
+        <input type="submit" value="Crear cuenta" class="continue-btn">
+  
+        <p class="quickly-change-modal">
+          ¿Ya tienes una cuenta?
+          <span id="back-to-login" data-target-modal="login-modal" class="back-to">
+            Iniciar sesión
+          </span>
+        </p>
       </div>
-
-      <div>
-        <input 
-        type="date" 
-        name="birthdate" 
-        id="birthdate" 
-        autocomplete="bday" 
-        class="field-modal">
-      </div>
-
-      <div>
-        <input 
-        type="password" 
-        name="password" 
-        id="password-signup" 
-        placeholder="Ingresa tu contraseña" 
-        autocomplete="current-password" 
-        class="field-modal">
-      </div>
-
-      <div>
-        <input 
-        type="password" 
-        name="password" 
-        id="repeat-password-signup" 
-        placeholder="Ingresa otra vez tu contraseña" 
-        autocomplete="current-password" 
-        class="field-modal">
-      </div>
-
-      <span id="message-error" class="message-error"></span>
-
-      <input type="submit" value="Crear cuenta" class="continue-btn">
-
-      <span id="back-to-login" data-target-modal="login-modal" class="back-to">
-        ¿Ya tienes una cuenta?
-      </span>
     </form>
   </dialog>
 

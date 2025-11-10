@@ -199,35 +199,62 @@
 
   /* MODALS */
   .modal-wrapper {
-    @apply max-w-[400px] w-full bg-[#020A28] m-auto border-none rounded-2xl shadow-[0_0_20px] shadow-amber-50/30;
+    @apply w-full bg-soft-black m-auto border-none shadow-[0_0_20px] backdrop-blur-2xl backdrop:bg-black/60;
   }
 
   .field-modal {
-    @apply text-white outline-none text-sm px-4 py-3 w-full rounded-lg bg-transparent border border-[#0022A1];
+    @apply w-full text-white outline-none text-sm px-4 py-3 bg-transparent border border-border-base;
+  }
+  .field-modal-error {
+    @apply w-full text-white outline-none text-sm px-4 py-3 bg-transparent border border-red-400;
+  }
+
+  .signup-form {
+    @apply text-center px-8 py-12 grid place-items-center gap-8;
+  }
+  .login-form {
+    @apply text-center px-8 py-12 grid place-items-center gap-4;
+  }
+  .auth-modal-title {
+    @apply text-4xl text-primary font-semibold;
+  }
+  .profile-picture-group {
+    @apply grid place-items-center gap-2 mb-4 text-gray-500;
+  }
+  .profile-picture-label {
+    @apply relative bg-center bg-cover border border-border-base w-[100px] aspect-square rounded-full grid place-content-center cursor-pointer;
+  }
+  .profile-picture-label .camera-icon {
+    @apply absolute w-7 bg-soft-black aspect-square p-1 rounded-full border border-border-base right-0 bottom-0;
+  }
+
+  .modal-buttons-group {
+    @apply grid gap-2 w-full;
+  }
+  .quickly-change-modal {
+    @apply text-sm text-gray-500;
   }
 
   .close-modal-btn {
-    @apply absolute right-5 top-5 bg-blue-600 border w-fit p-1 rounded-full hover:bg-gray-200 transition-colors;
+    @apply absolute right-5 top-5 bg-soft-black border border-border-base w-fit p-1 rounded-full hover:bg-border-base transition-colors;
   }
 
   .continue-btn {
-    @apply font-bold border py-2 px-10 rounded-md mt-4 bg-[#0032EF] uppercase border-none text-white hover:bg-[#0022A1] cursor-pointer transition-colors;
+    @apply font-bold border py-2.5 px-10 rounded-md bg-primary text-dark-black border-none cursor-pointer hover:bg-primary-bold transition-colors;
   }
 
   .back-to {
-    @apply text-sm text-gray-500 cursor-pointer hover:text-white transition-colors;
+    @apply text-primary cursor-pointer hover:text-primary-bold transition-colors;
   }
 
   .message-error {
-    @apply text-left text-red-500 text-sm font-medium; 
+    @apply  text-left w-full text-red-500 text-sm font-medium; 
   }
   .message-error.register-successfully, .message-error.login-successfully {
     @apply text-green-500;
   }
 
-  .modal-wrapper::backdrop {
-    background: rgba(0,0,0,0.6);
-  }
+
 
   /* PAGE: CART */
   .product-card {

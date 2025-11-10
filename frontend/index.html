@@ -318,7 +318,7 @@
   </footer>
   
   <dialog id="login-modal" class="modal-wrapper max-w-md">
-    <form class="login-form">
+    <form id="login-form" class="login-form">
       <div class="close-modal-btn" id="close-login">
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
@@ -361,23 +361,26 @@
   </dialog>
   
   <dialog id="signup-modal" class="modal-wrapper max-w-3xl">
-    <form class="signup-form">
+    <form id="signup-form" class="signup-form">
       <div class="close-modal-btn" id="close-signup">
         <img src="/src/assets/x.svg" alt="x-icon">
       </div>
 
       <h1 class="auth-modal-title">Crea tu cuenta</h1>
 
-      <div class="w-full grid grid-cols-2 gap-4">
+      <div class="signup-modal-body">
         <div class="grid gap-4">
           <div class="profile-picture-group">
             <label 
               for="profile-picture" 
               class="profile-picture-label">
               <img src="/src/assets/profile-default.webp" alt="" id="profile-picture-img" class="profile-picture-label">
+
               <input type="file" id="profile-picture" name="profile-picture" class="hidden">
+              
               <img src="/src/assets/camera.svg" alt="camera-icon" class="camera-icon">
             </label>
+
             <span>Foto de perfil (opcional)</span>
           </div>
     

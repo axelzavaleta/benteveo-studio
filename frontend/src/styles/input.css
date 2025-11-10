@@ -212,6 +212,9 @@
   .signup-form {
     @apply text-center px-8 py-12 grid place-items-center gap-8;
   }
+  .signup-modal-body {
+    @apply w-full grid grid-cols-2 gap-4;
+  }
   .login-form {
     @apply text-center px-8 py-12 grid place-items-center gap-4;
   }

@@ -1,26 +1,26 @@
-const registerForm = document.getElementById("signup-modal");
-const loginForm = document.getElementById("login-modal");
+const registerForm = document.getElementById("signup-form");
+const loginForm = document.getElementById("login-form");
 const userBtn = document.getElementById("user-btn");
 const logoutBtn = document.querySelector("#logout-btn");
 
 const pictureProfileInput = registerForm.querySelector("#profile-picture");
 const pictureProfileImg = registerForm.querySelector("#profile-picture-img");
-
 let dataImg = "";
-pictureProfileInput.addEventListener("change", (e) => {
-  if (e.target.files[0]) {
-    const reader = new FileReader();
 
-    reader.onload = (e) => {
-      pictureProfileImg.src = e.target.result;
-      dataImg = e.target.result;
-    }
+const handleProfileImage = (e) => {
+  const file = e.target.files[0];
 
-    reader.readAsDataURL(e.target.files[0]);
-  }
-});
+  if (!file) return;
 
-registerForm.addEventListener("submit", async (e) => {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    pictureProfileImg.src = e.target.result;
+    dataImg = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+const handleRegister = async (e) => {
   e.preventDefault();
 
   const usernameInput = registerForm.querySelector("#username");
@@ -28,7 +28,9 @@ registerForm.addEventListener("submit", async (e) => {
   const telephoneInput = registerForm.querySelector("#telephone-signup");
   const passwordInput = registerForm.querySelector("#password-signup");
   const repeatPasswordInput = registerForm.querySelector("#repeat-password-signup");
-  
+  const msgError = registerForm.querySelector("#message-error");
+  const submitBtn = registerForm.querySelector("input[type='submit']")
+
   const userName = usernameInput.value.trim();
   const userEmail = emailInput.value.trim();
   const userPhoneNumber = telephoneInput.value.trim();
@@ -36,58 +38,43 @@ registerForm.addEventListener("submit", async (e) => {
   const repeatPassword = repeatPasswordInput.value;
   const userAvatarUrl = dataImg;
 
-  const msgError = registerForm.querySelector("#message-error");
-  const submitBtn = registerForm.querySelector("input[type='submit']")
-
-  const displayError = (message, inputsError) => {
+  const displayError = (message, inputsError = []) => {
     msgError.textContent = message;
     submitBtn.setAttribute("disabled", true);
-
-    inputsError.forEach(input => {
-      input.classList.add("field-modal-error");
-    });
+    
+    inputsError.forEach(input => input.classList.add("field-modal-error"));
 
     setTimeout(() => {
       submitBtn.removeAttribute("disabled");
       msgError.textContent = "";
-
-      inputsError.forEach(input => {
-        input.classList.remove("field-modal-error");
-      });
+      
+      inputsError.forEach(input => input.classList.remove("field-modal-error"));
     }, 3000);
   };
 
   if (!userName || !userEmail || !userPassword) {
-    displayError("Se deben rellenar los campos obligatorios.", [usernameInput, emailInput, passwordInput]);
-    return;
+    return displayError("Se deben rellenar los campos obligatorios.", [usernameInput, emailInput, passwordInput]);
   }
 
   if (userName.length < 4) {
-    displayError("El nombre de usuario debe tener minimo 4 caracteres.", [usernameInput])
-    return;
+    return displayError("El nombre de usuario debe tener minimo 4 caracteres.", [usernameInput])
   }
   
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(userEmail)) {
-    displayError("Formato de email invalido.", [emailInput])
-    return;
+    return displayError("Formato de email invalido.", [emailInput])
   }
 
-  if (userPhoneNumber) {
-    if (!parseInt(userPhoneNumber)) {
-      displayError("El campo telefono solo puede contener numeros.", [telephoneInput]);
-      return;
-    }
+  if (userPhoneNumber && !parseInt(userPhoneNumber)) {
+    return displayError("El campo telefono solo puede contener numeros.", [telephoneInput]);
   }
 
   if (userPassword.length <= 4) {
-    displayError("La contraseña debe tener mas 4 caracteres.", [passwordInput])
-    return;
+    return displayError("La contraseña debe tener mas 4 caracteres.", [passwordInput])
   }
 
   if (userPassword !== repeatPassword) {
-    displayError("Las contraseñas no coinciden.", [passwordInput, repeatPasswordInput])
-    return;
+    return displayError("Las contraseñas no coinciden.", [passwordInput, repeatPasswordInput])
   }
 
   const userData = {
@@ -108,22 +95,14 @@ registerForm.addEventListener("submit", async (e) => {
     })
 
     const response = await res.json();  
-
-    if (!res.ok) {
-      displayError(response.error);
-      return;
-    }
+    if (!res.ok) return displayError(response.error);
 
     const token = response.token;
     const user = response.publicUserData;
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
 
-    usernameInput.value = "";
-    emailInput.value = "";
-    telephoneInput.value = "";
-    passwordInput.value = "";
-    repeatPasswordInput.value = "";
+    registerForm.reset();
     submitBtn.setAttribute("disabled", true);
 
     msgError.classList.add("register-successfully")
@@ -136,19 +115,18 @@ registerForm.addEventListener("submit", async (e) => {
     console.error("Error de red:", err);
     msgError.textContent = "Error en la conexion. Intentalo mas tarde.";
   }
-})
+}
 
-loginForm.addEventListener("submit", async (e) => {
+const handleLogin = async (e) => {
   e.preventDefault();
 
   const emailInput = loginForm.querySelector("#email-login");
   const passwordInput = loginForm.querySelector("#password-login");
+  const msgError = loginForm.querySelector("#message-error");
+  const submitBtn = loginForm.querySelector("input[type='submit']")
 
   const userEmail = emailInput.value.trim();
   const userPassword = passwordInput.value;
-
-  const msgError = loginForm.querySelector("#message-error");
-  const submitBtn = loginForm.querySelector("input[type='submit']")
 
   const displayError = (message) => {
     msgError.textContent = message;
@@ -161,20 +139,16 @@ loginForm.addEventListener("submit", async (e) => {
   };
 
   if (!userEmail || !userPassword) {
-    displayError("Se deben rellenar todos los campos.")
-    return;
+    return displayError("Se deben rellenar todos los campos.")
   }
 
   if (userPassword.length <= 4) {
-    displayError("La contraseña debe tener minimo 4 caracteres.")
-    return;
+    return displayError("La contraseña debe tener minimo 4 caracteres.")
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   if (!emailRegex.test(userEmail)) {
-    displayError("Formato de email invalido.")
-    return;
+    return displayError("Formato de email invalido.")
   }
 
   const userData = {
@@ -192,11 +166,7 @@ loginForm.addEventListener("submit", async (e) => {
     })
 
     const response = await res.json();
-
-    if (!res.ok) {
-      displayError(response.error);
-      return;
-    }
+    if (!res.ok) return displayError(response.error);
 
     const token = response.token;
     const user = response.publicUserData;
@@ -204,21 +174,18 @@ loginForm.addEventListener("submit", async (e) => {
     localStorage.setItem("user", JSON.stringify(user));
 
     if (user.userStatus.userStatusName !== "activo") {
-      displayError("Usuario suspendido!!")
-      return;
+      return displayError("Usuario suspendido!!")
     }
 
-    let route = "/index";
-    if (user.userRole.userRoleName === "admin") {
-      route = "/src/pages/admin/admin.html";
-    }
-
-    emailInput.value = "";
-    passwordInput.value = "";
-    submitBtn.setAttribute("disabled", true);
+    const route = user.userRole.userRoleName === "admin"
+      ? "/src/pages/admin/admin.html"
+      : "/index";
 
     msgError.classList.add("login-successfully")
     msgError.textContent = "Inicio de sesion realizado con exito!!";
+
+    loginForm.reset();
+    submitBtn.setAttribute("disabled", true);
 
     setTimeout(() => {
       location.href = route;
@@ -227,19 +194,21 @@ loginForm.addEventListener("submit", async (e) => {
     console.error("Error de red:", err);
     msgError.textContent = "Error en la conexion. Intentalo mas tarde.";
   }
-})
+}
+
+pictureProfileInput.addEventListener("change", handleProfileImage)
+registerForm.addEventListener("submit", handleRegister);
+loginForm.addEventListener("submit", handleLogin);
 
 
-userBtn.addEventListener("click", () => {
+const toggleUserMenu = () => {
   const userMenu = document.querySelector(".user-menu");
   userMenu.toggleAttribute("data-active");
 
-  if (userMenu.hasAttribute("data-active")) {
-    userMenu.classList.remove("hidden");
-  } else {
-    userMenu.classList.add("hidden");
-  }
-})
+  userMenu.hasAttribute("data-active") 
+    ? userMenu.classList.remove("hidden") 
+    : userMenu.classList.add("hidden");
+}
 
 const logout = () => {
   localStorage.removeItem("token");
@@ -247,4 +216,5 @@ const logout = () => {
   location.href = "/index";
 }
 
+userBtn.addEventListener("click", toggleUserMenu)
 logoutBtn.addEventListener("click", logout);

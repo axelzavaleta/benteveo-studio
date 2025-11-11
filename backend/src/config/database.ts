@@ -1,8 +1,8 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm";
 import { User } from "../entities/user.entity";
-import { UserRole } from "../entities/userRole.entity";
-import { UserStatus } from "../entities/userStatus.entity";
+import UserRole from "../entities/userRole.entity";
+import UserStatus from "../entities/userStatus.entity";
 import "dotenv/config";
 
 export const AppDataSource = new DataSource({

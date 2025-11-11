@@ -1,6 +1,6 @@
 import { AppDataSource } from "../config/database"
-import { UserStatus } from "../entities/userStatus.entity"
-import { UserRole } from "../entities/userRole.entity"
+import UserStatus from "../entities/userStatus.entity"
+import UserRole from "../entities/userRole.entity"
 
 const userStatusRepo = AppDataSource.getRepository(UserStatus);
 const userRoleRepo = AppDataSource.getRepository(UserRole);

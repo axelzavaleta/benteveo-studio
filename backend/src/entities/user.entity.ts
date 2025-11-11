@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn, ManyToOne, JoinColumn } from "typeorm";
-import { UserStatus } from "./userStatus.entity";
-import { UserRole } from "./userRole.entity";
+import UserStatus from "./userStatus.entity";
+import UserRole from "./userRole.entity";
 import "reflect-metadata"
 
 @Entity("usuario")

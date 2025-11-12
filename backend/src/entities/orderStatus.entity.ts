@@ -8,6 +8,6 @@ export class OrderStatus {
   @Column({ name: "estado_orden_nombre", type: "varchar", length: 50, nullable: false, unique: true })
   orderStatusName!: string;
 
-  @CreateDateColumn({ name: "estado_orden_descripcion", type: "text", nullable: true })
+  @Column({ name: "estado_orden_descripcion", type: "text", nullable: true })
   orderStatusDesc?: string;
 }

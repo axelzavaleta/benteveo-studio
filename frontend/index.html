@@ -369,88 +369,31 @@
       <h1 class="auth-modal-title">Crea tu cuenta</h1>
 
       <div class="signup-modal-body">
-        <div class="grid gap-4">
-          <div class="profile-picture-group">
-            <label 
-              for="profile-picture" 
-              class="profile-picture-label">
-              <img src="/src/assets/profile-default.webp" alt="" id="profile-picture-img" class="profile-picture-label">
 
-              <input type="file" id="profile-picture" name="profile-picture" class="hidden">
-              
-              <img src="/src/assets/camera.svg" alt="camera-icon" class="camera-icon">
-            </label>
+        <div class="profile-picture-group col-span-2">
+          <label for="profile-picture" class="profile-picture-label">
+            <img src="/src/assets/profile-default.webp" id="profile-picture-img" class="profile-picture-label">
+            <input type="file" id="profile-picture" name="profile-picture" class="hidden">
+            <img src="/src/assets/camera.svg" class="camera-icon">
+          </label>
+          <span>Foto de perfil (opcional)</span>
+        </div>
 
-            <span>Foto de perfil (opcional)</span>
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="text" 
-            name="username" 
-            id="username" 
-            placeholder="Nombre de usuario" 
-            autocomplete="name" 
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="email" 
-            name="email" 
-            id="email-signup" 
-            placeholder="Correo electrónico" 
-            autocomplete="email" 
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="tel" 
-            name="telephone" 
-            id="telephone-signup" 
-            placeholder="Teléfono (opcional)"
-            class="field-modal">
-          </div>
-        </div>
-  
-        <div class="grid gap-4 h-fit">
-          <div class="w-full">
-            <input 
-            type="date" 
-            name="birthdate" 
-            id="birthdate" 
-            autocomplete="bday"
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="password" 
-            name="password" 
-            id="password-signup" 
-            placeholder="Contraseña" 
-            autocomplete="current-password" 
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="password" 
-            name="repeat-password" 
-            id="repeat-password-signup" 
-            placeholder="Confirmar contraseña" 
-            autocomplete="current-password" 
-            class="field-modal">
-          </div>
-  
-          <span id="message-error" class="message-error"></span>
-        </div>
+        <input type="text" name="username" id="username" placeholder="Nombre de usuario" class="field-modal">
+        <input type="email" name="email" id="email-signup" placeholder="Correo electrónico" class="field-modal">
+        <input type="tel" name="telephone" id="telephone-signup" placeholder="Teléfono (opcional)" class="field-modal">
+
+        <input type="date" name="birthdate" id="birthdate" class="field-modal">
+        <input type="password" name="password" id="password-signup" placeholder="Contraseña" class="field-modal">
+        <input type="password" name="repeat-password" id="repeat-password-signup" placeholder="Confirmar contraseña" class="field-modal">
+
+        <span id="message-error" class="message-error col-span-2"></span>
+
       </div>
 
-      <div class="modal-buttons-group ">
+      <div class="modal-buttons-group">
         <input type="submit" value="Crear cuenta" class="continue-btn">
-  
+
         <p class="quickly-change-modal">
           ¿Ya tienes una cuenta?
           <span id="back-to-login" data-target-modal="login-modal" class="back-to">

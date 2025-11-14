@@ -17,7 +17,7 @@ const getGameData = (container) => {
     gameTitle: container.querySelector("#game-title").textContent,
     gamePrice: parseInt(container.querySelector("#game-price").textContent),
     gameTags: gameTags,
-    gameImg: container.querySelector("#game-img").src,
+    gameImg: "/src/assets/incognita-logo-grande.png",
   }
 }
 

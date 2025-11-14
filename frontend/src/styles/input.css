@@ -243,7 +243,7 @@
   }
 
   .review-card {
-    @apply bg-soft-black border border-border-base;
+    @apply w-full bg-soft-black border border-border-base;
   }
 
   .social-network-card {
@@ -412,7 +412,7 @@
   }
 
   .product-img-container {
-    @apply basis-50;
+    @apply bg-black basis-50;
   }
   .product-img {
     @apply h-full object-cover;

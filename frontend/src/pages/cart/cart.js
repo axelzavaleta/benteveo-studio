@@ -85,7 +85,7 @@ const createProductCard = (product, productId) => {
 
   const productImg = document.createElement("img");
   productImg.classList.add("product-img");
-  productImg.src = product.gameImg || "/src/assets/game.avif";
+  productImg.src = product.gameImg || "/src/assets/incognita-portada-hor.jpeg";
 
   imgContainer.appendChild(productImg) // bloque 1: imagen
 

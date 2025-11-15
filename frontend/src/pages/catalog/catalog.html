@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="shortcut icon" href="src/assets/logo-benteveo-studio.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/src/assets/logo-benteveo-studio.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Benteveo Studio</title>
   <link rel="stylesheet" href="/src/styles/input.css">
@@ -102,24 +102,20 @@
           </a>
 
           <a href="#" class="game-card">
-            <div class="game-img bg-black basis-[75%] bg-[url(/src/assets/game.avif)] bg-cover bg-center">
+            <div class="game-img bg-black basis-[75%] bg-cover bg-center grid place-content-center">
+              <span class="text-3xl text-gray-700">Proximamente</span>
             </div>
 
             <div class="game-info bg-dark-black p-8 basis-[25%]">
-              <h2 class="game-info-title text-2xl font-medium mb-4">Nombre del videojuego</h2>
-
-              <p class="text-2xl text-primary font-medium">ARS $<span class="game-info-price">10.000</span></p>
             </div>
           </a>
 
           <a href="#" class="game-card">
-            <div class="game-img bg-black basis-[75%] bg-[url(/src/assets/game.avif)] bg-cover bg-center">
+            <div class="game-img bg-black basis-[75%] bg-cover bg-center grid place-content-center">
+              <span class="text-3xl text-gray-700">Proximamente</span>
             </div>
 
             <div class="game-info bg-dark-black p-8 basis-[25%]">
-              <h2 class="game-info-title text-2xl font-medium mb-4">Nombre del videojuego</h2>
-
-              <p class="text-2xl text-primary font-medium">ARS $<span class="game-info-price">10.000</span></p>
             </div>
           </a>
         </div>
@@ -142,7 +138,7 @@
           </header>
         
           <div class="px-4 py-8">
-            <span class="text-sm text-gray-400">Publicado el 03/07/2025</span>
+            <span class="text-sm text-gray-400">Publicado el 03/03/2025</span>
         
             <h2 class="text-xl font-bold mb-3">Ariel M.</h2>
         
@@ -164,7 +160,7 @@
           </header>
         
           <div class="px-4 py-8">
-            <span class="text-sm text-gray-400">Publicado el 15/08/2025</span>
+            <span class="text-sm text-gray-400">Publicado el 15/02/2025</span>
         
             <h2 class="text-xl font-bold mb-3">Romina G.</h2>
         
@@ -188,7 +184,7 @@
           </header>
         
           <div class="px-4 py-8">
-            <span class="text-sm text-gray-400">Publicado el 27/09/2025</span>
+            <span class="text-sm text-gray-400">Publicado el 27/05/2025</span>
         
             <h2 class="text-xl font-bold mb-3">Diego T.</h2>
         
@@ -232,10 +228,9 @@
           </div>
         </div>
 
-        <div class="absolute h-[150%] w-[600px] bg-dark-black -right-[10%] top-1/2 -translate-y-1/2 border border-border-base rounded-2xl">
+        <!-- <div class="absolute h-[150%] w-[600px] bg-dark-black -right-[10%] top-1/2 -translate-y-1/2 border border-border-base rounded-2xl"> -->
         </div>
       </div>
-
     </section>
   </main>
 
@@ -368,88 +363,31 @@
       <h1 class="auth-modal-title">Crea tu cuenta</h1>
 
       <div class="signup-modal-body">
-        <div class="grid gap-4">
-          <div class="profile-picture-group">
-            <label 
-              for="profile-picture" 
-              class="profile-picture-label">
-              <img src="/src/assets/profile-default.webp" alt="" id="profile-picture-img" class="profile-picture-label">
 
-              <input type="file" id="profile-picture" name="profile-picture" class="hidden">
-              
-              <img src="/src/assets/camera.svg" alt="camera-icon" class="camera-icon">
-            </label>
+        <div class="profile-picture-group col-span-2">
+          <label for="profile-picture" class="profile-picture-label">
+            <img src="/src/assets/profile-default.webp" id="profile-picture-img" class="profile-picture-label">
+            <input type="file" id="profile-picture" name="profile-picture" class="hidden">
+            <img src="/src/assets/camera.svg" class="camera-icon">
+          </label>
+          <span>Foto de perfil (opcional)</span>
+        </div>
 
-            <span>Foto de perfil (opcional)</span>
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="text" 
-            name="username" 
-            id="username" 
-            placeholder="Nombre de usuario" 
-            autocomplete="name" 
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="email" 
-            name="email" 
-            id="email-signup" 
-            placeholder="Correo electronico" 
-            autocomplete="email" 
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="tel" 
-            name="telephone" 
-            id="telephone-signup" 
-            placeholder="Teléfono (opcional)"
-            class="field-modal">
-          </div>
-        </div>
-  
-        <div class="grid gap-4 h-fit">
-          <div class="w-full">
-            <input 
-            type="date" 
-            name="birthdate" 
-            id="birthdate" 
-            autocomplete="bday"
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="password" 
-            name="password" 
-            id="password-signup" 
-            placeholder="Contraseña" 
-            autocomplete="current-password" 
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="password" 
-            name="repeat-password" 
-            id="repeat-password-signup" 
-            placeholder="Confirmar contraseña" 
-            autocomplete="current-password" 
-            class="field-modal">
-          </div>
-  
-          <span id="message-error" class="message-error"></span>
-        </div>
+        <input type="text" name="username" id="username" placeholder="Nombre de usuario" class="field-modal">
+        <input type="email" name="email" id="email-signup" placeholder="Correo electrónico" class="field-modal">
+        <input type="tel" name="telephone" id="telephone-signup" placeholder="Teléfono (opcional)" class="field-modal">
+
+        <input type="date" name="birthdate" id="birthdate" class="field-modal">
+        <input type="password" name="password" id="password-signup" placeholder="Contraseña" class="field-modal">
+        <input type="password" name="repeat-password" id="repeat-password-signup" placeholder="Confirmar contraseña" class="field-modal">
+
+        <span id="message-error" class="message-error col-span-2"></span>
+
       </div>
 
-      <div class="modal-buttons-group ">
+      <div class="modal-buttons-group">
         <input type="submit" value="Crear cuenta" class="continue-btn">
-  
+
         <p class="quickly-change-modal">
           ¿Ya tienes una cuenta?
           <span id="back-to-login" data-target-modal="login-modal" class="back-to">

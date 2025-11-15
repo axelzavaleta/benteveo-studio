@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="shortcut icon" href="/src/assets/BenteveoStudio-logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/src/assets/logo-benteveo-studio.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Benteveo Studio</title>
   <link rel="stylesheet" href="/src/styles/input.css">
@@ -13,11 +13,11 @@
   <header class="header fixed">
     <div class="header__navigation">
       <div class="flex items-center gap-2">
-        <a href="#home" class="cursor-pointer">
+        <a href="/index.html" class="cursor-pointer">
           <img src="/src/assets/benteveo-logo-dark.png" alt="bs-logo" class="max-w-8">
         </a>
 
-        <h1 class="text-xl font-semibold">Benteveo Studio</h1>
+        <a href="/index.html" class="text-xl font-semibold">Benteveo Studio</a>
       </div>
 
       <nav>
@@ -63,7 +63,6 @@
   </header>
 
   <main class="bg-soft-black text-neutral-light flex-1">
-
     <section id="hero" class="h-svh max-h-[755px] grid place-content-center bg-dark-black relative overflow-hidden">
       <div class="container mx-auto px-6 text-center relative z-10">
 
@@ -499,88 +498,31 @@
       <h1 class="auth-modal-title">Crea tu cuenta</h1>
 
       <div class="signup-modal-body">
-        <div class="grid gap-4">
-          <div class="profile-picture-group">
-            <label 
-              for="profile-picture" 
-              class="profile-picture-label">
-              <img src="/src/assets/profile-default.webp" alt="" id="profile-picture-img" class="profile-picture-label">
 
-              <input type="file" id="profile-picture" name="profile-picture" class="hidden">
-              
-              <img src="/src/assets/camera.svg" alt="camera-icon" class="camera-icon">
-            </label>
+        <div class="profile-picture-group col-span-2">
+          <label for="profile-picture" class="profile-picture-label">
+            <img src="/src/assets/profile-default.webp" id="profile-picture-img" class="profile-picture-label">
+            <input type="file" id="profile-picture" name="profile-picture" class="hidden">
+            <img src="/src/assets/camera.svg" class="camera-icon">
+          </label>
+          <span>Foto de perfil (opcional)</span>
+        </div>
 
-            <span>Foto de perfil (opcional)</span>
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="text" 
-            name="username" 
-            id="username" 
-            placeholder="Nombre de usuario" 
-            autocomplete="name" 
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="email" 
-            name="email" 
-            id="email-signup" 
-            placeholder="Correo electronico" 
-            autocomplete="email" 
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="tel" 
-            name="telephone" 
-            id="telephone-signup" 
-            placeholder="Teléfono (opcional)"
-            class="field-modal">
-          </div>
-        </div>
-  
-        <div class="grid gap-4 h-fit">
-          <div class="w-full">
-            <input 
-            type="date" 
-            name="birthdate" 
-            id="birthdate" 
-            autocomplete="bday"
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="password" 
-            name="password" 
-            id="password-signup" 
-            placeholder="Contraseña" 
-            autocomplete="current-password" 
-            class="field-modal">
-          </div>
-    
-          <div class="w-full">
-            <input 
-            type="password" 
-            name="repeat-password" 
-            id="repeat-password-signup" 
-            placeholder="Confirmar contraseña" 
-            autocomplete="current-password" 
-            class="field-modal">
-          </div>
-  
-          <span id="message-error" class="message-error"></span>
-        </div>
+        <input type="text" name="username" id="username" placeholder="Nombre de usuario" class="field-modal">
+        <input type="email" name="email" id="email-signup" placeholder="Correo electrónico" class="field-modal">
+        <input type="tel" name="telephone" id="telephone-signup" placeholder="Teléfono (opcional)" class="field-modal">
+
+        <input type="date" name="birthdate" id="birthdate" class="field-modal">
+        <input type="password" name="password" id="password-signup" placeholder="Contraseña" class="field-modal">
+        <input type="password" name="repeat-password" id="repeat-password-signup" placeholder="Confirmar contraseña" class="field-modal">
+
+        <span id="message-error" class="message-error col-span-2"></span>
+
       </div>
 
-      <div class="modal-buttons-group ">
+      <div class="modal-buttons-group">
         <input type="submit" value="Crear cuenta" class="continue-btn">
-  
+
         <p class="quickly-change-modal">
           ¿Ya tienes una cuenta?
           <span id="back-to-login" data-target-modal="login-modal" class="back-to">

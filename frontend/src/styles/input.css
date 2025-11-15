@@ -301,7 +301,10 @@
     @apply text-2xl text-primary font-semibold mb-2;
   }
   .price-card .price {
-    @apply text-5xl font-bold;
+    @apply text-5xl font-bold flex justify-center items-end gap-1;
+  }
+  .price .price-local-currency {
+    @apply text-lg text-primary/50;
   }
   .price-card .features {
     @apply grid gap-4 text-sm text-gray-300;

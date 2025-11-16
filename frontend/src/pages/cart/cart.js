@@ -5,6 +5,11 @@ const productsQuantityElement = document.getElementById("products-quantity");
 const taxValueElement = document.getElementById("tax-value");
 const totalElement = document.getElementById("total-price");
 
+const notificationContainer = document.getElementById("notification");
+const notificationTitle = document.getElementById("notification-title");
+const notificationIcon = document.getElementById("notification-icon");
+const notificationContent = document.getElementById("notification-content");
+
 const getDataProducts = () => {
   const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
 
@@ -161,5 +166,54 @@ const renderCart = () => {
   updatePurchaseSummary(summary);
 }
 
+const showNotification = (status, title, content) => {
+  (status === "error")
+    ? notificationIcon.src = "/src/assets/error-circle.svg"
+    : notificationIcon.src = "/src/assets/check-circle.svg";
+
+  notificationContainer.classList.add(status);
+  notificationTitle.textContent = title;
+  notificationContent.textContent = content;
+  
+  setTimeout(() => {
+    notificationContainer.classList.remove("success", "error");
+    notificationContainer.classList.add("hidden");
+  }, 3000);
+}
+
+const processPayment = async (e) => {
+  const paymentBtn = e.target
+  paymentBtn.setAttribute("disabled", true)
+
+  try {
+    notificationContainer.classList.remove("hidden");
+    showNotification("success", "Exito", "Procesando el pago...");
+
+    const cart = getDataProducts();
+    const summary = calculateSummary(cart);
+
+    // console.log(summary);
+    // console.log(cart);
+    
+    const res = await fetch("http://localhost:3000/payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(summary)
+    })
+  
+    const response = await res.json();
+
+    setTimeout(() => {
+      location.href = response.init_point;
+    }, 2000);
+  } catch (error) {
+    showNotification("error", "Error", "Error al procesar el pago");
+    console.log("Error al procesar el pago", error.message);
+  }
+}
+
+document.getElementById("process-payment-btn").addEventListener("click", processPayment);
 document.getElementById("clear-cart").addEventListener("click", clearCart);
 renderCart();

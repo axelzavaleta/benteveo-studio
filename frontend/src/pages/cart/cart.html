@@ -52,6 +52,18 @@
   </header>
 
   <main class="min-h-svh bg-soft-black flex justify-center">
+    <div id="notification" class="notification-container hidden">
+      <div class="flex items-center gap-2">
+        <img src="/src/assets/check.svg" alt="success-notification" id="notification-icon" class="notification-icon w-5">
+        <h2 id="notification-title" class="font-bold text-lg"></h2>
+      </div>
+
+      <div>
+        <p id="notification-content" class="text-sm">
+        </p>
+      </div>
+    </div>
+    
     <div id="cart-container" class="max-w-7xl w-full px-8 py-16 flex justify-between gap-8">
       <div id="cart-products" class="h-fit w-full grid gap-8">
       </div>
@@ -89,7 +101,7 @@
         </div>
         
         <footer class="cart-actions grid gap-2 mt-8">
-          <button class="button-base border-primary bg-primary text-black hover:bg-primary-bold">Procesar pago</button>
+          <button id="process-payment-btn" class="button-base text-center border-primary bg-primary text-black hover:bg-primary-bold">Procesar pago</button>
 
           <button id="clear-cart" class="button-base bg-soft-black hover:bg-black">Vaciar carrito</button>
         </footer>

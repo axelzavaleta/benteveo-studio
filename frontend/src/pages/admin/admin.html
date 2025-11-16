@@ -63,7 +63,6 @@
   <main class="flex-1 flex flex-col overflow-hidden bg-soft-black">
     <header class="bg-dark-black border-b border-border-base p-4 flex items-center justify-between">
       <div class="flex items-center space-x-4">
-        <img src="/src/assets/home.svg" alt="Inicio" class="w-6 invert">
         <h2 class="text-xl font-semibold" id="pageTitle">Inicio</h2>
       </div>
     </header>
@@ -124,7 +123,7 @@
               </div>
 
               <div class="text-center">
-                <div class="w-16 h-16 bg-gray-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="w-16 h-16 bg-primary/50 rounded-full flex items-center justify-center mx-auto mb-4">
                   <img src="/src/assets/cart.svg" alt="mando" class="w-9">
                 </div>
                 <p class="text-3xl font-bold">-</p>
@@ -362,27 +361,32 @@
       <div class="grid grid-cols-2 gap-6">
         <div>
           <label class="block text-sm font-medium mb-1">Nombre</label>
-          <input type="text" name="userName" required class="modal-field">
+          <input type="text" name="userName" id="userName" required class="modal-field">
         </div>
 
         <div>
           <label class="block text-sm font-medium mb-1">Email</label>
-          <input type="email" name="userEmail" required class="modal-field">
+          <input type="email" name="userEmail" id="userEmail" required class="modal-field">
         </div>
 
         <div>
           <label class="block text-sm font-medium mb-1">Contraseña</label>
-          <input type="password" name="userPassword" required class="modal-field">
+          <input type="password" name="userPassword" id="userPassword" required class="modal-field">
         </div>
 
         <div>
           <label class="block text-sm font-medium mb-1">Teléfono</label>
-          <input type="text" name="userPhoneNumber" class="modal-field" placeholder="+54...">
+          <input type="text" name="userPhoneNumber" id="userPhoneNumber" class="modal-field" placeholder="+54...">
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Fecha de Nacimiento</label>
+          <input type="date" name="userBirthDate" id="userBirthDate" class="modal-field w-full">
         </div>
 
         <div>
           <label class="block text-sm font-medium mb-1">Rol</label>
-          <select name="userRoleId" class="modal-field">
+          <select name="userRoleId" id="userRoleId" class="modal-field">
             <option value="1">Usuario</option>
             <option value="2">Administrador</option>
           </select>
@@ -390,10 +394,9 @@
 
         <div>
           <label class="block text-sm font-medium mb-1">Estado</label>
-          <select name="userStatusId" class="modal-field">
+          <select name="userStatusId" id="userStatusId" class="modal-field">
             <option value="1">Activo</option>
             <option value="2">Inactivo</option>
-            <option value="3">Suspendido</option>
           </select>
         </div>
 
@@ -410,6 +413,72 @@
       <div class="flex justify-end space-x-3 pt-8 mt-8 border-t border-[#222c3d]">
         <button type="button" id="cancelUserModal" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-5 rounded-lg">Cancelar</button>
         <button type="submit" class="bg-yellow-400 text-black font-semibold py-2 px-5 rounded-lg hover:bg-yellow-300 transition">Guardar Usuario</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="editUserModal" class="rounded-2xl p-0 backdrop:bg-black/70">
+    <form id="editUserForm" class="relative bg-[#0e1525] text-neutral-200 w-full max-w-3xl p-10 rounded-2xl shadow-2xl border border-[#222c3d] overflow-y-auto max-h-[90vh]">
+      <button type="button" id="closeEditModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">✕</button>
+      <h2 class="text-3xl font-semibold mb-8 text-yellow-400">Editar Usuario</h2>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium mb-1">Nombre</label>
+          <input type="text" name="editUserName" id="editUserName" class="modal-field" placeholder="Nombre actual">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input type="email" name="editUserEmail" id="editUserEmail" class="modal-field" placeholder="Email actual">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Contraseña</label>
+          <input type="password" name="editUserPassword" id="editUserPassword" class="modal-field" placeholder="Nueva contraseña (opcional)">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Teléfono</label>
+          <input type="text" name="editUserPhoneNumber" id="editUserPhoneNumber" class="modal-field" placeholder="Teléfono actual">
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Fecha de Nacimiento</label>
+          <input type="date" name="userBirthDate" id="userBirthDate" class="modal-field w-full">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Rol</label>
+          <select name="editUserRoleId" id="editUserRoleId" class="modal-field">
+            <option value="">Seleccionar rol</option>
+            <option value="1">Usuario</option>
+            <option value="2">Administrador</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Estado</label>
+          <select name="editUserStatusId" id="editUserStatusId" class="modal-field">
+            <option value="">Seleccionar estado</option>
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+          </select>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Avatar</label>
+          <label for="editAvatarFile" class="border border-gray-400 rounded-md py-8 flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-800/30 transition">
+            <span>Sube el avatar o arrástralo aquí</span>
+            <input type="file" id="editAvatarFile" name="editUserAvatarUrl" accept=".jpg,.png,.jpeg" class="hidden">
+          </label>
+          <div id="editAvatarPreview" class="mt-3 flex justify-center"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-end space-x-3 pt-8 mt-8 border-t border-[#222c3d]">
+        <button type="button" id="cancelEditModal" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-5 rounded-lg">Cancelar</button>
+        <button type="submit" class="bg-yellow-400 text-black font-semibold py-2 px-5 rounded-lg hover:bg-yellow-300 transition">Guardar Cambios</button>
       </div>
     </form>
   </dialog>
@@ -464,8 +533,8 @@
 
   </dialog>
 
-
   <script src="./admin.js"></script>
+  <script src="./admin.user.js"></script>
 </body>
 
 </html>

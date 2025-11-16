@@ -195,25 +195,22 @@ tablaBody.addEventListener('click', (e) => {
   }
 });
 
-// ================= USERS (USUARIOS) =================
+// ================= USERS (USUARIOS) - SOLO UI =================
 const openUserModalBtn = document.getElementById('openUserModal');
 const userModal = document.getElementById('newUserModal');
 const closeUserModal = document.getElementById('closeUserModal');
 const cancelUserModal = document.getElementById('cancelUserModal');
 const userForm = document.getElementById('newUserForm');
-const tablaUsuariosBody = document.getElementById('tablaUsuariosBody');
 const avatarFile = document.getElementById('avatarFile');
 const avatarPreview = document.getElementById('avatarPreview');
 
 let avatarSeleccionado = "";
-let filaUsuarioEditando = null;
-let filaUsuarioAEliminar = null;
 
 if (userModal) userModal.style.display = "none";
 
+// Solo manejar la apertura del modal y UI básica
 if (openUserModalBtn) {
   openUserModalBtn.addEventListener('click', () => {
-    filaUsuarioEditando = null;
     if (userForm) userForm.reset();
     avatarSeleccionado = "";
     if (avatarPreview) avatarPreview.innerHTML = "";
@@ -230,6 +227,7 @@ function closeUserForm() {
     userModal.style.display = "none";
   }
 }
+
 if (closeUserModal) closeUserModal.addEventListener('click', closeUserForm);
 if (cancelUserModal) cancelUserModal.addEventListener('click', closeUserForm);
 
@@ -258,134 +256,15 @@ if (avatarFile) {
   });
 }
 
-if (userForm) {
-  userForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(userForm).entries());
-    data.userHasPermissions = !!data.userHasPermissions;
+// ELIMINAR completamente el event listener del submit del formulario
+// y toda la lógica de la tabla de usuarios del admin.js
+// Eso lo manejará admin.user.js
 
-    const estadoTexto = { 1: "Activo", 2: "Inactivo", 3: "Suspendido" }[data.userStatusId] || "Desconocido";
-    const rolTexto = { 1: "Usuario", 2: "Administrador" }[data.userRoleId] || "Sin rol";
-
-    if (filaUsuarioEditando) {
-      filaUsuarioEditando.dataset.user = JSON.stringify(data);
-      filaUsuarioEditando.querySelector('td:nth-child(2)').textContent = data.userName;
-      filaUsuarioEditando.querySelector('td:nth-child(3)').textContent = data.userEmail;
-      filaUsuarioEditando.querySelector('td:nth-child(4)').textContent = rolTexto;
-      filaUsuarioEditando.querySelector('td:nth-child(5)').textContent = data.userPhoneNumber || "-";
-
-      const estadoEl = filaUsuarioEditando.querySelector('td:nth-child(6) span');
-      if (estadoEl) {
-        estadoEl.textContent = estadoTexto;
-        estadoEl.className =
-          estadoTexto === "Activo"
-            ? 'bg-green-500/20 text-green-500 text-xs font-medium px-2 py-1 rounded-full'
-            : 'bg-red-500/20 text-red-500 text-xs font-medium px-2 py-1 rounded-full';
-      }
-
-      if (avatarSeleccionado) {
-        filaUsuarioEditando.querySelector('td:nth-child(1)').innerHTML =
-          `<img src="${avatarSeleccionado}" class="w-10 h-10 rounded-full object-cover">`;
-      }
-
-      filaUsuarioEditando = null;
-    } else {
-      const row = document.createElement('tr');
-      row.className = "hover:bg-dark-black/50";
-      row.dataset.user = JSON.stringify(data);
-
-      row.innerHTML = `
-        <td class="row">
-          ${avatarSeleccionado
-            ? `<img src="${avatarSeleccionado}" class="w-10 h-10 rounded-full object-cover">`
-            : `<div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-xs text-gray-400">Sin</div>`}
-        </td>
-        <td class="row font-medium">${data.userName}</td>
-        <td class="row">${data.userEmail}</td>
-        <td class="row">${rolTexto}</td>
-        <td class="row">${data.userPhoneNumber || "-"}</td>
-        <td class="row">
-          <span class="${data.userStatusId == 1 ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'} text-xs font-medium px-2 py-1 rounded-full">
-            ${estadoTexto}
-          </span>
-        </td>
-        <td class="row">
-          <div class="flex space-x-2">
-            <button class="bg-cyan-400 actions hover:bg-cyan-400/50 p-2 rounded editar-usuario-btn">
-              <img src="/src/assets/edit.svg" alt="editar" class="w-4">
-            </button>
-            <button class="bg-red-400 actions hover:bg-red-400/50 p-2 rounded eliminar-usuario-btn">
-              <img src="/src/assets/trash.svg" alt="eliminar" class="invert w-4">
-            </button>
-          </div>
-        </td>
-      `;
-      if (tablaUsuariosBody) tablaUsuariosBody.appendChild(row);
-    }
-
-    if (userForm) userForm.reset();
-    avatarSeleccionado = "";
-    if (avatarPreview) avatarPreview.innerHTML = "";
-    closeUserForm();
-  });
-}
-
-if (tablaUsuariosBody) {
-  tablaUsuariosBody.addEventListener('click', (e) => {
-    const btnEditar = e.target.closest('.editar-usuario-btn');
-    const btnEliminar = e.target.closest('.eliminar-usuario-btn');
-
-    if (btnEditar) {
-      filaUsuarioEditando = btnEditar.closest('tr');
-      const data = JSON.parse(filaUsuarioEditando.dataset.user || '{}');
-
-      Object.entries(data).forEach(([key, val]) => {
-        const input = userForm ? userForm[key] : null;
-        if (input && input.type !== "file") {
-          if (key === "userPassword") {
-            input.value = "";
-          } else {
-            input.value = val;
-          }
-        }
-      });
-
-      avatarSeleccionado = filaUsuarioEditando.querySelector('img')?.src || "";
-      if (avatarPreview) {
-        avatarPreview.innerHTML = avatarSeleccionado
-          ? `<img src="${avatarSeleccionado}" class="w-24 h-24 rounded-full object-cover border border-gray-600">`
-          : "";
-      }
-
-      if (userModal) {
-        userModal.showModal();
-        userModal.style.display = "flex";
-      }
-    }
-
-
-    if (btnEliminar) {
-      filaUsuarioAEliminar = btnEliminar.closest('tr');
-      const deleteModalUser = document.getElementById('confirmDelete_ModalUser');
-      if (deleteModalUser) deleteModalUser.showModal();
-    }
-  });
-}
-
+// Solo mantener el modal de confirmación de eliminación (pero vacío)
 const deleteModalUserElem = document.getElementById('confirmDelete_ModalUser');
-const confirmDeleteBtnUser = document.getElementById('confirmDelete_BtnUser');
 const cancelDeleteBtnUser = document.getElementById('cancelDelete_BtnUser');
 const closeDeleteModalUserBtn = document.getElementById('closeDeleteModalUser');
 
-if (confirmDeleteBtnUser) {
-  confirmDeleteBtnUser.addEventListener('click', () => {
-    if (filaUsuarioAEliminar) {
-      filaUsuarioAEliminar.remove();
-      filaUsuarioAEliminar = null;
-    }
-    if (deleteModalUserElem) deleteModalUserElem.close();
-  });
-}
 if (cancelDeleteBtnUser) {
   cancelDeleteBtnUser.addEventListener('click', () => {
     if (deleteModalUserElem) deleteModalUserElem.close();

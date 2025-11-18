@@ -26,6 +26,12 @@ export class User {
   @Column({ name: "usuario_ultimo_login", type: "timestamp with time zone", nullable: true })
   userLastLogin?: Date
 
+  @Column({ name: "usuario_verificado", type: "boolean", nullable: false, default: false })
+  userIsVerified!: boolean;
+
+  @Column({ name: "usuario_token_verificacion", type: "text", nullable: true })
+  userVerificationToken?: string | null;
+
   @CreateDateColumn({ name: "usuario_creado_fecha", type: "timestamp with time zone" })
   userCreatedAt!: Date
 

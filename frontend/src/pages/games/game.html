@@ -10,16 +10,14 @@
 </head>
 
 <body class="relative text-neutral-light font-manrope flex flex-col min-h-svh">
-  <div id="notification" class="notification-container hidden">
-    <div class="flex items-center gap-2">
-      <img src="/src/assets/check.svg" alt="success-notification" id="notification-icon" class="notification-icon w-5">
-      <h2 id="notification-title" class="font-bold text-lg"></h2>
+  <div id="toast" class="toast-container hidden animate-fade-up">
+    <div class="toast-header">
+      <img src="/src/assets/check.svg" id="toast-icon" class="toast-icon w-5">
+      <h2 id="toast-title" class="font-bold text-lg"></h2>
     </div>
 
-    <div>
-      <p id="notification-content" class="text-sm">
-      </p>
-    </div>
+    <p id="toast-content" class="text-sm">
+    </p>
   </div>
 
   <header class="header">
@@ -90,6 +88,10 @@
               <span class="tag-cart game-tag">Puzzle</span>
               <span class="tag-cart game-tag">Misterio</span>
             </div>
+
+            <p class="text-gray-400 text-[15px]">
+              Usa las botas espaciales de un detective y resuelve misterios con el poder de las ecuaciones en este único juego de investigación.
+            </p>
           </div>
 
           <div>
@@ -105,7 +107,7 @@
           <h2 class="text-3xl font-semibold mb-6 text-primary">Descripción</h2>
 
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, repudiandae? Dicta autem consectetur repudiandae libero, laudantium doloremque voluptas itaque enim quasi omnis velit, blanditiis nesciunt soluta vitae aut sint dignissimos!
+            Usa las botas espaciales de un detective y resuelve misterios con el poder de las ecuaciones en este único juego de investigación.
           </p>
         </div>
 
@@ -344,7 +346,7 @@
         class="field-modal">
       </div>
 
-      <span id="message-error" class="message-error"></span>
+      <span id="message-error" class="auth-message hidden"></span>
 
       <div class="modal-buttons-group">
         <input type="submit" value="Iniciar sesión" class="continue-btn">
@@ -385,11 +387,9 @@
         <input type="date" name="birthdate" id="birthdate" class="field-modal">
         <input type="password" name="password" id="password-signup" placeholder="Contraseña" class="field-modal">
         <input type="password" name="repeat-password" id="repeat-password-signup" placeholder="Confirmar contraseña" class="field-modal">
-
-        <span id="message-error" class="message-error col-span-2"></span>
-
+        <span id="message-error" class="auth-message hidden col-span-2"></span>
       </div>
-
+      
       <div class="modal-buttons-group">
         <input type="submit" value="Crear cuenta" class="continue-btn">
 

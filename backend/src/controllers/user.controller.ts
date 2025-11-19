@@ -9,7 +9,7 @@ export const getAllUsers = async (req: express.Request, res: express.Response) =
   try {
     const users = await userRepository.find();
     
-    if (users.length === 0) return res.status(200).json({ error: "NO USERS FOUND" })
+    if (users.length === 0) return res.status(404).json({ error: "USERS NOT FOUND" })
     
     res.status(200).json(users);
   } catch (error) {

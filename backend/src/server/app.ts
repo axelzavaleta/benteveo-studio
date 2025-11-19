@@ -5,6 +5,7 @@ import cors from "cors";
 import userRoutes from "../routes/user.routes";
 import authRoutes from "../routes/auth.routes";
 import paymentRoutes from "../routes/payment.routes";
+import productRoutes from "../routes/product.routes";
 
 const server = express();
 
@@ -15,5 +16,6 @@ server.use(express.json());
 server.use("/user", userRoutes);
 server.use("/auth", authRoutes);
 server.use("/payment", paymentRoutes);
+server.use("/product", productRoutes);
 
 export default server;

@@ -12,8 +12,8 @@ export default class Product {
   @Column({ name: "producto_descripcion", type: "text", nullable: false })
   productDesc!: string;
 
-  @Column({ name: "producto_tipo", type: "varchar", length: 50, nullable: false, default: "digital" })
-  productType!: string;
+  @Column({ name: "producto_tipo", type: "varchar", length: 50, nullable: true, default: "digital" })
+  productType?: string;
 
   @Column({ name: "producto_formato", type: "varchar", length: 100, nullable: true })
   productFormat?: string;
@@ -36,8 +36,8 @@ export default class Product {
   @Column({ name: "producto_precio", type: "numeric", precision: 12, scale: 2, nullable: false })
   productPrice!: number;
 
-  @Column({ name: "producto_moneda", type: "char", length: 3, default: "ARS", nullable: false })
-  productLocalCurrency!: string;
+  @Column({ name: "producto_moneda", type: "char", length: 3, default: "ARS", nullable: true })
+  productLocalCurrency?: string;
 
   @Column({ name: "etiqueta_id", type: "int", nullable: true })
   productTagsId?: number;

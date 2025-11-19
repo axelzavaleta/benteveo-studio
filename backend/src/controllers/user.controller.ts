@@ -36,50 +36,6 @@ export const getUserById = async (req: express.Request, res: express.Response) =
   }
 }
 
-export const createUser = async (req: express.Request, res: express.Response) => {
-  const { userName, userEmail, userPassword, userPhoneNumber, userAvatarUrl } = req.body;
-
-  if (!userName || !userEmail || !userPassword) {
-    return res.status(400).json({ error: "REQUIRED FIELDS ARE INCOMPLETE" })
-  }
-
-  if (userPassword.length <= 4) {
-    return res.status(400).json({ error: "PASSWORD MUST BE LONGER THAN 4 CHARACTERS" })
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!emailRegex.test(userEmail)) {
-    return res.status(400).json({ error: "INVALID EMAIL FORMAT" })
-  }
-
-  try {
-    const existingUser = await userRepository.findOne({ where: { userEmail } });
-  
-    if (existingUser) return res.status(409).json({ error: "USER WITH EXISTING EMAIL ADDRESS" });
-
-    const hashedUserPsw = await bcrypt.hash(userPassword, 10);
-
-    const user = userRepository.create({
-      userName,
-      userEmail,
-      userPassword: hashedUserPsw,
-      userPhoneNumber,
-      userAvatarUrl,
-      userRoleId: 1,
-      userStatusId: 1
-    });
-  
-    await userRepository.save(user)
-
-    const { userPassword: _, ...publicUserData } = user;
-
-    res.status(201).json(publicUserData);
-  } catch (error) {
-    res.status(500).json({ error: "ERROR CREATING USER" })
-  }
-}
-
 export const updateUser = async(req: express.Request, res: express.Response) => {
   const { userId } = req.params;
   const { userPassword, userEmail } = req.body;
@@ -141,7 +97,7 @@ export const removeUser = async (req: express.Request, res: express.Response) =>
   }
 }
 
-export const createUserByAdmin = async (req: express.Request, res: express.Response) => {
+export const createUser = async (req: express.Request, res: express.Response) => {
   const { userName, userEmail, userPassword, userPhoneNumber, userAvatarUrl, userRoleId, userStatusId } = req.body;
 
   if (!userName || !userEmail || !userPassword) {

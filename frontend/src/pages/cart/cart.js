@@ -5,10 +5,10 @@ const productsQuantityElement = document.getElementById("products-quantity");
 const taxValueElement = document.getElementById("tax-value");
 const totalElement = document.getElementById("total-price");
 
-const notificationContainer = document.getElementById("notification");
-const notificationTitle = document.getElementById("notification-title");
-const notificationIcon = document.getElementById("notification-icon");
-const notificationContent = document.getElementById("notification-content");
+const toastContainer = document.getElementById("toast");
+const toastTitle = document.getElementById("toast-title");
+const toastIcon = document.getElementById("toast-icon");
+const toastContent = document.getElementById("toast-content");
 
 const getDataProducts = () => {
   const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -166,18 +166,20 @@ const renderCart = () => {
   updatePurchaseSummary(summary);
 }
 
-const showNotification = (status, title, content) => {
-  (status === "error")
-    ? notificationIcon.src = "/src/assets/error-circle.svg"
-    : notificationIcon.src = "/src/assets/check-circle.svg";
-
-  notificationContainer.classList.add(status);
-  notificationTitle.textContent = title;
-  notificationContent.textContent = content;
+const showToast = (status, title, content) => {
+  status === "error"
+  ? toastIcon.src = "/src/assets/error-circle.svg"
+  : toastIcon.src = "/src/assets/check-circle.svg";
+  
+  toastContainer.classList.add(status);
+  toastContainer.classList.add("show");
+  toastTitle.textContent = title;
+  toastContent.textContent = content;
   
   setTimeout(() => {
-    notificationContainer.classList.remove("success", "error");
-    notificationContainer.classList.add("hidden");
+    addToCartBtn.removeAttribute("disabled");
+    toastContainer.classList.remove("success", "error");
+    toastContainer.classList.remove("show");
   }, 3000);
 }
 
@@ -186,8 +188,8 @@ const processPayment = async (e) => {
   paymentBtn.setAttribute("disabled", true)
 
   try {
-    notificationContainer.classList.remove("hidden");
-    showNotification("success", "Exito", "Procesando el pago...");
+    toastContainer.classList.remove("hidden");
+    showToast("success", "Exito", "Procesando el pago...");
 
     const cart = getDataProducts();
     const summary = calculateSummary(cart);
@@ -209,7 +211,7 @@ const processPayment = async (e) => {
       location.href = response.init_point;
     }, 2000);
   } catch (error) {
-    showNotification("error", "Error", "Error al procesar el pago");
+    showToast("error", "Error", "Error al procesar el pago");
     console.log("Error al procesar el pago", error.message);
   }
 }

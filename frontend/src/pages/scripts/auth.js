@@ -153,7 +153,7 @@ const handleLogin = async (e) => {
     userPassword,
   }
 
-  try {
+  try {    
     const res = await fetch("http://localhost:3000/auth/login", {
       method: "POST",
       headers: {
@@ -196,7 +196,7 @@ const handleLogin = async (e) => {
     }, 2000);
   } catch (err) {
     console.error("Error de red:", err);
-    msgError.textContent = "Error en la conexión. Inténtalo más tarde.";
+    displayError("Error en la conexion. Intentalo mas tarde.");
   }
 }
 

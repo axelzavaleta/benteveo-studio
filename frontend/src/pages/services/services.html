@@ -64,7 +64,7 @@
 
   <main class="bg-soft-black flex-1">
     <section id="hero" class="grid place-items-center h-svh max-h-[700px]">
-      <div class="max-w-6xl w-full px-8 text-center grid place-content-center gap-4">
+      <div class="max-w-6xl w-full px-8 text-center grid place-content-center gap-4 animate-fade-up">
         <h1 class="text-7xl font-semibold uppercase">Servicios de desarrollo  de videojuegos</h1>
         
         <p class="max-w-3xl mx-auto mb-4">
@@ -76,63 +76,61 @@
     </section>
 
     <section id="services" class="section-base bg-dark-black">
-      <div class="max-w-7xl w-full px-8">
-        <div class="flex gap-16">
-          <div class="services-intro w-fit">
-            <h2 class="text-7xl font-semibold capitalize mb-8 tracking-wide">Nuestros servicios</h2>
+      <div class="services-container">
+        <div class="services-intro w-fit">
+          <h2 class="text-7xl font-semibold capitalize mb-8 tracking-wide">Nuestros servicios</h2>
+
+          <p>
+            Desarrollamos videojuegos de alta calidad para todas las plataformas. Sabemos que cada proyecto tiene desafíos únicos, así que nos adaptamos a tu visión y presupuesto. Ya sea que necesites un juego móvil, PC, consola o un multijugador competitivo, nuestro equipo está listo para hacerlo posible.
+          </p>
+        </div>
   
-            <p>
-              Desarrollamos videojuegos de alta calidad para todas las plataformas. Sabemos que cada proyecto tiene desafíos únicos, así que nos adaptamos a tu visión y presupuesto. Ya sea que necesites un juego móvil, PC, consola o un multijugador competitivo, nuestro equipo está listo para hacerlo posible.
-            </p>
+        <div class="services-grid ">
+          <div class="service-card">
+            <div class="service-card-intro">
+              <img src="/src/assets/mobile.svg" alt="" class="service-card-icon">
+
+              <h3 class="service-card-title">Móviles</h3>
+            </div>
+            
+            <p class="service-card-desc">Desarrollo completo para iOS y Android con optimización para plataformas móviles</p>
           </div>
-    
-          <div class="services-grid">
-            <div class="service-card">
-              <div class="service-card-intro">
-                <img src="/src/assets/mobile.svg" alt="" class="service-card-icon">
-
-                <h3 class="service-card-title">Móviles</h3>
-              </div>
-              
-              <p class="service-card-desc">Desarrollo completo para iOS y Android con optimización para plataformas móviles</p>
-            </div>
-    
-            <div class="service-card">
-              <div class="service-card-intro">
-                <img src="/src/assets/desktop.svg" alt="" class="service-card-icon">
-
-                <h3 class="service-card-title">PC</h3>
-              </div>
-              
-              <p>Desarrollo de títulos para PC con soporte en Windows y MacOS</p>
-            </div>
-            
-            <div class="service-card">
-              <div class="service-card-intro">
-                <img src="/src/assets/joystick.svg" alt="" class="service-card-icon">
-
-                <h3 class="service-card-title">Consola</h3>
-              </div>
   
-              <p>Creamos experiencias para PlayStation, Xbox y Nintendo Switch</p>
+          <div class="service-card">
+            <div class="service-card-intro">
+              <img src="/src/assets/desktop.svg" alt="" class="service-card-icon">
+
+              <h3 class="service-card-title">PC</h3>
             </div>
             
-            <div class="service-card">
-              <div class="service-card-intro">
-                <img src="/src/assets/cross-platform.svg" alt="" class="service-card-icon">
+            <p>Desarrollo de títulos para PC con soporte en Windows y MacOS</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-card-intro">
+              <img src="/src/assets/joystick.svg" alt="" class="service-card-icon">
 
-                <h3 class="service-card-title">Multiplataforma</h3>
-              </div>
-              
-              <p>Desarrollo multiplataforma para alcanzar la máxima audiencia con una sola versión optimizada</p>
+              <h3 class="service-card-title">Consola</h3>
             </div>
+
+            <p>Creamos experiencias para PlayStation, Xbox y Nintendo Switch</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-card-intro">
+              <img src="/src/assets/cross-platform.svg" alt="" class="service-card-icon">
+
+              <h3 class="service-card-title">Multiplataforma</h3>
+            </div>
+            
+            <p>Desarrollo multiplataforma para alcanzar la máxima audiencia con una sola versión optimizada</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="platforms-worked" class="platforms-worked">
-      <div class="w-3xl px-8">
+      <div class="platforms-container w-3xl px-8">
         <h3 class="text-3xl font-semibold mb-8">Trabajamos con plataformas como:</h3>
         
         <div class="platform-icons flex justify-between">
@@ -160,7 +158,7 @@
     </section>
 
     <section id="pricing-services" class="section-base">
-      <div class="max-w-7xl w-full text-center px-8">
+      <div class="pricing-services-container">
         <h1 class="text-7xl font-semibold mb-16">Precios</h1>
 
         <div class="pricing-grid">

@@ -45,6 +45,28 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes fadeInUpHigh {
+    0% {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes show {
+    0% {
+      opacity: 0;
+      transform: scale(0.50);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
 @layer {
@@ -55,6 +77,14 @@
   
   .animate-fade-up {
     animation: fadeInUp 0.6s;
+  }
+
+  .animate-show {
+    animation: show 0.6s;
+  }
+
+  .animate-fadeInUpHigh {
+    animation: fadeInUpHigh 0.6s;
   }
   
   .animate-delay-200 {
@@ -253,6 +283,30 @@
   .card-about {
     @apply col-span-2 flex items-center gap-8;
   }
+  .card-about, 
+  .card-services, 
+  .card-help, 
+  .main-naveg-title, 
+  .contact-container,
+  .services-container,
+  .community-container,
+  .reviews-container,
+  .games-container,
+  .platforms-container,
+  .pricing-services-container,
+  .about-us-container,
+  .skills-container,
+  .postulation-container,
+  .user-journey-container {
+    view-timeline-name: --card;
+    view-timeline-axis: block;
+
+    animation-timeline: --card;
+    animation-name: fadeInUpHigh;
+
+    animation-range: entry 50% cover 60%;
+    animation-fill-mode: both;
+  }
   .card-about-img {
     @apply bg-white/60 rounded-2xl h-full basis-full overflow-hidden;
   }
@@ -277,6 +331,15 @@
   }
 
   /* PAGE: CATALOG */
+  .catalog-hero {
+    @apply w-full h-svh max-h-[1255px] flex justify-between overflow-hidden;
+  }
+  .catalog-hero-img {
+    @apply bg-accent w-full bg-[url(/src/assets/incognita-portada-hor.jpeg)] bg-no-repeat bg-center bg-cover;
+  }
+  .catalog-hero-info {
+    @apply basis-1/2 bg-dark-black h-full text-neutral-light grid place-items-center px-12;
+  }
   .tag {
     @apply bg-accent py-0.5 px-4 rounded-2xl;
   }
@@ -289,6 +352,13 @@
     @apply flex flex-col min-h-[485px] bg-accent border border-border-base hover:scale-101 hover:border-neutral-light  transition-all;
   }
 
+  .games-container {
+    @apply max-w-7xl w-full gap-16 px-8;
+  }
+
+  .reviews-container {
+    @apply max-w-7xl gap-8 flex px-8;
+  }
   .review-card {
     @apply w-full bg-soft-black border border-border-base;
   }
@@ -299,6 +369,10 @@
 
   .social-network-icon {
     @apply bg-dark-black w-full h-full object-cover p-4;
+  }
+
+  .community-container {
+    @apply relative max-w-7xl w-full px-8;
   }
 
   .toast-container {
@@ -318,6 +392,9 @@
   } 
 
   /* PAGE: SERVICES */
+  .services-container {
+    @apply max-w-7xl w-full px-8 flex gap-16;
+  }
   .services-grid {
     @apply grid grid-cols-2 gap-2 basis-full;
   }
@@ -341,6 +418,9 @@
     @apply w-10;
   }
 
+  .pricing-services-container {
+    @apply max-w-7xl w-full text-center px-8;
+  }
   .pricing-grid {
     @apply grid grid-cols-3 gap-8 place-items-center;
   }
@@ -374,6 +454,12 @@
   }
 
   /* PAGE: ABOUT-US */
+  .about-us-hero {
+    @apply text-5xl md:text-6xl font-extrabold mb-6;
+  }
+  .about-us-container {
+    @apply max-w-7xl grid grid-cols-2 gap-12 items-center px-8;
+  }
   .card-us {
     @apply bg-black/60 shadow-[0_0_10px_rgba(99,102,241,0.3)] shadow-blue-700 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:-translate-y-1.5 transition-all;
   }

@@ -1,3 +1,33 @@
+const LANG_TEXTS = {
+  es: {
+    emptyCart: "Tu carrito está vacío",
+    goToCatalog: "Ir al catálogo",
+
+    paymentProcessingTitle: "Éxito",
+    paymentProcessingMsg: "Procesando el pago...",
+
+    paymentErrorTitle: "Error",
+    paymentErrorMsg: "Error al procesar el pago",
+
+    currency: "ARS $"
+  },
+
+  en: {
+    emptyCart: "Your cart is empty",
+    goToCatalog: "Go to catalog",
+
+    paymentProcessingTitle: "Success",
+    paymentProcessingMsg: "Processing payment...",
+
+    paymentErrorTitle: "Error",
+    paymentErrorMsg: "Failed to process payment",
+
+    currency: "ARS $"
+  }
+};
+
+const lang = localStorage.getItem("language") || "es";
+
 const cartProducts = document.getElementById("cart-products");
 const cartSummary = document.getElementById("cart-summary");
 const subtotalElement = document.getElementById("subtotal-price");
@@ -60,11 +90,11 @@ const showEmptyCart = () => {
   cartSummary.classList.add("hidden");
 
   const messageHeading = document.createElement("h1");
-  messageHeading.textContent = "Tu carrito está vacío";
+  messageHeading.textContent = LANG_TEXTS[lang].emptyCart;
   messageHeading.classList.add("message-empty-card");
 
   const linkElement = document.createElement("a");
-  linkElement.textContent = "Ir al catalogo";
+  linkElement.textContent = LANG_TEXTS[lang].goToCatalog;
   linkElement.classList.add("link-empty-cart"); 
   linkElement.href = "/src/pages/catalog/catalog.html";
 
@@ -113,7 +143,7 @@ const createProductCard = (product, productId) => {
   });
 
   const priceContainer = document.createElement("p");
-  priceContainer.textContent = "ARS $"
+  priceContainer.textContent = LANG_TEXTS[lang].currency;
 
   const priceElement = document.createElement("span");
   priceElement.classList.add("product-price");
@@ -189,7 +219,11 @@ const processPayment = async (e) => {
 
   try {
     toastContainer.classList.remove("hidden");
-    showToast("success", "Exito", "Procesando el pago...");
+    showToast(
+      "success",
+      LANG_TEXTS[lang].paymentProcessingTitle,
+      LANG_TEXTS[lang].paymentProcessingMsg
+    );
 
     const cart = getDataProducts();
     const summary = calculateSummary(cart);
@@ -211,7 +245,11 @@ const processPayment = async (e) => {
       location.href = response.init_point;
     }, 2000);
   } catch (error) {
-    showToast("error", "Error", "Error al procesar el pago");
+    showToast(
+      "error",
+      LANG_TEXTS[lang].paymentErrorTitle,
+      LANG_TEXTS[lang].paymentErrorMsg
+    );
     console.log("Error al procesar el pago", error.message);
   }
 }

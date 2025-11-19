@@ -19,39 +19,49 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendVerificationEmail = async (email: string, token: string) => {  
+const sendVerificationEmail = async (email: string, token: string) => {
+
+  
   const verificationUrl = `${process.env.BACKEND_URL}/auth/verify-email?token=${token}`;
 
   try {
     await transporter.sendMail({
       from: `"Benteveo Studio" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: "Verifica tu cuenta",
+      subject: "Confirmá tu cuenta · Benteveo Studio",
       html: `
-        <div>
-          <h1 style="color: #667eea;">
+      <div style="background-color:#040116; padding:40px 0; font-family:Arial, sans-serif;">
+        <div style="max-width:600px; margin:auto; background:#080E28; border-radius:12px; overflow:hidden; padding:40px; color:white;">
+          <h1 style="text-align:center; font-size:26px; margin-bottom:20px; color:#8EA6FF;">
             ¡Bienvenido a Benteveo Studio!
           </h1>
-          
-          <p>Gracias por registrarte. Para completar tu registro, verifica tu email:</p>
-          
-          <a href="${verificationUrl}" 
-            style="display: inline-block; background: #667eea; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin: 20px 0;">
-            Verificar mi cuenta
-          </a>
-          
-          <p>
-            <strong>Este enlace expirará en 24 horas.</strong>
+
+          <p style="font-size:16px; line-height:1.6;">
+            Gracias por registrarte en nuestra plataforma. Para activar tu cuenta, solo tenés que verificar tu dirección de email haciendo clic en el botón de abajo.
           </p>
-          
-          <p style="color: #666; font-size: 12px;">Si no creaste esta cuenta, ignora este email.</p>
+
+          <div style="text-align:center; margin:35px 0;">
+            <a href="${verificationUrl}"
+              style="background:#667EEA; padding:14px 35px; color:white; text-decoration:none; border-radius:8px; font-size:16px; display:inline-block;">
+              Verificar mi cuenta
+            </a>
+          </div>
+
+          <p style="font-size:14px; opacity:0.8; text-align:center;">
+            Este enlace expirará en <strong>24 horas</strong>.
+          </p>
+
+          <p style="font-size:12px; opacity:0.6; margin-top:30px; text-align:center;">
+            Si no creaste esta cuenta, simplemente ignorá este mensaje.
+          </p>
         </div>
+      </div>
       `,
     });
   } catch (error) {
     console.log("Error al enviar el email", error);
   }
-}
+};
   
 export const registerUser = async (req: express.Request, res: express.Response) => {
   const { userName, userEmail, userPassword, userPhoneNumber, userAvatarUrl } = req.body;

@@ -1,4 +1,4 @@
-const LANG_TEXTS = {
+const GAME_TEXTS = {
   es: {
     loginRequiredTitle: "Error",
     loginRequiredMsg: "Inicie sesión para administrar su carrito",
@@ -61,7 +61,7 @@ const showToast = (status, title, content) => {
   }, 3000);
 }
 
-const lang = localStorage.getItem("language") || "es";
+const langG = localStorage.getItem("languageGame") || "es";
 
 addToCartBtn.addEventListener("click", () => {
   const isLogged = localStorage.getItem("token");
@@ -71,15 +71,15 @@ addToCartBtn.addEventListener("click", () => {
   if (!isLogged) {
     return showToast(
       "error",
-      LANG_TEXTS[lang].loginRequiredTitle,
-      LANG_TEXTS[lang].loginRequiredMsg
+      GAME_TEXTS[langG].loginRequiredTitle,
+      GAME_TEXTS[langG].loginRequiredMsg
     );
   }
 
   showToast(
     "success",
-    LANG_TEXTS[lang].successTitle,
-    LANG_TEXTS[lang].successMsg
+    GAME_TEXTS[langG].successTitle,
+    GAME_TEXTS[langG].successMsg
   );
 
   const gameData = getGameData(gameContainer);

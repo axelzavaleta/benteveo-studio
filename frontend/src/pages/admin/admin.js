@@ -195,6 +195,75 @@ tablaBody.addEventListener('click', (e) => {
   }
 });
 
+// ================= COMPRESIÓN DE IMÁGENES =================
+const compressImage = (file, maxWidth = 200, maxHeight = 200, quality = 0.6) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth || height > maxHeight) {
+          const ratio = Math.min(maxWidth / width, maxHeight / height);
+          width *= ratio;
+          height *= ratio;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+        resolve(compressedBase64);
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
+
+const handleAvatarImage = async (e, previewId) => {
+  const file = e.target.files[0];
+
+  if (!file) return null;
+
+  const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+  if (!validTypes.includes(file.type)) {
+    alert("Formato de imagen no válido.");
+    e.target.value = '';
+    return null;
+  }
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("La imagen es demasiado grande. Usa una imagen más pequeña.");
+    e.target.value = '';
+    return null;
+  }
+
+  try {
+    const compressedImage = await compressImage(file);
+    
+    const preview = document.getElementById(previewId);
+    if (preview) {
+      preview.innerHTML = `<img src="${compressedImage}" class="w-24 h-24 rounded-full object-cover border border-gray-600">`;
+    }
+    
+    return compressedImage;
+  } catch (error) {
+    console.error("Error procesando imagen:", error);
+    alert("Error al procesar la imagen");
+    e.target.value = '';
+    return null;
+  }
+}
+
 // ================= USERS (USUARIOS) - SOLO UI =================
 const openUserModalBtn = document.getElementById('openUserModal');
 const userModal = document.getElementById('newUserModal');
@@ -204,7 +273,9 @@ const userForm = document.getElementById('newUserForm');
 const avatarFile = document.getElementById('avatarFile');
 const avatarPreview = document.getElementById('avatarPreview');
 
-let avatarSeleccionado = "";
+// Variables globales para los avatares comprimidos
+window.avatarComprimido = "";
+window.editAvatarComprimido = "";
 
 if (userModal) userModal.style.display = "none";
 
@@ -212,7 +283,7 @@ if (userModal) userModal.style.display = "none";
 if (openUserModalBtn) {
   openUserModalBtn.addEventListener('click', () => {
     if (userForm) userForm.reset();
-    avatarSeleccionado = "";
+    window.avatarComprimido = "";
     if (avatarPreview) avatarPreview.innerHTML = "";
     if (userModal) {
       userModal.showModal();
@@ -239,20 +310,20 @@ if (userModal) {
   });
 }
 
+// ================= AVATAR PARA NUEVO USUARIO =================
 if (avatarFile) {
-  avatarFile.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        avatarSeleccionado = event.target.result;
-        if (avatarPreview) avatarPreview.innerHTML = `<img src="${avatarSeleccionado}" class="w-24 h-24 rounded-full object-cover border border-gray-600">`;
-      };
-      reader.readAsDataURL(file);
-    } else {
-      avatarSeleccionado = "";
-      if (avatarPreview) avatarPreview.innerHTML = "";
-    }
+  avatarFile.addEventListener('change', async (e) => {
+    window.avatarComprimido = await handleAvatarImage(e, 'avatarPreview');
+  });
+}
+
+// ================= AVATAR PARA EDICIÓN =================
+const editAvatarFile = document.getElementById('editAvatarFile');
+const editAvatarPreview = document.getElementById('editAvatarPreview');
+
+if (editAvatarFile) {
+  editAvatarFile.addEventListener('change', async (e) => {
+    window.editAvatarComprimido = await handleAvatarImage(e, 'editAvatarPreview');
   });
 }
 

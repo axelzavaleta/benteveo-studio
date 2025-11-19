@@ -94,7 +94,6 @@ async function manejarCrearUsuario(e) {
     const userPhoneNumber = document.getElementById('userPhoneNumber').value;
     const userRoleId = document.getElementById('userRoleId').value;
     const userStatusId = document.getElementById('userStatusId').value;
-    const userBirthDate = document.getElementById('editUserBirthDate').value;
     
     if (!userName.trim()) {
         mostrarError('El nombre es obligatorio');
@@ -111,21 +110,38 @@ async function manejarCrearUsuario(e) {
         return;
     }
     
-    const userData = {
-        userName: userName.trim(),
-        userEmail: userEmail.trim(),
-        userPassword: userPassword,
-        userRoleId: parseInt(userRoleId),
-        userStatusId: parseInt(userStatusId)
-    };
-    
-    if (userPhoneNumber.trim()) {
-        userData.userPhoneNumber = userPhoneNumber.trim();
-    }
-    
     try {
+        // OBTENER EL AVATAR SELECCIONADO DEL admin.js
+        const avatarPreview = document.getElementById('avatarPreview');
+        let avatarBase64 = null;
+        
+        if (avatarPreview && avatarPreview.querySelector('img')) {
+            avatarBase64 = avatarPreview.querySelector('img').src;
+            console.log('Avatar encontrado:', avatarBase64.substring(0, 100)); // Debug
+        }
+        
+        const userData = {
+            userName: userName.trim(),
+            userEmail: userEmail.trim(),
+            userPassword: userPassword,
+            userRoleId: parseInt(userRoleId),
+            userStatusId: parseInt(userStatusId),
+            userAvatarUrl: avatarBase64  // ← ENVIAR EL AVATAR A LA API
+        };
+        
+        if (userPhoneNumber.trim()) {
+            userData.userPhoneNumber = userPhoneNumber.trim();
+        }
+        
+        console.log('Enviando usuario con avatar:', userData.userAvatarUrl ? 'Sí' : 'No'); // Debug
+        
         await crearUsuario(userData);
         mostrarExito('Usuario creado correctamente');
+        
+        // Limpiar el formulario y avatar
+        document.getElementById('newUserForm').reset();
+        if (avatarPreview) avatarPreview.innerHTML = '';
+        
         cerrarModal(document.getElementById('newUserModal'));
         await cargarUsuarios();
         
@@ -145,7 +161,6 @@ async function manejarEditarUsuario(e) {
     const userPhoneNumber = document.getElementById('editUserPhoneNumber').value;
     const userRoleId = document.getElementById('editUserRoleId').value;
     const userStatusId = document.getElementById('editUserStatusId').value;
-    const userBirthDate = document.getElementById('editUserBirthDate').value;
     
     const userData = {};
     
@@ -155,6 +170,13 @@ async function manejarEditarUsuario(e) {
     if (userPhoneNumber.trim()) userData.userPhoneNumber = userPhoneNumber.trim();
     if (userRoleId) userData.userRoleId = parseInt(userRoleId);
     if (userStatusId) userData.userStatusId = parseInt(userStatusId);
+    
+    // OBTENER AVATAR DE EDICIÓN SI EXISTE
+    const editAvatarPreview = document.getElementById('editAvatarPreview');
+    if (editAvatarPreview && editAvatarPreview.querySelector('img')) {
+        userData.userAvatarUrl = editAvatarPreview.querySelector('img').src;
+        console.log('Avatar de edición encontrado'); // Debug
+    }
     
     if (Object.keys(userData).length === 0) {
         mostrarError('No se detectaron cambios. Modifica al menos un campo para actualizar el usuario.');
@@ -199,7 +221,7 @@ function limpiarModalEdicion() {
 
 // ========== FUNCIONES BACKEND ==========
 async function crearUsuario(userData) {
-    const response = await fetch(`${API_BASE_URL}/user`, {
+    const response = await fetch(`${API_BASE_URL}/user/admin-create`, {  // ← Nuevo endpoint
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -213,6 +235,61 @@ async function crearUsuario(userData) {
     }
     
     return await response.json();
+}
+
+window.editarUsuario = async function(userId) {
+    userToEditId = userId;
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/user/${userId}`);
+        
+        if (!response.ok) {
+            throw new Error('Usuario no encontrado');
+        }
+        
+        const usuario = await response.json();
+        
+        document.getElementById('editUserName').value = '';
+        document.getElementById('editUserName').placeholder = usuario.userName || 'Nombre actual';
+        
+        document.getElementById('editUserEmail').value = '';
+        document.getElementById('editUserEmail').placeholder = usuario.userEmail || 'Email actual';
+        
+        document.getElementById('editUserPassword').value = '';
+        document.getElementById('editUserPassword').placeholder = 'Nueva contraseña (opcional)';
+        
+        document.getElementById('editUserPhoneNumber').value = '';
+        document.getElementById('editUserPhoneNumber').placeholder = usuario.userPhoneNumber || 'Teléfono actual';
+
+        document.getElementById('editUserRoleId').value = '';
+        document.getElementById('editUserStatusId').value = '';
+        
+        // MOSTRAR AVATAR ACTUAL EN EL MODAL DE EDICIÓN
+        const editAvatarPreview = document.getElementById('editAvatarPreview');
+        if (editAvatarPreview) {
+            if (usuario.userAvatarUrl) {
+                editAvatarPreview.innerHTML = `
+                    <img src="${usuario.userAvatarUrl}" class="w-24 h-24 rounded-full object-cover border border-gray-600">
+                    <p class="text-xs text-gray-400 mt-2">Avatar actual</p>
+                `;
+            } else {
+                editAvatarPreview.innerHTML = `
+                    <div class="w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center text-gray-400">
+                        Sin avatar
+                    </div>
+                `;
+            }
+        }
+        
+        const editUserModal = document.getElementById('editUserModal');
+        if (editUserModal) {
+            editUserModal.showModal();
+            editUserModal.style.display = "flex";
+        }
+        
+    } catch (error) {
+        mostrarError('Error al cargar datos del usuario');
+    }
 }
 
 async function actualizarUsuario(userId, userData) {

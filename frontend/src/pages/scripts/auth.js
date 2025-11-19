@@ -36,14 +36,18 @@ const handleRegister = async (e) => {
   const userAvatarUrl = dataImg;
 
   const displayError = (message, inputsError = []) => {
+    msgError.classList.add("register-error");
     msgError.textContent = message;
+    msgError.classList.remove("hidden")
     submitBtn.setAttribute("disabled", true);
     
     inputsError.forEach(input => input.classList.add("field-modal-error"));
 
     setTimeout(() => {
+      msgError.classList.add("hidden")
       submitBtn.removeAttribute("disabled");
       msgError.textContent = "";
+      msgError.classList.remove("register-error");
       
       inputsError.forEach(input => input.classList.remove("field-modal-error"));
     }, 3000);
@@ -67,7 +71,7 @@ const handleRegister = async (e) => {
   }
 
   if (userPassword.length <= 4) {
-    return displayError("La contraseña debe tener mas 4 caracteres.", [passwordInput])
+    return displayError("La contraseña debe tener más 4 caracteres.", [passwordInput])
   }
 
   if (userPassword !== repeatPassword) {
@@ -89,28 +93,20 @@ const handleRegister = async (e) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userData)
-    })
+    });
 
     const response = await res.json();  
     if (!res.ok) return displayError(response.error);
 
-    const token = response.token;
-    const user = response.publicUserData;
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(user));
-
     registerForm.reset();
     submitBtn.setAttribute("disabled", true);
+    msgError.classList.remove("hidden");
 
     msgError.classList.add("register-successfully")
-    msgError.textContent = "Registro realizado con exito!!";
-
-    setTimeout(() => {
-      location.href = "/index";
-    }, 2000);
+    msgError.textContent = `Registro exitoso! Revisa tu email (${userEmail}) para verificar tu cuenta.`;
   } catch (err) {
     console.error("Error de red:", err);
-    msgError.textContent = "Error en la conexion. Intentalo mas tarde.";
+    msgError.textContent = "Error en la conexión. Inténtalo más tarde.";
   }
 }
 
@@ -126,10 +122,14 @@ const handleLogin = async (e) => {
   const userPassword = passwordInput.value;
 
   const displayError = (message) => {
+    msgError.classList.add("login-error");
     msgError.textContent = message;
+    msgError.classList.remove("hidden")
     submitBtn.setAttribute("disabled", true);
 
     setTimeout(() => {
+    msgError.classList.add("hidden")
+      msgError.classList.remove("login-error");
       submitBtn.removeAttribute("disabled");
       msgError.textContent = "";
     }, 3000);
@@ -163,7 +163,13 @@ const handleLogin = async (e) => {
     })
 
     const response = await res.json();
-    if (!res.ok) return displayError(response.error);
+    if (!res.ok) {
+      if (response.error === "EMAIL NOT VERIFIED") {
+        return displayError("Verifica tu email antes de iniciar sesión.");
+      }
+      
+      return displayError(response.error);
+    }
 
     const token = response.token;
     const user = response.publicUserData;
@@ -171,15 +177,16 @@ const handleLogin = async (e) => {
     localStorage.setItem("user", JSON.stringify(user));
 
     if (user.userStatus.userStatusName !== "activo") {
-      return displayError("Usuario suspendido!!")
+      return displayError("Usuario suspendido.")
     }
 
     const route = user.userRole.userRoleName === "admin"
       ? "/src/pages/admin/admin.html"
       : "/index";
 
+    msgError.classList.remove("hidden");
     msgError.classList.add("login-successfully")
-    msgError.textContent = "Inicio de sesion realizado con exito!!";
+    msgError.textContent = "Inicio de sesión realizado con exito!!";
 
     loginForm.reset();
     submitBtn.setAttribute("disabled", true);
@@ -189,7 +196,7 @@ const handleLogin = async (e) => {
     }, 2000);
   } catch (err) {
     console.error("Error de red:", err);
-    msgError.textContent = "Error en la conexion. Intentalo mas tarde.";
+    msgError.textContent = "Error en la conexión. Inténtalo más tarde.";
   }
 }
 

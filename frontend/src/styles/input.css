@@ -22,9 +22,53 @@
 
   /* ADMIN */
   --color-card-bg: #0f142e;
+  
+  /* ANIMATIONS */
+  @keyframes scaleIn {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 @layer {
+  /* ANIMATIONS */
+  .animate-scale-in {
+    animation: scaleIn 0.6s;
+  }
+  
+  .animate-fade-up {
+    animation: fadeInUp 0.6s;
+  }
+  
+  .animate-delay-200 {
+    opacity: 0;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+  }
+  
+  .animate-delay-400 {
+    opacity: 0;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
   /* GLOBAL */
   .section-base {
     @apply grid place-items-center py-32;
@@ -151,7 +195,7 @@
   }
 
   .modal-buttons-group {
-    @apply grid gap-2 w-full;
+    @apply grid gap-2 mt-2 w-full;
   }
   .quickly-change-modal {
     @apply text-sm text-gray-500;
@@ -169,11 +213,14 @@
     @apply text-primary cursor-pointer hover:text-primary-bold transition-colors;
   }
 
-  .message-error {
-    @apply  text-left w-full text-red-500 text-sm font-medium; 
+  .auth-message {
+    @apply w-full text-left p-2 text-sm font-medium;
   }
-  .message-error.register-successfully, .message-error.login-successfully {
-    @apply text-green-500;
+  .auth-message.register-error, .auth-message.login-error {
+    @apply text-red-400 border border-red-600 bg-red-600/25;
+  }
+  .auth-message.register-successfully, .auth-message.login-successfully {
+    @apply text-green-400 border border-green-600 bg-green-600/25;
   }
 
   /* PAGE: HOME - SECTION: user-journey */
@@ -254,15 +301,21 @@
     @apply bg-dark-black w-full h-full object-cover p-4;
   }
 
-  .notification-container {
-    @apply z-100 fixed right-5 bottom-5 min-w-sm border shadow-2xl shadow-black font-medium p-4;
+  .toast-container {
+    @apply fixed right-5 bottom-5 z-100 min-w-sm border shadow-xl font-medium p-4 rounded-sm opacity-0 translate-y-5 transition-all duration-300;
   }
-  .notification-container.success {
+  .toast-container.show {
+    @apply opacity-100 translate-y-0;
+  }
+  .toast-container .toast-header {
+    @apply flex items-center gap-2;
+  }
+  .toast-container.success {
     @apply bg-green-200 text-green-900;
   }
-  .notification-container.error {
+  .toast-container.error {
     @apply bg-red-200 text-red-900;
-  }
+  } 
 
   /* PAGE: SERVICES */
   .services-grid {
@@ -430,7 +483,7 @@
   }
 
   .tags {
-    @apply flex font-medium items-center gap-2 mb-8;
+    @apply flex font-medium items-center gap-2 mb-6;
   }
 
   .remove-product {

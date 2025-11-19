@@ -157,7 +157,7 @@
   }
 
   .user-btn {
-    @apply bg-primary-bold p-2 rounded-full cursor-pointer;
+    @apply bg-primary-bold rounded-full cursor-pointer w-10 h-10;
   }
   .user-menu {
     @apply absolute mt-1.5 w-max border border-gray-600 bg-accent flex-col gap-2 right-0  px-4 py-2.5;

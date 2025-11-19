@@ -20,6 +20,8 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendVerificationEmail = async (email: string, token: string) => {
+
+  
   const verificationUrl = `${process.env.BACKEND_URL}/auth/verify-email?token=${token}`;
 
   try {
@@ -178,7 +180,6 @@ export const userLogin = async (req: express.Request, res: express.Response) => 
     const { 
       userPassword: _,
       userPhoneNumber,
-      userAvatarUrl,
       userStatusId,
       userRoleId,
       userCreatedAt, 

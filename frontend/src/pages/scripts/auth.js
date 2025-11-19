@@ -42,21 +42,71 @@ const lang = localStorage.getItem("language") || "es";
 
 const registerForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
-const pictureProfileInput = registerForm.querySelector("#profile-picture");
-const pictureProfileImg = registerForm.querySelector("#profile-picture-img");
+const pictureProfileInput = registerForm?.querySelector("#profile-picture");
+const pictureProfileImg = registerForm?.querySelector("#profile-picture-img");
 let dataImg = "";
 
-const handleProfileImage = (e) => {
+const compressImage = (file, maxWidth = 200, maxHeight = 200, quality = 0.6) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth || height > maxHeight) {
+          const ratio = Math.min(maxWidth / width, maxHeight / height);
+          width *= ratio;
+          height *= ratio;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+        resolve(compressedBase64);
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
+
+const handleProfileImage = async (e) => {
   const file = e.target.files[0];
 
   if (!file) return;
 
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    pictureProfileImg.src = e.target.result;
-    dataImg = e.target.result;
-  };
-  reader.readAsDataURL(file);
+  const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+  if (!validTypes.includes(file.type)) {
+    alert("Formato de imagen no válido.");
+    pictureProfileInput.value = '';
+    return;
+  }
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("La imagen es demasiado grande. Usa una imagen más pequeña.");
+    pictureProfileInput.value = '';
+    return;
+  }
+
+  try {
+    const compressedImage = await compressImage(file);
+    
+    pictureProfileImg.src = compressedImage;
+    dataImg = compressedImage;
+  } catch (error) {
+    console.error("Error procesando imagen:", error);
+    alert("Error al procesar la imagen");
+    pictureProfileInput.value = '';
+  }
 }
 
 const handleRegister = async (e) => {
@@ -75,7 +125,6 @@ const handleRegister = async (e) => {
   const userPhoneNumber = telephoneInput.value.trim();
   const userPassword = passwordInput.value;
   const repeatPassword = repeatPasswordInput.value;
-  const userAvatarUrl = dataImg;
 
   const displayError = (message, inputsError = []) => {
     msgError.classList.add("register-error");
@@ -105,15 +154,15 @@ const handleRegister = async (e) => {
   
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(userEmail)) {
-    return displayError("Formato de email invalido.", [emailInput])
+    return displayError(LANG_TEXTS[lang].invalidEmail, [emailInput])
   }
 
-  if (userPhoneNumber && !parseInt(userPhoneNumber)) {
-    return displayError("El campo telefono solo puede contener numeros.", [telephoneInput]);
+  if (userPhoneNumber && !/^\d+$/.test(userPhoneNumber)) {
+    return displayError(LANG_TEXTS[lang].phoneNumbersOnly, [telephoneInput]);
   }
 
   if (userPassword.length <= 4) {
-    return displayError("La contraseña debe tener más 4 caracteres.", [passwordInput])
+    return displayError(LANG_TEXTS[lang].shortPassword, [passwordInput])
   }
 
   if (userPassword !== repeatPassword) {
@@ -124,8 +173,8 @@ const handleRegister = async (e) => {
     userName,
     userEmail,
     userPassword,
-    userPhoneNumber,
-    userAvatarUrl,
+    userPhoneNumber: userPhoneNumber || null,
+    userAvatarUrl: dataImg || null,
   }
 
   try {
@@ -141,14 +190,23 @@ const handleRegister = async (e) => {
     if (!res.ok) return displayError(response.error);
 
     registerForm.reset();
+    pictureProfileImg.src = "/src/assets/profile-default.webp";
+    dataImg = "";
+    
     submitBtn.setAttribute("disabled", true);
     msgError.classList.remove("hidden");
-
     msgError.classList.add("register-successfully")
     msgError.textContent = LANG_TEXTS[lang].registerSuccess(userEmail);
+
+    setTimeout(() => {
+      const loginModal = document.getElementById("login-modal");
+      const signupModal = document.getElementById("signup-modal");
+      signupModal.close();
+      loginModal.showModal();
+    }, 2000);
   } catch (err) {
     console.error("Error de red:", err);
-    msgError.textContent = LANG_TEXTS[lang].connectionError;
+    displayError(LANG_TEXTS[lang].connectionError);
   }
 }
 
@@ -170,7 +228,7 @@ const handleLogin = async (e) => {
     submitBtn.setAttribute("disabled", true);
 
     setTimeout(() => {
-    msgError.classList.add("hidden")
+      msgError.classList.add("hidden")
       msgError.classList.remove("login-error");
       submitBtn.removeAttribute("disabled");
       msgError.textContent = "";
@@ -205,6 +263,8 @@ const handleLogin = async (e) => {
     })
 
     const response = await res.json();
+    console.log("✅ Respuesta completa del login:", response);
+    
     if (!res.ok) {
       if (response.error === "EMAIL NOT VERIFIED") {
         return displayError(LANG_TEXTS[lang].loginEmailNotVerified);
@@ -215,11 +275,22 @@ const handleLogin = async (e) => {
 
     const token = response.token;
     const user = response.publicUserData;
+    
+    // DEBUG: Verificar que la imagen viene del backend
+    console.log("🖼️ Avatar URL del backend:", user.userAvatarUrl);
+    console.log("📦 Datos completos del usuario:", user);
+    
+    // Guardar en localStorage (esto actualiza los datos con los del backend)
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
 
     if (user.userStatus.userStatusName !== "activo") {
       return displayError(LANG_TEXTS[lang].loginSuspended);
+    }
+
+    // Llamar a la función del authCheck para mostrar la imagen ACTUALIZADA
+    if (window.updateUserInterface) {
+      window.updateUserInterface(user);
     }
 
     const route = user.userRole.userRoleName === "admin"
@@ -242,6 +313,22 @@ const handleLogin = async (e) => {
   }
 }
 
-pictureProfileInput.addEventListener("change", handleProfileImage)
-registerForm.addEventListener("submit", handleRegister);
-loginForm.addEventListener("submit", handleLogin);
+// Solo inicializar eventos si los formularios existen
+if (registerForm) {
+  pictureProfileInput.addEventListener("change", handleProfileImage);
+  registerForm.addEventListener("submit", handleRegister);
+}
+
+if (loginForm) {
+  loginForm.addEventListener("submit", handleLogin);
+}
+
+// Resetear dataImg cuando se cierre el modal de registro
+document.addEventListener('click', (e) => {
+  if (e.target.id === 'close-signup' || e.target.closest('#close-signup')) {
+    dataImg = "";
+    if (pictureProfileImg) {
+      pictureProfileImg.src = "/src/assets/profile-default.webp";
+    }
+  }
+});

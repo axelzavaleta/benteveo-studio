@@ -1,3 +1,45 @@
+const LANG_TEXTS = {
+  es: {
+    requiredFields: "Se deben rellenar los campos obligatorios.",
+    minUsername: "El nombre de usuario debe tener mínimo 4 caracteres.",
+    invalidEmail: "Formato de email inválido.",
+    phoneNumbersOnly: "El campo teléfono solo puede contener números.",
+    shortPassword: "La contraseña debe tener más de 4 caracteres.",
+    passwordsDontMatch: "Las contraseñas no coinciden.",
+    registerSuccess: (email) => `Registro exitoso! Revisa tu email (${email}) para verificar tu cuenta.`,
+    connectionError: "Error en la conexión. Inténtalo más tarde.",
+
+    // LOGIN
+    loginRequiredFields: "Se deben rellenar todos los campos.",
+    loginShortPassword: "La contraseña debe tener mínimo 4 caracteres.",
+    loginInvalidEmail: "Formato de email inválido.",
+    loginEmailNotVerified: "Verifica tu email antes de iniciar sesión.",
+    loginSuspended: "Usuario suspendido.",
+    loginSuccess: "Inicio de sesión realizado con éxito!!",
+  },
+
+  en: {
+    requiredFields: "All required fields must be filled.",
+    minUsername: "Username must be at least 4 characters long.",
+    invalidEmail: "Invalid email format.",
+    phoneNumbersOnly: "Phone field can only contain numbers.",
+    shortPassword: "Password must be longer than 4 characters.",
+    passwordsDontMatch: "Passwords do not match.",
+    registerSuccess: (email) => `Registration successful! Check your email (${email}) to verify your account.`,
+    connectionError: "Connection error. Please try again later.",
+
+    // LOGIN
+    loginRequiredFields: "All fields must be filled.",
+    loginShortPassword: "Password must be at least 4 characters.",
+    loginInvalidEmail: "Invalid email format.",
+    loginEmailNotVerified: "Verify your email before signing in.",
+    loginSuspended: "User suspended.",
+    loginSuccess: "Login successful!!",
+  }
+};
+
+const lang = localStorage.getItem("language") || "es";
+
 const registerForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
 const pictureProfileInput = registerForm.querySelector("#profile-picture");
@@ -54,11 +96,11 @@ const handleRegister = async (e) => {
   };
 
   if (!userName || !userEmail || !userPassword) {
-    return displayError("Se deben rellenar los campos obligatorios.", [usernameInput, emailInput, passwordInput]);
+    return displayError(LANG_TEXTS[lang].requiredFields, [usernameInput, emailInput, passwordInput]);
   }
 
   if (userName.length < 4) {
-    return displayError("El nombre de usuario debe tener minimo 4 caracteres.", [usernameInput])
+    return displayError(LANG_TEXTS[lang].minUsername, [usernameInput]);
   }
   
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -75,7 +117,7 @@ const handleRegister = async (e) => {
   }
 
   if (userPassword !== repeatPassword) {
-    return displayError("Las contraseñas no coinciden.", [passwordInput, repeatPasswordInput])
+    return displayError(LANG_TEXTS[lang].passwordsDontMatch, [passwordInput, repeatPasswordInput]);
   }
 
   const userData = {
@@ -103,10 +145,10 @@ const handleRegister = async (e) => {
     msgError.classList.remove("hidden");
 
     msgError.classList.add("register-successfully")
-    msgError.textContent = `Registro exitoso! Revisa tu email (${userEmail}) para verificar tu cuenta.`;
+    msgError.textContent = LANG_TEXTS[lang].registerSuccess(userEmail);
   } catch (err) {
     console.error("Error de red:", err);
-    msgError.textContent = "Error en la conexión. Inténtalo más tarde.";
+    msgError.textContent = LANG_TEXTS[lang].connectionError;
   }
 }
 
@@ -136,16 +178,16 @@ const handleLogin = async (e) => {
   };
 
   if (!userEmail || !userPassword) {
-    return displayError("Se deben rellenar todos los campos.")
+    return displayError(LANG_TEXTS[lang].loginRequiredFields);
   }
 
   if (userPassword.length <= 4) {
-    return displayError("La contraseña debe tener minimo 4 caracteres.")
+    return displayError(LANG_TEXTS[lang].loginShortPassword);
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(userEmail)) {
-    return displayError("Formato de email invalido.")
+    return displayError(LANG_TEXTS[lang].loginInvalidEmail);
   }
 
   const userData = {
@@ -165,7 +207,7 @@ const handleLogin = async (e) => {
     const response = await res.json();
     if (!res.ok) {
       if (response.error === "EMAIL NOT VERIFIED") {
-        return displayError("Verifica tu email antes de iniciar sesión.");
+        return displayError(LANG_TEXTS[lang].loginEmailNotVerified);
       }
       
       return displayError(response.error);
@@ -177,7 +219,7 @@ const handleLogin = async (e) => {
     localStorage.setItem("user", JSON.stringify(user));
 
     if (user.userStatus.userStatusName !== "activo") {
-      return displayError("Usuario suspendido.")
+      return displayError(LANG_TEXTS[lang].loginSuspended);
     }
 
     const route = user.userRole.userRoleName === "admin"
@@ -186,7 +228,7 @@ const handleLogin = async (e) => {
 
     msgError.classList.remove("hidden");
     msgError.classList.add("login-successfully")
-    msgError.textContent = "Inicio de sesión realizado con exito!!";
+    msgError.textContent = LANG_TEXTS[lang].loginSuccess;
 
     loginForm.reset();
     submitBtn.setAttribute("disabled", true);

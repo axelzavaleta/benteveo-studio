@@ -53,9 +53,9 @@
         </div>
 
         <div class="language-selector">
-          <button class="lang-option active">ES</button>
+          <button class="lang-option active" id="btnES">ES</button>
           <span class="lang-separator">|</span>
-          <button class="lang-option">EN</button>
+          <button class="lang-option" id="btnEN">EN</button>
         </div>
 
         <div class="user-account relative hidden">
@@ -64,7 +64,7 @@
           </button>
 
           <div class="user-menu hidden">
-            <p id="username-menu" class="font-semibold text-base mb-2"></p>
+            <p id="username-menu" class="font-semibold text-base mb-2 no-translate"></p>
             <button id="logout-btn" class="logout-btn">Cerrar sesion</button>
           </div>
         </div>  
@@ -181,7 +181,7 @@
                 <img src="/src/assets/star.svg" alt="star-icon">
               </div>
               
-              <span>Incognita</span>
+              <span class="no-translate">Incógnita</span>
             </header>
             
             <div class="px-4 py-8">
@@ -203,7 +203,7 @@
                 <img src="/src/assets/star.svg" alt="star-icon">
               </div>
               
-              <span>Incógnita</span>
+              <span class="no-translate">Incógnita</span>
             </header>
             
             <div class="px-4 py-8">
@@ -225,7 +225,7 @@
                 <img src="/src/assets/star.svg" alt="star-icon">
               </div>
               
-              <span>Incógnita</span>
+              <span class="no-translate">Incógnita</span>
             </header>
             
             <div class="px-4 py-8">
@@ -403,6 +403,7 @@
     </form>
   </dialog>
 
+  <script src="/src/pages/scripts/translator.js"></script>
   <script src="/src/pages/games/game.js"></script>
   <script src="/src/pages/scripts/auth.js"></script>
   <script src="/src/pages/scripts/userMenu.js"></script>

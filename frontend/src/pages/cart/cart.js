@@ -98,7 +98,7 @@ const createProductCard = (product, productId) => {
   productCardInfo.classList.add("product-card-info");
 
   const titleElement = document.createElement("h2");
-  titleElement.classList.add("title-game");
+  titleElement.classList.add("title-game", "no-translate");
   titleElement.textContent = product.gameTitle;
 
   const tagsContainer = document.createElement("div");

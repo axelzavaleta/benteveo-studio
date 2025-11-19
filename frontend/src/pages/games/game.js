@@ -1,3 +1,18 @@
+const LANG_TEXTS = {
+  es: {
+    loginRequiredTitle: "Error",
+    loginRequiredMsg: "Inicie sesión para administrar su carrito",
+    successTitle: "Éxito",
+    successMsg: "Se ha añadido el producto correctamente al carrito"
+  },
+  en: {
+    loginRequiredTitle: "Error",
+    loginRequiredMsg: "Log in to manage your cart",
+    successTitle: "Success",
+    successMsg: "The product has been added to the cart successfully"
+  }
+};
+
 const gameContainer = document.querySelector(".game-presentation");
 const addToCartBtn = document.getElementById("add-to-cart");
 const toastContainer = document.getElementById("toast");
@@ -46,18 +61,45 @@ const showToast = (status, title, content) => {
   }, 3000);
 }
 
+const lang = localStorage.getItem("language") || "es";
+
 addToCartBtn.addEventListener("click", () => {
   const isLogged = localStorage.getItem("token");
   toastContainer.classList.remove("hidden");
   addToCartBtn.setAttribute("disabled", true);
 
   if (!isLogged) {
-    return showToast("error", "Error", "Inicie sesion para administrar su carrito");
+    return showToast(
+      "error",
+      LANG_TEXTS[lang].loginRequiredTitle,
+      LANG_TEXTS[lang].loginRequiredMsg
+    );
   }
-  
-  showToast("success", "Exito", "Se ha añadido el producto correctamente al carrito");
-  
+
+  showToast(
+    "success",
+    LANG_TEXTS[lang].successTitle,
+    LANG_TEXTS[lang].successMsg
+  );
+
   const gameData = getGameData(gameContainer);
   saveToCart(gameData);
 })
 
+function protectGameDataFromTranslation() {
+  const selectors = [
+    "#game-title"
+  ];
+
+  selectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.classList.add("no-translate");
+    });
+  });
+}
+
+// ejecutar apenas carga el archivo
+protectGameDataFromTranslation();
+
+const item = document.createElement("div");
+item.classList.add("cart-item", "no-translate");

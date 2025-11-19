@@ -329,7 +329,7 @@
         class="field-modal">
       </div>
 
-      <div class="w-full">
+      <div class="w-full relative flex">
         <input 
         type="password" 
         name="password" 
@@ -337,6 +337,11 @@
         placeholder="Ingresa tu contraseña" 
         autocomplete="current-password" 
         class="field-modal">
+
+        <button type="button" class="toggle-password" data-target-modal="password-login">
+          <img id="eye-icon" src="/src/assets/eye-icon.svg" class="eye-open show-pass hidden">
+          <img id="eye-icon" src="/src/assets/eye-close-icon.svg" alt="" class="eye-closed hide-pass">
+        </button>
       </div>
 
       <span id="message-error" class="auth-message hidden"></span>
@@ -363,7 +368,6 @@
       <h1 class="auth-modal-title">Crea tu cuenta</h1>
 
       <div class="signup-modal-body">
-
         <div class="profile-picture-group col-span-2">
           <label for="profile-picture" class="profile-picture-label">
             <img src="/src/assets/profile-default.webp" id="profile-picture-img" class="profile-picture-label">
@@ -378,8 +382,33 @@
         <input type="tel" name="telephone" id="telephone-signup" placeholder="Teléfono (opcional)" class="field-modal">
 
         <input type="date" name="birthdate" id="birthdate" class="field-modal">
-        <input type="password" name="password" id="password-signup" placeholder="Contraseña" class="field-modal">
-        <input type="password" name="repeat-password" id="repeat-password-signup" placeholder="Confirmar contraseña" class="field-modal">
+
+        <div class="w-full relative flex">
+          <input 
+          type="password" 
+          name="password" 
+          id="password-signup" 
+          placeholder="Contraseña" 
+          class="field-modal">
+
+          <button type="button" class="toggle-password" data-target-modal="password-signup">
+            <img id="eye-icon" src="/src/assets/eye-icon.svg" class="eye-open show-pass hidden">
+            <img id="eye-icon" src="/src/assets/eye-close-icon.svg" class="eye-closed hide-pass">
+          </button>
+        </div>
+        <div class="w-full relative flex">
+          <input 
+          type="password" 
+          name="repeat-password" 
+          id="repeat-password-signup" 
+          placeholder="Confirmar contraseña" 
+          class="field-modal">
+
+          <button type="button" class="toggle-password" data-target-modal="repeat-password-signup">
+            <img id="eye-icon" src="/src/assets/eye-icon.svg" class="eye-open show-pass hidden">
+            <img id="eye-icon" src="/src/assets/eye-close-icon.svg" class="eye-closed hide-pass">
+          </button>
+        </div>
         <span id="message-error" class="auth-message hidden col-span-2"></span>
       </div>
       

@@ -108,6 +108,13 @@
     @apply font-semibold border py-2 px-10 cursor-pointer transition-colors;
   }
 
+  .toggle-password {
+    @apply absolute right-0 top-1/2 -translate-y-1/2 w-12 h-full border border-border-base flex items-center justify-center bg-primary hover:bg-primary-bold transition-colors cursor-pointer;
+  }
+  .show-pass, .hide-pass {
+    @apply w-7;
+  }
+
   /* HEADER */
   .header {
     @apply z-200 min-h-14 grid place-items-center bg-dark-black w-full text-sm border-b border-border-base;

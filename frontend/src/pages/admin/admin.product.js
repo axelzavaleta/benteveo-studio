@@ -362,6 +362,10 @@ function llenarFormularioEdicionConPlaceholders(producto) {
     const editPlatformSelect = editProductForm.querySelector('select[name="edit_platformIds"]');
     const editLanguageSelect = editProductForm.querySelector('select[name="edit_languageIds"]');
 
+    if (editTagSelect) Array.from(editTagSelect.options).forEach(opt => opt.selected = false);
+    if (editPlatformSelect) Array.from(editPlatformSelect.options).forEach(opt => opt.selected = false);
+    if (editLanguageSelect) Array.from(editLanguageSelect.options).forEach(opt => opt.selected = false);
+
     if (editTagSelect && producto.tags) {
         producto.tags.forEach(tag => {
             const option = editTagSelect.querySelector(`option[value="${tag.tagId}"]`);
@@ -369,6 +373,7 @@ function llenarFormularioEdicionConPlaceholders(producto) {
         });
     }
 
+    // Preseleccionar plataformas
     if (editPlatformSelect && producto.platforms) {
         producto.platforms.forEach(platform => {
             const option = editPlatformSelect.querySelector(`option[value="${platform.platformId}"]`);
@@ -376,6 +381,7 @@ function llenarFormularioEdicionConPlaceholders(producto) {
         });
     }
 
+    // Preseleccionar idiomas
     if (editLanguageSelect && producto.languages) {
         producto.languages.forEach(language => {
             const option = editLanguageSelect.querySelector(`option[value="${language.languageId}"]`);
@@ -503,13 +509,20 @@ function prepararDatosProducto(formData, tipo) {
         productDiscount: parseFloat(formData.get(`${prefix}producto_descuento`)) || 0,
         productPrice: parseInt(formData.get(`${prefix}producto_precio`)),
         productIsActive: formData.get(`${prefix}producto_activo`) === 'on',
-        productReleasedDate: formData.get(`${prefix}producto_fecha_lanzamiento`) || null,
-
-        tagIds: obtenerValoresSelect(formData, `${prefix}tagIds`),
-        platformIds: obtenerValoresSelect(formData, `${prefix}platformIds`),
-        languageIds: obtenerValoresSelect(formData, `${prefix}languageIds`)
+        productReleasedDate: formData.get(`${prefix}producto_fecha_lanzamiento`) || null
     };
 
+    // AGREGAR LAS RELACIONES TANTO PARA CREACIÓN COMO EDICIÓN
+    const tagIds = obtenerValoresSelect(formData, `${prefix}tagIds`);
+    const platformIds = obtenerValoresSelect(formData, `${prefix}platformIds`);
+    const languageIds = obtenerValoresSelect(formData, `${prefix}languageIds`);
+    
+    // Solo enviar los arrays si tienen elementos
+    if (tagIds.length > 0) productoData.tagIds = tagIds;
+    if (platformIds.length > 0) productoData.platformIds = platformIds;
+    if (languageIds.length > 0) productoData.languageIds = languageIds;
+
+    // Validar campos requeridos
     const camposRequeridos = [
         'productName', 'productShortDesc', 'productLongDesc', 
         'productSize', 'productDeveloper', 'productCoverImageUrl', 
@@ -534,6 +547,7 @@ function obtenerValoresSelect(formData, fieldName) {
 function prepararDatosProductoEdicion(formData) {
     const productoData = {};
     
+    // Solo agregar campos que tengan valores (no vacíos)
     const nombre = formData.get('edit_producto_nombre');
     if (nombre && nombre.trim() !== '') {
         productoData.productName = nombre.trim();
@@ -584,6 +598,7 @@ function prepararDatosProductoEdicion(formData) {
         productoData.productPrice = parseInt(precio);
     }
     
+    // Checkbox siempre se envía si está marcado
     if (formData.get('edit_producto_activo') === 'on') {
         productoData.productIsActive = true;
     } else {
@@ -594,22 +609,18 @@ function prepararDatosProductoEdicion(formData) {
     if (fechaLanzamiento && fechaLanzamiento.trim() !== '') {
         productoData.productReleasedDate = fechaLanzamiento;
     }
-
+    
+    // AGREGAR RELACIONES SI SE SELECCIONARON
     const tagIds = obtenerValoresSelect(formData, 'edit_tagIds');
-    if (tagIds.length > 0) {
-        productoData.tagIds = tagIds;
-    }
-    
     const platformIds = obtenerValoresSelect(formData, 'edit_platformIds');
-    if (platformIds.length > 0) {
-        productoData.platformIds = platformIds;
-    }
-    
     const languageIds = obtenerValoresSelect(formData, 'edit_languageIds');
-    if (languageIds.length > 0) {
-        productoData.languageIds = languageIds;
-    }
     
+    // Enviar los arrays incluso si están vacíos (para limpiar relaciones)
+    productoData.tagIds = tagIds;
+    productoData.platformIds = platformIds;
+    productoData.languageIds = languageIds;
+    
+    // AGREGAR IMÁGENES BASE64 SI SE CARGARON NUEVAS, SINO MANTENER LAS ACTUALES
     if (editImagenPrincipalBase64) {
         productoData.productCoverImageUrl = editImagenPrincipalBase64;
     }
@@ -617,7 +628,7 @@ function prepararDatosProductoEdicion(formData) {
     if (editImagenCatalogoBase64) {
         productoData.productCatalogImageUrl = editImagenCatalogoBase64;
     }
-    
+
     return productoData;
 }
 
@@ -758,12 +769,38 @@ function actualizarContadorProductos() {
     }
 }
 
-function mostrarNotificacion(mensaje, tipo = 'info') {
-    if (tipo === 'success') {
-        alert(mensaje);
-    } else if (tipo === 'error') {
-        alert(mensaje);
-    } else {
-        alert(mensaje);
-    }
+function mostrarNotificacion(mensaje, tipo = "info") {
+    const container = document.getElementById("toast-container");
+    if (!container) return;
+
+    const bgColors = {
+        success: "bg-green-500",
+        error: "bg-red-500",
+        info: "bg-blue-500"
+    };
+
+    const toast = document.createElement("div");
+
+    toast.className =
+        `min-w-[220px] px-4 py-3 rounded-lg text-white shadow-lg 
+         font-medium flex items-center gap-2 opacity-0 translate-x-5
+         transition-all duration-300 ${bgColors[tipo]}`;
+
+    toast.innerHTML = `
+        <span>${mensaje}</span>
+    `;
+
+    container.appendChild(toast);
+
+    // Animación de entrada
+    requestAnimationFrame(() => {
+        toast.classList.remove("opacity-0", "translate-x-5");
+        toast.classList.add("opacity-100", "translate-x-0");
+    });
+
+    // Animación de salida
+    setTimeout(() => {
+        toast.classList.add("opacity-0", "translate-x-5");
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
 }

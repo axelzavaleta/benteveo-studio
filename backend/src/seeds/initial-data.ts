@@ -116,6 +116,7 @@ export const seedInitialData = async () => {
         productCoverImageUrl: "/src/assets/incognita-portada-hor.jpeg",
         productPrice: 10000,
         productIsActive: true,
+        productReleasedDate: "2025-07-18",
         tags: [tag1, tag2, tag3],
         platforms: [platform1],
         languages: [language1],
@@ -130,8 +131,9 @@ export const seedInitialData = async () => {
         productCoverImageUrl: "/src/assets/Alberdi.jpg",
         productPrice: 7000,
         productIsActive: true,
+        productReleasedDate: "2024-12-18",
         tags: [tag2, tag3, tag4],
-        platforms: [platform1, platform5],
+        platforms: [platform1, platform5, platform4],
         languages: [language1, language2]
       },
       {
@@ -144,6 +146,7 @@ export const seedInitialData = async () => {
         productCoverImageUrl: "/src/assets/blackop7.jpg",
         productPrice: 20000,
         productIsActive: true,
+        productReleasedDate: "2003-10-29",
         tags: [tag1, tag2, tag3, tag4, tag5],
         platforms: [platform1, platform2, platform3, platform5],
         languages: [language1, language2]

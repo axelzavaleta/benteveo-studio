@@ -55,8 +55,8 @@ export default class Product {
   @Column({ name: "producto_activo", type: "boolean", default: true })
   productIsActive!: boolean
 
-  @Column({ name: "producto_fecha_lanzamiento", type: "date", nullable: true })
-  productReleasedDate?: Date
+  @Column({ name: "producto_fecha_lanzamiento", type: "date", nullable: false })
+  productReleasedDate!: Date
 
   @CreateDateColumn({ name: "producto_creado_fecha", type: "timestamp with time zone" })
   productCreatedAt!: Date

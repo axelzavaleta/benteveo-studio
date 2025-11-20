@@ -1,9 +1,39 @@
+const customDictionary = {
+  "Inicio": "Home",
+  "Nosotros": "About Us",
+  "Asistencia": "Help",
+  "Servicios": "Services",
+  "Catálogo": "Catalog",
+
+  "Prueba": "Test",
+
+  "Desarrollando desde" : "Developing since",
+  
+  "Comienza tu aventura en 4 pasos": "Start your journey in 4 steps",
+
+  "Sigue estos sencillos pasos para empezar a explorar, encontrar y disfrutar tu próximo juego.":
+    "Follow these simple steps to explore, find and enjoy your next game.",
+
+  "Crea una cuenta": "Create an account",
+  "Para empezar a explorar, crea una cuenta o inicia sesión. Así podras guardar tus juegos favoritos y tener un proceso de compra seguro y rápido.":
+    "To start exploring, create an account or log in. This way you can save and buy your favorite games quickly and safely.",
+
+  "Explorá el catálogo": "Browse the catalog",
+  "Explorá nuestro catálogo y descubre el juego perfecto para ti. Entre los distintos titulos, seguro encontrás tu próxima aventura.":
+    "Browse our catalog and find the perfect game for you. Among our many titles, you'll surely find your next adventure.",
+
+  "Añade al carrito": "Add to cart",
+  "Añade al carrito los juegos que más te gusten. Puedes revisar, editar o eliminar productos antes de finalizar la compra.":
+    "Add the games you like the most to your cart. You can check, edit or delete products before completing your purchase.",
+
+  "Completa tu compra": "Complete your purchase",
+  "Completa tu compra de forma segura. Recibirás una confirmación por correo electrónico. ¡Y listo! Nosotros nos encargamos de que lo disfrutes al máximo.":
+    "Complete your purchase safely. You'll receive a confirmation email. We'll make sure you enjoy it to the fullest."
+};
+
 let isTranslated = false;
 let originalTexts = {};
 
-/* -----------------------------------------
-   EXTRAER TODOS LOS TEXTOS DEL DOCUMENTO
------------------------------------------ */
 function extractTextFromElement(element) {
   const texts = {};
   let idCounter = 0;
@@ -80,9 +110,6 @@ function extractTextFromElement(element) {
   return texts;
 }
 
-/* -----------------------------------------
-   TRADUCIR ELEMENTO NUEVO DINÁMICAMENTE
------------------------------------------ */
 async function translateNewElement(element, targetLang) {
   const texts = extractTextFromElement(element);
 
@@ -104,9 +131,6 @@ async function translateNewElement(element, targetLang) {
   }
 }
 
-/* -----------------------------------------
-   TRADUCIR TODA LA PÁGINA
------------------------------------------ */
 async function translatePage(targetLang) {
   const bodyElement = document.body;
   const allTexts = extractTextFromElement(bodyElement);
@@ -145,11 +169,12 @@ async function translatePage(targetLang) {
   }
 }
 
-/* -----------------------------------------
-   API DE TRADUCCIÓN
------------------------------------------ */
 async function translateText(text, targetLang) {
   const sourceLang = targetLang === "en" ? "es" : "en";
+
+  if (targetLang === "en" && customDictionary[text]) {
+    return customDictionary[text];
+  }
 
   const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(
     text
@@ -161,9 +186,6 @@ async function translateText(text, targetLang) {
   return data[0].map((item) => item[0]).join("");
 }
 
-/* -----------------------------------------
-   RESTAURAR TEXTO ORIGINAL
------------------------------------------ */
 function restoreOriginalText() {
   document.body.classList.add("translating");
 

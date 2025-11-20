@@ -543,10 +543,44 @@ function actualizarContadorUsuarios(cantidad) {
     });
 }
 
+function mostrarNotificacion(mensaje, tipo = "info") {
+    const container = document.getElementById("toast-container");
+    if (!container) return;
+
+    const bgColors = {
+        success: "bg-green-500",
+        error: "bg-red-500",
+        info: "bg-blue-500"
+    };
+
+    const toast = document.createElement("div");
+
+    toast.className =
+        `min-w-[220px] px-4 py-3 rounded-lg text-white shadow-lg 
+         font-medium flex items-center gap-2 opacity-0 translate-x-5
+         transition-all duration-300 ${bgColors[tipo]}`;
+
+    toast.innerHTML = `<span>${mensaje}</span>`;
+
+    container.appendChild(toast);
+
+    // Animación de entrada
+    requestAnimationFrame(() => {
+        toast.classList.remove("opacity-0", "translate-x-5");
+        toast.classList.add("opacity-100", "translate-x-0");
+    });
+
+    // Animación de salida
+    setTimeout(() => {
+        toast.classList.add("opacity-0", "translate-x-5");
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
 function mostrarExito(mensaje) {
-    alert(mensaje);
+    mostrarNotificacion(mensaje, "success");
 }
 
 function mostrarError(mensaje) {
-    alert(mensaje);
+    mostrarNotificacion(mensaje, "error");
 }

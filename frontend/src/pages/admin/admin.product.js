@@ -259,7 +259,7 @@ function renderizarProductos(productosArray) {
             <td class="row font-medium">${producto.productName}</td>
             <td class="row">${producto.productType || 'digital'}</td>
             <td class="row font-semibold">$${Number(producto.productPrice).toLocaleString()}</td>
-            <td class="row">${(producto.productSize / 1024).toFixed(1)} GB</td>
+            <td class="row">${(producto.productSize / 1024).toFixed(1)} MB</td>
             <td class="row">
                 <span class="${producto.productIsActive ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'} text-xs font-medium px-2 py-1 rounded-full">
                     ${producto.productIsActive ? 'Activo' : 'Inactivo'}
@@ -339,7 +339,7 @@ function llenarFormularioEdicionConPlaceholders(producto) {
     editProductForm.edit_producto_formato.placeholder = producto.productFormat || 'Formato del producto';
     
     editProductForm.edit_producto_tamano_gb.value = '';
-    editProductForm.edit_producto_tamano_gb.placeholder = (producto.productSize / 1024).toFixed(1) || 'Tamaño en GB';
+    editProductForm.edit_producto_tamano_gb.placeholder = (producto.productSize / 1024).toFixed(1) || 'Tamaño en MB';
     
     editProductForm.edit_producto_url_descarga.value = '';
     editProductForm.edit_producto_url_descarga.placeholder = producto.productDownloadUrl || 'URL de descarga';

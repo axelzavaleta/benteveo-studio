@@ -127,39 +127,48 @@ export const createProduct = async (req: express.Request, res: express.Response)
   }
 }
 
-export const updateProduct = async(req: express.Request, res: express.Response) => {
+export const updateProduct = async (req: express.Request, res: express.Response) => {
   const { productId } = req.params;
-  const { productName } = req.body;
-  
+
   try {
-    const currentProduct = await productRepository.findOneBy({ productId: Number(productId) });
-
-    if (!currentProduct) return res.status(404).json({ error: "PRODUCT NOT FOUND" });
-
-    if (productName && productName.length <= 4) {
-      return res.status(400).json({ error: "PRODUCT MUST BE LONGER THAN 4 CHARACTERS" })
-    }
-
-    if (productName) {
-      const existingProduct = await productRepository.findOne({ where: { productName } });
-
-      if (existingProduct) return res.status(409).json({ error: "PRODUCT ALREADY EXISTS" });
-    }
-
-    await productRepository.update({ productId: Number(productId) }, req.body);
-
-    const updatedProduct = await productRepository.findOne({
+    const product = await productRepository.findOne({
       where: { productId: Number(productId) },
       relations: ["tags", "platforms", "languages"]
     });
 
-    res.status(200).json(updatedProduct);
+    if (!product) return res.status(404).json({ error: "PRODUCT NOT FOUND" });
+
+    if (req.body.productName && req.body.productName.length <= 4) {
+      return res.status(400).json({ error: "PRODUCT MUST BE LONGER THAN 4 CHARACTERS" });
+    }
+
+    Object.assign(product, req.body);
+
+    if (req.body.tagIds) {
+      const tags = await tagRepository.findBy({ tagId: In(req.body.tagIds) });
+      product.tags = tags;
+    }
+
+    if (req.body.platformIds) {
+      const platforms = await platformRepository.findBy({ platformId: In(req.body.platformIds) });
+      product.platforms = platforms;
+    }
+
+    if (req.body.languageIds) {
+      const languages = await languageRepository.findBy({ languageId: In(req.body.languageIds) });
+      product.languages = languages;
+    }
+
+    await productRepository.save(product);
+
+    res.status(200).json(product);
+
   } catch (error) {
     if (error instanceof Error) {
-      res.status(500).json({ error: error.message })    
+      res.status(500).json({ error: error.message });
     }
   }
-}
+};
 
 export const removeProduct = async (req: express.Request, res: express.Response) => {
   const { productId } = req.params;  

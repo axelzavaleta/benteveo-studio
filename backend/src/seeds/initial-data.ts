@@ -6,7 +6,10 @@ import { Tag } from "../entities/productTag.entity";
 import { Platform } from "../entities/platform.entity";
 import { Language } from "../entities/language.entity";
 import { DeepPartial } from "typeorm";
+import { User } from "../entities/user.entity";
+import bcrypt from "bcrypt";
 
+const userRepo = AppDataSource.getRepository(User);
 const userStatusRepo = AppDataSource.getRepository(UserStatus);
 const userRoleRepo = AppDataSource.getRepository(UserRole);
 const tagRepo = AppDataSource.getRepository(Tag);
@@ -15,6 +18,7 @@ const languageRepo = AppDataSource.getRepository(Language);
 const productRepo = AppDataSource.getRepository(Product);
 
 export const seedInitialData = async () => {
+  const userCount = await userRepo.count();
   const statusCount = await userStatusRepo.count();
   const roleCount = await userRoleRepo.count();
   const tagCount = await tagRepo.count();
@@ -22,7 +26,15 @@ export const seedInitialData = async () => {
   const languageCount = await languageRepo.count();
   const productCount = await productRepo.count();
 
-  if (statusCount > 0 && roleCount > 0 && productCount > 0) return console.log("INITIAL DATA ALREADY EXIST");
+  if (
+    userCount > 0 &&
+    statusCount > 0 && 
+    roleCount > 0 && 
+    productCount > 0 && 
+    tagCount > 0 && 
+    platformCount > 0 && 
+    languageCount > 0
+  ) return console.log("INITIAL DATA ALREADY EXIST");
 
   console.log("SEEDING INITIAL DATA...");
 
@@ -137,6 +149,23 @@ export const seedInitialData = async () => {
         languages: [language1, language2]
       },
     ]
+
+    if (userCount === 0) {
+      const hashedPass = await bcrypt.hash("contra", 10);
+
+      const users = userRepo.create([
+        { 
+          userName: "Admin", 
+          userEmail: "admin@admin.com", 
+          userPassword: hashedPass, 
+          userIsVerified: true, 
+          userRoleId: 2,
+          userStatusId: 1
+        },
+      ])
+
+      await userRepo.save(users);
+    }
 
     const products = productRepo.create(productsData as DeepPartial<Product[]>)
   

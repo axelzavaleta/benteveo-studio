@@ -1,12 +1,19 @@
 import express from "express";
 import { AppDataSource } from "../config/database";
 import Product from "../entities/product.entity";
+import { Tag } from "../entities/productTag.entity";
+import { Platform } from "../entities/platform.entity";
+import { Language } from "../entities/language.entity";
+import { In } from "typeorm";
 
-const productRepository = AppDataSource.getRepository(Product) 
+const productRepository = AppDataSource.getRepository(Product); 
+const tagRepository = AppDataSource.getRepository(Tag);
+const platformRepository = AppDataSource.getRepository(Platform);
+const languageRepository = AppDataSource.getRepository(Language);
 
 export const getAllProducts = async (req: express.Request, res: express.Response) => {
   try {
-    const products = await productRepository.find();
+    const products = await productRepository.find({relations: ["tags", "platforms", "languages"]});
     
     if (products.length === 0) return res.status(404).json({ error: "PRODUCTS NOT FOUND" })
     
@@ -23,7 +30,10 @@ export const getProductById = async (req: express.Request, res: express.Response
   const { productId } = req.params;
 
   try {
-    const product = await productRepository.findOneBy({ productId: Number(productId) });
+    const product = await productRepository.findOne({
+      where: { productId: Number(productId) },
+      relations: ['tags', 'platforms', 'languages']
+    });
   
     if (!product) return res.status(404).json({ error: "PRODUCT NOT FOUND" })
 
@@ -36,9 +46,32 @@ export const getProductById = async (req: express.Request, res: express.Response
 }
 
 export const createProduct = async (req: express.Request, res: express.Response) => {
-  const { productName, productPrice, productDesc, productSize, productIsActive } = req.body;
+  const { 
+    productName, 
+    productShortDesc, 
+    productLongDesc, 
+    productSize, 
+    productDeveloper, 
+    productCoverImageUrl, 
+    productCatalogImageUrl, 
+    productPrice, 
+    productIsActive,
+    tagIds,
+    platformIds,
+    languageIds,
+  } = req.body;
 
-  if (!productName || !productPrice || !productDesc || !productSize || !productIsActive) {
+  if (
+    !productName || 
+    !productShortDesc || 
+    !productLongDesc || 
+    !productSize || 
+    !productDeveloper ||
+    !productCoverImageUrl ||
+    !productCatalogImageUrl ||
+    !productPrice || 
+    !productIsActive
+  ) {
     return res.status(400).json({ error: "REQUIRED FIELDS ARE INCOMPLETE" });
   }
 
@@ -48,17 +81,44 @@ export const createProduct = async (req: express.Request, res: express.Response)
 
   try {
     const existingProduct = await productRepository.findOne({ where: { productName } });
-  
     if (existingProduct) return res.status(409).json({ error: "EXISTING PRODUCT" });
 
     const product = productRepository.create({
       productName,
-      productPrice,
-      productDesc,
+      productShortDesc,
+      productLongDesc,
       productSize,
+      productDeveloper,
+      productCoverImageUrl,
+      productCatalogImageUrl,
+      productPrice,
       productIsActive
     });
-  
+
+    if (tagIds && Array.isArray(tagIds) && tagIds.length > 0) {
+      const tags = await tagRepository.findBy({
+        tagId: In(tagIds)
+      });
+
+      product.tags = tags;
+    }
+
+    if (platformIds && Array.isArray(platformIds) && platformIds.length > 0) {
+      const platforms = await platformRepository.findBy({
+        platformId: In(platformIds)
+      });
+
+      product.platforms = platforms;
+    }
+
+    if (languageIds && Array.isArray(languageIds) && languageIds.length > 0) {
+      const languages = await languageRepository.findBy({
+        languageId: In(languageIds)
+      });
+
+      product.languages = languages;
+    }
+
     await productRepository.save(product);
 
     res.status(201).json(product);
@@ -88,7 +148,10 @@ export const updateProduct = async(req: express.Request, res: express.Response) 
 
     await productRepository.update({ productId: Number(productId) }, req.body);
 
-    const updatedProduct = await productRepository.findOneBy({ productId: Number(productId) });
+    const updatedProduct = await productRepository.findOne({
+      where: { productId: Number(productId) },
+      relations: ["tags", "platforms", "languages"]
+    });
 
     res.status(200).json(updatedProduct);
   } catch (error) {
@@ -102,8 +165,11 @@ export const removeProduct = async (req: express.Request, res: express.Response)
   const { productId } = req.params;  
 
   try {
-    const productToRemove = await productRepository.findOneBy({ productId: Number(productId) });
-      
+    const productToRemove = await productRepository.findOne({
+      where: { productId: Number(productId) },
+      relations: ["tags", "platforms", "languages"]
+    });
+
     if (!productToRemove) return res.status(404).json({ error: "PRODUCT NOT FOUND" });
     
     await productRepository.remove(productToRemove);

@@ -31,7 +31,7 @@ export default class Product {
   @Column({ name: "producto_formato", type: "varchar", length: 100, nullable: true })
   productFormat?: string;
 
-  @Column({ name: "producto_tamano_mb", type: "numeric", precision: 10, scale: 2 })
+  @Column({ name: "producto_tamano_mb", type: "int" })
   productSize!: number;
 
   @Column({ name: "producto_url_descarga", type: "text", nullable: true })

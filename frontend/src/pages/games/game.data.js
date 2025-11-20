@@ -50,13 +50,20 @@ const renderGame = (game) => {
     })
   }
 
-  gameEntryDesc.textContent = game.productShortDesc || "Sin descripción disponible.";
+  gameEntryDesc.textContentparameter = game.productShortDesc || "Sin descripción disponible.";
   gamePrice.textContent = game.productPrice;
   gameLongDesc.textContent = game.productLongDesc || "Sin detalles adicionales.";
   gameDeveloper.textContent = game.productDeveloper || "Desarrollador desconocido";
-  gameSize.textContent = game.productSize || "No especificado";
+
+  if (game.productSize >= 1000) {
+    const newSize = Number(game.productSize) / 1000;
+    gameSize.textContent = `${newSize} GB` || "No especificado";
+  } else {
+    gameSize.textContent = `${game.productSize} MB` || "No especificado";
+  }
+  
   gameReleaseDate.textContent = game.productReleaseDate || "Próximamente";
-}
+} 
 
 async function loadGame() {
   try {
@@ -67,6 +74,9 @@ async function loadGame() {
       }
     })
     const game = await response.json();
+
+    console.log(game);
+    
 
     renderGame(game);
   } catch (error) {

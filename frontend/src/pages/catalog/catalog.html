@@ -89,35 +89,7 @@
       <div class="games-container">
         <h1 class="text-center text-6xl font-semibold mb-16">Nuestros videojuegos</h1>
 
-        <div class="games-container grid grid-cols-3 gap-16">
-          <a href="/src/pages/games/game.html" class="game-card">
-            <div class="game-img bg-black basis-[75%] bg-[url(/src/assets/incognita-logo-grande.png)] bg-cover bg-center">
-            </div>
-
-            <div class="game-info bg-dark-black p-8 basis-[25%]">
-              <h2 class="game-info-title text-2xl font-medium mb-4 no-translate">Incógnita</h2>
-
-              <p class="text-2xl text-primary font-medium">ARS $<span class="game-info-price">10.000</span></p>
-            </div>
-          </a>
-
-          <a href="#" class="game-card">
-            <div class="game-img bg-black basis-[75%] bg-cover bg-center grid place-content-center">
-              <span class="text-3xl text-gray-700">Proximamente</span>
-            </div>
-
-            <div class="game-info bg-dark-black p-8 basis-[25%]">
-            </div>
-          </a>
-
-          <a href="#" class="game-card">
-            <div class="game-img bg-black basis-[75%] bg-cover bg-center grid place-content-center">
-              <span class="text-3xl text-gray-700">Proximamente</span>
-            </div>
-
-            <div class="game-info bg-dark-black p-8 basis-[25%]">
-            </div>
-          </a>
+        <div class="games-wrapper w-full">
         </div>
       </div>
     </section>
@@ -425,6 +397,7 @@
     </form>
   </dialog>
 
+  <script src="./loadGames.js"></script>
   <script src="/src/pages/scripts/translator.js"></script>
   <script src="/src/pages/scripts/auth.js"></script>
   <script src="/src/pages/scripts/userMenu.js"></script>

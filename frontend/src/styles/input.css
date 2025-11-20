@@ -355,12 +355,58 @@
     @apply bg-accent p-6 rounded-xl w-2xs;
   }
 
+  .games-wrapper {
+    @apply grid grid-cols-3 gap-16;
+  }
   .game-card {
     @apply flex flex-col min-h-[485px] bg-accent border border-border-base hover:scale-101 hover:border-neutral-light  transition-all;
   }
+  .game-card .game-img {
+    @apply bg-black basis-[75%] bg-cover bg-center bg-no-repeat;
+  }
+  .game-card .game-info {
+    @apply bg-dark-black p-8 basis-[25%];
+  }
+  .game-info-title {
+    @apply text-2xl font-medium mb-4;
+  }
+  .game-price-container {
+    @apply text-2xl text-primary font-medium;
+  }
 
-  .games-container {
-    @apply max-w-7xl w-full gap-16 px-8;
+  .games-container, .game-container {
+    @apply w-7xl p-8 grid gap-16;
+  }
+  .game-presentation {
+    @apply bg-dark-black p-16 border border-border-base flex gap-8;
+  }
+  .game-presentation-info {
+    @apply flex flex-col justify-between basis-2/5;
+  }
+  .game-presentation-info .game-price {
+    @apply text-3xl font-semibold mb-4;
+  }
+  .game-presentation-info .add-to-cart-btn {
+    @apply font-bold py-3 px-12 cursor-pointer bg-primary text-lg text-black hover:bg-primary-bold;
+  }
+  .game-presentation-info .entry-description {
+    @apply text-gray-400 text-[15px];
+  }
+
+  .game-details {
+    @apply bg-dark-black text-gray-400 p-16 border border-border-base flex gap-16;
+  }
+  .game-details .description-title, .details-title {
+    @apply text-3xl font-semibold mb-6 text-primary;
+  }
+  .game-details .detail-item {
+    @apply flex justify-between;
+  }
+  .detail-item-list {
+    @apply text-white font-medium flex gap-2;
+  }
+  .game-reviews {
+    @apply bg-dark-black p-16 border border-border-base;
   }
 
   .reviews-container {
@@ -571,7 +617,7 @@
     @apply text-xl font-bold mb-4; 
   }
 
-  .tag-cart {
+  .tag-cart, .game-tag {
     @apply bg-accent py-0.5 px-2.5 rounded-2xl text-sm text-neutral-light;
   }
 

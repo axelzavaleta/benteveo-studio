@@ -45,10 +45,10 @@ export const seedInitialData = async () => {
         productIsActive: true
       },
       {
-        productName: "Magpie",
+        productName: "Cyber Alberdi",
         productDesc: "Usa las botas espaciales de un detective y resuelve misterios con el poder de las ecuaciones en este único juego de investigación.",
-        productPrice: 5000,
-        productImageUrl: "/src/assets/incognita-logo-grande.png",
+        productPrice: 7000,
+        productImageUrl: "/src/assets/cyber-alberdi-icon.png",
         productSize: 2000,
         productIsActive: true
       },

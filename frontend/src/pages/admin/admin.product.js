@@ -356,7 +356,6 @@ function llenarFormularioEdicionConPlaceholders(producto) {
     editProductForm.edit_producto_activo.checked = false;
     
     editProductForm.edit_producto_fecha_lanzamiento.value = '';
-    editProductForm.edit_producto_fecha_creacion.value = '';
 
     const editTagSelect = editProductForm.querySelector('select[name="edit_tagIds"]');
     const editPlatformSelect = editProductForm.querySelector('select[name="edit_platformIds"]');

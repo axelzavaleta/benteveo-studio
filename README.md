@@ -18,7 +18,7 @@ Este proyecto simula un sistema completo de comercio electrónico de contenido d
 
 ## Como cliente registrado en Benteveo Studio
 
-Quiero poder registrarme y comprar videojuegos para recibir la confirmación inmediata de mi compra y poder acceder a mi contenido.
+Quiero poder registrarme, navegar por el sitio, añadir productos a mi carrito y procesar la compra.
 
 ---
 
@@ -29,24 +29,25 @@ Quiero poder registrarme y comprar videojuegos para recibir la confirmación inm
 3.  El cliente puede añadir productos a su carrito de compra.
 4.  El cliente puede confirmar la compra y proceder al pago.
 5.  El sistema integra el pago a través de Mercado Pago, ofreciendo múltiples métodos de pago.
-6.  Al completar la compra, el sistema envía un correo electrónico de confirmación.
+6.  El usuario completa la compra y recibe sus juegos digitales.
 
 ---
 
 **Diseño Gráfico:**
 - La interfaz debe ser intuitiva y responsiva para facilitar la experiencia de usuario.
-- Se debe garantizar la seguridad de los datos personales y de pago.
+- Se debe garantizar la seguridad de los datos personales.
 
 ---
 
 ## Tecnologías Utilizadas
 
 -   **HTML, CSS y JavaScript** (Frontend)
--   **Node.js / Express** (Backend)
+-   **Node.js / Express / Typescript** (Backend)
 -   **PostgreSQL** (Base de datos)
--   **API de Email** (Confirmación por email)
--   **API de Mercado** Pago (Pasarela de pago)
--   **Git y GitHub** (Control de versiones)
+-   **API de Email (NodeMailer)** (Confirmación por email)
+-   **API de Mercado Pago (Checkout Pro)** (Pasarela de pago)
+-   **API de Traduccion (Translate Google API)** (Pasarela de pago)
+-   **Git** (Control de versiones)
 
 ---
 

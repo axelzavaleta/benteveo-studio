@@ -3,13 +3,17 @@ const GAME_TEXTS = {
     loginRequiredTitle: "Error",
     loginRequiredMsg: "Inicie sesión para administrar su carrito",
     successTitle: "Éxito",
-    successMsg: "Se ha añadido el producto correctamente al carrito"
+    successMsg: "Se ha añadido el producto correctamente al carrito",
+    alreadyInCartTitle: "Advertencia",
+    alreadyInCartMsg: "Este juego ya esta en su carrito."
   },
   en: {
     loginRequiredTitle: "Error",
     loginRequiredMsg: "Log in to manage your cart",
     successTitle: "Success",
-    successMsg: "The product has been added to the cart successfully"
+    successMsg: "The product has been added to the cart successfully",
+    alreadyInCartTitle: "Warning",
+    alreadyInCartMsg: "This game is already in your cart."
   }
 };
 
@@ -38,9 +42,25 @@ const getGameData = (container) => {
 
 const saveToCart = (game) => {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  
+  const exists = cart.some(item => item.gameTitle === game.gameTitle);
+
+  if (exists) {
+    showToast(
+      "error",
+      GAME_TEXTS[langG].alreadyInCartTitle,
+      GAME_TEXTS[langG].alreadyInCartMsg,
+    );
+    return;
+  }
 
   cart.push(game);
 
+  showToast(
+    "success",
+    GAME_TEXTS[langG].successTitle,
+    GAME_TEXTS[langG].successMsg
+  );
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
@@ -78,12 +98,6 @@ addToCartBtn.addEventListener("click", () => {
 
   const gameData = getGameData(gameContainer);
   saveToCart(gameData);
-
-  showToast(
-    "success",
-    GAME_TEXTS[langG].successTitle,
-    GAME_TEXTS[langG].successMsg
-  );
 })
 
 function protectGameDataFromTranslation() {

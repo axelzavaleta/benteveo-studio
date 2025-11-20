@@ -24,176 +24,57 @@ function switchToTab(tabId) {
   pageTitle.textContent = tabTitles[tabId];
 }
 
-// ================= Productos (Juegos) =================
-const openProductModalBtn = document.querySelector('#openProductModal');
+// ================= CONFIGURACIÓN BÁSICA DE MODALES =================
 const productModal = document.getElementById('newProductModal');
-const closeProductModal = document.getElementById('closeProductModal');
-const cancelProductModal = document.getElementById('cancelProductModal');
-const productForm = document.getElementById('newProductForm');
-const tablaBody = document.getElementById('tablaBody');
-const fileInput = document.getElementById('file');
-const preview = document.getElementById('preview');
+const userModal = document.getElementById('newUserModal');
 
-let imagenSeleccionada = "";
-let filaEditando = null;
-let filaAEliminar = null;
+// Configuración básica del modal de productos
+if (productModal) {
+  const closeProductModal = document.getElementById('closeProductModal');
+  const cancelProductModal = document.getElementById('cancelProductModal');
 
-productModal.style.display = "none";
-
-openProductModalBtn.addEventListener('click', () => {
-  filaEditando = null;
-  productForm.reset();
-  imagenSeleccionada = "";
-  preview.innerHTML = "";
-  productModal.showModal();
-  productModal.style.display = "flex";
-});
-
-function closeModal() {
-  productModal.close();
-  productModal.style.display = "none";
-}
-closeProductModal.addEventListener('click', closeModal);
-cancelProductModal.addEventListener('click', closeModal);
-
-productModal.addEventListener('click', (e) => {
-  const rect = productModal.getBoundingClientRect();
-  if (
-    e.clientX < rect.left || e.clientX > rect.right ||
-    e.clientY < rect.top || e.clientY > rect.bottom
-  ) closeModal();
-});
-
-fileInput.addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      imagenSeleccionada = event.target.result;
-      preview.innerHTML = `
-        <img src="${imagenSeleccionada}" alt="preview"
-             class="w-32 h-32 object-cover rounded-lg border border-gray-600">
-      `;
-    };
-    reader.readAsDataURL(file);
-  } else {
-    imagenSeleccionada = "";
-    preview.innerHTML = "";
-  }
-});
-
-productForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const data = Object.fromEntries(new FormData(productForm).entries());
-  data.producto_activo = !!data.producto_activo;
-
-  if (filaEditando) {
-    filaEditando.dataset.producto = JSON.stringify(data);
-
-    filaEditando.querySelector('td:nth-child(2)').textContent = data.producto_nombre;
-    filaEditando.querySelector('td:nth-child(3)').textContent = data.producto_tipo;
-    filaEditando.querySelector('td:nth-child(4)').textContent = `$${Number(data.producto_precio).toLocaleString()}`;
-    filaEditando.querySelector('td:nth-child(5)').textContent = `${data.producto_tamano_mb || 0} MB`;
-
-    const estado = filaEditando.querySelector('td:nth-child(6) span');
-    estado.textContent = data.producto_activo ? 'Activo' : 'Inactivo';
-    estado.className = data.producto_activo
-      ? 'bg-green-500/20 text-green-500 text-xs font-medium px-2 py-1 rounded-full'
-      : 'bg-red-500/20 text-red-500 text-xs font-medium px-2 py-1 rounded-full';
-
-    if (imagenSeleccionada) {
-      filaEditando.querySelector('td:nth-child(1)').innerHTML =
-        `<img src="${imagenSeleccionada}" class="w-10 h-10 rounded-lg object-cover">`;
-    }
-    filaEditando = null;
-  } else {
-    const row = document.createElement('tr');
-    row.className = "hover:bg-dark-black/50";
-    row.dataset.producto = JSON.stringify(data);
-
-    row.innerHTML = `
-      <td class="row">
-        ${imagenSeleccionada
-          ? `<img src="${imagenSeleccionada}" class="w-10 h-10 rounded-lg object-cover">`
-          : `<div class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400">Sin img</div>`}
-      </td>
-      <td class="row font-medium">${data.producto_nombre}</td>
-      <td class="row">${data.producto_tipo}</td>
-      <td class="row font-semibold">$${Number(data.producto_precio).toLocaleString()}</td>
-      <td class="row">${data.producto_tamano_mb || 0} MB</td>
-      <td class="row">
-        <span class="${data.producto_activo ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'} text-xs font-medium px-2 py-1 rounded-full">
-          ${data.producto_activo ? 'Activo' : 'Inactivo'}
-        </span>
-      </td>
-      <td class="row">
-        <div class="flex space-x-2">
-          <button class="bg-cyan-400 actions hover:bg-cyan-400/50 p-2 rounded editar-btn">
-            <img src="/src/assets/edit.svg" alt="editar" class="w-4">
-          </button>
-          <button class="bg-red-400 actions hover:bg-red-400/50 p-2 rounded eliminar-btn">
-            <img src="/src/assets/trash.svg" alt="eliminar" class="invert w-4">
-          </button>
-        </div>
-      </td>
-    `;
-    tablaBody.appendChild(row);
+  function closeProductModalFunc() {
+    productModal.close();
   }
 
-  productForm.reset();
-  imagenSeleccionada = "";
-  preview.innerHTML = "";
-  closeModal();
-});
+  if (closeProductModal) {
+    closeProductModal.addEventListener('click', closeProductModalFunc);
+  }
+  if (cancelProductModal) {
+    cancelProductModal.addEventListener('click', closeProductModalFunc);
+  }
 
-const deleteModal = document.getElementById('confirmDelete_Modal');
-const confirmDeleteBtn = document.getElementById('confirmDelete_Btn');
-const cancelDeleteBtn = document.getElementById('cancelDelete_Btn');
-const closeDeleteModalBtn = document.getElementById('closeDeleteModal');
-
-function cerrarModalEliminar() {
-  deleteModal.close();
-}
-cancelDeleteBtn.addEventListener('click', cerrarModalEliminar);
-closeDeleteModalBtn.addEventListener('click', cerrarModalEliminar);
-
-confirmDeleteBtn.addEventListener('click', () => {
-  if (filaAEliminar) filaAEliminar.remove();
-  filaAEliminar = null;
-  cerrarModalEliminar();
-});
-
-tablaBody.addEventListener('click', (e) => {
-  const btnEditar = e.target.closest('.editar-btn');
-  const btnEliminar = e.target.closest('.eliminar-btn');
-
-  if (btnEditar) {
-    filaEditando = btnEditar.closest('tr');
-    const data = JSON.parse(filaEditando.dataset.producto);
-
-    Object.entries(data).forEach(([key, val]) => {
-    const input = productForm[key];
-    if (input && input.type !== "file") {
-      input.value = val;
-    }
+  productModal.addEventListener('click', (e) => {
+    const rect = productModal.getBoundingClientRect();
+    if (
+      e.clientX < rect.left || e.clientX > rect.right ||
+      e.clientY < rect.top || e.clientY > rect.bottom
+    ) closeProductModalFunc();
   });
-  productForm.producto_activo.checked = data.producto_activo;
+}
 
-    imagenSeleccionada = filaEditando.querySelector('img')?.src || "";
-    preview.innerHTML = imagenSeleccionada
-      ? `<img src="${imagenSeleccionada}" class="w-32 h-32 object-cover rounded-lg border border-gray-600">`
-      : "";
+// Configuración básica del modal de usuarios
+if (userModal) {
+  const closeUserModal = document.getElementById('closeUserModal');
+  const cancelUserModal = document.getElementById('cancelUserModal');
 
-    productModal.showModal();
-    productModal.style.display = "flex";
+  function closeUserModalFunc() {
+    if (userModal) {
+      userModal.close();
+    }
   }
 
-  if (btnEliminar) {
-    filaAEliminar = btnEliminar.closest('tr');
-    deleteModal.showModal();
+  if (closeUserModal) closeUserModal.addEventListener('click', closeUserModalFunc);
+  if (cancelUserModal) cancelUserModal.addEventListener('click', closeUserModalFunc);
+
+  if (userModal) {
+    userModal.addEventListener('click', (e) => {
+      const rect = userModal.getBoundingClientRect();
+      if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom)
+        closeUserModalFunc();
+    });
   }
-});
+}
 
 // ================= COMPRESIÓN DE IMÁGENES =================
 const compressImage = (file, maxWidth = 200, maxHeight = 200, quality = 0.6) => {
@@ -266,9 +147,6 @@ const handleAvatarImage = async (e, previewId) => {
 
 // ================= USERS (USUARIOS) - SOLO UI =================
 const openUserModalBtn = document.getElementById('openUserModal');
-const userModal = document.getElementById('newUserModal');
-const closeUserModal = document.getElementById('closeUserModal');
-const cancelUserModal = document.getElementById('cancelUserModal');
 const userForm = document.getElementById('newUserForm');
 const avatarFile = document.getElementById('avatarFile');
 const avatarPreview = document.getElementById('avatarPreview');
@@ -292,24 +170,6 @@ if (openUserModalBtn) {
   });
 }
 
-function closeUserForm() {
-  if (userModal) {
-    userModal.close();
-    userModal.style.display = "none";
-  }
-}
-
-if (closeUserModal) closeUserModal.addEventListener('click', closeUserForm);
-if (cancelUserModal) cancelUserModal.addEventListener('click', closeUserForm);
-
-if (userModal) {
-  userModal.addEventListener('click', (e) => {
-    const rect = userModal.getBoundingClientRect();
-    if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom)
-      closeUserForm();
-  });
-}
-
 // ================= AVATAR PARA NUEVO USUARIO =================
 if (avatarFile) {
   avatarFile.addEventListener('change', async (e) => {
@@ -327,11 +187,7 @@ if (editAvatarFile) {
   });
 }
 
-// ELIMINAR completamente el event listener del submit del formulario
-// y toda la lógica de la tabla de usuarios del admin.js
-// Eso lo manejará admin.user.js
-
-// Solo mantener el modal de confirmación de eliminación (pero vacío)
+// ================= MODALES DE ELIMINACIÓN =================
 const deleteModalUserElem = document.getElementById('confirmDelete_ModalUser');
 const cancelDeleteBtnUser = document.getElementById('cancelDelete_BtnUser');
 const closeDeleteModalUserBtn = document.getElementById('closeDeleteModalUser');
@@ -344,5 +200,21 @@ if (cancelDeleteBtnUser) {
 if (closeDeleteModalUserBtn) {
   closeDeleteModalUserBtn.addEventListener('click', () => {
     if (deleteModalUserElem) deleteModalUserElem.close();
+  });
+}
+
+// Modal de eliminación general (para productos)
+const deleteModal = document.getElementById('confirmDelete_Modal');
+const cancelDeleteBtn = document.getElementById('cancelDelete_Btn');
+const closeDeleteModalBtn = document.getElementById('closeDeleteModal');
+
+if (cancelDeleteBtn) {
+  cancelDeleteBtn.addEventListener('click', () => {
+    if (deleteModal) deleteModal.close();
+  });
+}
+if (closeDeleteModalBtn) {
+  closeDeleteModalBtn.addEventListener('click', () => {
+    if (deleteModal) deleteModal.close();
   });
 }

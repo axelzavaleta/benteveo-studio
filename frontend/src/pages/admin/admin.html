@@ -243,17 +243,34 @@
         ✕
       </button>
 
-      <h2 class="text-3xl font-semibold mb-8 text-yellow-400">Nuevo Producto</h2>
+      <h2 class="text-3xl font-semibold mb-8 text-yellow-400">Nuevo Juego</h2>
 
       <div class="grid grid-cols-2 gap-6">
         <div class="col-span-2">
-          <label class="block text-sm font-medium mb-1">Nombre</label>
-          <input type="text" name="producto_nombre" required class="modal-field">
+          <label class="block text-sm font-medium mb-1">Nombre del Juego</label>
+          <input type="text" name="producto_nombre" required class="modal-field" placeholder="Ej: Incógnita">
         </div>
 
         <div class="col-span-2">
-          <label class="block text-sm font-medium mb-1">Descripción</label>
-          <textarea name="producto_descripcion" rows="3" class="modal-field"></textarea>
+          <label class="block text-sm font-medium mb-1">Descripción Corta (Resumen)</label>
+          <textarea name="producto_resumen" rows="2" class="modal-field" placeholder="Breve descripción que aparece en la presentación"></textarea>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Descripción Completa</label>
+          <textarea name="producto_descripcion" rows="4" class="modal-field" placeholder="Descripción detallada que aparece en la sección de descripción"></textarea>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Etiquetas/Tags</label>
+          <select name="tagIds" multiple class="modal-field h-32">
+            <option value="1">Educativo</option>
+            <option value="2">Puzzle</option>
+            <option value="3">Misterio</option>
+            <option value="4">Aventura</option>
+            <option value="5">Estrategia</option>
+          </select>
+          <p class="text-xs text-gray-400 mt-1">Mantén Ctrl (Cmd en Mac) para seleccionar múltiples</p>
         </div>
 
         <div>
@@ -269,77 +286,88 @@
           <input type="text" name="producto_formato" class="modal-field" placeholder="Ej: ISO, EXE, ZIP">
         </div>
 
-        <!-- Tamaño -->
         <div>
-          <label class="block text-sm font-medium mb-1">Tamaño (MB)</label>
-          <input type="number" name="producto_tamano_mb" step="0.1" class="modal-field">
+          <label class="block text-sm font-medium mb-1">Tamaño (GB)</label>
+          <input type="number" name="producto_tamano_gb" step="0.1" class="modal-field" placeholder="Ej: 1.5">
         </div>
 
-        <!-- URL descarga -->
         <div>
           <label class="block text-sm font-medium mb-1">URL de descarga</label>
           <input type="url" name="producto_url_descarga" class="modal-field">
         </div>
 
-        <!-- Licencia -->
-        <div class="col-span-2">
-          <label class="block text-sm font-medium mb-1">Licencia</label>
-          <textarea name="producto_licencia" rows="2" class="modal-field"></textarea>
+        <div>
+          <label class="block text-sm font-medium mb-1">Desarrollador</label>
+          <input type="text" name="producto_desarrollador" class="modal-field" placeholder="Ej: Benteveo Studio">
         </div>
 
-        <!-- Imagen -->
         <div class="col-span-2">
-          <label class="block text-sm font-medium mb-1">Imagen del producto</label>
-          <label for="file"
-            class="border border-gray-400 rounded-md py-8 flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-800/30 transition">
-            <span>Sube la imagen o arrástrala aquí</span>
-            <input type="file" id="file" name="file" accept=".jpg,.png,.jpeg" class="hidden">
+          <label class="block text-sm font-medium mb-1">Idiomas</label>
+          <select name="languageIds" multiple class="modal-field h-24">
+            <option value="1">Español</option>
+            <option value="2">Inglés</option>
+          </select>
+          <p class="text-xs text-gray-400 mt-1">Mantén Ctrl (Cmd en Mac) para seleccionar múltiples</p>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Plataformas</label>
+          <select name="platformIds" multiple class="modal-field h-32">
+            <option value="1">PC</option>
+            <option value="2">PlayStation 5</option>
+            <option value="3">Nintendo Switch</option>
+            <option value="4">Xbox One</option>
+            <option value="5">Mobile</option>
+          </select>
+          <p class="text-xs text-gray-400 mt-1">Mantén Ctrl (Cmd en Mac) para seleccionar múltiples</p>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Imagen Principal</label>
+          <label for="file_principal"
+            class="border border-gray-400 rounded-md py-4 flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-800/30 transition">
+            <span>Sube la imagen principal o arrástrala aquí</span>
+            <input type="file" id="file_principal" name="file_principal" accept=".jpg,.png,.jpeg" class="hidden">
           </label>
-          <div id="preview" class="mt-3 flex justify-center"></div>
+          <div id="preview_principal" class="mt-3 flex justify-center"></div>
         </div>
 
-        <!-- Descuento -->
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Imagen del Catálogo</label>
+          <label for="file_catalogo"
+            class="border border-gray-400 rounded-md py-4 flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-800/30 transition">
+            <span>Sube la imagen del catálogo o arrástrala aquí</span>
+            <input type="file" id="file_catalogo" name="file_catalogo" accept=".jpg,.png,.jpeg" class="hidden">
+          </label>
+          <div id="preview_catalogo" class="mt-3 flex justify-center"></div>
+        </div>
+
         <div>
           <label class="block text-sm font-medium mb-1">Descuento (%)</label>
           <input type="number" name="producto_descuento" min="0" max="100" value="0" class="modal-field">
         </div>
 
-        <!-- Precio -->
         <div>
           <label class="block text-sm font-medium mb-1">Precio</label>
-          <input type="number" name="producto_precio" min="0" step="1" class="modal-field" required>
+          <input type="number" name="producto_precio" min="0" placeholder="ARS" step="1" class="modal-field" required>
         </div>
 
-        <!-- Moneda -->
         <div>
-          <label class="block text-sm font-medium mb-1">Moneda</label>
-          <select name="producto_moneda" class="modal-field">
-            <option value="ARS">ARS</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-          </select>
+          <label class="block text-sm font-medium mb-1">Fecha de lanzamiento</label>
+          <input type="date" name="producto_fecha_lanzamiento" class="modal-field">
         </div>
 
-        <!-- Etiqueta -->
-        <div>
-          <label class="block text-sm font-medium mb-1">Etiqueta (ID)</label>
-          <input type="number" name="producto_etiqueta_id" min="1" class="modal-field" placeholder="Ej: 3">
-        </div>
-
-        <!-- Fecha de creación -->
         <div>
           <label class="block text-sm font-medium mb-1">Fecha de creación</label>
           <input type="date" name="producto_fecha_creacion" class="modal-field">
         </div>
 
-        <!-- Activo -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 col-span-2">
           <input type="checkbox" name="producto_activo" checked class="accent-yellow-400">
-          <label>Activo</label>
+          <label>Producto activo (visible en tienda)</label>
         </div>
       </div>
 
-      <!-- Botones -->
       <div class="flex justify-end space-x-3 pt-8 mt-8 border-t border-[#222c3d]">
         <button type="button" id="cancelProductModal"
           class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-5 rounded-lg">
@@ -347,7 +375,154 @@
         </button>
         <button type="submit"
           class="bg-yellow-400 text-black font-semibold py-2 px-5 rounded-lg hover:bg-yellow-300 transition">
-          Guardar Producto
+          Guardar Juego
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="editProductModal" class="rounded-2xl p-0 backdrop:bg-black/70">
+    <form id="editProductForm"
+      class="relative bg-[#0e1525] text-neutral-200 w-full max-w-4xl p-10 rounded-2xl shadow-2xl border border-[#222c3d] overflow-y-auto max-h-[90vh]">
+
+      <button type="button" id="closeEditProductModal"
+        class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">
+        ✕
+      </button>
+
+      <h2 class="text-3xl font-semibold mb-8 text-yellow-400">Editar Juego</h2>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Nombre del Juego</label>
+          <input type="text" name="edit_producto_nombre" class="modal-field" placeholder="Ej: Incógnita">
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Descripción Corta (Resumen)</label>
+          <textarea name="edit_producto_resumen" rows="2" class="modal-field" placeholder="Breve descripción que aparece en la presentación"></textarea>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Descripción Completa</label>
+          <textarea name="edit_producto_descripcion" rows="4" class="modal-field" placeholder="Descripción detallada que aparece en la sección de descripción"></textarea>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Etiquetas/Tags</label>
+          <select name="edit_tagIds" multiple class="modal-field h-32">
+            <option value="1">Educativo</option>
+            <option value="2">Puzzle</option>
+            <option value="3">Misterio</option>
+            <option value="4">Aventura</option>
+            <option value="5">Estrategia</option>
+          </select>
+          <p class="text-xs text-gray-400 mt-1">Mantén Ctrl (Cmd en Mac) para seleccionar múltiples</p>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Tipo</label>
+          <select name="edit_producto_tipo" class="modal-field">
+            <option value="digital">Digital</option>
+            <option value="fisico">Físico</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Formato</label>
+          <input type="text" name="edit_producto_formato" class="modal-field" placeholder="Ej: ISO, EXE, ZIP">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Tamaño (GB)</label>
+          <input type="number" name="edit_producto_tamano_gb" step="0.1" class="modal-field" placeholder="Ej: 1.5">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">URL de descarga</label>
+          <input type="url" name="edit_producto_url_descarga" class="modal-field">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Desarrollador</label>
+          <input type="text" name="edit_producto_desarrollador" class="modal-field" placeholder="Ej: Benteveo Studio">
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Idiomas</label>
+          <select name="edit_languageIds" multiple class="modal-field h-24">
+            <option value="1">Español</option>
+            <option value="2">Inglés</option>
+          </select>
+          <p class="text-xs text-gray-400 mt-1">Mantén Ctrl (Cmd en Mac) para seleccionar múltiples</p>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Plataformas</label>
+          <select name="edit_platformIds" multiple class="modal-field h-32">
+            <option value="1">PC</option>
+            <option value="2">PlayStation 5</option>
+            <option value="3">Nintendo Switch</option>
+            <option value="4">Xbox One</option>
+            <option value="5">Mobile</option>
+          </select>
+          <p class="text-xs text-gray-400 mt-1">Mantén Ctrl (Cmd en Mac) para seleccionar múltiples</p>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Imagen Principal</label>
+          <label for="edit_file_principal"
+            class="border border-gray-400 rounded-md py-4 flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-800/30 transition">
+            <span>Sube la imagen principal o arrástrala aquí</span>
+            <input type="file" id="edit_file_principal" name="edit_file_principal" accept=".jpg,.png,.jpeg" class="hidden">
+          </label>
+          <div id="edit_preview_principal" class="mt-3 flex justify-center"></div>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium mb-1">Imagen del Catálogo</label>
+          <label for="edit_file_catalogo"
+            class="border border-gray-400 rounded-md py-4 flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:bg-gray-800/30 transition">
+            <span>Sube la imagen del catálogo o arrástrala aquí</span>
+            <input type="file" id="edit_file_catalogo" name="edit_file_catalogo" accept=".jpg,.png,.jpeg" class="hidden">
+          </label>
+          <div id="edit_preview_catalogo" class="mt-3 flex justify-center"></div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Descuento (%)</label>
+          <input type="number" name="edit_producto_descuento" min="0" max="100" value="0" class="modal-field">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Precio</label>
+          <input type="number" name="edit_producto_precio" min="0" placeholder="ARS" step="1" class="modal-field">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Fecha de lanzamiento</label>
+          <input type="date" name="edit_producto_fecha_lanzamiento" class="modal-field">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Fecha de creación</label>
+          <input type="date" name="edit_producto_fecha_creacion" class="modal-field">
+        </div>
+
+        <div class="flex items-center gap-2 col-span-2">
+          <input type="checkbox" name="edit_producto_activo" class="accent-yellow-400">
+          <label>Producto activo (visible en tienda)</label>
+        </div>
+      </div>
+
+      <div class="flex justify-end space-x-3 pt-8 mt-8 border-t border-[#222c3d]">
+        <button type="button" id="cancelEditProductModal"
+          class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-5 rounded-lg">
+          Cancelar
+        </button>
+        <button type="submit"
+          class="bg-yellow-400 text-black font-semibold py-2 px-5 rounded-lg hover:bg-yellow-300 transition">
+          Guardar Cambios
         </button>
       </div>
     </form>
@@ -534,6 +709,7 @@
   </dialog>
 
   <script src="./admin.js"></script>
+  <script src="./admin.product.js"></script>
   <script src="./admin.user.js"></script>
 </body>
 

@@ -8,14 +8,15 @@ const LANG_TEXTS = {
     passwordsDontMatch: "Las contraseñas no coinciden.",
     registerSuccess: (email) => `Registro exitoso! Revisa tu email (${email}) para verificar tu cuenta.`,
     connectionError: "Error en la conexión. Inténtalo más tarde.",
-
+    emailAlreadyExists: "Usuario con correo electronico ya existente.",
     // LOGIN
     loginRequiredFields: "Se deben rellenar todos los campos.",
-    loginShortPassword: "La contraseña debe tener mínimo 4 caracteres.",
+    loginShortPassword: "La contraseña debe tener más de 4 caracteres.",
     loginInvalidEmail: "Formato de email inválido.",
     loginEmailNotVerified: "Verifica tu email antes de iniciar sesión.",
     loginSuspended: "Usuario suspendido.",
     loginSuccess: "Inicio de sesión realizado con éxito!!",
+    loginUserNotFound: "Usuario no encontrado.",
   },
 
   en: {
@@ -27,6 +28,7 @@ const LANG_TEXTS = {
     passwordsDontMatch: "Passwords do not match.",
     registerSuccess: (email) => `Registration successful! Check your email (${email}) to verify your account.`,
     connectionError: "Connection error. Please try again later.",
+    emailAlreadyExists: "User with existing email address",
 
     // LOGIN
     loginRequiredFields: "All fields must be filled.",
@@ -35,6 +37,7 @@ const LANG_TEXTS = {
     loginEmailNotVerified: "Verify your email before signing in.",
     loginSuspended: "User suspended.",
     loginSuccess: "Login successful!!",
+    loginUserNotFound: "User not found."
   }
 };
 
@@ -186,7 +189,13 @@ const handleRegister = async (e) => {
     });
 
     const response = await res.json();  
-    if (!res.ok) return displayError(response.error);
+    if (!res.ok) {
+      if (response.error === "USER WITH EXISTING EMAIL ADDRESS") {
+        return displayError(LANG_TEXTS[lang].emailAlreadyExists);
+      };
+
+      return displayError(response.error);
+    }
 
     registerForm.reset();
     pictureProfileImg.src = "/src/assets/profile-default.webp";
@@ -265,6 +274,10 @@ const handleLogin = async (e) => {
     if (!res.ok) {
       if (response.error === "EMAIL NOT VERIFIED") {
         return displayError(LANG_TEXTS[lang].loginEmailNotVerified);
+      }
+
+      if (response.error === "USER NOT FOUND") {
+        return displayError(LANG_TEXTS[lang].loginUserNotFound);
       }
       
       return displayError(response.error);

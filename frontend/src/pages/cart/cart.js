@@ -216,9 +216,9 @@ const showToast = (status, title, content) => {
 const processPayment = async (e) => {
   const paymentBtn = e.target
   paymentBtn.setAttribute("disabled", true)
-
   try {
     toastContainer.classList.remove("hidden");
+
     showToast(
       "success",
       LANG_TEXTS[lang].paymentProcessingTitle,
@@ -240,9 +240,10 @@ const processPayment = async (e) => {
     })
   
     const response = await res.json();
-
+    
     setTimeout(() => {
       location.href = response.init_point;
+      clearCart()
     }, 2000);
   } catch (error) {
     showToast(

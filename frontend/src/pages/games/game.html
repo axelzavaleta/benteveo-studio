@@ -73,93 +73,86 @@
   </header>
 
   <main class="flex-1 relative bg-soft-black grid place-content-center">
-    <section class="game-container max-w-7xl p-8 grid gap-16">
-      <div class="game-presentation bg-dark-black p-16 border border-border-base flex gap-8">
+    <section class="game-container">
+      <div class="game-presentation">
         <div class="basis-4/5">
           <img id="game-img" src="/src/assets/incognita-portada-hor.jpeg" alt="game-img">
         </div>
 
-        <div class="flex flex-col justify-between basis-2/5">
+        <div class="game-presentation-info">
           <div>
-            <h2 id="game-title" class="text-4xl font-semibold mb-4">Incógnita</h2>
+            <h2 id="game-title" class="text-4xl font-semibold mb-4"></h2>
             
-            <div class="tags">
-              <span class="tag-cart game-tag">Educativo</span>
-              <span class="tag-cart game-tag">Puzzle</span>
-              <span class="tag-cart game-tag">Misterio</span>
+            <div id="game-tags" class="tags">
             </div>
 
-            <p class="text-gray-400 text-[15px]">
-              Usa las botas espaciales de un detective y resuelve misterios con el poder de las ecuaciones en este único juego de investigación.
+            <p id="game-entry-description" class="entry-description">
             </p>
           </div>
 
           <div>
-            <p class="text-3xl font-semibold mb-4">ARS $<span id="game-price">10000</span></p>
+            <p class="game-price">ARS $<span id="game-price"></span></p>
   
-            <button id="add-to-cart" class="font-bold py-3 px-12 cursor-pointer bg-primary text-lg text-black hover:bg-primary-bold">Agregar al carrito</button>
+            <button id="add-to-cart" class="add-to-cart-btn">Agregar al carrito</button>
           </div>
         </div>
       </div>
 
-      <div class="game-details bg-dark-black text-gray-400 p-16 border border-border-base flex gap-16">
-        <div class="description basis-1/2">
-          <h2 class="text-3xl font-semibold mb-6 text-primary">Descripción</h2>
+      <div class="game-details">
+        <div class="basis-1/2">
+          <h2 class="description-title">Descripción</h2>
 
-          <p>
-            Usa las botas espaciales de un detective y resuelve misterios con el poder de las ecuaciones en este único juego de investigación.
+          <p id="game-large-description" class="leading-relaxed">
           </p>
         </div>
 
         <div class="basis-1/2">
-          <h2 class="text-3xl font-semibold mb-6 text-primary">Detalles</h2>
+          <h2 class="details-title">Detalles</h2>
 
-          <div class="details">
-            <div class="detail-item flex justify-between">
+          <div class="details-list">
+            <div class="detail-item">
               <span class="detail-item-title">Idioma</span>
 
-              <ul class="detail-item-list text-white font-medium flex gap-2">
-                <li>Español</li>
-                <!-- <li>Ingles</li> -->
+              <ul id="language-item-list" class="detail-item-list">
               </ul>
             </div>
 
             <hr class="my-3 text-accent">
 
-            <div class="detail-item flex justify-between">
+            <div class="detail-item">
               <span class="detail-item-title">Desarrollador</span>
 
-              <ul class="detail-item-list text-white font-medium flex gap-2">
-                <li>Benteveo Studio</li>
+              <ul class="detail-item-list">
+                <li id="game-developer"></li>
               </ul>
             </div>
 
             <hr class="my-3 text-accent">
 
-            <div class="detail-item flex justify-between">
+            <div class="detail-item">
               <span class="detail-item-title">Almacenamiento</span>
 
-              <ul class="detail-item-list text-white font-medium flex gap-2">
-                <li>1GB</li>
+              <ul class="detail-item-list">
+                <li id="game-size"></li>
               </ul>
             </div>
 
             <hr class="my-3 text-accent">
 
-            <div class="detail-item flex justify-between">
+            <div class="detail-item">
               <span class="detail-item-title">Fecha de lanzamiento</span>
 
-              <ul class="detail-item-list text-white font-medium flex gap-2">
-                <li>18 de julio de 2025</li>
+              <ul class="detail-item-list">
+                <li id="release-date-game"></li>
               </ul>
             </div>
 
             <hr class="my-3 text-accent">
 
-            <div class="detail-item flex justify-between">
+            <div class="detail-item">
               <span class="detail-item-title">Se puede jugar en</span>
 
-              <ul class="detail-item-list text-white font-medium flex gap-2">
+              <ul id="platforms-item-list" class="detail-item-list">
                 <li>PC</li>
                 <!-- <li>PS5</li> -->
                 <!-- <li>Nintendo Switch</li> -->
@@ -169,7 +162,7 @@
         </div>
       </div>
       
-      <div class="game-reviews bg-dark-black p-16 border border-border-base">
+      <div class="game-reviews">
         <div class="max-w-7xl gap-8 flex">
           <article class="review-card">
             <header class="bg-dark-black p-4 border-b border-border-base">
@@ -432,8 +425,9 @@
     </form>
   </dialog>
 
+  <script src="./game.js"></script>
+  <script src="./game.data.js"></script>
   <script src="/src/pages/scripts/translator.js"></script>
-  <script src="/src/pages/games/game.js"></script>
   <script src="/src/pages/scripts/auth.js"></script>
   <script src="/src/pages/scripts/userMenu.js"></script>
   <script src="/src/pages/scripts/authCheck.js"></script>

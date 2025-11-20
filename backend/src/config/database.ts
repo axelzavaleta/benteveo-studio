@@ -4,7 +4,9 @@ import { User } from "../entities/user.entity";
 import UserRole from "../entities/userRole.entity";
 import UserStatus from "../entities/userStatus.entity";
 import Product from "../entities/product.entity";
-import ProductTags from "../entities/productTags.entity";
+import { Tag } from "../entities/productTag.entity";
+import { Platform } from "../entities/platform.entity";
+import { Language } from "../entities/language.entity";
 import "dotenv/config";
 
 export const AppDataSource = new DataSource({
@@ -16,5 +18,6 @@ export const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD || "",
   logging: true,
   synchronize: true,
-  entities: [User, UserRole, UserStatus, Product, ProductTags]
+  entities: [User, UserRole, UserStatus, Product, Tag, Platform, Language],
+  dropSchema: true
 })

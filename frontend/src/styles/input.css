@@ -67,6 +67,12 @@
       transform: scale(1);
     }
   }
+
+  @keyframes showUserMenu {
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 @layer {
@@ -81,6 +87,10 @@
 
   .animate-show {
     animation: show 0.6s;
+  }
+
+  .animate-showUserMenu {
+    animation: showUserMenu 0.25s forwards;
   }
 
   .animate-fadeInUpHigh {
@@ -157,13 +167,13 @@
   }
 
   .user-btn {
-    @apply bg-primary-bold rounded-full cursor-pointer overflow-hidden w-10 h-10 aspect-square grid place-content-center;
+    @apply bg-primary-bold rounded-full cursor-pointer overflow-hidden w-10 h-10 aspect-square grid place-content-center ;
   }
   .user-menu {
-    @apply absolute mt-1.5 w-max border border-gray-600 bg-accent flex-col gap-2 right-0  px-4 py-2.5;
+    @apply absolute mt-1.5 w-max border border-border-base bg-dark-black flex-col gap-2 right-2 p-5 rounded-md transition-all duration-300;
   }
   .logout-btn {
-    @apply w-fit cursor-pointer text-gray-300  hover:text-dark-black transition-colors;
+    @apply font-medium w-fit cursor-pointer text-gray-300 transition-colors;
   }
 
   /* FOOTER */

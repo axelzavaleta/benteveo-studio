@@ -66,8 +66,6 @@ const showAuthButtons = () => {
   if (userAccount) userAccount.classList.add("hidden");
 }
 
-window.updateUserInterface = updateUserInterface;
-
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
   checkAuthStatus();
 });

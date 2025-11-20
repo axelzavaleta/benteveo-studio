@@ -76,14 +76,14 @@ addToCartBtn.addEventListener("click", () => {
     );
   }
 
+  const gameData = getGameData(gameContainer);
+  saveToCart(gameData);
+
   showToast(
     "success",
     GAME_TEXTS[langG].successTitle,
     GAME_TEXTS[langG].successMsg
   );
-
-  const gameData = getGameData(gameContainer);
-  saveToCart(gameData);
 })
 
 function protectGameDataFromTranslation() {

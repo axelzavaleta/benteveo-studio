@@ -310,7 +310,7 @@ const handleLogin = async (e) => {
 
     setTimeout(() => {
       location.href = route;
-    }, 2000);
+    }, 3000);
   } catch (err) {
     displayError("Error en la conexion. Intentalo mas tarde.");
   }

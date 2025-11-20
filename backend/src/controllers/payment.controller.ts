@@ -23,7 +23,12 @@ export const processPayment = async (req: express.Request, res: express.Response
             unit_price: totalPrice,
             currency_id: "ARS"
           }
-        ]
+        ],
+        back_urls: {
+          success: "process.env.FRONTEND_URL",
+          failure: "process.env.FRONTEND_URL",
+          pending: "procees.env.FRONTEND_URL"
+        }
       }
     })
   

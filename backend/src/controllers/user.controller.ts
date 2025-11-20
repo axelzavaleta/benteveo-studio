@@ -104,6 +104,10 @@ export const createUser = async (req: express.Request, res: express.Response) =>
     return res.status(400).json({ error: "REQUIRED FIELDS ARE INCOMPLETE" })
   }
 
+  if (userName.length <= 3) {
+    return res.status(400).json({ error: "USERNAMES MUST BE AT LEAST 3 CHARACTERS LONG" })
+  }
+
   if (userPassword.length <= 4) {
     return res.status(400).json({ error: "PASSWORD MUST BE LONGER THAN 4 CHARACTERS" })
   }

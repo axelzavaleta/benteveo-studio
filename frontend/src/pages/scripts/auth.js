@@ -1,7 +1,7 @@
 const LANG_TEXTS = {
   es: {
     requiredFields: "Se deben rellenar los campos obligatorios.",
-    minUsername: "El nombre de usuario debe tener mínimo 4 caracteres.",
+    minUsername: "El nombre de usuario debe tener mínimo 3 caracteres.",
     invalidEmail: "Formato de email inválido.",
     phoneNumbersOnly: "El campo teléfono solo puede contener números.",
     shortPassword: "La contraseña debe tener más de 4 caracteres.",
@@ -147,7 +147,7 @@ const handleRegister = async (e) => {
     return displayError(LANG_TEXTS[lang].requiredFields, [usernameInput, emailInput, passwordInput]);
   }
 
-  if (userName.length < 4) {
+  if (userName.length < 3) {
     return displayError(LANG_TEXTS[lang].minUsername, [usernameInput]);
   }
   

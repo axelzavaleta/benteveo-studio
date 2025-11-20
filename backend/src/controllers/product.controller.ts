@@ -56,6 +56,7 @@ export const createProduct = async (req: express.Request, res: express.Response)
     productCatalogImageUrl, 
     productPrice, 
     productIsActive,
+    productReleasedDate,
     tagIds,
     platformIds,
     languageIds,
@@ -70,7 +71,8 @@ export const createProduct = async (req: express.Request, res: express.Response)
     !productCoverImageUrl ||
     !productCatalogImageUrl ||
     !productPrice || 
-    !productIsActive
+    !productIsActive ||
+    !productReleasedDate
   ) {
     return res.status(400).json({ error: "REQUIRED FIELDS ARE INCOMPLETE" });
   }
@@ -92,7 +94,8 @@ export const createProduct = async (req: express.Request, res: express.Response)
       productCoverImageUrl,
       productCatalogImageUrl,
       productPrice,
-      productIsActive
+      productIsActive,
+      productReleasedDate
     });
 
     if (tagIds && Array.isArray(tagIds) && tagIds.length > 0) {

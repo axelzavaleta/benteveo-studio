@@ -2,7 +2,9 @@ function renderProducts(products) {
   const gamesWrapper = document.querySelector(".games-wrapper");
 
   products.forEach(product => {
-    const { productId, productCatalogImageUrl, productName, productPrice } = product;
+    const { productId, productCatalogImageUrl, productName, productPrice, productIsActive } = product;
+
+    if (!productIsActive) return;
 
     gamesWrapper.innerHTML += `
       <a href="/src/pages/games/game.html?id=${productId}" class="game-card" data-game-card-id="${productId}">

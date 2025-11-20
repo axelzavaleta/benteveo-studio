@@ -103,7 +103,6 @@ const handleProfileImage = async (e) => {
     pictureProfileImg.src = compressedImage;
     dataImg = compressedImage;
   } catch (error) {
-    console.error("Error procesando imagen:", error);
     alert("Error al procesar la imagen");
     pictureProfileInput.value = '';
   }
@@ -205,7 +204,6 @@ const handleRegister = async (e) => {
       loginModal.showModal();
     }, 2000);
   } catch (err) {
-    console.error("Error de red:", err);
     displayError(LANG_TEXTS[lang].connectionError);
   }
 }
@@ -263,7 +261,6 @@ const handleLogin = async (e) => {
     })
 
     const response = await res.json();
-    console.log("✅ Respuesta completa del login:", response);
     
     if (!res.ok) {
       if (response.error === "EMAIL NOT VERIFIED") {
@@ -275,12 +272,7 @@ const handleLogin = async (e) => {
 
     const token = response.token;
     const user = response.publicUserData;
-    
-    // DEBUG: Verificar que la imagen viene del backend
-    console.log("🖼️ Avatar URL del backend:", user.userAvatarUrl);
-    console.log("📦 Datos completos del usuario:", user);
-    
-    // Guardar en localStorage (esto actualiza los datos con los del backend)
+
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
 
@@ -288,7 +280,6 @@ const handleLogin = async (e) => {
       return displayError(LANG_TEXTS[lang].loginSuspended);
     }
 
-    // Llamar a la función del authCheck para mostrar la imagen ACTUALIZADA
     if (window.updateUserInterface) {
       window.updateUserInterface(user);
     }
@@ -308,12 +299,10 @@ const handleLogin = async (e) => {
       location.href = route;
     }, 2000);
   } catch (err) {
-    console.error("Error de red:", err);
     displayError("Error en la conexion. Intentalo mas tarde.");
   }
 }
 
-// Solo inicializar eventos si los formularios existen
 if (registerForm) {
   pictureProfileInput.addEventListener("change", handleProfileImage);
   registerForm.addEventListener("submit", handleRegister);
@@ -323,7 +312,6 @@ if (loginForm) {
   loginForm.addEventListener("submit", handleLogin);
 }
 
-// Resetear dataImg cuando se cierre el modal de registro
 document.addEventListener('click', (e) => {
   if (e.target.id === 'close-signup' || e.target.closest('#close-signup')) {
     dataImg = "";

@@ -2,9 +2,12 @@ const API_BASE_URL = 'http://localhost:3000';
 
 let userToDeleteId = null;
 let userToEditId = null;
+let allUsers = [];
+let filteredUsers = [];
 
 document.addEventListener('DOMContentLoaded', function() {
     inicializarGestionUsuarios();
+    inicializarBuscador();
 });
 
 function inicializarGestionUsuarios() {
@@ -25,6 +28,73 @@ function inicializarGestionUsuarios() {
     const confirmDeleteBtnUser = document.getElementById('confirmDelete_BtnUser');
     if (confirmDeleteBtnUser) {
         confirmDeleteBtnUser.addEventListener('click', eliminarUsuarioConfirmado);
+    }
+}
+
+function inicializarBuscador() {
+    const searchInput = document.getElementById('searchUserInput');
+    
+    if (searchInput) {
+        let searchTimeout;
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                buscarUsuarios(this.value.trim());
+            }, 300);
+        });
+        
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                buscarUsuarios(this.value.trim());
+            }
+        });
+
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                this.value = '';
+                buscarUsuarios('');
+            }
+        });
+    }
+}
+
+function buscarUsuarios(terminoBusqueda) {
+    if (!terminoBusqueda) {
+        actualizarTablaUsuarios(allUsers);
+        return;
+    }
+    
+    const termino = terminoBusqueda.toLowerCase();
+    
+    filteredUsers = allUsers.filter(usuario => 
+        usuario.userName.toLowerCase().includes(termino) ||           
+        usuario.userEmail.toLowerCase().includes(termino)
+    );
+    
+    actualizarTablaUsuarios(filteredUsers);
+    
+    const tablaUsuariosBody = document.getElementById('tablaUsuariosBody');
+    if (filteredUsers.length === 0 && terminoBusqueda !== '') {
+        const existingMessage = tablaUsuariosBody.querySelector('.no-results-message');
+        if (!existingMessage) {
+            const messageRow = document.createElement('tr');
+            messageRow.className = 'no-results-message';
+            messageRow.innerHTML = `
+                <td colspan="7" class="px-6 py-8 text-center text-gray-400">
+                    <div class="flex flex-col items-center">
+                        <img src="/src/assets/search.svg" alt="Buscar" class="w-12 h-12 opacity-50 mb-2">
+                        <p class="text-lg font-medium">No se encontraron usuarios</p>
+                        <p class="text-sm">No hay resultados para "<span class="font-medium">${terminoBusqueda}</span>"</p>
+                    </div>
+                </td>
+            `;
+            tablaUsuariosBody.appendChild(messageRow);
+        }
+    } else {
+        const noResultsMessage = tablaUsuariosBody.querySelector('.no-results-message');
+        if (noResultsMessage) {
+            noResultsMessage.remove();
+        }
     }
 }
 
@@ -83,7 +153,6 @@ function cerrarModal(modal) {
     }
 }
 
-// ========== CREAR USUARIO ==========
 async function manejarCrearUsuario(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -111,13 +180,11 @@ async function manejarCrearUsuario(e) {
     }
     
     try {
-        // OBTENER EL AVATAR SELECCIONADO DEL admin.js
         const avatarPreview = document.getElementById('avatarPreview');
         let avatarBase64 = null;
         
         if (avatarPreview && avatarPreview.querySelector('img')) {
             avatarBase64 = avatarPreview.querySelector('img').src;
-            console.log('Avatar encontrado:', avatarBase64.substring(0, 100)); // Debug
         }
         
         const userData = {
@@ -126,19 +193,16 @@ async function manejarCrearUsuario(e) {
             userPassword: userPassword,
             userRoleId: parseInt(userRoleId),
             userStatusId: parseInt(userStatusId),
-            userAvatarUrl: avatarBase64  // ← ENVIAR EL AVATAR A LA API
+            userAvatarUrl: avatarBase64
         };
         
         if (userPhoneNumber.trim()) {
             userData.userPhoneNumber = userPhoneNumber.trim();
         }
         
-        console.log('Enviando usuario con avatar:', userData.userAvatarUrl ? 'Sí' : 'No'); // Debug
-        
         await crearUsuario(userData);
         mostrarExito('Usuario creado correctamente');
-        
-        // Limpiar el formulario y avatar
+
         document.getElementById('newUserForm').reset();
         if (avatarPreview) avatarPreview.innerHTML = '';
         
@@ -150,7 +214,6 @@ async function manejarCrearUsuario(e) {
     }
 }
 
-// ========== EDITAR USUARIO ==========
 async function manejarEditarUsuario(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -171,11 +234,9 @@ async function manejarEditarUsuario(e) {
     if (userRoleId) userData.userRoleId = parseInt(userRoleId);
     if (userStatusId) userData.userStatusId = parseInt(userStatusId);
     
-    // OBTENER AVATAR DE EDICIÓN SI EXISTE
     const editAvatarPreview = document.getElementById('editAvatarPreview');
     if (editAvatarPreview && editAvatarPreview.querySelector('img')) {
         userData.userAvatarUrl = editAvatarPreview.querySelector('img').src;
-        console.log('Avatar de edición encontrado'); // Debug
     }
     
     if (Object.keys(userData).length === 0) {
@@ -219,9 +280,8 @@ function limpiarModalEdicion() {
     }
 }
 
-// ========== FUNCIONES BACKEND ==========
 async function crearUsuario(userData) {
-    const response = await fetch(`${API_BASE_URL}/user/admin-create`, {  // ← Nuevo endpoint
+    const response = await fetch(`${API_BASE_URL}/user/admin-create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -263,8 +323,7 @@ window.editarUsuario = async function(userId) {
 
         document.getElementById('editUserRoleId').value = '';
         document.getElementById('editUserStatusId').value = '';
-        
-        // MOSTRAR AVATAR ACTUAL EN EL MODAL DE EDICIÓN
+
         const editAvatarPreview = document.getElementById('editAvatarPreview');
         if (editAvatarPreview) {
             if (usuario.userAvatarUrl) {
@@ -309,7 +368,6 @@ async function actualizarUsuario(userId, userData) {
     return await response.json();
 }
 
-// ========== CARGAR Y MOSTRAR USUARIOS ==========
 async function cargarUsuarios() {
     try {
         const response = await fetch(`${API_BASE_URL}/user`);
@@ -321,7 +379,8 @@ async function cargarUsuarios() {
         const usuarios = await response.json();
         
         const usuariosOrdenados = ordenarUsuariosPorId(usuarios);
-        
+
+        allUsers = usuariosOrdenados;
         actualizarTablaUsuarios(usuariosOrdenados);
         actualizarContadorUsuarios(usuariosOrdenados.length);
         
@@ -357,6 +416,14 @@ function actualizarTablaUsuarios(usuarios) {
         const fila = crearFilaUsuario(usuario);
         tablaUsuariosBody.appendChild(fila);
     });
+}
+
+function limpiarBusquedaUsuarios() {
+    const searchInput = document.getElementById('searchUserInput');
+    if (searchInput) {
+        searchInput.value = '';
+    }
+    buscarUsuarios('');
 }
 
 function crearFilaUsuario(usuario) {
@@ -400,7 +467,6 @@ function crearFilaUsuario(usuario) {
     return fila;
 }
 
-// ========== FUNCIONES GLOBALES ==========
 window.editarUsuario = async function(userId) {
     userToEditId = userId;
     
